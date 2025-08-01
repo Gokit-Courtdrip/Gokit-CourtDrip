@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Jerseys</title>
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Jersey Store</div>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2 id="team-title">Team Jerseys</h2>
+        <div class="grid" id="jersey-list"></div>
+    </main>
+
+    <footer>
+        <p>© 2025 JerseyStore. All rights reserved.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const league = params.get('league');
+        const team = params.get('team');
+        renderTeamJerseys(league, team);
+    </script>
+
+</body>
+
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop by Team</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">GOKIT × CourtDripDxb</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="league.html">Leagues</a></li>
+                <li><a href="team.html">Teams</a></li>
+                <li><a href="cart.html">Cart 🛒</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Title -->
+    <section class="hero">
+        <h1>Shop by Team</h1>
+        <p>Pick your favorite football or basketball team</p>
+    </section>
+
+    <!-- Basketball Teams -->
+    <section class="product-section">
+        <h2>🏀 Basketball Teams</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="images/placeholder-basketball.jpg" alt="Lakers" />
+                <h3>Los Angeles Lakers</h3>
+                <button onclick="alert('Lakers collection coming soon')">View</button>
+            </div>
+            <div class="product-card">
+                <img src="images/placeholder-basketball.jpg" alt="Miami Heat" />
+                <h3>Miami Heat</h3>
+                <button onclick="alert('Heat gear coming soon')">View</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Football Teams -->
+    <section class="product-section">
+        <h2>⚽ Football Teams</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="images/placeholder-football.jpg" alt="Al Ain FC" />
+                <h3>Al Ain FC</h3>
+                <button onclick="alert('Al Ain FC kits coming soon')">View</button>
+            </div>
+            <div class="product-card">
+                <img src="images/placeholder-football.jpg" alt="Shabab Al Ahli" />
+                <h3>Shabab Al Ahli</h3>
+                <button onclick="alert('Shabab Al Ahli gear coming soon')">View</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 GOKIT × CourtDripDxb — All rights reserved</p>
+    </footer>
+</body>
+
+</html>

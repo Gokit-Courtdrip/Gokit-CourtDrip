@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-light">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">GOKIT × CourtDripDxb</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">Cart 🛒</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <section class="container py-5">
+        <h2 class="mb-4 text-center">🛒 Your Cart</h2>
+        <div id="cart-items" class="row g-4 justify-content-center"></div>
+
+        <div id="cart-summary" class="text-center mt-5">
+            <h4>Total: <span id="total-price" class="text-success">د.إ0.00</span></h4>
+            <button id="clear-cart" class="btn btn-outline-danger mt-3">Clear Cart</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        &copy; 2025 GOKIT × CourtDripDxb — All rights reserved
+    </footer>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItems = document.getElementById('cart-items');
+        const totalPriceEl = document.getElementById('total-price');
+
+        function renderCart() {
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-muted text-center">Your cart is empty.</p>';
+                totalPriceEl.textContent = 'د.إ0.00';
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+
+                const col = document.createElement('div');
+                col.className = 'col-md-5';
+
+                col.innerHTML = `
+          <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+              <h5 class="card-title">${item.name}</h5>
+              <p class="card-text">Price: د.إ${item.price.toFixed(2)}</p>
+              <p class="card-text">Quantity: ${item.quantity}</p>
+              <button class="btn btn-danger btn-sm" onclick="removeItem(${index})">Remove</button>
+            </div>
+          </div>
+        `;
+                cartItems.appendChild(col);
+            });
+
+            totalPriceEl.textContent = `د.إ${total.toFixed(2)}`;
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        document.getElementById('clear-cart').addEventListener('click', () => {
+            cart = [];
+            localStorage.removeItem('cart');
+            renderCart();
+        });
+
+        renderCart();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

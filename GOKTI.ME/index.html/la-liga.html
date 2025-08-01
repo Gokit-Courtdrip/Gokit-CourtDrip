@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Liga Teams</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fefefe;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #e30613;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .nav-links {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .nav-links a {
+            margin: 0 12px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .product-section {
+            padding: 30px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            text-align: center;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .product-card h3 {
+            margin: 12px 0;
+        }
+
+        .product-card button {
+            background-color: #e30613;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product-card button:hover {
+            background-color: #bb0410;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>La Liga Teams</h1>
+        <div class="nav-links">
+            <a href="index.html">🏠 Home</a>
+            <a href="cart.html">🛒 Cart</a>
+        </div>
+    </header>
+
+    <section class="product-section">
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="images/placeholder-football.jpg" alt="Real Madrid Logo" />
+                <h3>Real Madrid</h3>
+                <a href="real-madrid.html"><button>View Kits</button></a>
+            </div>
+            <div class="product-card">
+                <img src="images/placeholder-football.jpg" alt="Barcelona Logo" />
+                <h3>Barcelona</h3>
+                <a href="barcelona.html"><button>View Kits</button></a>
+            </div>
+            <div class="product-card">
+                <img src="images/placeholder-football.jpg" alt="Atletico Madrid Logo" />
+                <h3>Atlético Madrid</h3>
+                <a href="atletico-madrid.html"><button>View Kits</button></a>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dallas Mavericks — CourtDripDxb</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .mavs-header {
+            background: linear-gradient(90deg, #002B5E, #0053BC);
+            color: white;
+        }
+
+        .category-section {
+            padding: 3rem 0;
+        }
+
+        .category-section h2 {
+            color: #002B5E;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            color: #0053BC;
+            font-weight: 600;
+        }
+
+        .btn-mavs {
+            background-color: #0053BC;
+            color: white;
+            border: none;
+        }
+
+        .btn-mavs:hover {
+            background-color: #003f94;
+        }
+
+        .card img {
+            height: 250px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark mavs-header sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🏀 CourtDripDxb</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <!-- Dropdown Menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            🏆 Browse Leagues
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="nba.html">NBA</a></li>
+                            <li><a class="dropdown-item" href="eastern.html">Eastern Conference</a></li>
+                            <li><a class="dropdown-item" href="western.html">Western Conference</a></li>
+                        </ul>
+                    </li>
+                    <!-- Cart -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">🛒 Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="text-center py-5 bg-white border-bottom">
+        <div class="container">
+            <h1 class="display-4 fw-bold text-uppercase" style="color:#002B5E;">Dallas Mavericks</h1>
+            <p class="lead" style="color:#333;">Drip fit for Luka’s squad 💫</p>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <div class="container my-3">
+        <a href="western.html" class="btn btn-outline-dark fw-bold border-2 shadow-sm">
+            ← Back to Western Conference
+        </a>
+    </div>
+
+
+    <!-- New Season Jerseys -->
+    <section class="category-section">
+        <div class="container">
+            <h2 class="text-center">🆕 New Season Jerseys</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="images/placeholder-jersey.jpg" class="card-img-top" alt="New Jersey">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">2025 Luka Doncic Home Jersey</h5>
+                            <button class="btn btn-mavs">View</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more jerseys -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Retro Jerseys -->
+    <section class="category-section bg-light">
+        <div class="container">
+            <h2 class="text-center">🏀 Retro Jerseys</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="images/placeholder-retro.jpg" class="card-img-top" alt="Retro Jersey">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Dirk Nowitzki 2011 Finals</h5>
+                            <button class="btn btn-mavs">View</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more retros -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 mt-5 mavs-header">
+        <p class="mb-1">&copy; 2025 CourtDripDxb | Dallas Mavericks Collection</p>
+        <p class="mb-0">Not affiliated with the NBA or Dallas Mavericks.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

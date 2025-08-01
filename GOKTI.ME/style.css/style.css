@@ -1,0 +1,251 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: radial-gradient(ellipse at top, #f3ede5, #d6cfc7);
+    color: #333;
+}
+
+
+/* Navbar */
+.navbar {
+    background: #111;
+    color: white;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: #ffc107;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: #111;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Hero Section */
+.hero-banner {
+    background-image: url('images/hero-placeholder.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 8rem 2rem;
+    text-align: center;
+    color: white;
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    background: #027a3d;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #025c2b;
+}
+
+.btn.alt {
+    background: #1e1e1e;
+}
+
+.category-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background: #fff;
+}
+
+.category-card {
+    width: 300px;
+    background: #fefefe;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.category-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.category-card h2 {
+    margin: 1rem 0 0.5rem;
+}
+
+.category-card p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.btn.small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+
+
+
+
+/* Team Navbar Overrides */
+.navbar.rockets-theme {
+    background-color: #ce1141 !important;
+}
+
+.btn-lakers {
+    background-color: #552583 !important;
+    /* Lakers purple */
+    color: #ffffff !important;
+    /* Force white text */
+    border: none;
+    transition: background 0.3s ease;
+}
+
+.btn-lakers:hover {
+    background-color: #301b4d !important;
+    /* Darker purple on hover */
+    color: #ffffff !important;
+    /* Keep text white on hover */
+}
+
+
+.navbar.suns-header {
+    background: linear-gradient(90deg, #1d1160, #e56020);
+}
+
+/* Navbar link hover fix */
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+    transition: color 0.3s;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ffd1dc;
+    /* Soft pink-ish hover for Rockets; change per team if needed */
+}
+
+/* Clippers Navbar Theme */
+.navbar.clippers-theme {
+    background-color: #1d428a !important;
+    /* Clippers blue */
+}
+
+.navbar.clippers-theme .navbar-nav .nav-link {
+    color: white !important;
+}
+
+.navbar.clippers-theme .navbar-nav .nav-link:hover {
+    color: #c8102e !important;
+    /* Clippers red */
+}
+
+.navbar.clippers-theme .navbar-brand {
+    color: white !important;
+}
+
+.navbar.clippers-theme .navbar-toggler {
+    border-color: white;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+
+.card-body .btn {
+    transition: all 0.3s ease;
+}
+
+.card-body .btn:hover {
+    transform: scale(1.05);
+}
