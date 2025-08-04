@@ -8,7 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
         body {
-            background: radial-gradient(ellipse at top, #f5f5f5, #e0e0e0);
+            background: radial-gradient(ellipse at top, #1c1c1c, #111);
+            color: #fff;
         }
 
         .conf-card {
@@ -20,7 +21,7 @@
 
         .conf-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
         }
 
         .conf-card img {
@@ -44,10 +45,14 @@
         .conf-card .btn:hover {
             transform: scale(1.05);
         }
+
+        footer {
+            background-color: #000;
+        }
     </style>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -66,38 +71,38 @@
     </nav>
 
     <!-- Hero -->
-    <section class="text-center py-5 bg-white border-bottom">
+    <section class="text-center py-5 bg-black border-bottom">
         <div class="container">
-            <h1 class="display-4 fw-bold text-dark">Choose Your Conference</h1>
-            <p class="lead text-muted">Select the conference to shop by team</p>
+            <h1 class="display-4 fw-bold text-white">Choose Your Conference</h1>
+            <p class="lead text-light">Select the conference to shop by team</p>
         </div>
     </section>
 
     <!-- Back Button -->
     <div class="container my-3">
-        <a href="basketball.html" class="btn btn-outline-dark fw-bold border-2 shadow-sm">
+        <a href="basketball.html" class="btn btn-outline-light fw-bold border-2 shadow-sm">
             ← Back to Basketball
         </a>
     </div>
 
     <!-- Conference Selection -->
-    <section class="py-5 bg-light">
+    <section class="py-5">
         <div class="container">
-            <h2 class="text-center mb-5 display-5 fw-bold">Choose a Conference</h2>
+            <h2 class="text-center mb-5 display-5 fw-bold"></h2>
             <div class="row g-4 justify-content-center">
+
+
 
                 <!-- Western Conference -->
                 <div class="col-md-6 col-lg-5">
                     <a href="western.html" class="text-decoration-none">
                         <div class="card text-white position-relative overflow-hidden shadow-lg conf-card west"
-                            style="height: 300px; border-radius: 1rem; background-color: #000;">
+                            style="height: 300px; background-color: #000;">
 
-                            <!-- Background NBA Image -->
                             <img src="img/western.jpg" alt="Western Conference"
                                 class="position-absolute top-0 start-0 w-100 h-100"
                                 style="object-fit: cover; opacity: 0.4; z-index: 0;">
 
-                            <!-- Overlay Content -->
                             <div
                                 class="card-body position-relative z-1 d-flex flex-column justify-content-center align-items-center h-100">
                                 <h3 class="card-title text-primary fw-bold">Western Conference</h3>
@@ -109,19 +114,16 @@
                     </a>
                 </div>
 
-
                 <!-- Eastern Conference -->
                 <div class="col-md-6 col-lg-5">
                     <a href="eastern.html" class="text-decoration-none">
                         <div class="card text-white position-relative overflow-hidden shadow-lg conf-card east"
-                            style="height: 300px; border-radius: 1rem; background-color: #000;">
+                            style="height: 300px; background-color: #000;">
 
-                            <!-- Background Image -->
                             <img src="img/western.jpg" alt="Eastern Conference"
                                 class="position-absolute top-0 start-0 w-100 h-100"
                                 style="object-fit: cover; opacity: 0.5; z-index: 0;">
 
-                            <!-- Overlay Content -->
                             <div
                                 class="card-body position-relative z-1 d-flex flex-column justify-content-center align-items-center h-100">
                                 <h3 class="card-title text-danger fw-bold">Eastern Conference</h3>
@@ -133,13 +135,17 @@
                     </a>
                 </div>
 
-                <!-- Footer -->
-                <footer class="bg-dark text-white text-center py-4 mt-5">
-                    <p class="mb-1">&copy; 2025 CourtDripDxb — NBA Conference Selector</p>
-                    <p class="mb-0">Not affiliated with the NBA or any official team or league.</p>
-                </footer>
+            </div>
+        </div>
+    </section>
 
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Footer -->
+    <footer class="text-white text-center py-4 mt-auto">
+        <p class="mb-1">&copy; 2025 CourtDripDxb — NBA Conference Selector</p>
+        <p class="mb-0">Not affiliated with the NBA or any official team or league.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

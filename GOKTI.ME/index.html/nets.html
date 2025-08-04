@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brooklyn Nets — CourtDripDxb</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .nets-header {
+            background: linear-gradient(90deg, #000000, #666666);
+            color: white;
+        }
+
+        .category-section {
+            padding: 3rem 0;
+        }
+
+        .category-section h2 {
+            color: #000000;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .btn-nets {
+            background-color: #000000;
+            color: white;
+            border: none;
+        }
+
+        .btn-nets:hover {
+            background-color: #333333;
+        }
+
+        .card img {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .back-btn-container {
+            background-color: #e9ecef;
+            padding: 1rem;
+        }
+
+        .back-btn-container a {
+            color: #000000;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back-btn-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark nets-header sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🏀 CourtDripDxb</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            🏆 Browse Leagues
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="nba.html">NBA</a></li>
+                            <li><a class="dropdown-item" href="eastern.html">Eastern Conference</a></li>
+                            <li><a class="dropdown-item" href="western.html">Western Conference</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">🛒 Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="text-center py-5 bg-white border-bottom">
+        <div class="container">
+            <h1 class="display-4 fw-bold text-uppercase" style="color:#000000;">Brooklyn Nets</h1>
+            <p class="lead text-muted">Black and white never goes out of style — Nets drip 🖤🤍</p>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <div class="container my-3">
+        <a href="eastern.html" class="btn btn-outline-dark fw-bold border-2 shadow-sm">
+            ← Back to Eastern Conference
+        </a>
+    </div>
+
+    <!-- New Season Jerseys -->
+    <section class="category-section">
+        <div class="container">
+            <h2 class="text-center">🆕 New Season Jerseys</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="images/placeholder-jersey.jpg" class="card-img-top" alt="Nets New Jersey">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">2025 Mikal Bridges Home Jersey</h5>
+                            <button class="btn btn-nets">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retro Jerseys -->
+    <section class="category-section bg-light">
+        <div class="container">
+            <h2 class="text-center">🏀 Retro Jerseys</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="images/placeholder-retro.jpg" class="card-img-top" alt="Retro Nets Jersey">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Jason Kidd 2003 Finals</h5>
+                            <button class="btn btn-nets">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 mt-5 nets-header">
+        <p class="mb-1">&copy; 2025 CourtDripDxb | Brooklyn Nets Collection</p>
+        <p class="mb-0">Not affiliated with the NBA or the Brooklyn Nets.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

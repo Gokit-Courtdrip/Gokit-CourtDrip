@@ -9,8 +9,18 @@
 body {
     background: radial-gradient(ellipse at top, #f3ede5, #d6cfc7);
     color: #333;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+html {
+    height: 100%;
+}
+
+main {
+    flex: 1;
+}
 
 /* Navbar */
 .navbar {
@@ -44,6 +54,7 @@ body {
     text-decoration: none;
     font-weight: 500;
     position: relative;
+    transition: color 0.3s;
 }
 
 .nav-links a:hover {
@@ -116,6 +127,12 @@ body {
     background: #1e1e1e;
 }
 
+.btn.small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* Category Section */
 .category-section {
     display: flex;
     flex-wrap: wrap;
@@ -138,6 +155,7 @@ body {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    object-position: center top;
 }
 
 .category-card h2 {
@@ -150,11 +168,6 @@ body {
     color: #555;
 }
 
-.btn.small {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-}
-
 /* Footer */
 footer {
     background: #111;
@@ -164,10 +177,6 @@ footer {
     margin-top: 2rem;
 }
 
-
-
-
-
 /* Team Navbar Overrides */
 .navbar.rockets-theme {
     background-color: #ce1141 !important;
@@ -175,26 +184,20 @@ footer {
 
 .btn-lakers {
     background-color: #552583 !important;
-    /* Lakers purple */
     color: #ffffff !important;
-    /* Force white text */
     border: none;
     transition: background 0.3s ease;
 }
 
 .btn-lakers:hover {
     background-color: #301b4d !important;
-    /* Darker purple on hover */
     color: #ffffff !important;
-    /* Keep text white on hover */
 }
-
 
 .navbar.suns-header {
     background: linear-gradient(90deg, #1d1160, #e56020);
 }
 
-/* Navbar link hover fix */
 .navbar-dark .navbar-nav .nav-link {
     color: white;
     transition: color 0.3s;
@@ -202,50 +205,62 @@ footer {
 
 .navbar-dark .navbar-nav .nav-link:hover {
     color: #ffd1dc;
-    /* Soft pink-ish hover for Rockets; change per team if needed */
 }
 
-/* Clippers Navbar Theme */
+/* Clippers Theme */
 .navbar.clippers-theme {
     background-color: #1d428a !important;
-    /* Clippers blue */
 }
 
-.navbar.clippers-theme .navbar-nav .nav-link {
+.navbar.clippers-theme .navbar-nav .nav-link,
+.navbar.clippers-theme .navbar-brand {
     color: white !important;
 }
 
 .navbar.clippers-theme .navbar-nav .nav-link:hover {
     color: #c8102e !important;
-    /* Clippers red */
-}
-
-.navbar.clippers-theme .navbar-brand {
-    color: white !important;
 }
 
 .navbar.clippers-theme .navbar-toggler {
     border-color: white;
 }
 
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    flex: 1;
-}
-
-
+/* Cards */
 .card-body .btn {
     transition: all 0.3s ease;
 }
 
 .card-body .btn:hover {
     transform: scale(1.05);
+}
+
+.section-card:hover .btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.section-card:hover .btn-light {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+/* Hero Overlay */
+.hero-overlay h1 {
+    color: #ffffff;
+}
+
+.hero-overlay p {
+    color: #cccccc;
+}
+
+.section-card-content a.btn {
+    border-radius: 30px;
+}
+
+.suns-image {
+    object-fit: cover;
+    object-position: center 35%;
+    /* Move image up */
+    height: 100%;
+    width: 100%;
 }
