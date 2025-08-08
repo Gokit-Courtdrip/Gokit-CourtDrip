@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop by League | GOKIT × CourtDripDxb</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #1a1a2e;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ff6b35;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff6b35;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #ff6b35;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 2rem 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ff6b35, #f7931e, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Leagues Section */
+        .leagues-section {
+            padding: 100px 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+        }
+
+        .leagues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+        }
+
+        .league-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .league-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(247, 147, 30, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .league-card:hover::before {
+            opacity: 1;
+        }
+
+        .league-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 107, 53, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .league-image-container {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .league-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .league-card:hover .league-image {
+            transform: scale(1.05);
+        }
+
+        .league-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+        }
+
+        .league-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 107, 53, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .league-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .league-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+
+        .league-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .league-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .league-stat {
+            text-align: center;
+        }
+
+        .league-stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffd700;
+            display: block;
+        }
+
+        .league-stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 4px;
+            font-weight: 400;
+        }
+
+        .league-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .league-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 100px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .leagues-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">GOKIT × CourtDripDxb</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="league.html" class="nav-link active">Leagues</a>
+                <a href="basketball.html" class="nav-link">Basketball</a>
+                <a href="cart.html" class="nav-link">Cart</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Football Leagues</h1>
+            <p>Discover authentic jerseys from the world's most prestigious football competitions</p>
+        </div>
+    </section>
+
+    <!-- Leagues Section -->
+    <section class="leagues-section">
+        <div class="section-header">
+            <h2 class="section-title">Choose Your League</h2>
+            <p class="section-subtitle">Premium quality jerseys from top football leagues worldwide</p>
+        </div>
+
+        <div class="leagues-grid">
+            <!-- Premier League -->
+            <div class="league-card">
+                <div class="league-image-container">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="league-image" alt="Premier League">
+                    <div class="league-overlay"></div>
+                    <div class="league-badge">Most Popular</div>
+                </div>
+                <div class="league-content">
+                    <h3 class="league-name">Premier League</h3>
+                    <p class="league-description">England's elite football league featuring Manchester United,
+                        Liverpool, Arsenal, Chelsea and more top clubs.</p>
+                    <div class="league-stats">
+                        <div class="league-stat">
+                            <span class="league-stat-number">20</span>
+                            <span class="league-stat-label">Teams</span>
+                        </div>
+                        <div class="league-stat">
+                            <span class="league-stat-number">50+</span>
+                            <span class="league-stat-label">Jerseys</span>
+                        </div>
+                        <div class="league-stat">
+                            <span class="league-stat-number">1992</span>
+                            <span class="league-stat-label">Founded</span>
+                        </div>
+                    </div>
+                    <a href="premier-league.html" class="league-btn">Shop Premier League</a>
+                </div>
+            </div>
+
+            <!-- La Liga -->
+            <div class="league-card">
+                <div class="league-image-container">
+                    <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="league-image" alt="La Liga">
+                    <div class="league-overlay"></div>
+                    <div class="league-badge">El Clásico</div>
+                </div>
+                <div class="league-content">
+                    <h3 class="league-name">La Liga</h3>
+                    <p class="league-description">Spain's premier division home to Real Madrid, Barcelona, Atletico
+                        Madrid and the world's best players.</p>
+                    <div class="league-stats">
+                        <div class="league-stat">
+                            <span class="league-stat-number">20</span>
+                            <span class="league-stat-label">Teams</span>
+                        </div>
+                        <div class="league-stat">
+                            <span class="league-stat-number">45+</span>
+                            <span class="league-stat-label">Jerseys</span>
+                        </div>
+                        <div class="league-stat">
+                            <span class="league-stat-number">1929</span>
+                            <span class="league-stat-label">Founded</span>
+                        </div>
+                    </div>
+                    <a href="la-liga.html" class="league-btn">Shop La Liga</a>
+                </div>
+            </div>
+
+            <!-- Serie A -->
+            <div class="league-card">
+                <div class="league-image-container">
+                    <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="league-image" alt="Serie A">
+                    <div class="league-overlay"></div>
+                    <div class="league-badge">Tactical</div>
+                </div>
+                <div class="league-content">
+                    <h3 class="league-name">Serie A</h3>
+                    <p class="league-description">Italy's top division featuring Juventus, AC Milan, Inter Milan, Napoli
+                        and tactical excellence.</p>
+                    <div class="league-stats">
+                        <div class="league-stat">
+                            <span class="league-stat-number">20</span>
+                            <span class="league-stat-label">Teams</span>
+                        </div>
+                        <div class="league-stat">
+                            <span class="league-stat-number">40+</span>
+                            <span class="league-stat-label">Jerseys</span>
+                        </div>
+                        <div class="league-stat">
+                            <span class="league-stat-number">1898</span>
+                            <span class="league-stat-label">Founded</span>
+                        </div>
+                    </div>
+                    <a href="serie-a.html" class="league-btn">Shop Serie A</a>
+                </div>
+            </div>
+
+            <!-- Bundesliga -->
+            <div class="league-card">
+                <div class="league-image-container">
+                    <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="league-image" alt="Bundesliga">
+                    <div class="league-overlay"></div>
+                    <div class="league-badge">Der Klassiker</div>
+                </div>
+                <div class="league-content">
+                    <h3 class="league-name">Bundesliga</h3>
+                    <p class="league-description">Germany's top league with Bayern Munich, Borussia Dortmund, RB Leipzig
+                        and passionate football culture.</p>
+                    <div class="league-stats">
+                        <div class="league-stat">
+                            <span class="league-stat-number">18</span>
+                            <span class="league-stat-label">Teams</span>
+                        </div>
+                        <div class="league-stat">
+                            <span class="league-stat-number">35+</span>
+                            <span class="league-stat-label">Jerseys</span>
+                        </div>
+                        <div class="league-stat">
+                            <span class="league-stat-number">1963</span>
+                            <span class="league-stat-label">Founded</span>
+                        </div>
+                    </div>
+                    <a href="bundesliga.html" class="league-btn">Shop Bundesliga</a>
+                </div>
+            </div>
+
+            <!-- National Teams -->
+            <div class="league-card">
+                <div class="league-image-container">
+                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="league-image" alt="National Teams">
+                    <div class="league-overlay"></div>
+                    <div class="league-badge">International</div>
+                </div>
+                <div class="league-content">
+                    <h3 class="league-name">National Teams</h3>
+                    <p class="league-description">Represent your country with authentic national team jerseys from
+                        around the world including Brazil, Argentina, France, and more.</p>
+                    <div class="league-stats">
+                        <div class="league-stat">
+                            <span class="league-stat-number">50+</span>
+                            <span class="league-stat-label">Countries</span>
+                        </div>
+                        <div class="league-stat">
+                            <span class="league-stat-number">100+</span>
+                            <span class="league-stat-label">Jerseys</span>
+                        </div>
+                        <div class="league-stat">
+                            <span class="league-stat-number">Global</span>
+                            <span class="league-stat-label">Reach</span>
+                        </div>
+                    </div>
+                    <a href="national-teams.html" class="league-btn">Shop National Teams</a>
+                </div>
+            </div>
+
+            <!-- Rest of the World -->
+            <div class="league-card">
+                <div class="league-image-container">
+                    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="league-image" alt="Rest of the World">
+                    <div class="league-overlay"></div>
+                    <div class="league-badge">Diverse</div>
+                </div>
+                <div class="league-content">
+                    <h3 class="league-name">Rest of the World</h3>
+                    <p class="league-description">Explore jerseys from MLS, Ligue 1, Eredivisie, Liga MX, J-League, and
+                        other exciting leagues worldwide.</p>
+                    <div class="league-stats">
+                        <div class="league-stat">
+                            <span class="league-stat-number">15+</span>
+                            <span class="league-stat-label">Leagues</span>
+                        </div>
+                        <div class="league-stat">
+                            <span class="league-stat-number">75+</span>
+                            <span class="league-stat-label">Jerseys</span>
+                        </div>
+                        <div class="league-stat">
+                            <span class="league-stat-number">Global</span>
+                            <span class="league-stat-label">Coverage</span>
+                        </div>
+                    </div>
+                    <a href="rest-of-world.html" class="league-btn">Shop Rest of World</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 GOKIT × CourtDripDxb — Authentic Football Jerseys from Around the World</p>
+    </footer>
+</body>
+
+</html>

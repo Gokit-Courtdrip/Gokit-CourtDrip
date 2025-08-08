@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eastern Conference Teams</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+        }
+
+        /* Enhanced Navbar */
+        .eastern-header {
+            background: rgba(0, 0, 0, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #007bff;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Enhanced Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(0, 86, 179, 0.1));
+            border-bottom: 3px solid #007bff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(0, 123, 255, 0.03) 10px,
+                    rgba(0, 123, 255, 0.03) 20px);
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-50px) translateY(-50px);
+            }
+
+            100% {
+                transform: translateX(0px) translateY(0px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Enhanced Cards */
+        .section-card {
+            border-radius: 15px !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+            z-index: 3;
+        }
+
+        .section-card:hover::before {
+            left: 100%;
+        }
+
+        .section-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            filter: brightness(1.1);
+        }
+
+        .card {
+            border: none !important;
+            border-radius: 15px !important;
+        }
+
+        .card img {
+            transition: all 0.4s ease;
+            border-radius: 15px 15px 0 0 !important;
+        }
+
+        .section-card:hover img {
+            transform: scale(1.1);
+            opacity: 0.7 !important;
+        }
+
+        .section-card:hover .position-absolute h5 {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px currentColor;
+        }
+
+        .section-card:hover .btn {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Back button enhancement */
+        .btn-outline-light {
+            border-width: 2px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            transform: translateX(-5px);
+            box-shadow: 5px 5px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        /* Enhanced footer */
+        footer {
+            background: rgba(0, 0, 0, 0.95) !important;
+            border-top: 2px solid #007bff;
+        }
+
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .section-card:hover {
+                transform: translateY(-5px) scale(1.01);
+            }
+        }
+
+        /* Dropdown enhancement */
+        .dropdown-menu {
+            background: rgba(0, 0, 0, 0.95) !important;
+            border: 1px solid #007bff;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(0, 123, 255, 0.1) !important;
+        }
+    </style>
+</head>
+
+<body class="bg-dark text-white">
+
+    <!-- Enhanced Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark eastern-header sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🏀 CourtDripDxb</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            🏆 Browse Leagues
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item text-white" href="nba.html">NBA</a></li>
+                            <li><a class="dropdown-item text-white" href="eastern.html">Eastern Conference</a></li>
+                            <li><a class="dropdown-item text-white" href="western.html">Western Conference</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">🛒 Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero -->
+    <section class="py-5 text-center bg-dark border-bottom border-primary hero-section">
+        <div class="container hero-content">
+            <h1 class="display-4 fw-bold text-primary">Eastern Conference</h1>
+            <p class="lead text-light">Browse jerseys from all 15 Eastern NBA teams</p>
+            <div class="mt-3">
+                <span class="badge bg-primary fs-6 me-2">15 Teams</span>
+                <span class="badge bg-outline-primary fs-6">Premium Jerseys</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Back Button -->
+    <div class="container my-4 text-start">
+        <a href="nba.html" class="btn btn-outline-light fw-bold border-2 shadow-sm">
+            ← Back to NBA
+        </a>
+    </div>
+
+    <!-- Team Cards -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+
+                <!-- Atlanta Hawks -->
+                <div class="col-md-6 col-lg-4">
+                    <a href="hawks.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #C8102E; box-shadow: 0 0 20px rgba(200, 16, 46, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/hawks.jpg" class="card-img-top" alt="Atlanta Hawks"
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold" style="color: #ffffff;">ATLANTA HAWKS</h5>
+                                    <span class="btn mt-2"
+                                        style="color: #ffffff; border: 2px solid #ffffff;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Boston Celtics -->
+                <div class="col-md-6 col-lg-4">
+                    <a href="celtics.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #007A33; box-shadow: 0 0 20px rgba(0, 122, 51, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/celtics.jpg" class="card-img-top" alt="Boston Celtics"
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold" style="color: #ffffff;">BOSTON CELTICS</h5>
+                                    <span class="btn mt-2"
+                                        style="color: #ffffff; border: 2px solid #ffffff;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Brooklyn Nets -->
+                <div class="col-md-4">
+                    <a href="nets.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #000000; box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/nets.jpg" class="card-img-top" alt="Brooklyn Nets"
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold text-white">BROOKLYN NETS</h5>
+                                    <span class="btn mt-2" style="color: white; border: 2px solid white;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Charlotte Hornets -->
+                <div class="col-md-4">
+                    <a href="hornets.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #1D1160; box-shadow: 0 0 20px rgba(29, 17, 96, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/hornets.jpg" class="card-img-top" alt="Charlotte Hornets"
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold" style="color: #ffffff;">CHARLOTTE HORNETS</h5>
+                                    <span class="btn mt-2"
+                                        style="color: #ffffff; border: 2px solid #ffffff;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Chicago Bulls -->
+                <div class="col-md-4">
+                    <a href="bulls.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #CE1141; box-shadow: 0 0 20px rgba(206, 17, 65, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/bulls.jpg" class="card-img-top" alt="Chicago Bulls"
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold" style="color: #ffffff;">CHICAGO BULLS</h5>
+                                    <span class="btn mt-2"
+                                        style="color: #ffffff; border: 2px solid #ffffff;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Cleveland Cavaliers -->
+                <div class="col-md-4">
+                    <a href="cavaliers.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #6F263D; box-shadow: 0 0 20px rgba(111, 38, 61, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/Cleveland.jpg" class="card-img-top" alt="Cleveland Cavaliers"
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold" style="color: #ffffff;">CLEVELAND CAVALIERS</h5>
+                                    <span class="btn mt-2"
+                                        style="color: #ffffff; border: 2px solid #ffffff;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Detroit Pistons -->
+                <div class="col-md-4">
+                    <a href="pistons.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #C8102E; box-shadow: 0 0 20px rgba(200, 16, 46, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/Pistons.jpg" class="card-img-top" alt="Detroit Pistons"
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold text-white text-center">DETROIT PISTONS</h5>
+                                    <span class="btn mt-2"
+                                        style="color: #ffffff; border: 2px solid #ffffff;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Indiana Pacers -->
+                <div class="col-md-4">
+                    <a href="pacers.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #002D62; box-shadow: 0 0 20px rgba(0, 45, 98, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/Pacers.jpg" class="card-img-top" alt="Indiana Pacers"
+                                    style="height: 250px; object-fit: cover; object-position: center; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold text-white text-center">INDIANA PACERS</h5>
+                                    <span class="btn mt-2"
+                                        style="color: #ffffff; border: 2px solid #ffffff;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Miami Heat -->
+                <div class="col-md-4">
+                    <a href="heat.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #98002E; box-shadow: 0 0 20px rgba(152, 0, 46, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/Heat.jpg" class="card-img-top" alt="Miami Heat"
+                                    style="height: 250px; object-fit: cover; object-position: center; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold text-white text-center">MIAMI HEAT</h5>
+                                    <span class="btn mt-2"
+                                        style="color: #ffffff; border: 2px solid #ffffff;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Milwaukee Bucks -->
+                <div class="col-md-4">
+                    <a href="bucks.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #00471B; box-shadow: 0 0 20px rgba(0, 71, 27, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/Bucks.jpg" class="card-img-top" alt="Milwaukee Bucks"
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold text-white text-center">MILWAUKEE BUCKS</h5>
+                                    <span class="btn mt-2"
+                                        style="color: #ffffff; border: 2px solid #ffffff;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- New York Knicks -->
+                <div class="col-md-4">
+                    <a href="knicks.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #F58426; box-shadow: 0 0 20px rgba(245, 132, 38, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/nicks.jpg" class="card-img-top" alt="New York Knicks"
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold text-white text-center">NEW YORK KNICKS</h5>
+                                    <span class="btn mt-2"
+                                        style="color: #ffffff; border: 2px solid #ffffff;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Orlando Magic -->
+                <div class="col-md-4">
+                    <a href="magic.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #0077C0; box-shadow: 0 0 20px rgba(0, 119, 192, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/magic.jpg" class="card-img-top" alt="Orlando Magic"
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold text-white text-center">ORLANDO MAGIC</h5>
+                                    <span class="btn mt-2"
+                                        style="color: #ffffff; border: 2px solid #ffffff;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Philadelphia 76ers -->
+                <div class="col-md-4">
+                    <a href="76ers.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #006BB6; box-shadow: 0 0 20px rgba(0, 107, 182, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/philadelphia.jpg" class="card-img-top" alt="Philadelphia 76ers"
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold text-white text-center">PHILADELPHIA 76ERS</h5>
+                                    <span class="btn mt-2"
+                                        style="color: #ffffff; border: 2px solid #ffffff;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Toronto Raptors -->
+                <div class="col-md-4">
+                    <a href="raptors.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #CE1141; box-shadow: 0 0 20px rgba(206, 17, 65, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/raptors.jpg" class="card-img-top" alt="Toronto Raptors"
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold text-white text-center">TORONTO RAPTORS</h5>
+                                    <span class="btn mt-2"
+                                        style="color: #ffffff; border: 2px solid #ffffff;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Washington Wizards -->
+                <div class="col-md-4">
+                    <a href="wizards.html" class="text-decoration-none">
+                        <div class="section-card"
+                            style="background-color: #002B5C; box-shadow: 0 0 20px rgba(0, 43, 92, 0.5);">
+                            <div class="card bg-dark h-100 overflow-hidden position-relative">
+                                <img src="img/wizards.jpg" class="card-img-top" alt="Washington Wizards"
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                <div
+                                    class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                    <h5 class="fw-bold text-white text-center">WASHINGTON WIZARDS</h5>
+                                    <span class="btn mt-2"
+                                        style="color: #ffffff; border: 2px solid #ffffff;">View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-black text-white text-center py-4 mt-5">
+        <p class="mb-1">© 2025 CourtDripDxb — Eastern Conference Showcase</p>
+        <p class="mb-0">Not affiliated with the NBA or any official team or league.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Add staggered animation to cards on load
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.section-card');
+            cards.forEach((card, index) => {
+                card.style.transform = 'translateY(30px)';
+                card.style.opacity = '0';
+
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.transform = 'translateY(0)';
+                    card.style.opacity = '1';
+                }, index * 80);
+            });
+        });
+    </script>
+</body>
+
+</html>

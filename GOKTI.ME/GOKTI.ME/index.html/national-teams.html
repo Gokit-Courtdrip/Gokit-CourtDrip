@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>National Teams — CourtDripDxb</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d1a0a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .national-header {
+            background: linear-gradient(90deg, #8B0000, #DC143C, #8B0000) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(139, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            color: #fff !important;
+            font-weight: 800;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.1), rgba(220, 20, 60, 0.1));
+            border-bottom: 4px solid #8B0000;
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(139, 0, 0, 0.03) 10px,
+                    rgba(139, 0, 0, 0.03) 20px);
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-50px) translateY(-50px);
+            }
+
+            100% {
+                transform: translateX(0px) translateY(0px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-section h1 {
+            color: #DC143C;
+            font-weight: 800;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(220, 20, 60, 0.3);
+            }
+
+            to {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 30px rgba(220, 20, 60, 0.6);
+            }
+        }
+
+        .hero-section p {
+            color: #e0e0e0;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .back-btn-container {
+            border-left: 4px solid #DC143C;
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(139, 0, 0, 0.1));
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0 10px 10px 0;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn-container:hover {
+            transform: translateX(5px);
+            box-shadow: 5px 5px 15px rgba(220, 20, 60, 0.3);
+        }
+
+        .back-btn-container a {
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn-container a:hover {
+            color: #DC143C;
+            text-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+        }
+
+        .continents-section {
+            padding: 3rem 0;
+        }
+
+        .continents-section h2 {
+            color: #DC143C;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .continents-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #8B0000, #DC143C);
+            border-radius: 2px;
+        }
+
+        .continent-card {
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(139, 0, 0, 0.1));
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .continent-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+            z-index: 1;
+        }
+
+        .continent-card:hover::before {
+            left: 100%;
+        }
+
+        .continent-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(220, 20, 60, 0.3);
+            border-color: #DC143C;
+        }
+
+        .continent-outline {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 10px rgba(220, 20, 60, 0.3));
+        }
+
+        .continent-card:hover .continent-outline {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 20px rgba(220, 20, 60, 0.6));
+        }
+
+        .card-body {
+            position: relative;
+            z-index: 2;
+        }
+
+        .continent-name {
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .continent-description {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-continent {
+            background: linear-gradient(45deg, #8B0000, #DC143C);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-continent::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-continent:hover::before {
+            left: 100%;
+        }
+
+        .btn-continent:hover {
+            background: linear-gradient(45deg, #DC143C, #8B0000);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(220, 20, 60, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        .dropdown-menu {
+            background: rgba(31, 31, 31, 0.95) !important;
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown-item {
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(220, 20, 60, 0.2) !important;
+            color: #DC143C !important;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #8B0000, #DC143C, #8B0000) !important;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: #fff !important;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            font-weight: 600;
+        }
+
+        /* Loading animation */
+        .continent-card {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .continent-card.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Continental accent */
+        .continental-accent {
+            background: linear-gradient(90deg, #8B0000, #DC143C);
+            height: 4px;
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        /* Europe styling */
+        .europe {
+            border-color: rgba(0, 51, 153, 0.5);
+        }
+
+        .europe:hover {
+            border-color: #0033cc;
+        }
+
+        .europe .continent-outline {
+            fill: #0033cc;
+            stroke: #0033cc;
+        }
+
+        /* South America styling */
+        .south-america {
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .south-america:hover {
+            border-color: #ffd700;
+        }
+
+        .south-america .continent-outline {
+            fill: #ffd700;
+            stroke: #ffd700;
+        }
+
+        /* Africa styling */
+        .africa {
+            border-color: rgba(34, 139, 34, 0.5);
+        }
+
+        .africa:hover {
+            border-color: #228b22;
+        }
+
+        .africa .continent-outline {
+            fill: #228b22;
+            stroke: #228b22;
+        }
+
+        /* Asia styling */
+        .asia {
+            border-color: rgba(255, 69, 0, 0.5);
+        }
+
+        .asia:hover {
+            border-color: #ff4500;
+        }
+
+        .asia .continent-outline {
+            fill: #ff4500;
+            stroke: #ff4500;
+        }
+
+        /* North America styling */
+        .north-america {
+            border-color: rgba(255, 140, 0, 0.5);
+        }
+
+        .north-america:hover {
+            border-color: #ff8c00;
+        }
+
+        .north-america .continent-outline {
+            fill: #ff8c00;
+            stroke: #ff8c00;
+        }
+
+        /* Oceania styling */
+        .oceania {
+            border-color: rgba(30, 144, 255, 0.5);
+        }
+
+        .oceania:hover {
+            border-color: #1e90ff;
+        }
+
+        .oceania .continent-outline {
+            fill: #1e90ff;
+            stroke: #1e90ff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg national-header sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">⚽ CourtDripDxb</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            🏆 Browse Leagues
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="football.html">Football</a></li>
+                            <li><a class="dropdown-item" href="premier-league.html">Premier League</a></li>
+                            <li><a class="dropdown-item" href="la-liga.html">La Liga</a></li>
+                            <li><a class="dropdown-item" href="serie-a.html">Serie A</a></li>
+                            <li><a class="dropdown-item" href="bundesliga.html">Bundesliga</a></li>
+                            <li><a class="dropdown-item" href="national-teams.html">National Teams</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container hero-content">
+            <h1 class="display-4 text-uppercase">National Teams</h1>
+            <p class="lead">Represent Your Country with Pride 🌍</p>
+            <div class="continental-accent"></div>
+            <div class="mt-3">
+                <span class="badge bg-danger fs-6 me-2">Global Unity</span>
+                <span class="badge bg-success fs-6 me-2">National Pride</span>
+                <span class="badge bg-warning fs-6">World Champions</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <div class="container">
+        <div class="back-btn-container">
+            <a href="football.html"><i class="fas fa-arrow-left me-2"></i>Back to Football</a>
+        </div>
+    </div>
+
+    <!-- Continents Section -->
+    <section class="continents-section">
+        <div class="container">
+            <h2 class="text-center">🌍 Choose Your Continent</h2>
+            <div class="row g-4">
+                <!-- Europe -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="continent-card europe" onclick="location.href='europe-teams.html'">
+                        <div class="card-body text-center p-4">
+                            <svg class="continent-outline" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Europe - More recognizable shape -->
+                                <path
+                                    d="M50 80 L70 60 L90 55 L110 50 L130 45 L150 50 L170 55 L190 60 L210 70 L230 80 L240 90 L245 100 L240 110 L230 120 L210 130 L190 135 L170 140 L150 135 L130 130 L110 125 L90 120 L70 115 L50 110 L40 100 L35 90 Z"
+                                    stroke-width="3" fill-opacity="0.7" />
+                                <!-- Scandinavian Peninsula -->
+                                <path d="M120 40 L140 35 L150 45 L145 60 L135 65 L125 55 Z" stroke-width="2"
+                                    fill-opacity="0.5" />
+                                <!-- Italian Peninsula -->
+                                <path d="M160 120 L165 140 L170 160 L165 170 L160 165 L155 150 L158 130 Z"
+                                    stroke-width="2" fill-opacity="0.5" />
+                                <!-- Iberian Peninsula -->
+                                <path d="M80 100 L100 110 L105 125 L95 135 L75 130 L70 115 Z" stroke-width="2"
+                                    fill-opacity="0.5" />
+                            </svg>
+                            <h5 class="continent-name">Europe</h5>
+                            <p class="continent-description">Home of football legends and historic rivalries</p>
+                            <div class="btn-continent">
+                                <i class="fas fa-futbol me-2"></i>View Teams
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- South America -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="continent-card south-america" onclick="location.href='south-america-teams.html'">
+                        <div class="card-body text-center p-4">
+                            <svg class="continent-outline" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- South America - Classic elongated shape -->
+                                <path
+                                    d="M120 30 L140 25 L160 30 L170 40 L175 55 L180 70 L185 85 L180 100 L175 115 L170 130 L165 145 L160 160 L150 170 L140 175 L130 170 L120 160 L115 145 L110 130 L105 115 L100 100 L105 85 L110 70 L115 55 L118 40 Z"
+                                    stroke-width="3" fill-opacity="0.7" />
+                                <!-- Brazil bulge -->
+                                <path d="M140 60 L160 65 L165 80 L160 95 L145 90 L140 75 Z" stroke-width="2"
+                                    fill-opacity="0.5" />
+                                <!-- Chile (thin strip) -->
+                                <path d="M115 120 L120 140 L125 160 L120 165 L115 150 L110 130 Z" stroke-width="2"
+                                    fill-opacity="0.5" />
+                            </svg>
+                            <h5 class="continent-name">South America</h5>
+                            <p class="continent-description">The beautiful game's passionate heartland</p>
+                            <div class="btn-continent">
+                                <i class="fas fa-futbol me-2"></i>View Teams
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Africa -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="continent-card africa" onclick="location.href='africa-teams.html'">
+                        <div class="card-body text-center p-4">
+                            <svg class="continent-outline" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Africa - Distinctive shape -->
+                                <path
+                                    d="M120 25 L140 20 L160 25 L175 35 L185 50 L190 65 L195 80 L190 95 L185 110 L180 125 L175 140 L170 155 L160 165 L150 170 L140 165 L130 155 L120 140 L115 125 L110 110 L105 95 L110 80 L115 65 L118 50 L120 35 Z"
+                                    stroke-width="3" fill-opacity="0.7" />
+                                <!-- Horn of Africa -->
+                                <path d="M185 70 L200 75 L205 85 L195 90 L185 85 Z" stroke-width="2"
+                                    fill-opacity="0.5" />
+                                <!-- West Africa bulge -->
+                                <path d="M105 85 L95 90 L90 100 L95 110 L105 105 Z" stroke-width="2"
+                                    fill-opacity="0.5" />
+                                <!-- Madagascar -->
+                                <ellipse cx="210" cy="140" rx="8" ry="20" fill-opacity="0.5" />
+                            </svg>
+                            <h5 class="continent-name">Africa</h5>
+                            <p class="continent-description">Rising stars and incredible talent</p>
+                            <div class="btn-continent">
+                                <i class="fas fa-futbol me-2"></i>View Teams
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Asia -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="continent-card asia" onclick="location.href='asia-teams.html'">
+                        <div class="card-body text-center p-4">
+                            <svg class="continent-outline" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Asia - Large landmass -->
+                                <path
+                                    d="M30 60 L80 50 L130 45 L180 50 L230 55 L270 65 L280 80 L275 95 L270 110 L260 125 L240 135 L220 140 L200 135 L180 130 L160 125 L140 120 L120 115 L100 110 L80 105 L60 100 L40 95 L25 85 L20 75 Z"
+                                    stroke-width="3" fill-opacity="0.7" />
+                                <!-- Indian subcontinent -->
+                                <path d="M160 110 L180 115 L190 130 L185 145 L175 150 L165 145 L155 130 Z"
+                                    stroke-width="2" fill-opacity="0.5" />
+                                <!-- Southeast Asia -->
+                                <path d="M200 125 L220 130 L235 140 L230 150 L215 145 L205 135 Z" stroke-width="2"
+                                    fill-opacity="0.5" />
+                                <!-- Japan -->
+                                <ellipse cx="260" cy="90" rx="15" ry="8" fill-opacity="0.5" />
+                            </svg>
+                            <h5 class="continent-name">Asia</h5>
+                            <p class="continent-description">Emerging powerhouses and growing passion</p>
+                            <div class="btn-continent">
+                                <i class="fas fa-futbol me-2"></i>View Teams
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- North America -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="continent-card north-america" onclick="location.href='north-america-teams.html'">
+                        <div class="card-body text-center p-4">
+                            <svg class="continent-outline" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- North America -->
+                                <path
+                                    d="M40 70 L80 60 L120 55 L160 60 L200 65 L240 70 L260 80 L270 95 L265 110 L250 120 L230 125 L210 120 L190 115 L170 110 L150 105 L130 100 L110 95 L90 90 L70 85 L50 80 L35 75 Z"
+                                    stroke-width="3" fill-opacity="0.7" />
+                                <!-- Alaska -->
+                                <ellipse cx="50" cy="50" rx="20" ry="15" fill-opacity="0.5" />
+                                <!-- Florida -->
+                                <path d="M180 115 L185 130 L180 135 L175 130 L175 120 Z" stroke-width="2"
+                                    fill-opacity="0.5" />
+                                <!-- Mexico -->
+                                <path d="M120 105 L140 110 L150 120 L145 130 L130 125 L115 115 Z" stroke-width="2"
+                                    fill-opacity="0.5" />
+                                <!-- Central America -->
+                                <path d="M140 125 L155 130 L160 140 L150 145 L135 140 Z" stroke-width="2"
+                                    fill-opacity="0.5" />
+                            </svg>
+                            <h5 class="continent-name">North America</h5>
+                            <p class="continent-description">CONCACAF champions and World Cup hosts</p>
+                            <div class="btn-continent">
+                                <i class="fas fa-futbol me-2"></i>View Teams
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Oceania -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="continent-card oceania" onclick="location.href='oceania-teams.html'">
+                        <div class="card-body text-center p-4">
+                            <svg class="continent-outline" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Australia - Distinctive shape -->
+                                <path
+                                    d="M80 90 L120 85 L160 90 L200 95 L230 100 L250 110 L255 125 L250 140 L230 145 L200 140 L160 135 L120 130 L80 125 L60 115 L55 105 L60 95 Z"
+                                    stroke-width="3" fill-opacity="0.7" />
+                                <!-- New Zealand North Island -->
+                                <ellipse cx="270" cy="120" rx="12" ry="18" fill-opacity="0.6" />
+                                <!-- New Zealand South Island -->
+                                <ellipse cx="275" cy="145" rx="10" ry="20" fill-opacity="0.6" />
+                                <!-- Pacific Islands -->
+                                <circle cx="200" cy="70" r="4" fill-opacity="0.5" />
+                                <circle cx="220" cy="65" r="3" fill-opacity="0.5" />
+                                <circle cx="240" cy="75" r="3" fill-opacity="0.5" />
+                                <circle cx="180" cy="60" r="2" fill-opacity="0.5" />
+                                <circle cx="260" cy="80" r="2" fill-opacity="0.5" />
+                            </svg>
+                            <h5 class="continent-name">Oceania</h5>
+                            <p class="continent-description">Pacific islands football pride</p>
+                            <div class="btn-continent">
+                                <i class="fas fa-futbol me-2"></i>View Teams
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 mt-5">
+        <p class="mb-1">© 2025 CourtDripDxb | National Teams Collection</p>
+        <p class="mb-0">Not affiliated with FIFA or any national football associations.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Update cart count on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCartCount();
+
+            // Animate cards on load
+            const cards = document.querySelectorAll('.continent-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('loaded');
+                }, index * 100);
+            });
+        });
+
+        function updateCartCount() {
+            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = cartCount;
+        }
+    </script>
+</body>
+
+</html>

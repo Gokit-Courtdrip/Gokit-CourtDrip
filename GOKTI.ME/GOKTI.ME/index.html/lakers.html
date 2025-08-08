@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Los Angeles Lakers — CourtDripDxb</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        /* Base Styles */
+        body {
+            background-color: #121212;
+            color: #f8f9fa;
+            padding-bottom: 70px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Navbar */
+        .lakers-header {
+            background: linear-gradient(90deg, #552583, #FDB927);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: #1a1a1a;
+            border-bottom: 4px solid #FDB927;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            color: #FDB927;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-section p {
+            color: #ccc;
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        /* Back Button */
+        .btn-back {
+            display: inline-block;
+            border: 2px solid #FDB927;
+            color: #FDB927;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.3rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-back:hover,
+        .btn-back:focus {
+            background-color: #FDB927;
+            color: #121212;
+            outline: none;
+        }
+
+        .back-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        /* Category Sections */
+        .category-section {
+            padding: 3rem 0 4rem;
+        }
+
+        .category-section h2 {
+            color: #FDB927;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        /* Cards */
+        .card {
+            background-color: #1e1e1e;
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 10px rgb(255 185 0 / 0.25);
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .card-title {
+            color: #FDB927;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .card-price {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Buttons */
+        .btn-lakers {
+            background-color: #552583;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.25rem;
+            font-weight: 700;
+            border-radius: 0.3rem;
+            transition: background-color 0.3s ease;
+            user-select: none;
+        }
+
+        .btn-lakers:hover,
+        .btn-lakers:focus {
+            background-color: #3e1d63;
+            outline: none;
+        }
+
+        /* Floating Cart Button */
+        #cart-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #FDB927;
+            border: none;
+            color: #121212;
+            font-weight: 700;
+            padding: 14px 22px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(255, 185, 0, 0.8);
+            cursor: pointer;
+            z-index: 1050;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            user-select: none;
+            transition: background-color 0.3s ease;
+        }
+
+        #cart-toggle-btn:hover,
+        #cart-toggle-btn:focus {
+            background: #e0ac00;
+            outline: none;
+        }
+
+        /* Cart Overlay */
+        #cart-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100vh;
+            background-color: #1e1e1e;
+            box-shadow: -4px 0 12px rgba(0, 0, 0, 0.8);
+            transition: right 0.3s ease;
+            z-index: 1040;
+            display: flex;
+            flex-direction: column;
+            font-size: 0.9rem;
+        }
+
+        #cart-overlay.active {
+            right: 0;
+        }
+
+        #cart-header {
+            background: linear-gradient(90deg, #552583, #FDB927);
+            padding: 1rem 1.25rem;
+            color: white;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #cart-header button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.75rem;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0;
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+
+        #cart-header button:hover,
+        #cart-header button:focus {
+            color: #ccc;
+            outline: none;
+        }
+
+        #cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1rem 1.25rem;
+            color: #f8f9fa;
+        }
+
+        .cart-item {
+            border-bottom: 1px solid #444;
+            padding: 0.75rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: #FDB927;
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-price {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .cart-item-qty {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin: 0 10px;
+            user-select: none;
+        }
+
+        .cart-item-remove {
+            background: transparent;
+            border: none;
+            color: #f00;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1.2rem;
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+
+        .cart-item-remove:hover,
+        .cart-item-remove:focus {
+            color: #ff5555;
+            outline: none;
+        }
+
+        #cart-total {
+            padding: 1rem 1.25rem;
+            border-top: 1px solid #444;
+            font-weight: 700;
+            color: #FDB927;
+            font-size: 1.2rem;
+            text-align: right;
+            user-select: none;
+        }
+
+        #cart-empty {
+            text-align: center;
+            margin-top: 2rem;
+            color: #888;
+            font-style: italic;
+            user-select: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 576px) {
+            #cart-overlay {
+                width: 100%;
+            }
+
+            #cart-toggle-btn {
+                right: 10px;
+                bottom: 80px;
+                padding: 12px 18px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark lakers-header sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🏀 CourtDripDxb</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            🏆 Browse Leagues
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="nba.html">NBA Teams</a></li>
+                            <li><a class="dropdown-item" href="europe.html">European Leagues</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="basketball.html">Basketball</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">🛒 Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Los Angeles Lakers</h1>
+            <p>Shop the latest gear and jerseys for the legendary Lakers.</p>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <div class="back-container">
+        <a href="nba.html" class="btn-back">← Back to NBA Teams</a>
+    </div>
+
+    <!-- Jerseys Section -->
+    <section class="category-section">
+        <div class="container">
+            <h2>New Jerseys</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <img src="img/jersey1.png" class="card-img-top" alt="Anthony Davis Lakers Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Anthony Davis Jersey</h3>
+                            <p class="card-price">AED 79</p>
+                            <button class="btn-lakers add-to-cart-btn" data-name="Anthony Davis Jersey" data-price="79"
+                                data-image="img/jersey1.png">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <img src="img/jersey2.png" class="card-img-top" alt="LeBron James Lakers Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">LeBron James Jersey</h3>
+                            <p class="card-price">AED 79</p>
+                            <button class="btn-lakers add-to-cart-btn" data-name="LeBron James Jersey" data-price="79"
+                                data-image="img/jersey2.png">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <img src="img/jersey3.png" class="card-img-top" alt="Russell Westbrook Lakers Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Russell Westbrook Jersey</h3>
+                            <p class="card-price">AED 79</p>
+                            <button class="btn-lakers add-to-cart-btn" data-name="Russell Westbrook Jersey"
+                                data-price="79" data-image="img/jersey3.png">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retro Jerseys Section -->
+    <section class="category-section">
+        <div class="container">
+            <h2>Retro Jerseys</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <img src="img/jersey-retro1.png" class="card-img-top" alt="Magic Johnson Retro Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Magic Johnson Jersey</h3>
+                            <p class="card-price">AED 79</p>
+                            <button class="btn-lakers add-to-cart-btn" data-name="Magic Johnson Jersey" data-price="79"
+                                data-image="img/jersey-retro1.png">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <img src="img/jersey-retro2.png" class="card-img-top" alt="Kobe Bryant Retro Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Kobe Bryant Jersey</h3>
+                            <p class="card-price">AED 79</p>
+                            <button class="btn-lakers add-to-cart-btn" data-name="Kobe Bryant Jersey" data-price="79"
+                                data-image="img/jersey-retro2.png">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <img src="img/jersey-retro3.png" class="card-img-top" alt="Jerry West Retro Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Jerry West Jersey</h3>
+                            <p class="card-price">AED 79</p>
+                            <button class="btn-lakers add-to-cart-btn" data-name="Jerry West Jersey" data-price="79"
+                                data-image="img/jersey-retro3.png">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Cart Button -->
+    <button id="cart-toggle-btn">
+        🛒 Cart (<span id="cart-count">0</span>)
+    </button>
+
+    <!-- Cart Overlay -->
+    <aside id="cart-overlay">
+        <div id="cart-header">
+            <span>Shopping Cart</span>
+            <button id="cart-close-btn">×</button>
+        </div>
+        <div id="cart-items">
+            <p id="cart-empty">Your cart is empty.</p>
+        </div>
+        <div id="cart-total">Total: AED 0.00</div>
+    </aside>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Cart functionality
+        (() => {
+            const cartToggleBtn = document.getElementById("cart-toggle-btn");
+            const cartOverlay = document.getElementById("cart-overlay");
+            const cartCloseBtn = document.getElementById("cart-close-btn");
+            const cartItemsContainer = document.getElementById("cart-items");
+            const cartTotal = document.getElementById("cart-total");
+            const cartCount = document.getElementById("cart-count");
+            const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+
+            // Load cart from localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Save cart to localStorage
+            function saveCart() {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
+            // Update cart count in button
+            function updateCartCount() {
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+            }
+
+            // Open/Close Cart Functions
+            function openCart() {
+                cartOverlay.classList.add("active");
+            }
+
+            function closeCart() {
+                cartOverlay.classList.remove("active");
+            }
+
+            // Update Cart UI
+            function updateCartUI() {
+                cartItemsContainer.innerHTML = "";
+
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = `<p id="cart-empty">Your cart is empty.</p>`;
+                    cartTotal.textContent = "Total: AED 0.00";
+                    updateCartCount();
+                    return;
+                }
+
+                let totalPrice = 0;
+
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    totalPrice += itemTotal;
+
+                    const itemDiv = document.createElement("div");
+                    itemDiv.className = "cart-item";
+
+                    itemDiv.innerHTML = `
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">AED ${item.price.toFixed(2)} each</div>
+                        </div>
+                        <span class="cart-item-qty">x${item.quantity}</span>
+                        <button class="cart-item-remove" data-index="${index}">×</button>
+                    `;
+
+                    cartItemsContainer.appendChild(itemDiv);
+                });
+
+                cartTotal.textContent = `Total: AED ${totalPrice.toFixed(2)}`;
+                updateCartCount();
+            }
+
+            // Add to Cart Event
+            addToCartButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const name = button.getAttribute("data-name");
+                    const price = parseFloat(button.getAttribute("data-price"));
+                    const image = button.getAttribute("data-image");
+
+                    // Check if item already exists
+                    const existingItem = cart.find(item => item.name === name);
+
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            name: name,
+                            price: price,
+                            image: image,
+                            quantity: 1
+                        });
+                    }
+
+                    saveCart();
+                    updateCartUI();
+                    openCart();
+                });
+            });
+
+            // Remove from cart
+            cartItemsContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('cart-item-remove')) {
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    cart.splice(index, 1);
+                    saveCart();
+                    updateCartUI();
+                }
+            });
+
+            // Toggle cart open/close
+            cartToggleBtn.addEventListener("click", () => {
+                if (cartOverlay.classList.contains("active")) {
+                    closeCart();
+                } else {
+                    openCart();
+                }
+            });
+
+            cartCloseBtn.addEventListener("click", closeCart);
+
+            // Close cart on Escape key
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && cartOverlay.classList.contains("active")) {
+                    closeCart();
+                }
+            });
+
+            // Close cart if clicking outside
+            document.addEventListener("click", (e) => {
+                if (
+                    cartOverlay.classList.contains("active") &&
+                    !cartOverlay.contains(e.target) &&
+                    !cartToggleBtn.contains(e.target)
+                ) {
+                    closeCart();
+                }
+            });
+
+            // Initial cart UI
+            updateCartUI();
+        })();
+    </script>
+</body>
+
+</html>

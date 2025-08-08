@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atlanta Hawks — CourtDripDxb</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #2d1b1b 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .hawks-header {
+            background: linear-gradient(90deg, #E03A3E, #C1D32F) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(224, 58, 62, 0.3);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(224, 58, 62, 0.1), rgba(193, 211, 47, 0.1));
+            border-bottom: 4px solid #E03A3E;
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(224, 58, 62, 0.03) 10px,
+                    rgba(224, 58, 62, 0.03) 20px);
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-50px) translateY(-50px);
+            }
+
+            100% {
+                transform: translateX(0px) translateY(0px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-section h1 {
+            color: #E03A3E;
+            font-weight: 800;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(224, 58, 62, 0.3);
+            }
+
+            to {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 30px rgba(224, 58, 62, 0.6);
+            }
+        }
+
+        .hero-section p {
+            color: #e0e0e0;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .back-btn-container {
+            border-left: 4px solid #E03A3E;
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(224, 58, 62, 0.1));
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0 10px 10px 0;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn-container:hover {
+            transform: translateX(5px);
+            box-shadow: 5px 5px 15px rgba(224, 58, 62, 0.3);
+        }
+
+        .back-btn-container a {
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn-container a:hover {
+            color: #C1D32F;
+            text-shadow: 0 0 10px rgba(193, 211, 47, 0.5);
+        }
+
+        .category-section {
+            padding: 3rem 0;
+        }
+
+        .category-section h2 {
+            color: #C1D32F;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .category-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #E03A3E, #C1D32F);
+            border-radius: 2px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(224, 58, 62, 0.1));
+            border: 1px solid rgba(224, 58, 62, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+            z-index: 1;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(224, 58, 62, 0.3);
+            border-color: #C1D32F;
+        }
+
+        .card img {
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+
+        .card-body {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-title {
+            color: #ffffff;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-hawks {
+            background: linear-gradient(45deg, #E03A3E, #b52e30);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-hawks::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-hawks:hover::before {
+            left: 100%;
+        }
+
+        .btn-hawks:hover {
+            background: linear-gradient(45deg, #b52e30, #E03A3E);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(224, 58, 62, 0.4);
+        }
+
+        /* Cart functionality styles */
+        .size-selector {
+            margin: 10px 0;
+        }
+
+        .size-btn {
+            background: transparent;
+            border: 2px solid #E03A3E;
+            color: #E03A3E;
+            padding: 5px 15px;
+            margin: 2px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .size-btn:hover,
+        .size-btn.active {
+            background: #E03A3E;
+            color: white;
+        }
+
+        .price {
+            color: #C1D32F;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .dropdown-menu {
+            background: rgba(31, 31, 31, 0.95) !important;
+            border: 1px solid rgba(224, 58, 62, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown-item {
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(224, 58, 62, 0.2) !important;
+            color: #C1D32F !important;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #E03A3E, #C1D32F) !important;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Loading animation */
+        .card {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .card.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Success message */
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
+            z-index: 9999;
+            transform: translateX(400px);
+            transition: transform 0.5s ease;
+        }
+
+        .success-message.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark hawks-header sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🏀 CourtDripDxb</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            🏆 Browse Leagues
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="nba.html">NBA</a></li>
+                            <li><a class="dropdown-item" href="eastern.html">Eastern Conference</a></li>
+                            <li><a class="dropdown-item" href="western.html">Western Conference</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container hero-content">
+            <h1 class="display-4 text-uppercase">Atlanta Hawks</h1>
+            <p class="lead">Bold in red, fierce in flight — Hawks legacy 🔴🟡</p>
+            <div class="mt-3">
+                <span class="badge bg-danger fs-6 me-2">Premium Collection</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <div class="container">
+        <div class="back-btn-container">
+            <a href="eastern.html"><i class="fas fa-arrow-left me-2"></i>Back to Eastern Conference</a>
+        </div>
+    </div>
+
+    <!-- New Season Jerseys -->
+    <section class="category-section">
+        <div class="container">
+            <h2 class="text-center">🆕 New Season Jerseys</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop"
+                            class="card-img-top" alt="Hawks New Jersey">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">2025 Trae Young Home Jersey</h5>
+                            <p class="price">$129.99</p>
+                            <div class="size-selector">
+                                <small class="text-muted">Select Size:</small><br>
+                                <button class="size-btn" data-size="S">S</button>
+                                <button class="size-btn" data-size="M">M</button>
+                                <button class="size-btn" data-size="L">L</button>
+                                <button class="size-btn" data-size="XL">XL</button>
+                            </div>
+                            <button class="btn btn-hawks add-to-cart" data-name="2025 Trae Young Home Jersey"
+                                data-price="129.99"
+                                data-image="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop">
+                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=400&h=250&fit=crop"
+                            class="card-img-top" alt="Hawks Away Jersey">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">2025 Dejounte Murray Away Jersey</h5>
+                            <p class="price">$124.99</p>
+                            <div class="size-selector">
+                                <small class="text-muted">Select Size:</small><br>
+                                <button class="size-btn" data-size="S">S</button>
+                                <button class="size-btn" data-size="M">M</button>
+                                <button class="size-btn" data-size="L">L</button>
+                                <button class="size-btn" data-size="XL">XL</button>
+                            </div>
+                            <button class="btn btn-hawks add-to-cart" data-name="2025 Dejounte Murray Away Jersey"
+                                data-price="124.99"
+                                data-image="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=400&h=250&fit=crop">
+                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=400&h=250&fit=crop"
+                            class="card-img-top" alt="Hawks City Jersey">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">2025 Hawks City Edition Jersey</h5>
+                            <p class="price">$139.99</p>
+                            <div class="size-selector">
+                                <small class="text-muted">Select Size:</small><br>
+                                <button class="size-btn" data-size="S">S</button>
+                                <button class="size-btn" data-size="M">M</button>
+                                <button class="size-btn" data-size="L">L</button>
+                                <button class="size-btn" data-size="XL">XL</button>
+                            </div>
+                            <button class="btn btn-hawks add-to-cart" data-name="2025 Hawks City Edition Jersey"
+                                data-price="139.99"
+                                data-image="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=400&h=250&fit=crop">
+                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retro Jerseys -->
+    <section class="category-section">
+        <div class="container">
+            <h2 class="text-center">🏀 Retro Jerseys</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop"
+                            class="card-img-top" alt="Retro Hawks Jersey">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Dominique Wilkins 1990 Classic</h5>
+                            <p class="price">$159.99</p>
+                            <div class="size-selector">
+                                <small class="text-muted">Select Size:</small><br>
+                                <button class="size-btn" data-size="S">S</button>
+                                <button class="size-btn" data-size="M">M</button>
+                                <button class="size-btn" data-size="L">L</button>
+                                <button class="size-btn" data-size="XL">XL</button>
+                            </div>
+                            <button class="btn btn-hawks add-to-cart" data-name="Dominique Wilkins 1990 Classic"
+                                data-price="159.99"
+                                data-image="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop">
+                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=400&h=250&fit=crop"
+                            class="card-img-top" alt="Hawks Throwback">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Hawks 1980s Throwback Jersey</h5>
+                            <p class="price">$149.99</p>
+                            <div class="size-selector">
+                                <small class="text-muted">Select Size:</small><br>
+                                <button class="size-btn" data-size="S">S</button>
+                                <button class="size-btn" data-size="M">M</button>
+                                <button class="size-btn" data-size="L">L</button>
+                                <button class="size-btn" data-size="XL">XL</button>
+                            </div>
+                            <button class="btn btn-hawks add-to-cart" data-name="Hawks 1980s Throwback Jersey"
+                                data-price="149.99"
+                                data-image="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=400&h=250&fit=crop">
+                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=400&h=250&fit=crop"
+                            class="card-img-top" alt="Hawks Vintage">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Hawks Vintage Collection Jersey</h5>
+                            <p class="price">$169.99</p>
+                            <div class="size-selector">
+                                <small class="text-muted">Select Size:</small><br>
+                                <button class="size-btn" data-size="S">S</button>
+                                <button class="size-btn" data-size="M">M</button>
+                                <button class="size-btn" data-size="L">L</button>
+                                <button class="size-btn" data-size="XL">XL</button>
+                            </div>
+                            <button class="btn btn-hawks add-to-cart" data-name="Hawks Vintage Collection Jersey"
+                                data-price="169.99"
+                                data-image="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=400&h=250&fit=crop">
+                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Message -->
+    <div id="success-message" class="success-message">
+        <i class="fas fa-check-circle me-2"></i>
+        <span>Item added to cart successfully!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 mt-5 hawks-header">
+        <p class="mb-1">© 2025 CourtDripDxb | Atlanta Hawks Collection</p>
+        <p class="mb-0">Not affiliated with the NBA or the Atlanta Hawks.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let selectedSizes = {};
+
+        // Update cart count on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCartCount();
+
+            // Animate cards on load
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('loaded');
+                }, index * 100);
+            });
+        });
+
+        // Size selection
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const card = this.closest('.card');
+                const cardIndex = Array.from(document.querySelectorAll('.card')).indexOf(card);
+
+                // Remove active class from siblings
+                card.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                // Store selected size
+                selectedSizes[cardIndex] = this.dataset.size;
+            });
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const card = this.closest('.card');
+                const cardIndex = Array.from(document.querySelectorAll('.card')).indexOf(card);
+                const selectedSize = selectedSizes[cardIndex];
+
+                if (!selectedSize) {
+                    alert('Please select a size first!');
+                    return;
+                }
+
+                const item = {
+                    id: Date.now() + Math.random(),
+                    name: this.dataset.name,
+                    price: parseFloat(this.dataset.price),
+                    image: this.dataset.image,
+                    size: selectedSize,
+                    quantity: 1,
+                    team: 'Atlanta Hawks'
+                };
+
+                cart.push(item);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+                showSuccessMessage();
+
+                // Reset size selection
+                card.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                delete selectedSizes[cardIndex];
+            });
+        });
+
+        function updateCartCount() {
+            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = cartCount;
+        }
+
+        function showSuccessMessage() {
+            const message = document.getElementById('success-message');
+            message.classList.add('show');
+
+            setTimeout(() => {
+                message.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

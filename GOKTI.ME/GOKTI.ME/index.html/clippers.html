@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LA Clippers — CourtDripDxb</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #f8f9fa;
+        }
+
+        .clippers-header {
+            background: linear-gradient(90deg, #1d428a, #c8102e);
+            color: white;
+        }
+
+        .hero-section {
+            background-color: #121212;
+            padding: 3rem 0;
+            border-bottom: 4px solid #c8102e;
+        }
+
+        .hero-section h1 {
+            color: #c8102e;
+        }
+
+        .hero-section p {
+            color: #ddd;
+        }
+
+        .back-btn-container {
+            background-color: #1a1a1a;
+            padding: 1rem;
+        }
+
+        .back-btn-container a {
+            color: #c8102e;
+            font-weight: bold;
+            text-decoration: none;
+            border: 2px solid #c8102e;
+            padding: 8px 16px;
+            display: inline-block;
+        }
+
+        .back-btn-container a:hover {
+            background-color: #c8102e;
+            color: white;
+        }
+
+        .category-section {
+            padding: 3rem 0;
+            background-color: #2a2a2a;
+        }
+
+        .category-section h2 {
+            color: #c8102e;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            color: #1d428a;
+            font-weight: 600;
+        }
+
+        .btn-clippers {
+            background-color: #c8102e;
+            color: white;
+            border: none;
+        }
+
+        .btn-clippers:hover {
+            background-color: #a50f22;
+        }
+
+        .card {
+            background-color: #1f1f1f;
+            border: 1px solid #1d428a;
+        }
+
+        .card img {
+            height: 250px;
+            object-fit: cover;
+            opacity: 0.85;
+        }
+
+        footer {
+            border-top: 3px solid #c8102e;
+        }
+
+        footer small {
+            font-size: 0.8rem;
+            display: block;
+            margin-top: 5px;
+            color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark clippers-header sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🏀 CourtDripDxb</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            🏆 Browse Leagues
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="nba.html">NBA</a></li>
+                            <li><a class="dropdown-item" href="eastern.html">Eastern Conference</a></li>
+                            <li><a class="dropdown-item" href="western.html">Western Conference</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">🛒 Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold text-uppercase">LA Clippers</h1>
+            <p class="lead text-white-50">Bold. Fierce. LA's red and blue fire 🔥</p>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <div class="back-btn-container">
+        <div class="container">
+            <a href="western.html">← Back to Western Conference</a>
+        </div>
+    </div>
+
+    <!-- New Season Jerseys -->
+    <section class="category-section">
+        <div class="container">
+            <h2 class="text-center">🆕 New Season Jerseys</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="images/clippers-new.jpg" class="card-img-top" alt="New Clippers Jersey">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">2025 Season Jersey</h5>
+                            <p class="mb-2">AED 295</p>
+                            <button class="btn btn-clippers">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retro Jerseys -->
+    <section class="category-section">
+        <div class="container">
+            <h2 class="text-center">🏀 Retro Jerseys</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="images/clippers-retro.jpg" class="card-img-top" alt="Retro Clippers Jersey">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Retro Clippers Jersey</h5>
+                            <p class="mb-2">AED 250</p>
+                            <button class="btn btn-clippers">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 clippers-header">
+        <p class="mb-0">&copy; 2025 CourtDripDxb | LA Clippers Collection</p>
+        <small>We are not affiliated with the NBA, LA Clippers, or any official team partners.</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

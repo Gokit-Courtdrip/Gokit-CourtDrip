@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manchester City Jerseys | GOKIT × CourtDripDxb</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #1a1a2e;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ff6b35;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff6b35;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: #ff6b35;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 2rem 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(108, 171, 221, 0.2), rgba(27, 54, 93, 0.2));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #6CABDD, #ff6b35, #1B365D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .team-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #6CABDD, #1B365D);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        /* Preview Section */
+        .preview-section {
+            padding: 60px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .preview-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .preview-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .preview-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(108, 171, 221, 0.1), rgba(27, 54, 93, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .preview-card:hover::before {
+            opacity: 1;
+        }
+
+        .preview-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(108, 171, 221, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .preview-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .preview-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .preview-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .preview-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6CABDD;
+            margin-bottom: 0.5rem;
+        }
+
+        .preview-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+        }
+
+        /* Choice Buttons */
+        .choice-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .choice-btn {
+            background: linear-gradient(135deg, #6CABDD, #1B365D);
+            color: white;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 8px 32px rgba(108, 171, 221, 0.3);
+        }
+
+        .choice-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 48px rgba(108, 171, 221, 0.4);
+        }
+
+        .choice-btn.active {
+            background: linear-gradient(135deg, #ff6b35, #6CABDD);
+        }
+
+        /* Product Section */
+        .product-section {
+            display: none;
+            padding: 60px 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #6CABDD;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(108, 171, 221, 0.1), rgba(27, 54, 93, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(108, 171, 221, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(108, 171, 221, 0.9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #6CABDD;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .product-features li {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(135deg, #6CABDD, #1B365D);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(108, 171, 221, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 100px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .choice-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .choice-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .preview-images {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">GOKIT × CourtDripDxb</a>
+            <div class="nav-links">
+                <a href="premier-league.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to Premier
+                    League</a>
+                <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1><i class="fas fa-star"></i> Manchester City Jerseys</h1>
+            <p>Authentic Citizens jerseys from the Etihad Stadium</p>
+            <div class="team-badge">
+                <i class="fas fa-crown"></i> Sky Blues Collection
+            </div>
+        </div>
+    </section>
+
+    <!-- Preview Section -->
+    <section class="preview-section">
+        <div class="preview-images">
+            <div class="preview-card">
+                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="New Season Preview" />
+                <div class="preview-content">
+                    <h3 class="preview-title">New Season Collection</h3>
+                    <p class="preview-description">Latest designs from 2019-2025 featuring modern cuts and premium
+                        materials</p>
+                </div>
+            </div>
+            <div class="preview-card">
+                <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Retro Preview" />
+                <div class="preview-content">
+                    <h3 class="preview-title">Retro Collection</h3>
+                    <p class="preview-description">Classic jerseys from 2018 & older, including legendary Aguero moments
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="choice-buttons">
+            <button class="choice-btn active" onclick="showSection('new')">
+                <i class="fas fa-sparkles"></i> New Season (2019–2025)
+            </button>
+            <button class="choice-btn" onclick="showSection('retro')">
+                <i class="fas fa-trophy"></i> Retro (2018 & older)
+            </button>
+        </div>
+    </section>
+
+    <!-- New Season Jerseys -->
+    <section class="product-section active" id="new">
+        <h2 class="section-title">New Season Collection</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2024/25 Home Jersey">
+                    <div class="product-badge">New</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2024/25 Home Jersey</h3>
+                    <p class="product-price">AED 349</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-check"></i> Official Puma Design</li>
+                        <li><i class="fas fa-check"></i> Dri-FIT Technology</li>
+                        <li><i class="fas fa-check"></i> Premier League Patches</li>
+                        <li><i class="fas fa-check"></i> Player Name Available</li>
+                    </ul>
+                    <button class="add-to-cart">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2023/24 Away Jersey">
+                    <div class="product-badge">Popular</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2023/24 Away Jersey</h3>
+                    <p class="product-price">AED 329</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-check"></i> Treble Winning Season</li>
+                        <li><i class="fas fa-check"></i> Champions League Badge</li>
+                        <li><i class="fas fa-check"></i> Premium Fabric</li>
+                        <li><i class="fas fa-check"></i> Haaland #9 Available</li>
+                    </ul>
+                    <button class="add-to-cart">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2022/23 Third Jersey">
+                    <div class="product-badge">Limited</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2022/23 Third Jersey</h3>
+                    <p class="product-price">AED 319</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-check"></i> Unique Design</li>
+                        <li><i class="fas fa-check"></i> Lightweight Material</li>
+                        <li><i class="fas fa-check"></i> De Bruyne #17 Popular</li>
+                        <li><i class="fas fa-check"></i> Collector's Edition</li>
+                    </ul>
+                    <button class="add-to-cart">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2021/22 Home Jersey">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2021/22 Home Jersey</h3>
+                    <p class="product-price">AED 299</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-check"></i> Title Winning Season</li>
+                        <li><i class="fas fa-check"></i> Classic Sky Blue</li>
+                        <li><i class="fas fa-check"></i> Mahrez #26 Available</li>
+                        <li><i class="fas fa-check"></i> Authentic Replica</li>
+                    </ul>
+                    <button class="add-to-cart">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retro Jerseys -->
+    <section class="product-section" id="retro">
+        <h2 class="section-title">Retro Collection</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2012 Aguero Jersey">
+                    <div class="product-badge">Legendary</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2012 Aguero "93:20" Jersey</h3>
+                    <p class="product-price">AED 449</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-trophy"></i> Historic Title Win</li>
+                        <li><i class="fas fa-trophy"></i> Aguero #16</li>
+                        <li><i class="fas fa-trophy"></i> Vintage Umbro Design</li>
+                        <li><i class="fas fa-trophy"></i> Collector's Item</li>
+                    </ul>
+                    <button class="add-to-cart">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2018 Centurions Jersey">
+                    <div class="product-badge">100 Points</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2018 Centurions Jersey</h3>
+                    <p class="product-price">AED 399</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-medal"></i> 100 Points Season</li>
+                        <li><i class="fas fa-medal"></i> Record Breaking</li>
+                        <li><i class="fas fa-medal"></i> Sterling #7 Popular</li>
+                        <li><i class="fas fa-medal"></i> Nike Design</li>
+                    </ul>
+                    <button class="add-to-cart">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2008 Retro Jersey">
+                    <div class="product-badge">Vintage</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2008 Retro Home Jersey</h3>
+                    <p class="product-price">AED 379</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-history"></i> Classic Design</li>
+                        <li><i class="fas fa-history"></i> Robinho Era</li>
+                        <li><i class="fas fa-history"></i> Umbro Vintage</li>
+                        <li><i class="fas fa-history"></i> Rare Find</li>
+                    </ul>
+                    <button class="add-to-cart">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2014 Away Jersey">
+                    <div class="product-badge">Classic</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2014 Away Jersey</h3>
+                    <p class="product-price">AED 359</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-star"></i> Yaya Toure Era</li>
+                        <li><i class="fas fa-star"></i> Nike Design</li>
+                        <li><i class="fas fa-star"></i> Silva #21 Available</li>
+                        <li><i class="fas fa-star"></i> Authentic Vintage</li>
+                    </ul>
+                    <button class="add-to-cart">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 GOKIT × CourtDripDxb — Authentic Manchester City Jerseys</p>
+    </footer>
+
+    <script>
+        // Cart functionality - fully compatible with cart.html
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Show/hide sections function
+        function showSection(type) {
+            // Hide all sections
+            document.querySelectorAll('.product-section').forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            const targetSection = document.getElementById(type);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+                targetSection.classList.add('active');
+            }
+
+            // Update button states
+            document.querySelectorAll('.choice-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Add active class to clicked button
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+        }
+
+        // Save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            console.log('Cart saved:', cart);
+        }
+
+        // Update cart display in navbar
+        function updateCartDisplay() {
+            const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+
+            // Update all cart links in navbar
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.textContent.includes('Cart') || link.href.includes('cart.html')) {
+                    if (totalItems > 0) {
+                        link.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart (${totalItems})`;
+                    } else {
+                        link.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart`;
+                    }
+                }
+            });
+        }
+
+        // Add to cart function - matches cart.html exactly
+        function addToCart(button) {
+            try {
+                const productCard = button.closest('.product-card');
+                const productName = productCard.querySelector('.product-name').textContent.trim();
+                const productPriceText = productCard.querySelector('.product-price').textContent.trim();
+                const productImage = productCard.querySelector('img').src;
+
+                // Extract price number from "AED 349" format
+                const priceMatch = productPriceText.match(/\d+(\.\d+)?/);
+                const price = priceMatch ? parseFloat(priceMatch[0]) : 0;
+
+                console.log('Adding item:', {
+                    name: productName,
+                    price: price,
+                    image: productImage
+                });
+
+                // Check if item already exists in cart
+                const existingItemIndex = cart.findIndex(item => item.name === productName);
+
+                if (existingItemIndex !== -1) {
+                    // Item exists, increase quantity
+                    cart[existingItemIndex].quantity += 1;
+                    console.log('Increased quantity for:', productName);
+                } else {
+                    // New item, add to cart with exact structure as cart.html expects
+                    const newItem = {
+                        name: productName,
+                        price: price,
+                        image: productImage,
+                        quantity: 1
+                    };
+                    cart.push(newItem);
+                    console.log('Added new item:', newItem);
+                }
+
+                // Save to localStorage
+                saveCart();
+
+                // Update cart display
+                updateCartDisplay();
+
+                // Show success animation
+                showSuccessAnimation(button, productName);
+
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+                alert('Error adding item to cart. Please try again.');
+            }
+        }
+
+        // Success animation
+        function showSuccessAnimation(button, productName) {
+            const originalHTML = button.innerHTML;
+            const originalStyle = button.style.cssText;
+
+            // Change button appearance
+            button.innerHTML = '<i class="fas fa-check"></i> Added!';
+            button.style.background = 'linear-gradient(135deg, #00ff87, #6CABDD)';
+            button.disabled = true;
+
+            // Show notification
+            showNotification(`${productName} added to cart!`);
+
+            // Reset button after 2 seconds
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.style.cssText = originalStyle;
+                button.disabled = false;
+            }, 2000);
+        }
+
+        // Show notification
+        function showNotification(message) {
+            // Remove existing notifications
+            document.querySelectorAll('.cart-notification').forEach(notif => notif.remove());
+
+            const notification = document.createElement('div');
+            notification.className = 'cart-notification';
+            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+
+            notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: linear-gradient(135deg, #00ff87, #6CABDD);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            z-index: 10000;
+            box-shadow: 0 10px 30px rgba(0, 255, 135, 0.3);
+            transform: translateX(400px);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        `;
+
+            document.body.appendChild(notification);
+
+            // Animate in
+            setTimeout(() => notification.style.transform = 'translateX(0)', 100);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Manchester City page loaded');
+
+            // Load cart from localStorage
+            cart = JSON.parse(localStorage.getItem('cart')) || [];
+            console.log('Current cart:', cart);
+
+            // Update cart display
+            updateCartDisplay();
+
+            // Add event listeners to all add-to-cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    addToCart(this);
+                });
+            });
+
+            // Show new section by default
+            showSection('new');
+
+            console.log('Manchester City page initialized');
+        });
+
+        // Utility functions for debugging
+        function checkCart() {
+            console.log('=== CART DEBUG ===');
+            console.log('Cart contents:', cart);
+            console.log('Total items:', cart.reduce((sum, item) => sum + item.quantity, 0));
+            console.log('LocalStorage:', localStorage.getItem('cart'));
+            console.log('==================');
+            return cart;
+        }
+
+        function clearCart() {
+            cart = [];
+            localStorage.removeItem('cart');
+            updateCartDisplay();
+            console.log('Cart cleared');
+            alert('Cart cleared successfully!');
+        }
+
+        function fixCartData() {
+            // Clean up any corrupted cart data
+            cart = cart.filter(item => {
+                return item &&
+                    typeof item.name === 'string' &&
+                    typeof item.price === 'number' &&
+                    typeof item.quantity === 'number' &&
+                    item.quantity > 0;
+            });
+
+            // Ensure all items have required properties
+            cart.forEach(item => {
+                if (!item.image) item.image = 'img/default.png';
+                if (!item.quantity || item.quantity < 1) item.quantity = 1;
+            });
+
+            saveCart();
+            updateCartDisplay();
+            console.log('Cart data fixed:', cart);
+            return cart;
+        }
+    </script>
+
+</body>
+
+</html>
