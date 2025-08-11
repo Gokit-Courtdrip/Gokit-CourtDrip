@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serie A — CourtDripDxb</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d1b1b 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .serie-a-header {
+            background: linear-gradient(90deg, #0066cc, #ffffff, #009639) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 102, 204, 0.3);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            color: #000 !important;
+            font-weight: 800;
+        }
+
+        .navbar-nav .nav-link {
+            color: #000 !important;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 150, 57, 0.1));
+            border-bottom: 4px solid #0066cc;
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(0, 102, 204, 0.03) 10px,
+                    rgba(0, 102, 204, 0.03) 20px);
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-50px) translateY(-50px);
+            }
+
+            100% {
+                transform: translateX(0px) translateY(0px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-section h1 {
+            color: #0066cc;
+            font-weight: 800;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 102, 204, 0.3);
+            }
+
+            to {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 102, 204, 0.6);
+            }
+        }
+
+        .hero-section p {
+            color: #e0e0e0;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .back-btn-container {
+            border-left: 4px solid #0066cc;
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(0, 102, 204, 0.1));
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0 10px 10px 0;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn-container:hover {
+            transform: translateX(5px);
+            box-shadow: 5px 5px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        .back-btn-container a {
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn-container a:hover {
+            color: #0066cc;
+            text-shadow: 0 0 10px rgba(0, 102, 204, 0.5);
+        }
+
+        .teams-section {
+            padding: 3rem 0;
+        }
+
+        .teams-section h2 {
+            color: #009639;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .teams-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #0066cc, #009639);
+            border-radius: 2px;
+        }
+
+        .team-card {
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(0, 102, 204, 0.1));
+            border: 1px solid rgba(0, 102, 204, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            height: 100%;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+            z-index: 1;
+        }
+
+        .team-card:hover::before {
+            left: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.3);
+            border-color: #009639;
+        }
+
+        .team-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(0, 102, 204, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover .team-logo {
+            border-color: #009639;
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            position: relative;
+            z-index: 2;
+        }
+
+        .team-name {
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .team-description {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-serie-a {
+            background: linear-gradient(45deg, #0066cc, #009639);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-serie-a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-serie-a:hover::before {
+            left: 100%;
+        }
+
+        .btn-serie-a:hover {
+            background: linear-gradient(45deg, #009639, #0066cc);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 102, 204, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        .dropdown-menu {
+            background: rgba(31, 31, 31, 0.95) !important;
+            border: 1px solid rgba(0, 102, 204, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown-item {
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(0, 102, 204, 0.2) !important;
+            color: #009639 !important;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #0066cc, #ffffff, #009639) !important;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: #000 !important;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+        }
+
+        /* Loading animation */
+        .team-card {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .team-card.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Italian flag accent */
+        .italian-accent {
+            background: linear-gradient(90deg, #009639 33%, #ffffff 33%, #ffffff 66%, #ce2b37 66%);
+            height: 4px;
+            width: 100%;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg serie-a-header sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">⚽ CourtDripDxb</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            🏆 Browse Leagues
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="basketball.html">Baskteball</a></l>
+                            <li><a class="dropdown-item" href="la-liga.html">La Liga</a></li>
+                            <li><a class="dropdown-item" href="bundesliga.html">Bundesliga</a></li>
+                            <li><a class="dropdown-item" href="national-teams.html">National Teams</a></li>
+                            <li><a class="dropdown-item" href="rotw.html">Rest of the World</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container hero-content">
+            <h1 class="display-4 text-uppercase">Serie A</h1>
+            <p class="lead">The Beauty of Italian Football</p>
+            <div class="italian-accent"></div>
+            <div class="mt-3">
+                <span class="badge bg-primary fs-6 me-2">Historical Football</span>
+                <span class="badge bg-success fs-6">Made in Italy</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <div class="container">
+        <div class="back-btn-container">
+            <a href="league.html"><i class="fas fa-arrow-left me-2"></i>Back to Leagues</a>
+        </div>
+    </div>
+
+    <!-- Teams Section -->
+    <section class="teams-section">
+        <div class="container">
+            <h2 class="text-center">🏟️ Serie A Teams</h2>
+            <div class="row g-4">
+                <!-- Juventus -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
+                                alt="Juventus" class="team-logo mb-3">
+                            <h5 class="team-name">Juventus FC</h5>
+                            <p class="team-description">La Vecchia Signora - Turin's Black & White Dynasty</p>
+                            <a href="juventus.html" class="btn-serie-a">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AC Milan -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=80&h=80&fit=crop&crop=center"
+                                alt="AC Milan" class="team-logo mb-3">
+                            <h5 class="team-name">AC Milan</h5>
+                            <p class="team-description">I Rossoneri - Milan's Red & Black Legends</p>
+                            <a href="ac-milan.html" class="btn-serie-a">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inter Milan -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
+                                alt="Inter Milan" class="team-logo mb-3">
+                            <h5 class="team-name">Inter Milan</h5>
+                            <p class="team-description">I Nerazzurri - The Blue & Black Pride</p>
+                            <a href="inter-milan.html" class="btn-serie-a">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AS Roma -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
+                                alt="AS Roma" class="team-logo mb-3">
+                            <h5 class="team-name">AS Roma</h5>
+                            <p class="team-description">I Giallorossi - The Eternal City's Warriors</p>
+                            <a href="as-roma.html" class="btn-serie-a">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Napoli -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=80&h=80&fit=crop&crop=center"
+                                alt="Napoli" class="team-logo mb-3">
+                            <h5 class="team-name">SSC Napoli</h5>
+                            <p class="team-description">Gli Azzurri - Southern Italy's Champions</p>
+                            <a href="napoli.html" class="btn-serie-a">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lazio -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
+                                alt="Lazio" class="team-logo mb-3">
+                            <h5 class="team-name">SS Lazio</h5>
+                            <p class="team-description">Le Aquile - Rome's Sky Blue Eagles</p>
+                            <a href="lazio.html" class="btn-serie-a">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Atalanta -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
+                                alt="Atalanta" class="team-logo mb-3">
+                            <h5 class="team-name">Atalanta BC</h5>
+                            <p class="team-description">La Dea - Bergamo's Attacking Machine</p>
+                            <a href="atalanta.html" class="btn-serie-a">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fiorentina -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=80&h=80&fit=crop&crop=center"
+                                alt="Fiorentina" class="team-logo mb-3">
+                            <h5 class="team-name">ACF Fiorentina</h5>
+                            <p class="team-description">La Viola - Florence's Purple Renaissance</p>
+                            <a href="fiorentina.html" class="btn-serie-a">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Torino -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
+                                alt="Torino" class="team-logo mb-3">
+                            <h5 class="team-name">Torino FC</h5>
+                            <p class="team-description">Il Toro - The Granata Bulls of Turin</p>
+                            <a href="torino.html" class="btn-serie-a">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 mt-5">
+        <p class="mb-1">© 2025 CourtDripDxb | Serie A Collection</p>
+        <p class="mb-0">Not affiliated with Serie A or any football clubs.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Update cart count on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCartCount();
+
+            // Animate cards on load
+            const cards = document.querySelectorAll('.team-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('loaded');
+                }, index * 100);
+            });
+        });
+
+        function updateCartCount() {
+            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = cartCount;
+        }
+    </script>
+</body>
+
+</html>

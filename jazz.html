@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Utah Jazz — CourtDripDxb</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #f8f9fa;
+        }
+
+        .jazz-header {
+            background: linear-gradient(90deg, #002B5C, #FDB927);
+            color: white;
+        }
+
+        .category-section {
+            padding: 3rem 0;
+            background-color: #1a1a1a;
+        }
+
+        .category-section h2 {
+            color: #FDB927;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        .card-title {
+            color: #FDB927;
+            font-weight: 600;
+        }
+
+        .btn-jazz {
+            background-color: transparent;
+            color: #FDB927;
+            border: 2px solid #FDB927;
+            padding: 0.4rem 1.2rem;
+            font-weight: 600;
+        }
+
+        .btn-jazz:hover {
+            background-color: #FDB927;
+            color: #002B5C;
+        }
+
+        .card {
+            background-color: #2a2a2a;
+            border: 1px solid #FDB927;
+        }
+
+        .card img {
+            height: 250px;
+            object-fit: cover;
+            opacity: 0.88;
+        }
+
+        .back-btn-container {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            border-left: 5px solid #FDB927;
+            margin-top: 1rem;
+        }
+
+        .back-btn-container a {
+            color: #FDB927;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back-btn-container a:hover {
+            text-decoration: underline;
+        }
+
+        .hero-section {
+            background-color: #1a1a1a;
+            border-bottom: 4px solid #FDB927;
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            color: #FDB927;
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        .hero-section p {
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            border-top: 3px solid #FDB927;
+            background: linear-gradient(90deg, #002B5C, #FDB927);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark jazz-header sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🏀 CourtDripDxb</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            🏆 Browse Leagues
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="nba.html">NBA</a></li>
+                            <li><a class="dropdown-item" href="eastern.html">Eastern Conference</a></li>
+                            <li><a class="dropdown-item" href="western.html">Western Conference</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">🛒 Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Utah Jazz</h1>
+            <p>Elevated style — Jazz it up with official gear</p>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <div class="container my-4 back-btn-container text-start">
+        <a href="western.html" class="btn btn-wolves fw-bold shadow-sm">
+            ← Back to Western Conference
+        </a>
+    </div>
+
+    <!-- New Season Jerseys -->
+    <section class="category-section">
+        <div class="container">
+            <h2 class="text-center">🆕 New Season Jerseys</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="images/placeholder-jersey.jpg" class="card-img-top" alt="2025 Jazz Jersey">
+                        <div class="card-body text-start">
+                            <h5 class="card-title">2025 Home Jersey</h5>
+                            <button class="btn btn-jazz">View</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more products -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Retro Jerseys -->
+    <section class="category-section">
+        <div class="container">
+            <h2 class="text-center">🏀 Retro Jerseys</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="images/placeholder-retro.jpg" class="card-img-top" alt="Retro Jazz Jersey">
+                        <div class="card-body text-start">
+                            <h5 class="card-title">Karl Malone 1997</h5>
+                            <button class="btn btn-jazz">View</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more retro jerseys -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 mt-5">
+        <p class="mb-1">&copy; 2025 CourtDripDxb | Utah Jazz Collection</p>
+        <p class="mb-0">Not affiliated with the NBA or Utah Jazz.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

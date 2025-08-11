@@ -1,0 +1,314 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: radial-gradient(ellipse at top, #f3ede5, #d6cfc7);
+    color: #333;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+html {
+    height: 100%;
+}
+
+main {
+    flex: 1;
+}
+
+/* Navbar */
+.navbar {
+    background: #111;
+    color: white;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    padding-top: 0;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffc107;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: #111;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Hero Section */
+.hero-banner {
+    background-image: url('images/hero-placeholder.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 8rem 2rem;
+    text-align: center;
+    color: white;
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    background: #027a3d;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #025c2b;
+}
+
+.btn.alt {
+    background: #1e1e1e;
+}
+
+.btn.small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* Category Section */
+.category-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background: #fff;
+}
+
+.category-card {
+    width: 300px;
+    background: #fefefe;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.category-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.category-card h2 {
+    margin: 1rem 0 0.5rem;
+}
+
+.category-card p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+/* Footer */
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* Team Navbar Overrides */
+.navbar.rockets-theme {
+    background-color: #ce1141 !important;
+}
+
+.btn-lakers {
+    background-color: #552583 !important;
+    color: #ffffff !important;
+    border: none;
+    transition: background 0.3s ease;
+}
+
+.btn-lakers:hover {
+    background-color: #301b4d !important;
+    color: #ffffff !important;
+}
+
+.navbar.suns-header {
+    background: linear-gradient(90deg, #1d1160, #e56020);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+    transition: color 0.3s;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ffd1dc;
+}
+
+/* Clippers Theme */
+.navbar.clippers-theme {
+    background-color: #1d428a !important;
+}
+
+.navbar.clippers-theme .navbar-nav .nav-link,
+.navbar.clippers-theme .navbar-brand {
+    color: white !important;
+}
+
+.navbar.clippers-theme .navbar-nav .nav-link:hover {
+    color: #c8102e !important;
+}
+
+.navbar.clippers-theme .navbar-toggler {
+    border-color: white;
+}
+
+
+/* Warriors Theme */
+.navbar.warriors-header {
+    background-color: #1D428A !important;
+    /* Warriors blue */
+}
+
+.navbar.warriors-header .navbar-nav .nav-link,
+.navbar.warriors-header .navbar-brand {
+    color: white !important;
+}
+
+.navbar.warriors-header .navbar-nav .nav-link:hover {
+    color: #ffc72c !important;
+    /* Warriors yellow on hover */
+}
+
+.navbar.warriors-header .navbar-toggler {
+    border-color: white;
+}
+
+/* Cards */
+.card-body .btn {
+    transition: all 0.3s ease;
+}
+
+.card-body .btn:hover {
+    transform: scale(1.05);
+}
+
+.section-card:hover .btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.section-card:hover .btn-light {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+/* Hero Overlay */
+.hero-overlay h1 {
+    color: #ffffff;
+}
+
+.hero-overlay p {
+    color: #cccccc;
+}
+
+.section-card-content a.btn {
+    border-radius: 30px;
+}
+
+.suns-image {
+    object-fit: cover;
+    object-position: center 35%;
+    /* Move image up */
+    height: 100%;
+    width: 100%;
+}
+
+/* Team Specific Card Shadows */
+.card-shadow-blazers {
+    box-shadow: 0 4px 12px rgba(224, 58, 62, 0.3) !important;
+    /* Using Blazers red */
+}
+
+.card-shadow-lakers {
+    box-shadow: 0 4px 12px rgba(85, 37, 131, 0.3) !important;
+    /* Using Lakers purple */
+}
+
+.card-shadow-jazz {
+    box-shadow: 0 4px 12px rgba(134, 0, 56, 0.3) !important;
+    /* Using Jazz purple */
+}
+
+.card-shadow-mavericks {
+    box-shadow: 0 4px 12px rgba(0, 83, 188, 0.3) !important;
+    /* Using Mavericks blue */
+}
+
+footer {
+    background: linear-gradient(90deg, #552583, #FDB927);
+    border-top: 3px solid #FDB927;
+    color: white;
+}

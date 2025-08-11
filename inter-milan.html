@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inter Milan Jerseys | GOKIT × CourtDripDxb</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #1a1a2e;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #0066cc;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0066cc;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: #0066cc;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 2rem 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0066cc 50%, #000000 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.4), rgba(0, 0, 0, 0.1));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #0066cc, #000000, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .team-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066cc, #000000);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        /* Choice Buttons */
+        .choice-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .choice-btn {
+            background: linear-gradient(135deg, #0066cc, #000000);
+            color: #ffffff;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 8px 32px rgba(0, 102, 204, 0.3);
+        }
+
+        .choice-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 48px rgba(0, 102, 204, 0.4);
+        }
+
+        .choice-btn.active {
+            background: linear-gradient(135deg, #000000, #0066cc);
+            color: #ffffff;
+        }
+
+        /* Product Section */
+        .product-section {
+            display: none;
+            padding: 60px 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.2), rgba(0, 0, 0, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 102, 204, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 102, 204, 0.2);
+        }
+
+        .product-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 102, 204, 0.9);
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0066cc;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .product-features li {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Size Selection */
+        .size-selection {
+            margin-bottom: 1.5rem;
+        }
+
+        .size-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .size-option {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .size-option:hover {
+            background: rgba(0, 102, 204, 0.3);
+            border-color: rgba(0, 102, 204, 0.5);
+            color: #ffffff;
+        }
+
+        .size-option.selected {
+            background: linear-gradient(135deg, #0066cc, #000000);
+            border-color: #0066cc;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(135deg, #0066cc, #000000);
+            color: #ffffff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.4);
+            background: linear-gradient(135deg, #000000, #0066cc);
+        }
+
+        .add-to-cart:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 100px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .choice-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .choice-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .size-options {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">GOKIT × CourtDripDxb</a>
+            <div class="nav-links">
+                <a href="serie-a.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to Serie A</a>
+                <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1><i class="fas fa-bolt"></i> Inter Milan Jerseys</h1>
+            <p>Forza Inter - The Nerazzurri Collection</p>
+            <div class="team-badge">
+                <i class="fas fa-trophy"></i> San Siro Champions
+            </div>
+        </div>
+    </section>
+
+    <div class="choice-buttons">
+        <button class="choice-btn active" onclick="showSection('new')">
+            <i class="fas fa-sparkles"></i> New Season (2019–2025)
+        </button>
+        <button class="choice-btn" onclick="showSection('retro')">
+            <i class="fas fa-history"></i> Retro (2018 & older)
+        </button>
+    </div>
+
+    <!-- New Season Jerseys -->
+    <section class="product-section active" id="new">
+        <h2 class="section-title">New Season Collection</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2024/25 Home Jersey">
+                    <div class="product-badge">New</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2024/25 Home Jersey</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-check"></i> Nike Design</li>
+                        <li><i class="fas fa-check"></i> Inzaghi's Vision</li>
+                        <li><i class="fas fa-check"></i> Lautaro & Thuram</li>
+                        <li><i class="fas fa-check"></i> Champions League</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2023/24 Champions League Final">
+                    <div class="product-badge">Final</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2023/24 Champions League Final</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-star"></i> Wembley Final</li>
+                        <li><i class="fas fa-star"></i> European Dream</li>
+                        <li><i class="fas fa-star"></i> Serie A Campaign</li>
+                        <li><i class="fas fa-star"></i> Nerazzurri Pride</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2021/22 Serie A Champions">
+                    <div class="product-badge">Champions</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2021/22 Serie A Champions</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-trophy"></i> Serie A Winners</li>
+                        <li><i class="fas fa-trophy"></i> Scudetto Glory</li>
+                        <li><i class="fas fa-trophy"></i> San Siro Magic</li>
+                        <li><i class="fas fa-trophy"></i> Lukaku Return</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2020/21 Serie A Champions">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2020/21 Serie A Champions</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-fire"></i> Scudetto Winners</li>
+                        <li><i class="fas fa-fire"></i> Conte Masterclass</li>
+                        <li><i class="fas fa-fire"></i> Lukaku & Lautaro</li>
+                        <li><i class="fas fa-fire"></i> Inter Revival</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retro Jerseys -->
+    <section class="product-section" id="retro">
+        <h2 class="section-title">Retro Collection</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2009/10 Treble Winners">
+                    <div class="product-badge">Historic</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2009/10 Treble Winners</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-crown"></i> Champions League</li>
+                        <li><i class="fas fa-crown"></i> Serie A & Coppa Italia</li>
+                        <li><i class="fas fa-crown"></i> Mourinho Magic</li>
+                        <li><i class="fas fa-crown"></i> Historic Treble</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="1963/64 European Cup Winners">
+                    <div class="product-badge">Legendary</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">1963/64 European Cup Winners</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-trophy"></i> First European Cup</li>
+                        <li><i class="fas fa-trophy"></i> Vienna Final</li>
+                        <li><i class="fas fa-trophy"></i> Mazzola Era</li>
+                        <li><i class="fas fa-trophy"></i> European Glory</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="1964/65 European Cup Winners">
+                    <div class="product-badge">Miracle</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">1964/65 European Cup Winners</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-magic"></i> Back-to-Back</li>
+                        <li><i class="fas fa-magic"></i> San Siro Final</li>
+                        <li><i class="fas fa-magic"></i> Grande Inter</li>
+                        <li><i class="fas fa-magic"></i> European Dynasty</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="1997/98 UEFA Cup Winners">
+                    <div class="product-badge">Classic</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">1997/98 UEFA Cup Winners</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-star"></i> UEFA Cup Glory</li>
+                        <li><i class="fas fa-star"></i> Ronaldo Era</li>
+                        <li><i class="fas fa-star"></i> Paris Final</li>
+                        <li><i class="fas fa-star"></i> European Return</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 GOKIT × CourtDripDxb — Inter Milan Jerseys</p>
+    </footer>
+
+    <script>
+        // Cart functionality - fully compatible with cart.html
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Show/hide sections function
+        function showSection(type) {
+            // Hide all sections
+            document.querySelectorAll('.product-section').forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            const targetSection = document.getElementById(type);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+                targetSection.classList.add('active');
+            }
+
+            // Update button states
+            document.querySelectorAll('.choice-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Add active class to clicked button
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+        }
+
+        // Size selection functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Handle size selection for all product cards
+            document.querySelectorAll('.size-option').forEach(option => {
+                option.addEventListener('click', function () {
+                    const card = this.closest('.product-card');
+                    const sizeOptions = card.querySelectorAll('.size-option');
+                    const addToCartBtn = card.querySelector('.add-to-cart');
+
+                    // Remove selected class from all size options in this card
+                    sizeOptions.forEach(opt => opt.classList.remove('selected'));
+
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+
+                    // Enable add to cart button and update text
+                    addToCartBtn.disabled = false;
+                    addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+                });
+            });
+
+            // Handle add to cart functionality
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function () {
+                    if (this.disabled) return;
+
+                    const card = this.closest('.product-card');
+                    const productName = card.querySelector('.product-name').textContent;
+                    const productPrice = card.querySelector('.product-price').textContent;
+                    const selectedSize = card.querySelector('.size-option.selected');
+                    const productImage = card.querySelector('img').src;
+
+                    if (!selectedSize) {
+                        alert('Please select a size first!');
+                        return;
+                    }
+
+                    const cartItem = {
+                        id: Date.now() + Math.random(), // Unique ID
+                        name: productName,
+                        price: productPrice,
+                        size: selectedSize.textContent,
+                        image: productImage,
+                        team: 'Inter Milan',
+                        quantity: 1
+                    };
+
+                    // Add to cart array
+                    cart.push(cartItem);
+
+                    // Save to localStorage
+                    localStorage.setItem('cart', JSON.stringify(cart));
+
+                    // Visual feedback
+                    this.innerHTML = '<i class="fas fa-check"></i> Added to Cart!';
+                    this.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+
+                    // Reset button after 2 seconds
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+                        this.style.background = 'linear-gradient(135deg, #0066cc, #000000)';
+
+                        // Reset size selection
+                        const sizeOptions = card.querySelectorAll('.size-option');
+                        sizeOptions.forEach(opt => opt.classList.remove('selected'));
+                        this.disabled = true;
+                        this.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
+                    }, 2000);
+
+                    // Show success message
+                    showNotification('Inter Milan jersey added to cart successfully!', 'success');
+                });
+            });
+        });
+
+        // Notification function
+        function showNotification(message, type = 'success') {
+            // Remove existing notifications
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                <span>${message}</span>
+            `;
+
+            // Add notification styles
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: linear-gradient(135deg, #28a745, #20c997);
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: 600;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+            `;
+
+            document.body.appendChild(notification);
+
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Update cart count in navbar
+        function updateCartCount() {
+            const cartCount = cart.length;
+            const cartLink = document.querySelector('.nav-link[href="cart.html"]');
+            if (cartLink && cartCount > 0) {
+                cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart (${cartCount})`;
+            }
+        }
+
+        // Initialize cart count on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCartCount();
+        });
+
+        // Smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation for images
+        document.addEventListener('DOMContentLoaded', function () {
+            const images = document.querySelectorAll('.product-card img');
+            images.forEach(img => {
+                img.addEventListener('load', function () {
+                    this.style.opacity = '1';
+                });
+
+                // Set initial opacity
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s ease';
+            });
+        });
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                // Clear all size selections
+                document.querySelectorAll('.size-option.selected').forEach(option => {
+                    option.classList.remove('selected');
+                });
+
+                // Disable all add to cart buttons
+                document.querySelectorAll('.add-to-cart').forEach(btn => {
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
+                });
+            }
+        });
+
+        // Inter Milan-specific animations and effects
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add Forza Inter effect on page load
+            setTimeout(() => {
+                const heroTitle = document.querySelector('.hero h1');
+                if (heroTitle) {
+                    heroTitle.style.animation = 'pulse 2s ease-in-out';
+                }
+            }, 1000);
+
+            // Add special hover effects for Inter Milan cards
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    const badge = this.querySelector('.product-badge');
+                    if (badge && (badge.textContent === 'Historic' || badge.textContent === 'Legendary' || badge.textContent === 'Miracle')) {
+                        badge.style.animation = 'glow 1s ease-in-out infinite alternate';
+                    }
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    const badge = this.querySelector('.product-badge');
+                    if (badge) {
+                        badge.style.animation = 'none';
+                    }
+                });
+            });
+        });
+
+        // Add CSS animations dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+            }
+            
+            @keyframes glow {
+                0% { box-shadow: 0 0 5px rgba(0, 102, 204, 0.5); }
+                100% { box-shadow: 0 0 20px rgba(0, 102, 204, 0.8), 0 0 30px rgba(0, 0, 0, 0.5); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>

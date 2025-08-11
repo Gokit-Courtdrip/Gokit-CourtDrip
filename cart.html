@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart - CourtDripDxb</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:900,700,400&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(255, 165, 0, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 69, 0, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                repeating-linear-gradient(90deg,
+                    transparent,
+                    transparent 98px,
+                    rgba(255, 255, 255, 0.03) 100px),
+                repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 98px,
+                    rgba(255, 255, 255, 0.03) 100px);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .cart-header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 24px 0;
+            text-align: center;
+            font-size: 2.2em;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            border-radius: 0 0 20px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .cart-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cart-title {
+            font-size: 1.8em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 40px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .cart-items {
+            margin-bottom: 40px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.9));
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 24px;
+            padding: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cart-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .cart-item:hover::before {
+            left: 100%;
+        }
+
+        .cart-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+        }
+
+        .cart-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-right: 32px;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            background: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-item:hover .cart-img {
+            transform: scale(1.05);
+        }
+
+        .cart-info {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .cart-item-name {
+            font-weight: 900;
+            color: #2c3e50;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .cart-item-price {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            margin-bottom: 16px;
+            font-size: 1.1em;
+        }
+
+        .cart-controls {
+            display: flex;
+            align-items: center;
+            margin-top: 12px;
+            gap: 12px;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            padding: 4px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .qty-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            border: none;
+            font-size: 1.2em;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: 900;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qty-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+        }
+
+        .qty-btn:active {
+            transform: scale(0.95);
+        }
+
+        .cart-qty {
+            font-size: 1.1em;
+            font-weight: 700;
+            width: 50px;
+            text-align: center;
+            color: #2c3e50;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 8px 0;
+            margin: 0 8px;
+        }
+
+        .remove-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remove-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 107, 107, 0.4);
+        }
+
+        .cart-summary {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 20px;
+            padding: 32px;
+            margin-top: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cart-total {
+            text-align: center;
+            font-size: 2em;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            margin-bottom: 32px;
+            letter-spacing: 1px;
+        }
+
+        .cart-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            border: none;
+            padding: 18px 36px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 1px;
+            text-decoration: none;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .action-btn:hover::before {
+            left: 100%;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(102, 126, 234, 0.4);
+        }
+
+        .action-btn.secondary {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.9));
+            color: #2c3e50;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .action-btn.secondary:hover {
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+        }
+
+        .empty-cart {
+            text-align: center;
+            color: #7f8c8d;
+            margin: 80px 0;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .empty-cart i {
+            font-size: 4em;
+            margin-bottom: 24px;
+            opacity: 0.5;
+        }
+
+        .item-count {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 0.9em;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .cart-container {
+                margin: 0 16px;
+                padding: 24px 20px;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: center;
+            }
+
+            .cart-img {
+                margin: 0 auto 16px auto;
+            }
+
+            .cart-controls {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .cart-actions {
+                flex-direction: column;
+            }
+
+            .cart-total {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cart-header">
+        <i class="fas fa-shopping-cart"></i> CourtDripDxb Cart
+    </div>
+
+    <div class="cart-container">
+        <div class="cart-title">Review Your Gear</div>
+        <div id="item-count"></div>
+        <div class="cart-items" id="cart-items"></div>
+
+        <div class="cart-summary" id="cart-summary" style="display: none;">
+            <div class="cart-total" id="cart-total"></div>
+            <div class="cart-actions">
+                <a href="index.html" class="action-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Continue Shopping
+                </a>
+                <button class="action-btn" id="checkout-btn">
+                    <i class="fas fa-credit-card"></i>
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function renderCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsDiv = document.getElementById('cart-items');
+            const cartTotalDiv = document.getElementById('cart-total');
+            const cartSummaryDiv = document.getElementById('cart-summary');
+            const itemCountDiv = document.getElementById('item-count');
+
+            cartItemsDiv.innerHTML = '';
+            cartTotalDiv.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <div>Your cart is empty.<br>Go get some gear!</div>
+                    </div>
+                `;
+                cartSummaryDiv.style.display = 'none';
+                itemCountDiv.innerHTML = '';
+                return;
+            }
+
+            // Clean and fix cart data
+            cart = cart.filter(item => item && item.name).map(item => {
+                return {
+                    name: item.name,
+                    price: parseFloat(item.price) || 0,
+                    image: item.image || 'img/default.png',
+                    quantity: parseInt(item.quantity) || 1
+                };
+            });
+
+            // Save cleaned cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Show item count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            itemCountDiv.innerHTML = `<div class="item-count">${totalItems} item${totalItems > 1 ? 's' : ''} in cart</div>`;
+
+            let total = 0;
+            cart.forEach((item, idx) => {
+                const itemPrice = parseFloat(item.price) || 0;
+                const itemQuantity = parseInt(item.quantity) || 1;
+                total += itemPrice * itemQuantity;
+
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <img src="${item.image}" class="cart-img" alt="${item.name}" onerror="this.src='img/default.png'">
+                    <div class="cart-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">AED ${itemPrice.toFixed(2)}</div>
+                        <div class="cart-controls">
+                            <div class="qty-controls">
+                                <button class="qty-btn" data-idx="${idx}" data-action="decrease">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span class="cart-qty">${itemQuantity}</span>
+                                <button class="qty-btn" data-idx="${idx}" data-action="increase">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <button class="remove-btn" data-idx="${idx}">
+                                <i class="fas fa-trash"></i>
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                `;
+                cartItemsDiv.appendChild(div);
+            });
+
+            cartTotalDiv.innerHTML = `Total: AED ${total.toFixed(2)}`;
+            cartSummaryDiv.style.display = 'block';
+
+            // Add event listeners
+            addEventListeners(cart);
+        }
+
+        function addEventListeners(cart) {
+            // Quantity controls
+            document.querySelectorAll('.qty-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const idx = parseInt(this.getAttribute('data-idx'));
+                    const action = this.getAttribute('data-action');
+
+                    if (action === 'increase') {
+                        cart[idx].quantity = parseInt(cart[idx].quantity) + 1;
+                    } else if (action === 'decrease' && parseInt(cart[idx].quantity) > 1) {
+                        cart[idx].quantity = parseInt(cart[idx].quantity) - 1;
+                    }
+
+                    cart[idx].price = parseFloat(cart[idx].price) || 0;
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    renderCart();
+                });
+            });
+
+            // Remove item logic - no animation
+            document.querySelectorAll('.remove-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const idx = parseInt(this.getAttribute('data-idx'));
+                    cart.splice(idx, 1);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    renderCart();
+                });
+            });
+        }
+
+        // Initialize cart
+        renderCart();
+
+        // Checkout button
+        document.getElementById('checkout-btn').addEventListener('click', function () {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+
+            // Add loading state
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            this.disabled = true;
+
+            setTimeout(() => {
+                alert("Checkout is not implemented in this demo.\nThank you for shopping with CourtDripDxb!");
+                this.innerHTML = '<i class="fas fa-credit-card"></i> Proceed to Checkout';
+                this.disabled = false;
+            }, 2000);
+        });
+
+        // Debug function to clean cart
+        function cleanCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item && item.name).map(item => ({
+                name: item.name,
+                price: parseFloat(item.price) || 0,
+                image: item.image || 'img/default.png',
+                quantity: parseInt(item.quantity) || 1
+            }));
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            console.log('Cart cleaned:', cart);
+        }
+    </script>
+</body>
+
+</html>
