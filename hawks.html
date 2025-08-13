@@ -3,309 +3,419 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Atlanta Hawks — CourtDripDxb</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        /* Base Styles */
         body {
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #2d1b1b 100%);
-            color: white;
+            background: linear-gradient(135deg, #0a0a0a 0%, #2e0d0d 100%);
+            color: #f8f9fa;
+            padding-bottom: 70px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
         }
 
+        /* Navbar */
         .hawks-header {
-            background: linear-gradient(90deg, #E03A3E, #C1D32F) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(224, 58, 62, 0.3);
+            background: linear-gradient(135deg, #E03A3E, #C1D32F, #E03A3E);
+            color: white;
+            box-shadow: 0 4px 15px rgba(224, 58, 62, 0.3);
         }
 
-        .navbar-brand {
-            font-size: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
+        /* Hero Section - Simplified */
         .hero-section {
-            background: linear-gradient(135deg, rgba(224, 58, 62, 0.1), rgba(193, 211, 47, 0.1));
-            border-bottom: 4px solid #E03A3E;
-            padding: 4rem 0 2rem;
+            background: linear-gradient(135deg, #E03A3E 0%, #2e0d0d 50%, #E03A3E 100%);
+            border-bottom: 4px solid #C1D32F;
+            padding: 3rem 0;
+            text-align: center;
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: repeating-linear-gradient(45deg,
-                    transparent,
-                    transparent 10px,
-                    rgba(224, 58, 62, 0.03) 10px,
-                    rgba(224, 58, 62, 0.03) 20px);
-            animation: slide 20s linear infinite;
-        }
-
-        @keyframes slide {
-            0% {
-                transform: translateX(-50px) translateY(-50px);
-            }
-
-            100% {
-                transform: translateX(0px) translateY(0px);
-            }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
         }
 
         .hero-section h1 {
-            color: #E03A3E;
-            font-weight: 800;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from {
-                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(224, 58, 62, 0.3);
-            }
-
-            to {
-                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 30px rgba(224, 58, 62, 0.6);
-            }
+            color: #C1D32F;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-size: clamp(2rem, 8vw, 4rem);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero-section p {
-            color: #e0e0e0;
-            font-size: 1.2rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            color: #ffe6e6;
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            margin-bottom: 2rem;
         }
 
-        .back-btn-container {
-            border-left: 4px solid #E03A3E;
-            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(224, 58, 62, 0.1));
-            padding: 1rem;
-            margin-top: 1rem;
-            border-radius: 0 10px 10px 0;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+        .hawks-legacy {
+            display: flex;
+            justify-content: center;
+            gap: clamp(1rem, 5vw, 3rem);
+            margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
-        .back-btn-container:hover {
-            transform: translateX(5px);
-            box-shadow: 5px 5px 15px rgba(224, 58, 62, 0.3);
+        .legacy-item {
+            text-align: center;
         }
 
-        .back-btn-container a {
-            color: #ffffff;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .back-btn-container a:hover {
+        .legacy-number {
             color: #C1D32F;
-            text-shadow: 0 0 10px rgba(193, 211, 47, 0.5);
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            font-weight: 900;
+            display: block;
         }
 
+        .legacy-label {
+            color: #ffe6e6;
+            font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        /* Back Button */
+        .btn-back {
+            display: inline-block;
+            border: 2px solid #C1D32F;
+            color: #C1D32F;
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .btn-back:hover {
+            background-color: #C1D32F;
+            color: #E03A3E;
+            transform: translateY(-2px);
+        }
+
+        .back-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        /* Category Sections */
         .category-section {
             padding: 3rem 0;
+            margin: 1rem 0;
+            background: rgba(30, 30, 30, 0.3);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(224, 58, 62, 0.2);
         }
 
         .category-section h2 {
             color: #C1D32F;
-            font-weight: bold;
-            margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            position: relative;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            text-transform: uppercase;
         }
 
-        .category-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, #E03A3E, #C1D32F);
-            border-radius: 2px;
+        .category-description {
+            text-align: center;
+            color: #ffe6e6;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            margin-bottom: 3rem;
+            font-style: italic;
         }
 
+        /* Simplified Cards */
         .card {
-            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(224, 58, 62, 0.1));
-            border: 1px solid rgba(224, 58, 62, 0.3);
-            border-radius: 15px;
+            background: rgba(30, 30, 30, 0.8);
+            border: 2px solid rgba(224, 58, 62, 0.3);
+            border-radius: 1.2rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(10px);
-            position: relative;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.6s;
-            z-index: 1;
-        }
-
-        .card:hover::before {
-            left: 100%;
         }
 
         .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(224, 58, 62, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(224, 58, 62, 0.2);
             border-color: #C1D32F;
         }
 
-        .card img {
+        .card-img-top {
             height: 250px;
             object-fit: cover;
-            transition: all 0.4s ease;
+            transition: transform 0.2s ease;
         }
 
-        .card:hover img {
-            transform: scale(1.1);
-            filter: brightness(1.1);
+        .card:hover .card-img-top {
+            transform: scale(1.02);
         }
 
         .card-body {
-            position: relative;
-            z-index: 2;
+            text-align: center;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
         }
 
+        /* Simplified Card Content */
         .card-title {
-            color: #ffffff;
-            font-weight: 600;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            color: #C1D32F;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            text-transform: uppercase;
         }
 
+        .player-number {
+            color: #fff;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 900;
+            margin: 0.5rem 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .player-position {
+            color: #ffe6e6;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .card-price {
+            color: #C1D32F;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-weight: 900;
+            margin: 1rem 0;
+        }
+
+        /* Simplified Buttons */
         .btn-hawks {
-            background: linear-gradient(45deg, #E03A3E, #b52e30);
+            background: linear-gradient(45deg, #E03A3E, #C1D32F);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-hawks::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+            padding: 0.75rem 1.5rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn-hawks:hover::before {
-            left: 100%;
         }
 
         .btn-hawks:hover {
-            background: linear-gradient(45deg, #b52e30, #E03A3E);
+            background: linear-gradient(45deg, #b52e30, #a8b825);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(224, 58, 62, 0.4);
         }
 
-        /* Cart functionality styles */
-        .size-selector {
-            margin: 10px 0;
-        }
-
-        .size-btn {
-            background: transparent;
-            border: 2px solid #E03A3E;
+        /* Jersey Type Badges */
+        .jersey-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #C1D32F;
             color: #E03A3E;
-            padding: 5px 15px;
-            margin: 2px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 2;
         }
 
-        .size-btn:hover,
-        .size-btn.active {
-            background: #E03A3E;
-            color: white;
-        }
-
-        .price {
-            color: #C1D32F;
-            font-weight: bold;
-            font-size: 1.2rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        .dropdown-menu {
-            background: rgba(31, 31, 31, 0.95) !important;
-            border: 1px solid rgba(224, 58, 62, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .dropdown-item {
-            color: white !important;
-            transition: all 0.3s ease;
-        }
-
-        .dropdown-item:hover {
-            background: rgba(224, 58, 62, 0.2) !important;
-            color: #C1D32F !important;
-        }
-
-        footer {
-            background: linear-gradient(90deg, #E03A3E, #C1D32F) !important;
-            margin-top: 4rem;
-        }
-
-        footer p {
-            color: white;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Loading animation */
-        .card {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .card.loaded {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Success message */
-        .success-message {
+        /* Floating Cart Button */
+        #cart-toggle-btn {
             position: fixed;
-            top: 20px;
+            bottom: 20px;
             right: 20px;
-            background: linear-gradient(45deg, #28a745, #20c997);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
-            z-index: 9999;
-            transform: translateX(400px);
-            transition: transform 0.5s ease;
+            background: linear-gradient(45deg, #C1D32F, #d4e03a);
+            border: none;
+            color: #E03A3E;
+            font-weight: 700;
+            padding: 16px 24px;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(193, 211, 47, 0.6);
+            cursor: pointer;
+            z-index: 1050;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
         }
 
-        .success-message.show {
-            transform: translateX(0);
+        #cart-toggle-btn:hover {
+            background: linear-gradient(45deg, #a8b825, #b8c030);
+            transform: translateY(-2px);
+        }
+
+        /* Simplified Cart Overlay */
+        #cart-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: min(380px, 100vw);
+            height: 100vh;
+            background: linear-gradient(135deg, #1e1e1e 0%, #4a1d2d 100%);
+            box-shadow: -6px 0 25px rgba(0, 0, 0, 0.5);
+            transition: right 0.3s ease;
+            z-index: 1040;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #cart-overlay.active {
+            right: 0;
+        }
+
+        #cart-header {
+            background: linear-gradient(135deg, #E03A3E, #C1D32F);
+            padding: 1.5rem;
+            color: white;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        #cart-header button {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        #cart-header button:hover {
+            background: white;
+            color: #E03A3E;
+        }
+
+        #cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            color: #f8f9fa;
+        }
+
+        .cart-item {
+            border-bottom: 1px solid rgba(224, 58, 62, 0.2);
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 700;
+            color: #C1D32F;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: #ffe6e6;
+        }
+
+        .cart-item-qty {
+            color: #fff;
+            margin: 0 15px;
+            background: linear-gradient(45deg, #E03A3E, #C1D32F);
+            padding: 0.4rem 0.8rem;
+            border-radius: 1rem;
+            font-weight: 700;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .cart-item-remove {
+            background: transparent;
+            border: 2px solid #f00;
+            color: #f00;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .cart-item-remove:hover {
+            background: #f00;
+            color: white;
+        }
+
+        #cart-total {
+            padding: 2rem 1.5rem;
+            border-top: 2px solid rgba(224, 58, 62, 0.3);
+            font-weight: 900;
+            color: #C1D32F;
+            font-size: 1.4rem;
+            text-align: center;
+            background: rgba(224, 58, 62, 0.1);
+        }
+
+        #cart-empty {
+            text-align: center;
+            margin-top: 3rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hawks-legacy {
+                gap: 1.5rem;
+            }
+
+            #cart-toggle-btn {
+                bottom: 80px;
+                right: 15px;
+            }
+
+            .card-img-top {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hawks-legacy {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .category-section {
+                margin: 0.5rem;
+            }
+        }
+
+        /* Performance optimizations */
+        * {
+            will-change: auto;
+        }
+
+        .card:hover {
+            will-change: transform;
+        }
+
+        .btn-hawks:hover {
+            will-change: transform;
         }
     </style>
 </head>
@@ -324,14 +434,16 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             🏆 Browse Leagues
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="nba.html">NBA</a></li>
-                            <li><a class="dropdown-item" href="eastern.html">Eastern Conference</a></li>
-                            <li><a class="dropdown-item" href="western.html">Western Conference</a></li>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="nba.html">NBA Teams</a></li>
+                            <li><a class="dropdown-item" href="league.html">Football Leagues</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
+                        <a class="nav-link" href="basketball.html">Basketball</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">🛒 Cart</a>
                     </li>
                 </ul>
             </div>
@@ -339,90 +451,84 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section text-center">
-        <div class="container hero-content">
-            <h1 class="display-4 text-uppercase">Atlanta Hawks</h1>
-            <p class="lead">Bold in red, fierce in flight — Hawks legacy 🔴🟡</p>
-            <div class="mt-3">
-                <span class="badge bg-danger fs-6 me-2">Premium Collection</span>
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Atlanta Hawks</h1>
+                <p>Bold Red & Volt Green • True to Atlanta</p>
+                <div class="hawks-legacy">
+                    <div class="legacy-item">
+                        <span class="legacy-number">1</span>
+                        <div class="legacy-label">Championship</div>
+                    </div>
+                    <div class="legacy-item">
+                        <span class="legacy-number">12</span>
+                        <div class="legacy-label">Hall of Famers</div>
+                    </div>
+                    <div class="legacy-item">
+                        <span class="legacy-number">AED 79</span>
+                        <div class="legacy-label">Per Jersey</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Back Button -->
-    <div class="container">
-        <div class="back-btn-container">
-            <a href="eastern.html"><i class="fas fa-arrow-left me-2"></i>Back to Eastern Conference</a>
-        </div>
+    <div class="back-container">
+        <a href="eastern.html" class="btn-back">← Back to Eastern Teams</a>
     </div>
 
-    <!-- New Season Jerseys -->
+    <!-- Current Jerseys Section -->
     <section class="category-section">
         <div class="container">
-            <h2 class="text-center">🆕 New Season Jerseys</h2>
+            <h2>Current Roster</h2>
+            <p class="category-description">Shop the latest jerseys from today's Hawks superstars</p>
             <div class="row g-4 justify-content-center">
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop"
-                            class="card-img-top" alt="Hawks New Jersey">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">2025 Trae Young Home Jersey</h5>
-                            <p class="price">$129.99</p>
-                            <div class="size-selector">
-                                <small class="text-muted">Select Size:</small><br>
-                                <button class="size-btn" data-size="S">S</button>
-                                <button class="size-btn" data-size="M">M</button>
-                                <button class="size-btn" data-size="L">L</button>
-                                <button class="size-btn" data-size="XL">XL</button>
-                            </div>
-                            <button class="btn btn-hawks add-to-cart" data-name="2025 Trae Young Home Jersey"
-                                data-price="129.99"
-                                data-image="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop">
-                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="jersey-badge">Current</div>
+                        <img src="img/jersey1.png" class="card-img-top" alt="Trae Young Hawks Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Trae Young</h3>
+                            <div class="player-number">#11</div>
+                            <p class="player-position">Point Guard</p>
+                            <p class="card-price">AED 79</p>
+                            <button class="btn-hawks add-to-cart-btn" data-name="Trae Young Hawks Jersey"
+                                data-price="79" data-image="img/jersey1.png">
+                                Add to Cart
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=400&h=250&fit=crop"
-                            class="card-img-top" alt="Hawks Away Jersey">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">2025 Dejounte Murray Away Jersey</h5>
-                            <p class="price">$124.99</p>
-                            <div class="size-selector">
-                                <small class="text-muted">Select Size:</small><br>
-                                <button class="size-btn" data-size="S">S</button>
-                                <button class="size-btn" data-size="M">M</button>
-                                <button class="size-btn" data-size="L">L</button>
-                                <button class="size-btn" data-size="XL">XL</button>
-                            </div>
-                            <button class="btn btn-hawks add-to-cart" data-name="2025 Dejounte Murray Away Jersey"
-                                data-price="124.99"
-                                data-image="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=400&h=250&fit=crop">
-                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="jersey-badge">Current</div>
+                        <img src="img/jersey2.png" class="card-img-top" alt="Dejounte Murray Hawks Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Dejounte Murray</h3>
+                            <div class="player-number">#5</div>
+                            <p class="player-position">Shooting Guard</p>
+                            <p class="card-price">AED 79</p>
+                            <button class="btn-hawks add-to-cart-btn" data-name="Dejounte Murray Hawks Jersey"
+                                data-price="79" data-image="img/jersey2.png">
+                                Add to Cart
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=400&h=250&fit=crop"
-                            class="card-img-top" alt="Hawks City Jersey">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">2025 Hawks City Edition Jersey</h5>
-                            <p class="price">$139.99</p>
-                            <div class="size-selector">
-                                <small class="text-muted">Select Size:</small><br>
-                                <button class="size-btn" data-size="S">S</button>
-                                <button class="size-btn" data-size="M">M</button>
-                                <button class="size-btn" data-size="L">L</button>
-                                <button class="size-btn" data-size="XL">XL</button>
-                            </div>
-                            <button class="btn btn-hawks add-to-cart" data-name="2025 Hawks City Edition Jersey"
-                                data-price="139.99"
-                                data-image="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=400&h=250&fit=crop">
-                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="jersey-badge">Current</div>
+                        <img src="img/jersey3.png" class="card-img-top" alt="Clint Capela Hawks Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Clint Capela</h3>
+                            <div class="player-number">#15</div>
+                            <p class="player-position">Center</p>
+                            <p class="card-price">AED 79</p>
+                            <button class="btn-hawks add-to-cart-btn" data-name="Clint Capela Hawks Jersey"
+                                data-price="79" data-image="img/jersey3.png">
+                                Add to Cart
                             </button>
                         </div>
                     </div>
@@ -431,73 +537,56 @@
         </div>
     </section>
 
-    <!-- Retro Jerseys -->
+    <!-- Legends Jerseys Section -->
     <section class="category-section">
         <div class="container">
-            <h2 class="text-center">🏀 Retro Jerseys</h2>
+            <h2>Hawks Legends</h2>
+            <p class="category-description">Honor the greatest players in Hawks history</p>
             <div class="row g-4 justify-content-center">
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop"
-                            class="card-img-top" alt="Retro Hawks Jersey">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Dominique Wilkins 1990 Classic</h5>
-                            <p class="price">$159.99</p>
-                            <div class="size-selector">
-                                <small class="text-muted">Select Size:</small><br>
-                                <button class="size-btn" data-size="S">S</button>
-                                <button class="size-btn" data-size="M">M</button>
-                                <button class="size-btn" data-size="L">L</button>
-                                <button class="size-btn" data-size="XL">XL</button>
-                            </div>
-                            <button class="btn btn-hawks add-to-cart" data-name="Dominique Wilkins 1990 Classic"
-                                data-price="159.99"
-                                data-image="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop">
-                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="jersey-badge">Legend</div>
+                        <img src="img/jersey-retro1.png" class="card-img-top" alt="Dominique Wilkins Hawks Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Dominique Wilkins</h3>
+                            <div class="player-number">#21</div>
+                            <p class="player-position">Human Highlight Reel</p>
+                            <p class="card-price">AED 79</p>
+                            <button class="btn-hawks add-to-cart-btn" data-name="Dominique Wilkins Hawks Jersey"
+                                data-price="79" data-image="img/jersey-retro1.png">
+                                Add to Cart
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=400&h=250&fit=crop"
-                            class="card-img-top" alt="Hawks Throwback">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Hawks 1980s Throwback Jersey</h5>
-                            <p class="price">$149.99</p>
-                            <div class="size-selector">
-                                <small class="text-muted">Select Size:</small><br>
-                                <button class="size-btn" data-size="S">S</button>
-                                <button class="size-btn" data-size="M">M</button>
-                                <button class="size-btn" data-size="L">L</button>
-                                <button class="size-btn" data-size="XL">XL</button>
-                            </div>
-                            <button class="btn btn-hawks add-to-cart" data-name="Hawks 1980s Throwback Jersey"
-                                data-price="149.99"
-                                data-image="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=400&h=250&fit=crop">
-                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="jersey-badge">Legend</div>
+                        <img src="img/jersey-retro2.png" class="card-img-top" alt="Bob Pettit Hawks Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Bob Pettit</h3>
+                            <div class="player-number">#9</div>
+                            <p class="player-position">Hawks Legend</p>
+                            <p class="card-price">AED 79</p>
+                            <button class="btn-hawks add-to-cart-btn" data-name="Bob Pettit Hawks Jersey"
+                                data-price="79" data-image="img/jersey-retro2.png">
+                                Add to Cart
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=400&h=250&fit=crop"
-                            class="card-img-top" alt="Hawks Vintage">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Hawks Vintage Collection Jersey</h5>
-                            <p class="price">$169.99</p>
-                            <div class="size-selector">
-                                <small class="text-muted">Select Size:</small><br>
-                                <button class="size-btn" data-size="S">S</button>
-                                <button class="size-btn" data-size="M">M</button>
-                                <button class="size-btn" data-size="L">L</button>
-                                <button class="size-btn" data-size="XL">XL</button>
-                            </div>
-                            <button class="btn btn-hawks add-to-cart" data-name="Hawks Vintage Collection Jersey"
-                                data-price="169.99"
-                                data-image="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=400&h=250&fit=crop">
-                                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="jersey-badge">Legend</div>
+                        <img src="img/jersey-retro3.png" class="card-img-top" alt="Spud Webb Hawks Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Spud Webb</h3>
+                            <div class="player-number">#4</div>
+                            <p class="player-position">Slam Dunk Champion</p>
+                            <p class="card-price">AED 79</p>
+                            <button class="btn-hawks add-to-cart-btn" data-name="Spud Webb Hawks Jersey" data-price="79"
+                                data-image="img/jersey-retro3.png">
+                                Add to Cart
                             </button>
                         </div>
                     </div>
@@ -506,101 +595,149 @@
         </div>
     </section>
 
-    <!-- Success Message -->
-    <div id="success-message" class="success-message">
-        <i class="fas fa-check-circle me-2"></i>
-        <span>Item added to cart successfully!</span>
+    <!-- Floating Cart Button -->
+    <button id="cart-toggle-btn">
+        🛒 Cart (<span id="cart-count">0</span>)
+    </button>
+
+    <!-- Cart Overlay -->
+    <div id="cart-overlay">
+        <div id="cart-header">
+            <span>Your Cart</span>
+            <button id="close-cart">×</button>
+        </div>
+        <div id="cart-items">
+            <div id="cart-empty">Your cart is empty</div>
+        </div>
+        <div id="cart-total">Total: AED 0</div>
     </div>
 
-    <!-- Footer -->
-    <footer class="text-center py-4 mt-5 hawks-header">
-        <p class="mb-1">© 2025 CourtDripDxb | Atlanta Hawks Collection</p>
-        <p class="mb-0">Not affiliated with the NBA or the Atlanta Hawks.</p>
-    </footer>
-
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Optimized Cart Functionality -->
     <script>
-        // Cart functionality
+        // Cart functionality - optimized for performance
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let selectedSizes = {};
 
-        // Update cart count on page load
-        document.addEventListener('DOMContentLoaded', function () {
-            updateCartCount();
-
-            // Animate cards on load
-            const cards = document.querySelectorAll('.card');
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add('loaded');
-                }, index * 100);
-            });
-        });
-
-        // Size selection
-        document.querySelectorAll('.size-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const card = this.closest('.card');
-                const cardIndex = Array.from(document.querySelectorAll('.card')).indexOf(card);
-
-                // Remove active class from siblings
-                card.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-
-                // Add active class to clicked button
-                this.classList.add('active');
-
-                // Store selected size
-                selectedSizes[cardIndex] = this.dataset.size;
-            });
-        });
-
-        // Add to cart functionality
-        document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const card = this.closest('.card');
-                const cardIndex = Array.from(document.querySelectorAll('.card')).indexOf(card);
-                const selectedSize = selectedSizes[cardIndex];
-
-                if (!selectedSize) {
-                    alert('Please select a size first!');
-                    return;
-                }
-
-                const item = {
-                    id: Date.now() + Math.random(),
-                    name: this.dataset.name,
-                    price: parseFloat(this.dataset.price),
-                    image: this.dataset.image,
-                    size: selectedSize,
-                    quantity: 1,
-                    team: 'Atlanta Hawks'
+        // Debounce function to prevent excessive updates
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
                 };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
 
-                cart.push(item);
-                localStorage.setItem('cart', JSON.stringify(cart));
-                updateCartCount();
-                showSuccessMessage();
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
 
-                // Reset size selection
-                card.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-                delete selectedSizes[cardIndex];
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            // Update cart items
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div id="cart-empty">Your cart is empty</div>';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">AED ${item.price}</div>
+                        </div>
+                        <div class="cart-item-qty">${item.quantity}</div>
+                        <button class="cart-item-remove" onclick="removeFromCart('${item.name}')">×</button>
+                    </div>
+                `).join('');
+            }
+
+            // Update total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `Total: AED ${total}`;
+        }
+
+        const debouncedUpdateCart = debounce(updateCartDisplay, 100);
+
+        function addToCart(name, price, image) {
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: parseInt(price),
+                    image: image,
+                    quantity: 1
+                });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            debouncedUpdateCart();
+
+            // Show cart briefly
+            const cartOverlay = document.getElementById('cart-overlay');
+            cartOverlay.classList.add('active');
+            setTimeout(() => {
+                cartOverlay.classList.remove('active');
+            }, 1500);
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            debouncedUpdateCart();
+        }
+
+        // Event listeners - optimized
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCartDisplay();
+
+            // Add to cart buttons - use event delegation
+            document.addEventListener('click', function (e) {
+                if (e.target.classList.contains('add-to-cart-btn')) {
+                    const name = e.target.getAttribute('data-name');
+                    const price = e.target.getAttribute('data-price');
+                    const image = e.target.getAttribute('data-image');
+                    addToCart(name, price, image);
+                }
+            });
+
+            // Cart toggle
+            document.getElementById('cart-toggle-btn').addEventListener('click', function () {
+                document.getElementById('cart-overlay').classList.toggle('active');
+            });
+
+            // Close cart
+            document.getElementById('close-cart').addEventListener('click', function () {
+                document.getElementById('cart-overlay').classList.remove('active');
+            });
+
+            // Close cart when clicking outside - throttled
+            let isThrottled = false;
+            document.addEventListener('click', function (e) {
+                if (isThrottled) return;
+                isThrottled = true;
+
+                setTimeout(() => {
+                    isThrottled = false;
+                }, 100);
+
+                const cartOverlay = document.getElementById('cart-overlay');
+                const cartBtn = document.getElementById('cart-toggle-btn');
+
+                if (!cartOverlay.contains(e.target) && !cartBtn.contains(e.target)) {
+                    cartOverlay.classList.remove('active');
+                }
             });
         });
-
-        function updateCartCount() {
-            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-            document.getElementById('cart-count').textContent = cartCount;
-        }
-
-        function showSuccessMessage() {
-            const message = document.getElementById('success-message');
-            message.classList.add('show');
-
-            setTimeout(() => {
-                message.classList.remove('show');
-            }, 3000);
-        }
     </script>
 </body>
 

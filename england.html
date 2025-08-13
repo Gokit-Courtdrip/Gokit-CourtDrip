@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>England National Team Jerseys | GOKIT × CourtDripDxb</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #1a1a2e;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ff6b35;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff6b35;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: #ff6b35;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 2rem 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #ffffff 50%, #c8102e 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(200, 16, 46, 0.3));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #c8102e, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .team-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffffff, #c8102e);
+            color: #1a1a2e;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        /* Choice Buttons */
+        .choice-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .choice-btn {
+            background: linear-gradient(135deg, #ffffff, #c8102e);
+            color: #1a1a2e;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 8px 32px rgba(255, 255, 255, 0.3);
+        }
+
+        .choice-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 48px rgba(255, 255, 255, 0.4);
+        }
+
+        .choice-btn.active {
+            background: linear-gradient(135deg, #ff6b35, #c8102e);
+            color: #ffffff;
+        }
+
+        /* Product Section */
+        .product-section {
+            display: none;
+            padding: 60px 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(200, 16, 46, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 50px rgba(255, 255, 255, 0.2);
+        }
+
+        .product-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(200, 16, 46, 0.9);
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .product-features li {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Size Selection */
+        .size-selection {
+            margin-bottom: 1.5rem;
+        }
+
+        .size-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .size-option {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .size-option:hover {
+            background: rgba(200, 16, 46, 0.3);
+            border-color: rgba(200, 16, 46, 0.5);
+            color: #ffffff;
+        }
+
+        .size-option.selected {
+            background: linear-gradient(135deg, #ffffff, #c8102e);
+            border-color: #ffffff;
+            color: #1a1a2e;
+            font-weight: 600;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(135deg, #ffffff, #c8102e);
+            color: #1a1a2e;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
+            background: linear-gradient(135deg, #ff6b35, #c8102e);
+            color: #ffffff;
+        }
+
+        .add-to-cart:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 100px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .choice-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .choice-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .size-options {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">GOKIT × CourtDripDxb</a>
+            <div class="nav-links">
+                <a href="national-teams.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to National
+                    Teams</a>
+                <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1><i class="fas fa-crown"></i> England National Team</h1>
+            <p>The Three Lions - English Pride Collection</p>
+            <div class="team-badge">
+                <i class="fas fa-trophy"></i> Three Lions Collection
+            </div>
+        </div>
+    </section>
+
+    <div class="choice-buttons">
+        <button class="choice-btn active" onclick="showSection('new')">
+            <i class="fas fa-sparkles"></i> New Season (2019–2025)
+        </button>
+        <button class="choice-btn" onclick="showSection('retro')">
+            <i class="fas fa-trophy"></i> Retro (2018 & older)
+        </button>
+    </div>
+
+    <!-- New Season Jerseys -->
+    <section class="product-section active" id="new">
+        <h2 class="section-title">New Season Collection</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2024/25 Home Jersey">
+                    <div class="product-badge">New</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2024/25 Home Jersey</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-check"></i> Nike Design</li>
+                        <li><i class="fas fa-check"></i> Nations League Ready</li>
+                        <li><i class="fas fa-check"></i> Southgate Era</li>
+                        <li><i class="fas fa-check"></i> Bellingham #22 Available</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2023/24 Away Jersey">
+                    <div class="product-badge">Popular</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2023/24 Away Jersey</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-check"></i> Euro 2024 Campaign</li>
+                        <li><i class="fas fa-check"></i> Final Preparation</li>
+                        <li><i class="fas fa-check"></i> Premium Fabric</li>
+                        <li><i class="fas fa-check"></i> Kane #9 Available</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2022/23 Third Jersey">
+                    <div class="product-badge">Limited</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2022/23 Third Jersey</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-check"></i> World Cup Qatar</li>
+                        <li><i class="fas fa-check"></i> Lightweight Material</li>
+                        <li><i class="fas fa-check"></i> Quarter-Final Run</li>
+                        <li><i class="fas fa-check"></i> Saka #7 Available</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2021/22 Euro Final Jersey">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2021/22 Euro Final</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-medal"></i> Euro 2021 Final</li>
+                        <li><i class="fas fa-medal"></i> Wembley Stadium</li>
+                        <li><i class="fas fa-medal"></i> Historic Achievement</li>
+                        <li><i class="fas fa-medal"></i> Sterling #10 Available</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retro Jerseys -->
+    <section class="product-section" id="retro">
+        <h2 class="section-title">Retro Collection</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2018 World Cup Jersey">
+                    <div class="product-badge">Legendary</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2018 World Cup Semi-Final</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-trophy"></i> World Cup 2018 Semi-Final</li>
+                        <li><i class="fas fa-trophy"></i> Russia Campaign</li>
+                        <li><i class="fas fa-trophy"></i> Southgate's Revolution</li>
+                        <li><i class="fas fa-trophy"></i> Fourth Place Finish</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="1996 Euro Jersey">
+                    <div class="product-badge">Historic</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">1996 Euro Semi-Final</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-medal"></i> Euro 1996 Semi-Final</li>
+                        <li><i class="fas fa-medal"></i> Home Tournament</li>
+                        <li><i class="fas fa-medal"></i> Wembley Magic</li>
+                        <li><i class="fas fa-medal"></i> Shearer's Golden Boot</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="1990 World Cup Jersey">
+                    <div class="product-badge">Classic</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">1990 World Cup Semi-Final</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-history"></i> World Cup 1990 Semi-Final</li>
+                        <li><i class="fas fa-history"></i> Italy Campaign</li>
+                        <li><i class="fas fa-history"></i> Gascoigne's Tears</li>
+                        <li><i class="fas fa-history"></i> Fourth Place Finish</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="1966 World Cup Jersey">
+                    <div class="product-badge">Icon</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">1966 World Cup Winners</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-star"></i> World Cup 1966 Winners</li>
+                        <li><i class="fas fa-star"></i> West Germany Final Victory</li>
+                        <li><i class="fas fa-star"></i> Only World Cup Title</li>
+                        <li><i class="fas fa-star"></i> Ultimate Collector's Item</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 GOKIT × CourtDripDxb — England National Team Jerseys</p>
+    </footer>
+
+    <script>
+        // Cart functionality - fully compatible with cart.html
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Show/hide sections function
+        function showSection(type) {
+            // Hide all sections
+            document.querySelectorAll('.product-section').forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            const targetSection = document.getElementById(type);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+                targetSection.classList.add('active');
+            }
+
+            // Update button states
+            document.querySelectorAll('.choice-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Add active class to clicked button
+            if (event && event.target)            // Add active class to clicked button
+                if (event && event.target) {
+                    event.target.classList.add('active');
+                }
+        }
+
+        // Size selection functionality
+        function initializeSizeSelection() {
+            document.querySelectorAll('.size-option').forEach(sizeOption => {
+                sizeOption.addEventListener('click', function () {
+                    const productCard = this.closest('.product-card');
+                    const sizeOptions = productCard.querySelectorAll('.size-option');
+                    const addToCartBtn = productCard.querySelector('.add-to-cart');
+
+                    // Remove selected class from all sizes in this product
+                    sizeOptions.forEach(option => option.classList.remove('selected'));
+
+                    // Add selected class to clicked size
+                    this.classList.add('selected');
+
+                    // Enable add to cart button and update text
+                    addToCartBtn.disabled = false;
+                    addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+
+                    // Store selected size in button data attribute
+                    addToCartBtn.setAttribute('data-selected-size', this.getAttribute('data-size'));
+                });
+            });
+        }
+
+        // Save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            console.log('Cart saved:', cart);
+        }
+
+        // Update cart display in navbar
+        function updateCartDisplay() {
+            const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+
+            // Update all cart links in navbar
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.textContent.includes('Cart') || link.href.includes('cart.html')) {
+                    if (totalItems > 0) {
+                        link.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart (${totalItems})`;
+                    } else {
+                        link.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart`;
+                    }
+                }
+            });
+        }
+
+        // Add to cart function with size selection
+        function addToCart(button) {
+            try {
+                const productCard = button.closest('.product-card');
+                const productName = productCard.querySelector('.product-name').textContent.trim();
+                const productPriceText = productCard.querySelector('.product-price').textContent.trim();
+                const productImage = productCard.querySelector('img').src;
+                const selectedSize = button.getAttribute('data-selected-size');
+
+                // Check if size is selected
+                if (!selectedSize) {
+                    alert('Please select a size first!');
+                    return;
+                }
+
+                // Extract price number from "AED 150" format
+                const priceMatch = productPriceText.match(/\d+(\.\d+)?/);
+                const price = priceMatch ? parseFloat(priceMatch[0]) : 0;
+
+                // Create unique product identifier with size
+                const productWithSize = `${productName} (Size: ${selectedSize})`;
+
+                console.log('Adding item:', {
+                    name: productWithSize,
+                    price: price,
+                    image: productImage,
+                    size: selectedSize
+                });
+
+                // Check if item with same name and size already exists in cart
+                const existingItemIndex = cart.findIndex(item => item.name === productWithSize);
+
+                if (existingItemIndex !== -1) {
+                    // Item exists, increase quantity
+                    cart[existingItemIndex].quantity += 1;
+                    console.log('Increased quantity for:', productWithSize);
+                } else {
+                    // New item, add to cart with exact structure as cart.html expects
+                    const newItem = {
+                        name: productWithSize,
+                        price: price,
+                        image: productImage,
+                        size: selectedSize,
+                        quantity: 1
+                    };
+                    cart.push(newItem);
+                    console.log('Added new item:', newItem);
+                }
+
+                // Save to localStorage
+                saveCart();
+
+                // Update cart display
+                updateCartDisplay();
+
+                // Show success animation
+                showSuccessAnimation(button, productWithSize);
+
+                // Reset size selection
+                resetSizeSelection(productCard);
+
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+                alert('Error adding item to cart. Please try again.');
+            }
+        }
+
+        // Reset size selection after adding to cart
+        function resetSizeSelection(productCard) {
+            const sizeOptions = productCard.querySelectorAll('.size-option');
+            const addToCartBtn = productCard.querySelector('.add-to-cart');
+
+            // Remove selected class from all sizes
+            sizeOptions.forEach(option => option.classList.remove('selected'));
+
+            // Disable add to cart button and reset text
+            addToCartBtn.disabled = true;
+            addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
+            addToCartBtn.removeAttribute('data-selected-size');
+        }
+
+        // Success animation
+        function showSuccessAnimation(button, productName) {
+            const originalHTML = button.innerHTML;
+            const originalStyle = button.style.cssText;
+
+            // Change button appearance
+            button.innerHTML = '<i class="fas fa-check"></i> Added!';
+            button.style.background = 'linear-gradient(135deg, #00ff87, #ffffff)';
+            button.style.color = '#1a1a2e';
+            button.disabled = true;
+
+            // Show notification
+            showNotification(`${productName} added to cart!`);
+
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.style.cssText = originalStyle;
+                button.disabled = false;
+            }, 3000);
+        }
+
+        // Show notification
+        function showNotification(message) {
+            // Remove existing notifications
+            document.querySelectorAll('.cart-notification').forEach(notif => notif.remove());
+
+            const notification = document.createElement('div');
+            notification.className = 'cart-notification';
+            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: linear-gradient(135deg, #ffffff, #c8102e);
+                color: #1a1a2e;
+                padding: 1rem 1.5rem;
+                border-radius: 12px;
+                font-weight: 600;
+                z-index: 10000;
+                box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+                transform: translateX(400px);
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-family: 'Poppins', sans-serif;
+                max-width: 300px;
+            `;
+
+            document.body.appendChild(notification);
+
+            // Animate in
+            setTimeout(() => notification.style.transform = 'translateX(0)', 100);
+
+            // Remove after 4 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 4000);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('England page loaded');
+
+            // Load cart from localStorage
+            cart = JSON.parse(localStorage.getItem('cart')) || [];
+            console.log('Current cart:', cart);
+
+            // Update cart display
+            updateCartDisplay();
+
+            // Initialize size selection
+            initializeSizeSelection();
+
+            // Add event listeners to all add-to-cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if (!this.disabled) {
+                        addToCart(this);
+                    }
+                });
+            });
+
+            // Show new section by default
+            showSection('new');
+
+            console.log('England page initialized');
+        });
+
+        // Utility functions for debugging
+        function checkCart() {
+            console.log('=== CART DEBUG ===');
+            console.log('Cart contents:', cart);
+            console.log('Total items:', cart.reduce((sum, item) => sum + item.quantity, 0));
+            console.log('LocalStorage:', localStorage.getItem('cart'));
+            console.log('==================');
+            return cart;
+        }
+
+        function clearCart() {
+            cart = [];
+            localStorage.removeItem('cart');
+            updateCartDisplay();
+            console.log('Cart cleared');
+            alert('Cart cleared successfully!');
+        }
+
+        function fixCartData() {
+            // Clean up any corrupted cart data
+            cart = cart.filter(item => {
+                return item &&
+                    typeof item.name === 'string' &&
+                    typeof item.price === 'number' &&
+                    typeof item.quantity === 'number' &&
+                    item.quantity > 0;
+            });
+
+            // Ensure all items have required properties
+            cart.forEach(item => {
+                if (!item.image) item.image = 'img/default.png';
+                if (!item.quantity || item.quantity < 1) item.quantity = 1;
+                if (!item.size) item.size = 'M'; // Default size if missing
+            });
+
+            saveCart();
+            updateCartDisplay();
+            console.log('Cart data fixed:', cart);
+            return cart;
+        }
+    </script>
+
+</body>
+
+</html>

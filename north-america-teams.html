@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>North American National Teams — GOKIT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d1a0a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .northamerica-header {
+            background: linear-gradient(90deg, #b22234, #ffffff, #3c3b6e, #00a651) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(178, 34, 52, 0.3);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            color: #fff !important;
+            font-weight: 800;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(178, 34, 52, 0.1), rgba(60, 59, 110, 0.1));
+            border-bottom: 4px solid #b22234;
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(178, 34, 52, 0.03) 10px,
+                    rgba(178, 34, 52, 0.03) 20px);
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-50px) translateY(-50px);
+            }
+
+            100% {
+                transform: translateX(0px) translateY(0px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-section h1 {
+            color: #b22234;
+            font-weight: 800;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(178, 34, 52, 0.3);
+            }
+
+            to {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 30px rgba(178, 34, 52, 0.6);
+            }
+        }
+
+        .hero-section p {
+            color: #e0e0e0;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .back-btn-container {
+            border-left: 4px solid #b22234;
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(178, 34, 52, 0.1));
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0 10px 10px 0;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn-container:hover {
+            transform: translateX(5px);
+            box-shadow: 5px 5px 15px rgba(178, 34, 52, 0.3);
+        }
+
+        .back-btn-container a {
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn-container a:hover {
+            color: #b22234;
+            text-shadow: 0 0 10px rgba(178, 34, 52, 0.5);
+        }
+
+        .teams-section {
+            padding: 3rem 0;
+        }
+
+        .teams-section h2 {
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .teams-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #b22234, #3c3b6e);
+            border-radius: 2px;
+        }
+
+        .team-card {
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(178, 34, 52, 0.1));
+            border: 1px solid rgba(178, 34, 52, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            height: 100%;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+            z-index: 1;
+        }
+
+        .team-card:hover::before {
+            left: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(178, 34, 52, 0.3);
+            border-color: #3c3b6e;
+        }
+
+        .team-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(178, 34, 52, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover .team-logo {
+            border-color: #3c3b6e;
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            position: relative;
+            z-index: 2;
+        }
+
+        .team-name {
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .team-description {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-northamerica {
+            background: linear-gradient(45deg, #b22234, #3c3b6e);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-northamerica::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-northamerica:hover::before {
+            left: 100%;
+        }
+
+        .btn-northamerica:hover {
+            background: linear-gradient(45deg, #3c3b6e, #b22234);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(178, 34, 52, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        .dropdown-menu {
+            background: rgba(31, 31, 31, 0.95) !important;
+            border: 1px solid rgba(178, 34, 52, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown-item {
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(178, 34, 52, 0.2) !important;
+            color: #3c3b6e !important;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #b22234, #ffffff, #3c3b6e, #00a651) !important;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: #fff !important;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            font-weight: 600;
+        }
+
+        /* Loading animation */
+        .team-card {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .team-card.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* North American flag accent */
+        .northamerican-accent {
+            background: linear-gradient(90deg, #b22234 25%, #ffffff 25%, #ffffff 50%, #3c3b6e 50%, #3c3b6e 75%, #00a651 75%);
+            height: 4px;
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        /* Special styling for Gold Cup Champions */
+        .gold-cup-champions {
+            position: relative;
+        }
+
+        .gold-cup-champions::after {
+            content: '🏆 Gold Cup';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #b22234, #ffd700);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        /* World Cup Qualifiers special styling */
+        .world-cup-qualifiers {
+            position: relative;
+        }
+
+        .world-cup-qualifiers::after {
+            content: '⚽ World Cup';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #3c3b6e, #ffffff);
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        /* CONCACAF Giants special styling */
+        .concacaf-giants {
+            position: relative;
+        }
+
+        .concacaf-giants::after {
+            content: '⭐ CONCACAF';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #00a651, #ffd700);
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg northamerica-header sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">⚽ GOKIT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            🏆 Browse Leagues
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="basketball.html">Basketball</a></li>
+                            <li><a class="dropdown-item" href="la-liga.html">La Liga</a></li>
+                            <li><a class="dropdown-item" href="serie-a.html">Serie A</a></li>
+                            <li><a class="dropdown-item" href="national-teams.html">National Teams</a></li>
+                            <li><a class="dropdown-item" href="rotw.html">Rest of the World</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container hero-content">
+            <h1 class="display-4 text-uppercase">North American National Teams</h1>
+            <p class="lead">CONCACAF Excellence & North American Football Pride 🌎</p>
+            <div class="northamerican-accent"></div>
+            <div class="mt-3">
+                <span class="badge bg-danger fs-6 me-2">Gold Cup Glory</span>
+                <span class="badge bg-warning fs-6">World Cup Warriors</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <div class="container">
+        <div class="back-btn-container">
+            <a href="national-teams.html"><i class="fas fa-arrow-left me-2"></i>Back to National Teams</a>
+        </div>
+    </div>
+
+    <!-- Teams Section -->
+    <section class="teams-section">
+        <div class="container">
+            <h2 class="text-center">🏟️ North American National Teams</h2>
+            <div class="row g-4">
+                <!-- United States -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card gold-cup-champions world-cup-qualifiers">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
+                                alt="United States National Team" class="team-logo mb-3">
+                            <h5 class="team-name">United States</h5>
+                            <p class="team-description">USMNT - 7x Gold Cup Champions</p>
+                            <a href="usa.html" class="btn-northamerica">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mexico -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card gold-cup-champions world-cup-qualifiers">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=80&h=80&fit=crop&crop=center"
+                                alt="Mexico National Team" class="team-logo mb-3">
+                            <h5 class="team-name">Mexico</h5>
+                            <p class="team-description">El Tri - 12x Gold Cup Champions</p>
+                            <a href="mexico.html" class="btn-northamerica">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Canada -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card gold-cup-champions world-cup-qualifiers">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
+                                alt="Canada National Team" class="team-logo mb-3">
+                            <h5 class="team-name">Canada</h5>
+                            <p class="team-description">Les Rouges - 2022 World Cup Return</p>
+                            <a href="canada.html" class="btn-northamerica">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Costa Rica -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card concacaf-giants world-cup-qualifiers">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
+                                alt="Costa Rica National Team" class="team-logo mb-3">
+                            <h5 class="team-name">Costa Rica</h5>
+                            <p class="team-description">Los Ticos - World Cup Quarter-Finalists</p>
+                            <a href="costa-rica.html" class="btn-northamerica">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jamaica -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card concacaf-giants">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
+                                alt="Jamaica National Team" class="team-logo mb-3">
+                            <h5 class="team-name">Jamaica</h5>
+                            <p class="team-description">Reggae Boyz - 1998 World Cup Debut</p>
+                            <a href="jamaica.html" class="btn-northamerica">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 mt-5">
+        <p class="mb-1">© 2025 GOKIT | North American National Teams Collection</p>
+        <p class="mb-0">Not affiliated with CONCACAF or any national football associations.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Update cart count on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCartCount();
+
+            // Animate cards on load
+            const cards = document.querySelectorAll('.team-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('loaded');
+                }, index * 100);
+            });
+        });
+
+        function updateCartCount() {
+            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = cartCount;
+        }
+    </script>
+</body>
+
+</html>

@@ -9,6 +9,16 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-orange: #ff8800;
+            --secondary-orange: #ff6600;
+            --west-blue: #0d6efd;
+            --east-red: #dc3545;
+            --dark-bg: #0f0f23;
+            --darker-bg: #1a1a2e;
+            --accent-bg: #16213e;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -18,46 +28,70 @@
         body {
             font-family: 'Poppins', sans-serif;
             background:
-                radial-gradient(circle at 20% 80%, rgba(13, 110, 253, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(220, 53, 69, 0.2) 0%, transparent 50%),
-                linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+                radial-gradient(circle at 20% 80%, rgba(13, 110, 253, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(220, 53, 69, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 136, 0, 0.08) 0%, transparent 70%),
+                linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 50%, var(--accent-bg) 100%);
             color: #fff;
             min-height: 100vh;
-            position: relative;
+            overflow-x: hidden;
         }
 
-        /* Enhanced Navbar */
+        /* Vibrant Navbar */
         .navbar {
-            background: rgba(0, 0, 0, 0.9) !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem 0;
+            background: rgba(0, 0, 0, 0.95) !important;
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(90deg, var(--west-blue), var(--primary-orange), var(--east-red)) 1;
+            padding: 1.2rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
 
         .navbar-brand {
             font-weight: 900 !important;
-            font-size: 1.5rem !important;
-            background: linear-gradient(135deg, #ff8800, #ff6600);
+            font-size: 1.7rem !important;
+            background: linear-gradient(45deg, var(--primary-orange), var(--secondary-orange));
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: brandGlow 3s ease-in-out infinite alternate;
+            text-shadow: 0 0 20px rgba(255, 136, 0, 0.3);
+        }
+
+        @keyframes brandGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
         }
 
         .nav-link {
-            font-weight: 600 !important;
+            font-weight: 700 !important;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
+            border-radius: 10px;
+            margin: 0 5px;
+            padding: 8px 16px !important;
         }
 
         .nav-link:hover {
-            color: #ff8800 !important;
+            color: var(--primary-orange) !important;
+            background: rgba(255, 136, 0, 0.1);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 136, 0, 0.2);
         }
 
-        /* Enhanced Hero Section */
+        /* Colorful Hero Section */
         .hero-section {
             background:
-                linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+                linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
                 url('img/nba-hero.jpg') center/cover;
-            padding: 4rem 0;
+            padding: 4rem 0 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -73,6 +107,17 @@
             background:
                 radial-gradient(circle at 30% 70%, rgba(13, 110, 253, 0.3) 0%, transparent 50%),
                 radial-gradient(circle at 70% 30%, rgba(220, 53, 69, 0.3) 0%, transparent 50%);
+            animation: heroGlow 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroGlow {
+            0% {
+                opacity: 0.7;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
         .hero-content {
@@ -83,83 +128,197 @@
         .hero-title {
             font-size: 3.5rem;
             font-weight: 900;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff, #f0f0f0);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff, #f8f9fa, #fff);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            animation: titleShine 4s ease-in-out infinite;
+        }
+
+        @keyframes titleShine {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            font-weight: 300;
+            font-size: 1.4rem;
+            opacity: 0.95;
+            font-weight: 400;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
-        /* Back Button */
+        .trophy-icon {
+            color: #ffd700;
+            animation: bounce 2s ease-in-out infinite;
+            margin-right: 10px;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-8px);
+            }
+
+            60% {
+                transform: translateY(-4px);
+            }
+        }
+
+        /* Vibrant Back Button */
         .back-button-container {
-            padding: 2rem 0 1rem;
+            padding: 1.5rem 0;
             background: rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .back-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, rgba(255, 136, 0, 0.2), rgba(255, 102, 0, 0.1));
+            border: 2px solid var(--primary-orange);
             color: #fff;
-            padding: 0.75rem 1.5rem;
+            padding: 12px 24px;
             border-radius: 50px;
             font-weight: 700;
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 8px;
+            box-shadow: 0 5px 20px rgba(255, 136, 0, 0.3);
         }
 
         .back-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px) scale(1.05);
+            background: linear-gradient(135deg, rgba(255, 136, 0, 0.3), rgba(255, 102, 0, 0.2));
+            box-shadow: 0 8px 25px rgba(255, 136, 0, 0.4);
             color: #fff;
-            border-color: rgba(255, 136, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
-        /* Conference Cards */
+        /* VIBRANT Conference Cards */
         .conferences-section {
-            padding: 5rem 0;
+            padding: 3rem 0 4rem;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .section-title h2 {
             font-size: 3rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #0d6efd, #dc3545);
+            background: linear-gradient(45deg, var(--west-blue), var(--primary-orange), var(--east-red));
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 1rem;
+            animation: rainbowShift 4s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(255, 136, 0, 0.3);
+        }
+
+        @keyframes rainbowShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         .section-title p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            font-weight: 300;
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .fire-icon {
+            color: #ff4500;
+            animation: fireFlicker 2s ease-in-out infinite alternate;
+            margin-right: 10px;
+            filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.5));
+        }
+
+        @keyframes fireFlicker {
+            0% {
+                transform: scale(1);
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                transform: scale(1.1);
+                filter: hue-rotate(20deg);
+            }
         }
 
         .conf-card {
             position: relative;
             overflow: hidden;
-            height: 400px;
+            height: 450px;
             border-radius: 25px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
             background: rgba(255, 255, 255, 0.05);
-            border: 2px solid transparent;
+            border: 3px solid transparent;
             margin-bottom: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .conf-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 25px;
+            background: linear-gradient(45deg,
+                    var(--west-blue),
+                    var(--primary-orange),
+                    var(--east-red),
+                    var(--west-blue));
+            background-size: 400% 400%;
+            animation: borderGlow 8s ease-in-out infinite;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        @keyframes borderGlow {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .conf-card:hover::before {
+            opacity: 1;
         }
 
         .conf-card:hover {
@@ -168,13 +327,11 @@
         }
 
         .conf-card.west:hover {
-            border-color: #0d6efd;
-            box-shadow: 0 25px 50px rgba(13, 110, 253, 0.3);
+            box-shadow: 0 25px 50px rgba(13, 110, 253, 0.4);
         }
 
         .conf-card.east:hover {
-            border-color: #dc3545;
-            box-shadow: 0 25px 50px rgba(220, 53, 69, 0.3);
+            box-shadow: 0 25px 50px rgba(220, 53, 69, 0.4);
         }
 
         .conf-card img {
@@ -190,7 +347,7 @@
 
         .conf-card:hover img {
             filter: brightness(0.6) saturate(1.4);
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .conf-card-content {
@@ -205,8 +362,8 @@
             align-items: center;
             text-align: center;
             z-index: 2;
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
         }
 
         .conf-logo {
@@ -218,95 +375,198 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 2rem;
-            border: 3px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .conf-logo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: logoSpin 6s linear infinite;
+        }
+
+        @keyframes logoSpin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .conf-card.west:hover .conf-logo {
-            border-color: #0d6efd;
-            box-shadow: 0 0 30px rgba(13, 110, 253, 0.5);
+            border-color: var(--west-blue);
+            box-shadow: 0 0 30px rgba(13, 110, 253, 0.6);
+            background: rgba(13, 110, 253, 0.15);
         }
 
         .conf-card.east:hover .conf-logo {
-            border-color: #dc3545;
-            box-shadow: 0 0 30px rgba(220, 53, 69, 0.5);
+            border-color: var(--east-red);
+            box-shadow: 0 0 30px rgba(220, 53, 69, 0.6);
+            background: rgba(220, 53, 69, 0.15);
         }
 
         .conf-logo i {
             font-size: 2.5rem;
             color: #fff;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .conf-card:hover .conf-logo i {
+            transform: scale(1.1);
         }
 
         .conf-title {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 900;
-            margin-bottom: 1rem;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
         }
 
         .conf-title.west {
-            color: #0d6efd;
+            color: var(--west-blue);
+            text-shadow: 0 6px 20px rgba(13, 110, 253, 0.5);
         }
 
         .conf-title.east {
-            color: #dc3545;
+            color: var(--east-red);
+            text-shadow: 0 6px 20px rgba(220, 53, 69, 0.5);
+        }
+
+        .conf-card:hover .conf-title {
+            transform: scale(1.05);
         }
 
         .conf-description {
-            font-size: 1.1rem;
-            color: #ddd;
+            font-size: 1.2rem;
+            color: #e9ecef;
             margin-bottom: 2rem;
-            opacity: 0.9;
-            font-weight: 300;
+            opacity: 0.95;
+            font-weight: 400;
+            line-height: 1.6;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
         .conf-btn {
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             border-radius: 50px;
-            font-weight: 700;
+            font-weight: 800;
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .conf-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .conf-btn:hover::before {
+            left: 100%;
         }
 
         .conf-btn.west {
-            background: linear-gradient(135deg, #0d6efd, #0056b3);
+            background: linear-gradient(135deg, var(--west-blue), #0056b3);
             color: white;
-            border: 2px solid #0d6efd;
+            border: 2px solid var(--west-blue);
         }
 
         .conf-btn.east {
-            background: linear-gradient(135deg, #dc3545, #b02a37);
+            background: linear-gradient(135deg, var(--east-red), #b02a37);
             color: white;
-            border: 2px solid #dc3545;
+            border: 2px solid var(--east-red);
         }
 
         .conf-btn:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
             color: white;
         }
 
         .conf-btn.west:hover {
-            box-shadow: 0 15px 35px rgba(13, 110, 253, 0.4);
+            box-shadow: 0 15px 35px rgba(13, 110, 253, 0.5);
         }
 
         .conf-btn.east:hover {
-            box-shadow: 0 15px 35px rgba(220, 53, 69, 0.4);
+            box-shadow: 0 15px 35px rgba(220, 53, 69, 0.5);
         }
 
-        /* Enhanced Footer */
+        /* Colorful Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg,
+                    rgba(13, 110, 253, 0.1),
+                    rgba(255, 136, 0, 0.1),
+                    rgba(220, 53, 69, 0.1));
+            padding: 3rem 0;
+            margin: 3rem 0;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-number.west {
+            color: var(--west-blue);
+            text-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+        }
+
+        .stat-number.orange {
+            color: var(--primary-orange);
+            text-shadow: 0 4px 15px rgba(255, 136, 0, 0.3);
+        }
+
+        .stat-number.east {
+            color: var(--east-red);
+            text-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        /* Vibrant Footer */
         footer {
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             padding: 3rem 0 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 4rem;
+            border-top: 2px solid transparent;
+            border-image: linear-gradient(90deg, var(--west-blue), var(--primary-orange), var(--east-red)) 1;
+            margin-top: 3rem;
         }
 
         .footer-content {
@@ -314,17 +574,41 @@
         }
 
         .footer-brand {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #ff8800, #ff6600);
+            background: linear-gradient(45deg, var(--primary-orange), var(--secondary-orange));
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 1rem;
+            animation: brandGlow 3s ease-in-out infinite alternate;
         }
 
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+
+            .conf-card {
+                height: 400px;
+            }
+
+            .conf-title {
+                font-size: 2.2rem;
+            }
+        }
+
         @media (max-width: 768px) {
+            .hero-section {
+                padding: 3rem 0 1.5rem;
+            }
+
             .hero-title {
                 font-size: 2.5rem;
             }
@@ -345,12 +629,39 @@
                 width: 80px;
                 height: 80px;
             }
+
+            .conf-logo i {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .conf-card {
+                height: 320px;
+            }
+
+            .conf-title {
+                font-size: 1.6rem;
+            }
+
+            .conf-description {
+                font-size: 1rem;
+            }
+
+            .conf-btn {
+                padding: 1rem 2rem;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <!-- Enhanced Navbar -->
+    <!-- Vibrant Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -376,21 +687,21 @@
         </div>
     </nav>
 
-    <!-- Enhanced Hero Section -->
+    <!-- Colorful Hero Section -->
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <i class="fas fa-trophy"></i> Choose Your Conference
+                    <i class="fas fa-trophy trophy-icon"></i>Choose Your Conference
                 </h1>
                 <p class="hero-subtitle">
-                    East vs West - Select your conference to explore teams
+                    East vs West — Select your conference to explore legendary teams
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Back Button -->
+    <!-- Vibrant Back Button -->
     <div class="back-button-container">
         <div class="container">
             <a href="basketball.html" class="back-btn">
@@ -399,11 +710,11 @@
         </div>
     </div>
 
-    <!-- Enhanced Conference Selection -->
+    <!-- VIBRANT Conference Selection -->
     <section class="conferences-section">
         <div class="container">
             <div class="section-title">
-                <h2><i class="fas fa-fire"></i> NBA Conferences</h2>
+                <h2><i class="fas fa-fire fire-icon"></i>NBA Conferences</h2>
                 <p>Choose your side in the ultimate basketball rivalry</p>
             </div>
 
@@ -412,18 +723,19 @@
                 <div class="col-lg-5 col-md-6">
                     <a href="western.html" class="text-decoration-none">
                         <div class="conf-card west">
-                            <img src="img/western.jpg" alt="Western Conference">
+                            <img src="img/western.jpg" alt="Western Conference" loading="lazy">
                             <div class="conf-card-content">
                                 <div class="conf-logo">
-                                    <i class="fas fa-mountain"></i>
+                                    <i class="fas fa-sun"></i>
                                 </div>
                                 <h3 class="conf-title west">Western Conference</h3>
                                 <p class="conf-description">
                                     The Wild West of Basketball<br>
-                                    15 teams battling for supremacy
+                                    15 elite teams battling for supremacy<br>
+                                    <strong>Lakers • Warriors • Nuggets</strong>
                                 </p>
                                 <div class="conf-btn west">
-                                    <i class="fas fa-arrow-right"></i> View Western Teams
+                                    <i class="fas fa-arrow-right"></i> Explore Western Teams
                                 </div>
                             </div>
                         </div>
@@ -434,28 +746,53 @@
                 <div class="col-lg-5 col-md-6">
                     <a href="eastern.html" class="text-decoration-none">
                         <div class="conf-card east">
-                            <img src="img/western.jpg" alt="Eastern Conference">
+                            <img src="img/western.jpg" alt="Eastern Conference" loading="lazy">
                             <div class="conf-card-content">
                                 <div class="conf-logo">
-                                    <i class="fas fa-city"></i>
+                                    <i class="fas fa-building"></i>
                                 </div>
                                 <h3 class="conf-title east">Eastern Conference</h3>
                                 <p class="conf-description">
                                     The East Coast Elite<br>
-                                    15 teams with championship dreams
+                                    15 powerhouse teams with championship dreams<br>
+                                    <strong>Celtics • Heat • 76ers</strong>
                                 </p>
                                 <div class="conf-btn east">
-                                    <i class="fas fa-arrow-right"></i> View Eastern Teams
+                                    <i class="fas fa-arrow-right"></i> Explore Eastern Teams
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
+
+            <!-- Colorful Stats -->
+            <div class="stats-section">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-number west">30</div>
+                            <div class="stat-label">Total NBA Teams</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-number orange">82</div>
+                            <div class="stat-label">Games Per Season</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-item">
+                            <div class="stat-number east">16</div>
+                            <div class="stat-label">Playoff Teams</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Enhanced Footer -->
+    <!-- Vibrant Footer -->
     <footer class="mt-auto">
         <div class="container">
             <div class="footer-content">
@@ -463,41 +800,51 @@
                     <i class="fas fa-basketball-ball"></i> CourtDripDxb
                 </div>
                 <p>© 2025 CourtDripDxb — NBA Conference Selector</p>
-                <p><small><i class="fas fa-info-circle"></i> Not affiliated with the NBA or any official team or
-                        league.</small></p>
+                <p><small><i class="fas fa-info-circle"></i> Not affiliated with the NBA</small></p>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Update cart display
+        // Lightweight cart display
         function updateCartDisplay() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const total = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
             const cartLink = document.getElementById('cartLink');
 
-            if (totalItems > 0) {
-                cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart (${totalItems})`;
-            } else {
-                cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart`;
+            if (cartLink) {
+                cartLink.innerHTML = total > 0
+                    ? `<i class="fas fa-shopping-cart"></i> Cart (${total})`
+                    : `<i class="fas fa-shopping-cart"></i> Cart`;
             }
         }
 
-        // Initialize cart display
-        document.addEventListener('DOMContentLoaded', updateCartDisplay);
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function () {
+        // Optimized scroll handler
+        let ticking = false;
+        function updateNavbar() {
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
-                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.98)';
+                navbar.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.4)';
             } else {
-                navbar.style.background = 'rgba(0, 0, 0, 0.9)';
-                navbar.style.boxShadow = 'none';
+                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+                navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
             }
-        });
+            ticking = false;
+        }
+
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(updateNavbar);
+                ticking = true;
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', updateCartDisplay);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('storage', updateCartDisplay);
     </script>
 </body>
 
