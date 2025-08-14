@@ -539,84 +539,36 @@
                     </div>
                 </div>
 
-                <!-- Newcastle United -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
-                                alt="Newcastle United" class="team-logo mb-3">
-                            <h5 class="team-name">Newcastle United</h5>
-                            <p class="team-description">The Magpies - Toon Army Pride</p>
-                            <a href="newcastle.html" class="btn-premier">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <!-- Footer -->
+                <footer class="text-center py-4 mt-5">
+                    <p class="mb-1">© 2025 GOKIT | Premier League Collection</p>
+                    <p class="mb-0">Not affiliated with the Premier League or any football clubs.</p>
+                </footer>
 
-                <!-- Everton -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card merseyside-derby">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=80&h=80&fit=crop&crop=center"
-                                alt="Everton" class="team-logo mb-3">
-                            <h5 class="team-name">Everton FC</h5>
-                            <p class="team-description">The Toffees - The People's Club</p>
-                            <a href="everton.html" class="btn-premier">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-                <!-- West Ham United -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card london-derby">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
-                                alt="West Ham United" class="team-logo mb-3">
-                            <h5 class="team-name">West Ham United</h5>
-                            <p class="team-description">The Hammers - East London Pride</p>
-                            <a href="west-ham.html" class="btn-premier">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <script>
+                    // Cart functionality
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    <!-- Footer -->
-    <footer class="text-center py-4 mt-5">
-        <p class="mb-1">© 2025 GOKIT | Premier League Collection</p>
-        <p class="mb-0">Not affiliated with the Premier League or any football clubs.</p>
-    </footer>
+                    // Update cart count on page load
+                    document.addEventListener('DOMContentLoaded', function () {
+                        updateCartCount();
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+                        // Animate cards on load - FIXED
+                        const cards = document.querySelectorAll('.team-card');
+                        cards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('animate-in');
+                            }, index * 100);
+                        });
+                    });
 
-    <script>
-        // Cart functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        // Update cart count on page load
-        document.addEventListener('DOMContentLoaded', function () {
-            updateCartCount();
-
-            // Animate cards on load - FIXED
-            const cards = document.querySelectorAll('.team-card');
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add('animate-in');
-                }, index * 100);
-            });
-        });
-
-        function updateCartCount() {
-            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-            document.getElementById('cart-count').textContent = cartCount;
-        }
-    </script>
+                    function updateCartCount() {
+                        const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+                        document.getElementById('cart-count').textContent = cartCount;
+                    }
+                </script>
 </body>
 
 </html>

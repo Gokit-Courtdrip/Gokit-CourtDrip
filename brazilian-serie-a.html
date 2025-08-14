@@ -4,38 +4,38 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>South American National Teams — GOKIT</title>
+    <title>Brazilian Serie A — GOKIT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d1a0a 100%);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #1b1b2d 100%);
             color: white;
             min-height: 100vh;
         }
 
-        .southamerica-header {
-            background: linear-gradient(90deg, #007ac1, #ffffff, #ffd700, #ff6b35) !important;
+        .serie-a-header {
+            background: linear-gradient(90deg, #009739, #FFDF00, #002776) !important;
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 2px 20px rgba(0, 151, 57, 0.3);
         }
 
         .navbar-brand {
             font-size: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            color: #fff !important;
+            color: #000 !important;
             font-weight: 800;
         }
 
         .navbar-nav .nav-link {
-            color: #fff !important;
+            color: #000 !important;
             font-weight: 600;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
         }
 
         .hero-section {
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 215, 0, 0.1));
-            border-bottom: 4px solid #ff6b35;
+            background: linear-gradient(135deg, rgba(0, 151, 57, 0.1), rgba(255, 223, 0, 0.1));
+            border-bottom: 4px solid #009739;
             padding: 4rem 0 2rem;
             position: relative;
             overflow: hidden;
@@ -51,8 +51,8 @@
             background: repeating-linear-gradient(45deg,
                     transparent,
                     transparent 10px,
-                    rgba(255, 107, 53, 0.03) 10px,
-                    rgba(255, 107, 53, 0.03) 20px);
+                    rgba(0, 151, 57, 0.03) 10px,
+                    rgba(0, 151, 57, 0.03) 20px);
             animation: slide 20s linear infinite;
         }
 
@@ -72,7 +72,7 @@
         }
 
         .hero-section h1 {
-            color: #ff6b35;
+            color: #009739;
             font-weight: 800;
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
             animation: glow 2s ease-in-out infinite alternate;
@@ -80,11 +80,11 @@
 
         @keyframes glow {
             from {
-                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 107, 53, 0.3);
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 151, 57, 0.3);
             }
 
             to {
-                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 107, 53, 0.6);
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 151, 57, 0.6);
             }
         }
 
@@ -95,8 +95,8 @@
         }
 
         .back-btn-container {
-            border-left: 4px solid #ff6b35;
-            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(255, 107, 53, 0.1));
+            border-left: 4px solid #009739;
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(0, 151, 57, 0.1));
             padding: 1rem;
             margin-top: 1rem;
             border-radius: 0 10px 10px 0;
@@ -106,7 +106,7 @@
 
         .back-btn-container:hover {
             transform: translateX(5px);
-            box-shadow: 5px 5px 15px rgba(255, 107, 53, 0.3);
+            box-shadow: 5px 5px 15px rgba(0, 151, 57, 0.3);
         }
 
         .back-btn-container a {
@@ -117,18 +117,22 @@
         }
 
         .back-btn-container a:hover {
-            color: #ff6b35;
-            text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+            color: #009739;
+            text-shadow: 0 0 10px rgba(0, 151, 57, 0.5);
         }
 
         .teams-section {
-            padding: 3rem 0;
+            padding: 4rem 0;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .teams-section h2 {
-            color: #ffd700;
+            color: #009739;
             font-weight: bold;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             position: relative;
         }
@@ -141,19 +145,28 @@
             transform: translateX(-50%);
             width: 100px;
             height: 3px;
-            background: linear-gradient(90deg, #ff6b35, #ffd700);
+            background: linear-gradient(90deg, #009739, #FFDF00);
             border-radius: 2px;
         }
 
+        /* Center the Santos card */
+        .santos-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .team-card {
-            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(255, 107, 53, 0.1));
-            border: 1px solid rgba(255, 107, 53, 0.3);
-            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(0, 151, 57, 0.1));
+            border: 1px solid rgba(0, 151, 57, 0.3);
+            border-radius: 20px;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(10px);
             position: relative;
             height: 100%;
+            max-width: 400px;
+            width: 100%;
         }
 
         .team-card::before {
@@ -173,58 +186,62 @@
         }
 
         .team-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
-            border-color: #ffd700;
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 151, 57, 0.4);
+            border-color: #FFDF00;
         }
 
         .team-logo {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid rgba(255, 107, 53, 0.5);
+            border: 4px solid rgba(0, 151, 57, 0.5);
             transition: all 0.3s ease;
         }
 
         .team-card:hover .team-logo {
-            border-color: #ffd700;
+            border-color: #FFDF00;
             transform: scale(1.1);
         }
 
         .card-body {
             position: relative;
             z-index: 2;
+            padding: 2.5rem 2rem !important;
         }
 
         .team-name {
             color: #ffffff;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            font-size: 1.5rem;
         }
 
         .team-description {
             color: #b0b0b0;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
 
-        .btn-southamerica {
-            background: linear-gradient(45deg, #ff6b35, #ffd700);
-            color: white;
+        .btn-serie-a {
+            background: linear-gradient(45deg, #009739, #FFDF00);
+            color: #000;
             border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 12px 30px;
+            border-radius: 30px;
             font-weight: 600;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             text-decoration: none;
             display: inline-block;
+            font-size: 1.1rem;
         }
 
-        .btn-southamerica::before {
+        .btn-serie-a::before {
             content: '';
             position: absolute;
             top: 0;
@@ -235,21 +252,21 @@
             transition: left 0.5s;
         }
 
-        .btn-southamerica:hover::before {
+        .btn-serie-a:hover::before {
             left: 100%;
         }
 
-        .btn-southamerica:hover {
-            background: linear-gradient(45deg, #ffd700, #ff6b35);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.4);
-            color: white;
+        .btn-serie-a:hover {
+            background: linear-gradient(45deg, #FFDF00, #009739);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 151, 57, 0.4);
+            color: #000;
             text-decoration: none;
         }
 
         .dropdown-menu {
             background: rgba(31, 31, 31, 0.95) !important;
-            border: 1px solid rgba(255, 107, 53, 0.3);
+            border: 1px solid rgba(0, 151, 57, 0.3);
             backdrop-filter: blur(10px);
         }
 
@@ -259,25 +276,25 @@
         }
 
         .dropdown-item:hover {
-            background: rgba(255, 107, 53, 0.2) !important;
-            color: #ffd700 !important;
+            background: rgba(0, 151, 57, 0.2) !important;
+            color: #FFDF00 !important;
         }
 
         footer {
-            background: linear-gradient(90deg, #007ac1, #ffffff, #ffd700, #ff6b35) !important;
+            background: linear-gradient(90deg, #009739, #FFDF00, #002776) !important;
             margin-top: 4rem;
         }
 
         footer p {
-            color: #fff !important;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            color: #000 !important;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
             font-weight: 600;
         }
 
         /* Loading animation */
         .team-card {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(50px);
         }
 
         .team-card.loaded {
@@ -285,73 +302,85 @@
             transform: translateY(0);
         }
 
-        /* South American flag accent */
-        .southamerican-accent {
-            background: linear-gradient(90deg, #007ac1 20%, #ffffff 20%, #ffffff 40%, #ffd700 40%, #ffd700 60%, #ff6b35 60%, #ff6b35 80%, #28a745 80%);
+        /* Brazilian flag accent */
+        .brazilian-accent {
+            background: linear-gradient(90deg, #009739 33%, #FFDF00 33%, #FFDF00 66%, #002776 66%);
             height: 4px;
             width: 100%;
             margin: 1rem 0;
         }
 
-        /* Special styling for World Cup Champions */
-        .world-cup-champions {
+        /* Special styling for Santos */
+        .santos-special {
             position: relative;
         }
 
-        .world-cup-champions::after {
-            content: '🏆 World Cup';
+        .santos-special::after {
+            content: '⭐ Pelé Legacy';
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(45deg, #ff6b35, #ffd700);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.7rem;
-            font-weight: bold;
-        }
-
-        /* Copa America Champions special styling */
-        .copa-america-champions {
-            position: relative;
-        }
-
-        .copa-america-champions::after {
-            content: '🏆 Copa América';
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(45deg, #009739, #fedd00);
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #009739, #FFDF00);
             color: #000;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.7rem;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 151, 57, 0.3);
         }
 
-        /* CONMEBOL special styling */
-        .conmebol-giants {
+        /* Spotlight effect for the centered Santos card */
+        .santos-spotlight {
             position: relative;
         }
 
-        .conmebol-giants::after {
-            content: '⭐ CONMEBOL';
+        .santos-spotlight::before {
+            content: '';
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(45df, #74acdf, #ffffff);
-            color: #000;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.7rem;
-            font-weight: bold;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: radial-gradient(circle at center, rgba(0, 151, 57, 0.1) 0%, transparent 70%);
+            border-radius: 30px;
+            z-index: -1;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .team-card {
+                max-width: 350px;
+            }
+
+            .card-body {
+                padding: 2rem 1.5rem !important;
+            }
+
+            .team-name {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg southamerica-header sticky-top">
+    <nav class="navbar navbar-expand-lg serie-a-header sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">⚽ GOKIT</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -365,10 +394,13 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="basketball.html">Basketball</a></li>
+                            <li><a class="dropdown-item" href="premier-league.html">Premier League</a></li>
                             <li><a class="dropdown-item" href="la-liga.html">La Liga</a></li>
                             <li><a class="dropdown-item" href="serie-a.html">Serie A</a></li>
+                            <li><a class="dropdown-item" href="bundesliga.html">Bundesliga</a></li>
+                            <li><a class="dropdown-item" href="ligue1.html">Ligue 1</a></li>
                             <li><a class="dropdown-item" href="national-teams.html">National Teams</a></li>
-                            <li><a class="dropdown-item" href="rotw.html">Rest of the World</a></li>
+                            <li><a class="dropdown-item" href="rest-of-world.html">Rest of the World</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -382,12 +414,12 @@
     <!-- Hero Section -->
     <section class="hero-section text-center">
         <div class="container hero-content">
-            <h1 class="display-4 text-uppercase">South American National Teams</h1>
-            <p class="lead">CONMEBOL Excellence & South American Football Glory 🌎</p>
-            <div class="southamerican-accent"></div>
+            <h1 class="display-4 text-uppercase">Campeonato Brasileiro Série A</h1>
+            <p class="lead">Brazil's Premier Football League</p>
+            <div class="brazilian-accent"></div>
             <div class="mt-3">
-                <span class="badge bg-danger fs-6 me-2">World Cup Glory</span>
-                <span class="badge bg-warning fs-6">Copa América Champions</span>
+                <span class="badge bg-success fs-6 me-2">Brasileirão</span>
+                <span class="badge bg-warning fs-6">Jogo Bonito</span>
             </div>
         </div>
     </section>
@@ -395,67 +427,48 @@
     <!-- Back Button -->
     <div class="container">
         <div class="back-btn-container">
-            <a href="national-teams.html"><i class="fas fa-arrow-left me-2"></i>Back to National Teams</a>
+            <a href="rest-of-world.html"><i class="fas fa-arrow-left me-2"></i>Back to Rest of the World</a>
         </div>
     </div>
 
     <!-- Teams Section -->
     <section class="teams-section">
         <div class="container">
-            <h2 class="text-center">🏟️ South American National Teams</h2>
-            <div class="row g-4">
-                <!-- Brazil -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card world-cup-champions">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
-                                alt="Brazil National Team" class="team-logo mb-3">
-                            <h5 class="team-name">Brazil</h5>
-                            <p class="team-description">Seleção - 5x World Cup Champions</p>
-                            <a href="brazil.html" class="btn-southamerica">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <h2 class="text-center">🏟️ Featured Brazilian Team</h2>
 
-                <!-- Argentina -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card world-cup-champions copa-america-champions">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=80&h=80&fit=crop&crop=center"
-                                alt="Argentina National Team" class="team-logo mb-3">
-                            <h5 class="team-name">Argentina</h5>
-                            <p class="team-description">Albiceleste - Messi's World Cup</p>
-                            <a href="argentina.html" class="btn-southamerica">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+            <!-- Centered Santos Card -->
+            <div class="santos-container">
+                <div class="santos-spotlight">
+                    <div class="team-card santos-special">
+                        <div class="card-body text-center">
+                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=100&h=100&fit=crop&crop=center"
+                                alt="Santos FC" class="team-logo mb-4">
+                            <h5 class="team-name">Santos FC</h5>
+                            <p class="team-description">O Peixe - The Fish & Home of Pelé<br>
+                                <small class="text-muted">Where Brazilian Football Legends Are Born</small>
+                            </p>
+                            <a href="santos.html" class="btn-serie-a">
+                                <i class="fas fa-tshirt me-2"></i>Explore Santos Jerseys
                             </a>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Uruguay -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card world-cup-champions">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
-                                alt="Uruguay National Team" class="team-logo mb-3">
-                            <h5 class="team-name">Uruguay</h5>
-                            <p class="team-description">La Celeste - First World Cup Winners</p>
-                            <a href="uruguay.html" class="btn-southamerica">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <!-- Coming Soon Message -->
+            <div class="text-center mt-5">
+                <p class="text-bold">
+                    <i class="fas fa-plus-circle me-2"></i>
+                    More Brazilian Serie A teams coming soon to GOKIT!
+                </p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="text-center py-4 mt-5">
-        <p class="mb-1">© 2025 GOKIT | South American National Teams Collection</p>
-        <p class="mb-0">Not affiliated with CONMEBOL or any national football associations.</p>
+        <p class="mb-1">© 2025 GOKIT | Brazilian Serie A Collection</p>
+        <p class="mb-0">Not affiliated with CBF or any football clubs.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -468,19 +481,43 @@
         document.addEventListener('DOMContentLoaded', function () {
             updateCartCount();
 
-            // Animate cards on load
-            const cards = document.querySelectorAll('.team-card');
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add('loaded');
-                }, index * 100);
-            });
+            // Animate Santos card on load with delay for dramatic effect
+            const santosCard = document.querySelector('.team-card');
+            setTimeout(() => {
+                santosCard.classList.add('loaded');
+            }, 500);
         });
 
         function updateCartCount() {
-            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            const cartCount = cart.reduce((total, item) => total + (item.quantity || 1), 0);
             document.getElementById('cart-count').textContent = cartCount;
         }
+
+        // Add special Santos entrance animation
+        document.addEventListener('DOMContentLoaded', function () {
+            const santosCard = document.querySelector('.santos-special');
+
+            // Add a special entrance effect
+            setTimeout(() => {
+                santosCard.style.animation = 'fadeInUp 1s ease-out forwards';
+            }, 800);
+        });
+
+        // Add the fadeInUp animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 

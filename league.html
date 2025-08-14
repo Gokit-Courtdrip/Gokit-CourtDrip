@@ -43,11 +43,18 @@
             padding: 0 2rem;
         }
 
+        .logo-container {
+            text-decoration: none;
+        }
+
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 900;
-            color: #ff6b35;
+            background: linear-gradient(135deg, #ff6b35, #f7931e, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-decoration: none;
             letter-spacing: -1px;
         }
@@ -87,34 +94,60 @@
             color: #ff6b35;
         }
 
-        /* Hero Section */
+        /* Hero Section with Football Field Background */
         .hero {
-            padding: 140px 2rem 80px;
-            text-align: center;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             position: relative;
+            padding: 120px 2rem;
+            text-align: center;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            margin-top: 76px;
+            /* Account for fixed navbar */
         }
 
-        .hero::before {
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            background-color: #1a1a2e;
+            /* Fallback color */
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+            filter: brightness(0.7);
+        }
+
+        .hero::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            background-size: 50px 50px;
-            opacity: 0.3;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.85) 0%, rgba(22, 33, 62, 0.85) 50%, rgba(15, 52, 96, 0.85) 100%);
+            z-index: 2;
         }
 
         .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 3;
+            max-width: 800px;
+            width: 100%;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 900;
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, #ff6b35, #f7931e, #ffd700);
@@ -122,14 +155,16 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 300;
+        .tagline {
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 600;
+            color: #ff6b35;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         /* Leagues Section */
@@ -320,6 +355,20 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff6b35, #f7931e, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         .footer p {
             color: rgba(255, 255, 255, 0.6);
             font-weight: 300;
@@ -327,8 +376,9 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
+            .hero {
+                padding: 100px 1rem;
+                min-height: 350px;
             }
 
             .section-title {
@@ -347,6 +397,26 @@
             .nav-container {
                 padding: 0 1rem;
             }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 80px 1rem;
+                min-height: 300px;
+            }
+
+            .leagues-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .league-card {
+                margin: 0 auto;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -355,7 +425,9 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">GOKIT</a>
+            <a href="index.html" class="logo-container">
+                <span class="logo">GOKIT.ME</span>
+            </a>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="league.html" class="nav-link active">Leagues</a>
@@ -365,11 +437,14 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Football Field Background -->
     <section class="hero">
+        <div class="hero-background">
+            <img src="img/football.jpg" alt="Football field" class="hero-image">
+        </div>
         <div class="hero-content">
             <h1>Football Leagues</h1>
-            <p>Discover authentic jerseys from the world's most prestigious football competitions</p>
+            <div class="tagline">Wear The Legacy. Feel The Passion.</div>
         </div>
     </section>
 
@@ -440,7 +515,6 @@
                     <a href="la-liga.html" class="league-btn">Shop La Liga</a>
                 </div>
             </div>
-
 
             <!-- Serie A -->
             <div class="league-card">
@@ -566,6 +640,9 @@
 
     <!-- Footer -->
     <footer class="footer">
+        <div class="footer-logo">
+            <span class="footer-logo-text">GOKIT.ME</span>
+        </div>
         <p>© 2025 GOKIT — Football Jerseys from Around the World</p>
     </footer>
 </body>

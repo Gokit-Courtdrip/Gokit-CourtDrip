@@ -5,10 +5,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GOKIT × CourtDripDxb</title>
+
+    <!-- Preload critical assets for better performance -->
+    <link rel="preload" href="img/indexhero.png" as="image">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap"
+        as="style">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --football-color: #00c851;
+            --football-hover: #00a63f;
+            --basketball-color: #ff8800;
+            --basketball-hover: #ff6600;
+            --dark-bg: #0a0a14;
+            --text-light: #fff;
+            --text-muted: rgba(255, 255, 255, 0.8);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -18,12 +34,12 @@
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-            color: #fff;
+            color: var(--text-light);
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Enhanced Navbar - Responsive */
+        /* Navbar */
         .navbar {
             background: rgba(0, 0, 0, 0.9) !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -34,11 +50,18 @@
         .navbar-brand {
             font-weight: 900 !important;
             font-size: clamp(1.1rem, 4vw, 1.5rem) !important;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-football {
+            color: var(--football-color);
+        }
+
+        .brand-basketball {
+            color: var(--basketball-color);
         }
 
         .nav-link {
@@ -49,8 +72,9 @@
         }
 
         .nav-link:hover {
-            color: #667eea !important;
+            color: var(--basketball-color) !important;
             transform: translateY(-2px);
+            will-change: transform;
         }
 
         .dropdown-menu {
@@ -61,7 +85,7 @@
         }
 
         .dropdown-item {
-            color: #fff !important;
+            color: var(--text-light) !important;
             padding: 0.75rem 1.5rem;
             transition: all 0.3s ease;
             font-weight: 500;
@@ -69,51 +93,98 @@
         }
 
         .dropdown-item:hover {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: #fff !important;
+            background: linear-gradient(135deg, var(--basketball-color), var(--basketball-hover));
+            color: var(--dark-bg) !important;
         }
 
-        /* Enhanced Hero Section - Fully Responsive */
+        .dropdown-football:hover {
+            background: linear-gradient(135deg, var(--football-color), var(--football-hover));
+            color: var(--dark-bg) !important;
+        }
+
+        .dropdown-basketball:hover {
+            background: linear-gradient(135deg, var(--basketball-color), var(--basketball-hover));
+            color: var(--dark-bg) !important;
+        }
+
+        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
-                url('img/indexhero.png') center/cover no-repeat;
-            background-color: #0f0f23;
-            /* Fallback color */
+            background: var(--dark-bg);
             min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem 1rem;
             position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: url('img/indexhero.png') center/contain no-repeat;
+            z-index: 1;
+            max-width: 1600px;
+            max-height: 900px;
+            opacity: 0.95;
+            will-change: transform;
         }
 
         .hero-content {
             text-align: center;
-            max-width: 90%;
-            padding: 1.5rem;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 85%;
+            padding: 1.25rem;
+            position: relative;
+            z-index: 2;
         }
 
+        /* More Subtle Hero Title Enhancement */
+        .title-container {
+            background: rgba(0, 0, 0, 0.4);
+            /* Much more transparent background */
+            padding: 1.2rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            /* Only takes up as much space as needed */
+            max-width: 100%;
+        }
+
+        /* Make the title text pop more */
         .hero h1 {
-            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-size: clamp(1.8rem, 7vw, 3.5rem);
             font-weight: 900;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff, #f0f0f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 0.5rem;
             line-height: 1.2;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+            /* Enhanced text shadow */
+        }
+
+        .hero-title-football {
+            color: var(--football-color);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 200, 81, 0.4);
+            /* Subtle glow with stronger shadow */
+        }
+
+        .hero-title-basketball {
+            color: var(--basketball-color);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 136, 0, 0.4);
+            /* Subtle glow with stronger shadow */
         }
 
         .hero p {
-            font-size: clamp(1rem, 3.5vw, 1.4rem);
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            font-weight: 300;
+            font-size: clamp(0.9rem, 3vw, 1.3rem);
+            margin-bottom: 0;
+            font-weight: 400;
             line-height: 1.4;
+            color: var(--text-light);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            /* Enhanced text shadow */
         }
 
         .hero-buttons {
@@ -125,8 +196,8 @@
         }
 
         .hero-btn {
-            padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem);
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            padding: clamp(0.7rem, 1.8vw, 0.9rem) clamp(1.4rem, 3.5vw, 2.2rem);
+            font-size: clamp(0.85rem, 2.3vw, 1rem);
             font-weight: 700;
             border: none;
             border-radius: 50px;
@@ -137,26 +208,82 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            min-width: 150px;
+            min-width: 140px;
             justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            will-change: transform;
         }
 
         .btn-football {
-            background: linear-gradient(135deg, #00c851, #00a63f);
+            background: linear-gradient(135deg, var(--football-color), var(--football-hover));
             color: white;
         }
 
         .btn-basketball {
-            background: linear-gradient(135deg, #ff8800, #ff6600);
+            background: linear-gradient(135deg, var(--basketball-color), var(--basketball-hover));
             color: white;
         }
 
-        /* Enhanced Section Cards - Responsive */
+        /* Ripple effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 600ms linear;
+            background-color: rgba(255, 255, 255, 0.6);
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: clamp(2rem, 6vw, 4rem) 0;
+            margin: clamp(2rem, 6vw, 4rem) 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: clamp(1rem, 3vw, 2rem) 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .stat-number {
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--basketball-color), var(--basketball-hover));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            opacity: 0.8;
+            font-weight: 300;
+            line-height: 1.3;
+        }
+
+        /* Sections Container */
         .sections-container {
             padding: clamp(2rem, 8vw, 5rem) 0;
         }
@@ -170,7 +297,7 @@
         .section-title h2 {
             font-size: clamp(1.8rem, 6vw, 3rem);
             font-weight: 900;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, var(--basketball-color), var(--basketball-hover));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -194,11 +321,15 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .section-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            will-change: transform;
         }
 
         .section-card img {
@@ -233,9 +364,16 @@
         .section-card-content h3 {
             font-weight: 900;
             font-size: clamp(1.4rem, 5vw, 2.2rem);
-            color: #fff;
             margin-bottom: 1rem;
             line-height: 1.2;
+        }
+
+        .football-title {
+            color: var(--football-color);
+        }
+
+        .basketball-title {
+            color: var(--basketball-color);
         }
 
         .section-card-content p {
@@ -259,6 +397,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
         }
 
         .section-card-content .btn:hover {
@@ -266,39 +406,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
-        /* Stats Section - Responsive */
-        .stats-section {
-            background: rgba(255, 255, 255, 0.05);
-            padding: clamp(2rem, 6vw, 4rem) 0;
-            margin: clamp(2rem, 6vw, 4rem) 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: clamp(1rem, 3vw, 2rem) 0.5rem;
-        }
-
-        .stat-number {
-            font-size: clamp(1.8rem, 6vw, 3rem);
-            font-weight: 900;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
-        }
-
-        .stat-label {
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            opacity: 0.8;
-            font-weight: 300;
-            line-height: 1.3;
-        }
-
-        /* Enhanced Footer - Responsive */
+        /* Footer */
         footer {
             background: rgba(0, 0, 0, 0.9);
             padding: clamp(2rem, 5vw, 3rem) 0 clamp(1rem, 3vw, 2rem);
@@ -314,12 +422,12 @@
         .footer-brand {
             font-size: clamp(1.2rem, 4vw, 1.5rem);
             font-weight: 900;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             line-height: 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .footer-links {
@@ -342,187 +450,242 @@
         }
 
         .footer-links a:hover {
-            color: #667eea;
+            color: var(--basketball-color);
             transform: translateY(-2px);
+        }
+
+        /* Social Media Sections */
+        .social-sections {
+            display: flex;
+            justify-content: center;
+            gap: clamp(3rem, 8vw, 6rem);
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social-section {
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .social-section h4 {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .football-heading {
+            color: var(--football-color);
+        }
+
+        .basketball-heading {
+            color: var(--basketball-color);
+        }
+
+        .developer-heading {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: clamp(0.75rem, 2vw, 1rem);
-            margin: 2rem 0;
+            gap: 1rem;
             flex-wrap: wrap;
         }
 
         .social-icon {
-            width: clamp(40px, 8vw, 50px);
-            height: clamp(40px, 8vw, 50px);
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--dark-bg);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        /* Fix for social icons */
+        .social-icon i {
+            /* Make sure icons are properly centered and visible */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Fix for Instagram icon specifically */
+        .fab.fa-instagram {
+            font-size: 1.3rem;
+            /* Slightly larger for better visibility */
+        }
+
+        /* Ensure consistent icon sizes */
+        .fab.fa-facebook-f {
+            font-size: 1.1rem;
+            /* Facebook icon is naturally smaller */
+        }
+
+        .football-icon {
+            border: 2px solid var(--football-color);
+            color: var(--football-color);
+        }
+
+        .football-icon:hover {
+            background: var(--football-color);
+            color: var(--dark-bg);
+            box-shadow: 0 10px 25px rgba(0, 200, 81, 0.2);
+        }
+
+        .basketball-icon {
+            border: 2px solid var(--basketball-color);
+            color: var(--basketball-color);
+            background-color: rgba(10, 10, 20, 0.95);
+            /* Slightly lighter than default */
+        }
+
+        .basketball-icon:hover {
+            background: var(--basketball-color);
+            color: var(--dark-bg);
+            box-shadow: 0 10px 25px rgba(255, 136, 0, 0.3);
+            /* Increased glow effect */
+        }
+
+        .developer-icon {
+            border: 2px solid #667eea;
+            color: #667eea;
+        }
+
+        .developer-icon:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: var(--dark-bg);
+            border-color: #667eea;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
         }
 
         .social-icon:hover {
             transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            will-change: transform;
         }
 
-        .footer-content p {
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
             font-size: clamp(0.8rem, 2vw, 1rem);
             line-height: 1.4;
             margin-bottom: 0.5rem;
+            opacity: 0.8;
         }
 
-        .footer-content small {
+        .footer-bottom small {
             font-size: clamp(0.7rem, 1.8vw, 0.85rem);
+            opacity: 0.6;
         }
 
-        /* Responsive Design - Specific Breakpoints */
+        /* Loading animation */
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
 
-        /* Extra Small Devices (phones, 576px and down) */
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--basketball-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loaded {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Focus styles for keyboard navigation */
+        .keyboard-navigation *:focus {
+            outline: 2px solid var(--basketball-color) !important;
+            outline-offset: 2px !important;
+        }
+
+        /* Responsive Design */
         @media (max-width: 575.98px) {
-            .navbar {
-                padding: 0.5rem 0;
-            }
-
-            .navbar-brand {
-                font-size: 1.1rem !important;
-            }
-
-            .hero {
-                min-height: 50vh;
-                padding: 1rem 0.5rem;
-            }
-
-            .hero-content {
-                max-width: 95%;
-                padding: 1rem;
-            }
-
-            .hero-buttons {
+            .social-sections {
                 flex-direction: column;
-                gap: 0.75rem;
+                gap: 2rem;
             }
 
-            .hero-btn {
-                width: 100%;
-                max-width: 250px;
-                padding: 0.75rem 1.5rem;
-            }
-
-            .section-card {
-                height: 250px;
-                border-radius: 15px;
-            }
-
-            .section-card-content {
-                padding: 1rem;
-            }
-
-            .stats-section {
-                padding: 1.5rem 0;
-                margin: 1.5rem 0;
-            }
-
-            .stat-item {
-                padding: 1rem 0.25rem;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
+            .social-section {
+                min-width: auto;
             }
 
             .social-icons {
                 gap: 0.75rem;
             }
-        }
 
-        /* Small Devices (landscape phones, 576px and up) */
-        @media (min-width: 576px) and (max-width: 767.98px) {
-            .hero {
-                min-height: 55vh;
+            .social-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
             }
 
             .hero-buttons {
-                gap: 1rem;
+                flex-direction: column;
+                width: 100%;
             }
 
-            .section-card {
-                height: 300px;
-            }
-        }
-
-        /* Medium Devices (tablets, 768px and up) */
-        @media (min-width: 768px) and (max-width: 991.98px) {
-            .hero {
-                min-height: 60vh;
+            .hero-btn {
+                width: 100%;
             }
 
-            .section-card {
-                height: 350px;
-            }
-
-            .hero-buttons {
-                gap: 1.25rem;
-            }
-        }
-
-        /* Large Devices (desktops, 992px and up) */
-        @media (min-width: 992px) {
-            .hero {
-                min-height: 70vh;
-            }
-
-            .section-card {
-                height: 400px;
-            }
-        }
-
-        /* Extra Large Devices (large desktops, 1200px and up) */
-        @media (min-width: 1200px) {
-            .container {
-                max-width: 1140px;
-            }
-        }
-
-        /* Ultra Wide Screens */
-        @media (min-width: 1400px) {
-            .container {
-                max-width: 1320px;
-            }
-        }
-
-        /* Landscape Orientation for Mobile */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .hero {
-                min-height: 80vh;
+            .title-container {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
             }
 
             .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .navbar {
-                padding: 0.25rem 0;
+                margin-bottom: 0.5rem;
             }
         }
 
-        /* High DPI Displays */
-        @media (-webkit-min-device-pixel-ratio: 2),
-        (min-resolution: 192dpi) {
-            .section-card img {
-                image-rendering: -webkit-optimize-contrast;
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            .social-sections {
+                gap: 2.5rem;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .social-sections {
+                gap: 4rem;
             }
         }
 
@@ -534,46 +697,38 @@
                 transition-duration: 0.01ms !important;
             }
         }
-
-        /* Print Styles */
-        @media print {
-
-            .navbar,
-            .hero-buttons,
-            .social-icons {
-                display: none;
-            }
-
-            body {
-                background: white;
-                color: black;
-            }
-        }
     </style>
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-container" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
     <!-- Enhanced Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <i class="fas fa-bolt"></i> GOKIT × CourtDripDxb
+                <i class="fas fa-bolt"></i> <span class="brand-football">GOKIT</span> × <span
+                    class="brand-basketball">CourtDripDxb</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button"
-                            data-bs-toggle="dropdown">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-store"></i> Shop
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="league.html">
+                            <li><a class="dropdown-item dropdown-football" href="league.html">
                                     <i class="fas fa-futbol"></i> GOKIT (Football)
                                 </a></li>
-                            <li><a class="dropdown-item" href="basketball.html">
+                            <li><a class="dropdown-item dropdown-basketball" href="basketball.html">
                                     <i class="fas fa-basketball-ball"></i> CourtDripDxb (Basketball)
                                 </a></li>
                         </ul>
@@ -588,11 +743,14 @@
         </div>
     </nav>
 
-    <!-- Enhanced Hero Section -->
+    <!-- Updated Hero Section with Subtle Text Enhancement -->
     <header class="hero">
         <div class="hero-content">
-            <h1><i class="fas fa-crown"></i> GOKIT × CourtDripDxb</h1>
-            <p>Wear The Game. Own The Court. - Elite Football & Basketball Apparel</p>
+            <div class="title-container">
+                <h1><i class="fas fa-crown"></i> <span class="hero-title-football">GOKIT</span> × <span
+                        class="hero-title-basketball">CourtDripDxb</span></h1>
+                <p>Wear The Game. Own The Game. - Football & Basketball Jerseys</p>
+            </div>
             <div class="hero-buttons">
                 <a href="league.html" class="hero-btn btn-football">
                     <i class="fas fa-futbol"></i> Shop Football
@@ -610,25 +768,25 @@
             <div class="row">
                 <div class="col-md-3 col-6">
                     <div class="stat-item">
-                        <div class="stat-number">500+</div>
+                        <div class="stat-number" data-target="500">500+</div>
                         <div class="stat-label">Premium Jerseys</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="stat-item">
-                        <div class="stat-number">50+</div>
+                        <div class="stat-number" data-target="50">50+</div>
                         <div class="stat-label">Teams Available</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="stat-item">
-                        <div class="stat-number">1000+</div>
+                        <div class="stat-number" data-target="1000">1000+</div>
                         <div class="stat-label">Happy Customers</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="stat-item">
-                        <div class="stat-number">24/7</div>
+                        <div class="stat-number" data-target="24">24/7</div>
                         <div class="stat-label">Support</div>
                     </div>
                 </div>
@@ -646,9 +804,9 @@
             <div class="row">
                 <div class="col-lg-6 mb-4">
                     <div class="section-card">
-                        <img src="img/football.jpg" alt="Football Section">
+                        <img src="img/football.jpg" alt="Football Section" loading="lazy">
                         <div class="section-card-content">
-                            <h3><i class="fas fa-futbol"></i> GOKIT</h3>
+                            <h3 class="football-title"><i class="fas fa-futbol"></i> GOKIT</h3>
                             <p>Premium football kits from top leagues worldwide<br>Retro classics & latest seasons</p>
                             <a href="league.html" class="btn btn-success">
                                 <i class="fas fa-arrow-right"></i> Explore Football
@@ -658,9 +816,9 @@
                 </div>
                 <div class="col-lg-6 mb-4">
                     <div class="section-card">
-                        <img src="img/basketball.jpg" alt="Basketball Section">
+                        <img src="img/basketball.jpg" alt="Basketball Section" loading="lazy">
                         <div class="section-card-content">
-                            <h3><i class="fas fa-basketball-ball"></i> CourtDripDxb</h3>
+                            <h3 class="basketball-title"><i class="fas fa-basketball-ball"></i> CourtDripDxb</h3>
                             <p>Elite basketball jerseys & streetwear<br>NBA legends & current stars</p>
                             <a href="basketball.html" class="btn btn-warning">
                                 <i class="fas fa-arrow-right"></i> Explore Basketball
@@ -672,38 +830,121 @@
         </div>
     </section>
 
-    <!-- Enhanced Footer -->
+    <!-- Simplified Footer with Single Social Links -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <i class="fas fa-bolt"></i> GOKIT × CourtDripDxb
+                    <i class="fas fa-bolt"></i> <span class="brand-football">GOKIT</span> × <span
+                        class="brand-basketball">CourtDripDxb</span>
                 </div>
+
                 <div class="footer-links">
                     <a href="#"><i class="fas fa-home"></i> Home</a>
                     <a href="league.html"><i class="fas fa-futbol"></i> Football</a>
                     <a href="basketball.html"><i class="fas fa-basketball-ball"></i> Basketball</a>
                     <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
                 </div>
-                <div class="social-icons">
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+
+                <!-- Simplified Social Media Sections -->
+                <div class="social-sections">
+                    <div class="social-section">
+                        <h4 class="football-heading"><i class="fas fa-futbol"></i> GOKIT</h4>
+                        <div class="social-icons">
+                            <a href="https://instagram.com/gokit_me" target="_blank" rel="noopener"
+                                class="social-icon football-icon" aria-label="GOKIT Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://tiktok.com/@gokit_me" target="_blank" rel="noopener"
+                                class="social-icon football-icon" aria-label="GOKIT TikTok">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="https://facebook.com/gokit.me" target="_blank" rel="noopener"
+                                class="social-icon football-icon" aria-label="GOKIT Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://wa.me/971501234567?text=Hi! I'm interested in GOKIT football jerseys"
+                                target="_blank" rel="noopener" class="social-icon football-icon"
+                                aria-label="GOKIT WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://twitter.com/gokit_official" target="_blank" rel="noopener"
+                                class="social-icon football-icon" aria-label="GOKIT Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="social-section">
+                        <h4 class="basketball-heading"><i class="fas fa-basketball-ball"></i> CourtDripDxb</h4>
+                        <div class="social-icons">
+                            <a href="https://instagram.com/courtdripdxb" target="_blank" rel="noopener"
+                                class="social-icon basketball-icon" aria-label="CourtDripDxb Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://tiktok.com/@courtdripdxb" target="_blank" rel="noopener"
+                                class="social-icon basketball-icon" aria-label="CourtDripDxb TikTok">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="https://facebook.com/courtdripdxb" target="_blank" rel="noopener"
+                                class="social-icon basketball-icon" aria-label="CourtDripDxb Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://wa.me/971501234567?text=Hi! I'm interested in CourtDripDxb basketball jerseys"
+                                target="_blank" rel="noopener" class="social-icon basketball-icon"
+                                aria-label="CourtDripDxb WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://twitter.com/courtdripdxb" target="_blank" rel="noopener"
+                                class="social-icon basketball-icon" aria-label="CourtDripDxb Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Developer Section -->
+                    <div class="social-section">
+                        <h4 class="developer-heading"><i class="fas fa-code"></i> Developer</h4>
+                        <div class="social-icons">
+                            <a href="https://github.com/Gokit-Courtdrip" target="_blank" rel="noopener"
+                                class="social-icon developer-icon" aria-label="Developer GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://instagram.com/4rshia_mv" target="_blank" rel="noopener"
+                                class="social-icon developer-icon" aria-label="Developer Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://wa.me/971503500109?text=Hi! I'm interested in your web development services"
+                                target="_blank" rel="noopener" class="social-icon developer-icon"
+                                aria-label="Developer WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <p>© 2025 GOKIT × CourtDripDxb. All rights reserved.</p>
-                <p><small><i class="fas fa-info-circle"></i> Not affiliated with any official leagues or teams.</small>
-                </p>
+
+                <div class="footer-bottom">
+                    <p>© 2025 GOKIT × CourtDripDxb. All rights reserved.</p>
+                    <p><small><i class="fas fa-info-circle"></i> Not affiliated with any official leagues or
+                            teams.</small></p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
     <script>
+        // Loading screen
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                document.getElementById('loading').classList.add('loaded');
+            }, 500);
+        });
+
         // Update cart display
         function updateCartDisplay() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            const totalItems = cart.reduce((sum, item) => sum + (parseInt(item.quantity) || 1), 0);
             const cartLink = document.getElementById('cartLink');
 
             if (totalItems > 0) {
@@ -716,8 +957,13 @@
         // Initialize cart display
         document.addEventListener('DOMContentLoaded', updateCartDisplay);
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', function () {
+        // Navbar scroll effect with throttling
+        let lastScrollTime = 0;
+        function updateNavbar() {
+            const now = Date.now();
+            if (now - lastScrollTime < 50) return; // Throttle to 50ms
+
+            lastScrollTime = now;
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 100) {
                 navbar.style.background = 'rgba(0, 0, 0, 0.95)';
@@ -726,36 +972,239 @@
                 navbar.style.background = 'rgba(0, 0, 0, 0.9)';
                 navbar.style.boxShadow = 'none';
             }
-        });
-
-        // Touch-friendly interactions for mobile
-        if ('ontouchstart' in window) {
-            document.querySelectorAll('.section-card').forEach(card => {
-                card.addEventListener('touchstart', function () {
-                    this.style.transform = 'translateY(-5px)';
-                });
-
-                card.addEventListener('touchend', function () {
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                });
-            });
         }
 
-        // Optimize images for different screen sizes
-        function optimizeImages() {
-            const images = document.querySelectorAll('img');
-            images.forEach(img => {
-                if (window.innerWidth < 768) {
-                    img.loading = 'lazy';
+        window.addEventListener('scroll', updateNavbar, { passive: true });
+
+        // Add ripple effect to buttons
+        function createRipple(event) {
+            const button = event.currentTarget;
+
+            // Check if button already has a ripple
+            const ripple = button.querySelector('.ripple');
+            if (ripple) {
+                ripple.remove();
+            }
+
+            const circle = document.createElement("span");
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+
+            // Calculate position relative to the button
+            const rect = button.getBoundingClientRect();
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - rect.left - radius}px`;
+            circle.style.top = `${event.clientY - rect.top - radius}px`;
+            circle.classList.add("ripple");
+
+            button.appendChild(circle);
+
+            // Remove ripple after animation completes
+            setTimeout(() => {
+                if (circle.parentElement) {
+                    circle.remove();
+                }
+            }, 600);
+        }
+
+        // Add ripple effect to all buttons
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.btn, .hero-btn').forEach(button => {
+                button.addEventListener('click', createRipple);
+                button.addEventListener('touchstart', function (e) {
+                    // For touch devices
+                    const touch = e.touches[0];
+                    const event = new MouseEvent('click', {
+                        clientX: touch.clientX,
+                        clientY: touch.clientY
+                    });
+                    createRipple(event);
+                }, { passive: true });
+            });
+        });
+
+        // Intersection Observer for animations
+        document.addEventListener('DOMContentLoaded', function () {
+            if ('IntersectionObserver' in window) {
+                const animationObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            animationObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                document.querySelectorAll('.stat-item, .section-card').forEach(el => {
+                    animationObserver.observe(el);
+                });
+            } else {
+                // Fallback for browsers that don't support Intersection Observer
+                document.querySelectorAll('.stat-item, .section-card').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                });
+            }
+        });
+
+        // Stats Animation with performance optimization
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+
+            stats.forEach(stat => {
+                const originalText = stat.textContent;
+                const targetValue = parseInt(stat.getAttribute('data-target'));
+
+                // Skip animation for non-numeric values or if already animated
+                if (isNaN(targetValue) || stat.classList.contains('animated')) {
+                    return;
+                }
+
+                stat.classList.add('animated');
+
+                // Handle special case for 24/7
+                if (originalText === '24/7') {
+                    let currentValue = 0;
+                    const timer = setInterval(() => {
+                        currentValue += 1;
+                        if (currentValue >= 24) {
+                            stat.textContent = '24/7';
+                            clearInterval(timer);
+                        } else {
+                            stat.textContent = currentValue + '/7';
+                        }
+                    }, 40);
+                } else {
+                    // Handle other stats with + suffix
+                    const hasPlus = originalText.includes('+');
+                    let currentValue = 0;
+                    const increment = Math.max(1, Math.floor(targetValue / 40));
+
+                    const timer = setInterval(() => {
+                        currentValue += increment;
+                        if (currentValue >= targetValue) {
+                            stat.textContent = targetValue + (hasPlus ? '+' : '');
+                            clearInterval(timer);
+                        } else {
+                            stat.textContent = Math.floor(currentValue) + (hasPlus ? '+' : '');
+                        }
+                    }, 30);
                 }
             });
         }
 
-        // Call on load and resize
-        window.addEventListener('load', optimizeImages);
-        window.addEventListener('resize', optimizeImages);
+        // Trigger stats animation when in view
+        document.addEventListener('DOMContentLoaded', function () {
+            if ('IntersectionObserver' in window) {
+                const statsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            setTimeout(animateStats, 300); // Slight delay for better UX
+                            statsObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.2
+                });
+
+                const statsSection = document.querySelector('.stats-section');
+                if (statsSection) {
+                    statsObserver.observe(statsSection);
+                }
+            } else {
+                // Fallback for browsers without Intersection Observer
+                setTimeout(animateStats, 1000);
+            }
+        });
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', function () {
+            document.body.classList.remove('keyboard-navigation');
+        });
+
+        // Smooth scrolling for anchor links
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+
+                    // Only process actual anchor links, not just "#"
+                    if (href !== '#') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            // Check if browser supports smooth scrolling
+                            if ('scrollBehavior' in document.documentElement.style) {
+                                target.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            } else {
+                                // Fallback for browsers that don't support smooth scrolling
+                                target.scrollIntoView();
+                            }
+                        }
+                    }
+                });
+            });
+        });
+
+        // Optimize for different connection speeds
+        document.addEventListener('DOMContentLoaded', function () {
+            if ('connection' in navigator) {
+                const connection = navigator.connection;
+                if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+                    // Disable animations for slow connections
+                    document.querySelectorAll('.stat-item, .section-card').forEach(el => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                        el.style.transition = 'none';
+                    });
+
+                    // Load lower quality images
+                    document.querySelectorAll('img').forEach(img => {
+                        if (img.src.includes('?')) {
+                            img.src = img.src + '&q=60'; // Lower quality
+                        } else {
+                            img.src = img.src + '?q=60'; // Lower quality
+                        }
+                    });
+                }
+            }
+        });
+
+        // Error handling for images
+        document.addEventListener('error', function (e) {
+            if (e.target.tagName === 'IMG') {
+                console.log('Image failed to load:', e.target.src);
+                // Replace with fallback image
+                e.target.src = 'img/placeholder.jpg';
+                e.target.onerror = null; // Prevent infinite loop
+            }
+        }, true);
+
+        // Service Worker registration for better caching (optional)
+        if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function (registration) {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(function (registrationError) {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
     </script>
 </body>
 

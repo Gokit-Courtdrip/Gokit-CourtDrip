@@ -172,16 +172,29 @@
             margin-bottom: 3rem;
         }
 
-        /* Enhanced League Card */
+        /* Enhanced League Card with Better Colors */
         .league-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(15, 15, 35, 0.8);
             border-radius: 25px;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             height: 450px;
             position: relative;
-            border: 2px solid transparent;
+            border: 2px solid rgba(255, 136, 0, 0.2);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .league-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom,
+                    rgba(15, 15, 35, 0.2),
+                    rgba(15, 15, 35, 0.6),
+                    rgba(15, 15, 35, 0.8));
+            z-index: 2;
         }
 
         .league-card::before {
@@ -191,7 +204,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 136, 0, 0.2), transparent);
             transition: left 0.8s;
             z-index: 3;
         }
@@ -202,7 +215,7 @@
 
         .league-card:hover {
             transform: translateY(-20px) scale(1.03);
-            border-color: rgba(255, 136, 0, 0.5);
+            border-color: rgba(255, 136, 0, 0.7);
             box-shadow: 0 20px 60px rgba(255, 136, 0, 0.4);
         }
 
@@ -210,12 +223,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.6);
+            filter: brightness(0.7);
             transition: all 0.5s ease;
         }
 
         .league-card:hover img {
-            filter: brightness(0.8);
+            filter: brightness(0.9);
             transform: scale(1.05);
         }
 
@@ -227,34 +240,45 @@
             text-align: center;
             z-index: 4;
             width: 90%;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 136, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .league-title {
             font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
+            color: #ffffff;
             text-shadow:
-                3px 3px 6px rgba(0, 0, 0, 0.9),
-                0 0 20px rgba(255, 136, 0, 0.5);
+                0 0 10px rgba(255, 136, 0, 0.7),
+                0 0 20px rgba(255, 136, 0, 0.5),
+                0 0 30px rgba(255, 136, 0, 0.3);
             transition: all 0.3s ease;
         }
 
         .league-card:hover .league-title {
             transform: scale(1.1);
+            color: #ffffff;
             text-shadow:
-                4px 4px 8px rgba(0, 0, 0, 0.95),
-                0 0 30px rgba(255, 136, 0, 0.7);
+                0 0 15px rgba(255, 136, 0, 0.8),
+                0 0 30px rgba(255, 136, 0, 0.6),
+                0 0 45px rgba(255, 136, 0, 0.4);
         }
 
         .league-description {
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
         }
 
         .league-btn {
-            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            background: linear-gradient(135deg, #ff8800, #ff6600);
             color: white;
             padding: 1.2rem 2.5rem;
             border-radius: 30px;
@@ -265,15 +289,16 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 8px 25px rgba(255, 136, 0, 0.4);
-            border: 2px solid transparent;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .league-btn:hover {
             transform: translateY(-5px) scale(1.05);
             color: white;
+            background: linear-gradient(135deg, #ff9922, #ff7722);
             box-shadow: 0 15px 40px rgba(255, 136, 0, 0.6);
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         /* Enhanced Footer */
@@ -380,6 +405,10 @@
             .navbar-brand {
                 font-size: 1.3rem;
             }
+
+            .league-card-content {
+                padding: 1.5rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -409,6 +438,11 @@
 
             .back-btn:hover {
                 transform: translateX(-5px) scale(1.02);
+            }
+
+            .league-card-content {
+                padding: 1rem;
+                width: 95%;
             }
         }
 
@@ -493,7 +527,7 @@
         </div>
     </section>
 
-    <!-- Enhanced League Section -->
+    <!-- Enhanced League Section with Improved Colors -->
     <section class="py-5">
         <div class="container">
             <h2 class="text-center section-title">
@@ -505,6 +539,7 @@
                     <a href="nba.html" class="text-decoration-none">
                         <div class="league-card">
                             <img src="img/nba.jpg" alt="NBA Basketball League" loading="lazy">
+                            <div class="league-overlay"></div>
                             <div class="league-card-content">
                                 <h3 class="league-title">NBA</h3>
                                 <p class="league-description">National Basketball Association</p>

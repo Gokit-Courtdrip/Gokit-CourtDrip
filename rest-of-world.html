@@ -4,38 +4,38 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>La Liga — GOKIT</title>
+    <title>Rest of the World — GOKIT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d1b0a 100%);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a1b2d 100%);
             color: white;
             min-height: 100vh;
         }
 
-        .la-liga-header {
-            background: linear-gradient(90deg, #c60b1e, #ffc400, #c60b1e) !important;
+        .rotw-header {
+            background: linear-gradient(90deg, #1e3c72, #2a5298, #1e3c72) !important;
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(198, 11, 30, 0.3);
+            box-shadow: 0 2px 20px rgba(30, 60, 114, 0.3);
         }
 
         .navbar-brand {
             font-size: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            color: #000 !important;
+            color: #fff !important;
             font-weight: 800;
         }
 
         .navbar-nav .nav-link {
-            color: #000 !important;
+            color: #fff !important;
             font-weight: 600;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .hero-section {
-            background: linear-gradient(135deg, rgba(198, 11, 30, 0.1), rgba(255, 196, 0, 0.1));
-            border-bottom: 4px solid #c60b1e;
+            background: linear-gradient(135deg, rgba(30, 60, 114, 0.1), rgba(42, 82, 152, 0.1));
+            border-bottom: 4px solid #1e3c72;
             padding: 4rem 0 2rem;
             position: relative;
             overflow: hidden;
@@ -51,8 +51,8 @@
             background: repeating-linear-gradient(45deg,
                     transparent,
                     transparent 10px,
-                    rgba(198, 11, 30, 0.03) 10px,
-                    rgba(198, 11, 30, 0.03) 20px);
+                    rgba(30, 60, 114, 0.03) 10px,
+                    rgba(30, 60, 114, 0.03) 20px);
             animation: slide 20s linear infinite;
         }
 
@@ -72,7 +72,7 @@
         }
 
         .hero-section h1 {
-            color: #c60b1e;
+            color: #2a5298;
             font-weight: 800;
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
             animation: glow 2s ease-in-out infinite alternate;
@@ -80,11 +80,11 @@
 
         @keyframes glow {
             from {
-                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(198, 11, 30, 0.3);
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(30, 60, 114, 0.3);
             }
 
             to {
-                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 30px rgba(198, 11, 30, 0.6);
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 30px rgba(30, 60, 114, 0.6);
             }
         }
 
@@ -95,8 +95,8 @@
         }
 
         .back-btn-container {
-            border-left: 4px solid #c60b1e;
-            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(198, 11, 30, 0.1));
+            border-left: 4px solid #1e3c72;
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(30, 60, 114, 0.1));
             padding: 1rem;
             margin-top: 1rem;
             border-radius: 0 10px 10px 0;
@@ -106,7 +106,7 @@
 
         .back-btn-container:hover {
             transform: translateX(5px);
-            box-shadow: 5px 5px 15px rgba(198, 11, 30, 0.3);
+            box-shadow: 5px 5px 15px rgba(30, 60, 114, 0.3);
         }
 
         .back-btn-container a {
@@ -117,23 +117,23 @@
         }
 
         .back-btn-container a:hover {
-            color: #c60b1e;
-            text-shadow: 0 0 10px rgba(198, 11, 30, 0.5);
+            color: #2a5298;
+            text-shadow: 0 0 10px rgba(30, 60, 114, 0.5);
         }
 
-        .teams-section {
+        .leagues-section {
             padding: 3rem 0;
         }
 
-        .teams-section h2 {
-            color: #ffc400;
+        .leagues-section h2 {
+            color: #4a7adb;
             font-weight: bold;
             margin-bottom: 2rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             position: relative;
         }
 
-        .teams-section h2::after {
+        .leagues-section h2::after {
             content: '';
             position: absolute;
             bottom: -10px;
@@ -141,13 +141,13 @@
             transform: translateX(-50%);
             width: 100px;
             height: 3px;
-            background: linear-gradient(90deg, #c60b1e, #ffc400);
+            background: linear-gradient(90deg, #1e3c72, #4a7adb);
             border-radius: 2px;
         }
 
-        .team-card {
-            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(198, 11, 30, 0.1));
-            border: 1px solid rgba(198, 11, 30, 0.3);
+        .league-card {
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(30, 60, 114, 0.1));
+            border: 1px solid rgba(30, 60, 114, 0.3);
             border-radius: 15px;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -156,7 +156,7 @@
             height: 100%;
         }
 
-        .team-card::before {
+        .league-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -168,27 +168,27 @@
             z-index: 1;
         }
 
-        .team-card:hover::before {
+        .league-card:hover::before {
             left: 100%;
         }
 
-        .team-card:hover {
+        .league-card:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(198, 11, 30, 0.3);
-            border-color: #ffc400;
+            box-shadow: 0 20px 40px rgba(30, 60, 114, 0.3);
+            border-color: #4a7adb;
         }
 
-        .team-logo {
+        .league-logo {
             width: 80px;
             height: 80px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid rgba(198, 11, 30, 0.5);
+            border: 3px solid rgba(30, 60, 114, 0.5);
             transition: all 0.3s ease;
         }
 
-        .team-card:hover .team-logo {
-            border-color: #ffc400;
+        .league-card:hover .league-logo {
+            border-color: #4a7adb;
             transform: scale(1.1);
         }
 
@@ -197,21 +197,21 @@
             z-index: 2;
         }
 
-        .team-name {
+        .league-name {
             color: #ffffff;
             font-weight: 700;
             margin-bottom: 0.5rem;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
 
-        .team-description {
+        .league-description {
             color: #b0b0b0;
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
 
-        .btn-la-liga {
-            background: linear-gradient(45deg, #c60b1e, #ffc400);
+        .btn-rotw {
+            background: linear-gradient(45deg, #1e3c72, #4a7adb);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -224,7 +224,7 @@
             display: inline-block;
         }
 
-        .btn-la-liga::before {
+        .btn-rotw::before {
             content: '';
             position: absolute;
             top: 0;
@@ -235,21 +235,21 @@
             transition: left 0.5s;
         }
 
-        .btn-la-liga:hover::before {
+        .btn-rotw:hover::before {
             left: 100%;
         }
 
-        .btn-la-liga:hover {
-            background: linear-gradient(45deg, #ffc400, #c60b1e);
+        .btn-rotw:hover {
+            background: linear-gradient(45deg, #4a7adb, #1e3c72);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(198, 11, 30, 0.4);
+            box-shadow: 0 10px 20px rgba(30, 60, 114, 0.4);
             color: white;
             text-decoration: none;
         }
 
         .dropdown-menu {
             background: rgba(31, 31, 31, 0.95) !important;
-            border: 1px solid rgba(198, 11, 30, 0.3);
+            border: 1px solid rgba(30, 60, 114, 0.3);
             backdrop-filter: blur(10px);
         }
 
@@ -259,51 +259,51 @@
         }
 
         .dropdown-item:hover {
-            background: rgba(198, 11, 30, 0.2) !important;
-            color: #ffc400 !important;
+            background: rgba(30, 60, 114, 0.2) !important;
+            color: #4a7adb !important;
         }
 
         footer {
-            background: linear-gradient(90deg, #c60b1e, #ffc400, #c60b1e) !important;
+            background: linear-gradient(90deg, #1e3c72, #2a5298, #1e3c72) !important;
             margin-top: 4rem;
         }
 
         footer p {
-            color: #000 !important;
-            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+            color: #fff !important;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
             font-weight: 600;
         }
 
         /* Loading animation */
-        .team-card {
+        .league-card {
             opacity: 0;
             transform: translateY(30px);
         }
 
-        .team-card.loaded {
+        .league-card.loaded {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Spanish flag accent */
-        .spanish-accent {
-            background: linear-gradient(90deg, #c60b1e 33%, #ffc400 33%, #ffc400 66%, #c60b1e 66%);
+        /* Global accent */
+        .global-accent {
+            background: linear-gradient(90deg, #1e3c72 33%, #4a7adb 33%, #4a7adb 66%, #1e3c72 66%);
             height: 4px;
             width: 100%;
             margin: 1rem 0;
         }
 
-        /* Special styling for El Clasico teams */
-        .el-clasico {
+        /* Special styling for featured leagues */
+        .featured {
             position: relative;
         }
 
-        .el-clasico::after {
-            content: '⭐ El Clásico';
+        .featured::after {
+            content: '⭐ Featured';
             position: absolute;
             top: 10px;
             right: 10px;
-            background: linear-gradient(45deg, #c60b1e, #ffc400);
+            background: linear-gradient(45deg, #1e3c72, #4a7adb);
             color: white;
             padding: 5px 10px;
             border-radius: 15px;
@@ -315,7 +315,7 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg la-liga-header sticky-top">
+    <nav class="navbar navbar-expand-lg rotw-header sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">⚽ GOKIT</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -328,11 +328,12 @@
                             🏆 Browse Leagues
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="basketball.html">Baskteball</a></l>
+                            <li><a class="dropdown-item" href="basketball.html">Basketball</a></li>
+                            <li><a class="dropdown-item" href="premier-league.html">Premier League</a></li>
+                            <li><a class="dropdown-item" href="la-liga.html">La Liga</a></li>
                             <li><a class="dropdown-item" href="serie-a.html">Serie A</a></li>
                             <li><a class="dropdown-item" href="bundesliga.html">Bundesliga</a></li>
                             <li><a class="dropdown-item" href="national-teams.html">National Teams</a></li>
-                            <li><a class="dropdown-item" href="rotw.html">Rest of the World</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -346,12 +347,12 @@
     <!-- Hero Section -->
     <section class="hero-section text-center">
         <div class="container hero-content">
-            <h1 class="display-4 text-uppercase">La Liga</h1>
-            <p class="lead">The World's Most Exciting Football</p>
-            <div class="spanish-accent"></div>
+            <h1 class="display-4 text-uppercase">Rest of the World</h1>
+            <p class="lead">Discover Football's Global Diversity</p>
+            <div class="global-accent"></div>
             <div class="mt-3">
-                <span class="badge bg-danger fs-6 me-2">Spanish Passion</span>
-                <span class="badge bg-warning fs-6">Technique and Art</span>
+                <span class="badge bg-primary fs-6 me-2">Global Passion</span>
+                <span class="badge bg-info fs-6">Diverse Styles</span>
             </div>
         </div>
     </section>
@@ -363,93 +364,94 @@
         </div>
     </div>
 
-    <!-- Teams Section -->
-    <section class="teams-section">
+    <!-- Leagues Section -->
+    <section class="leagues-section">
         <div class="container">
-            <h2 class="text-center">🏟️ La Liga Teams</h2>
+            <h2 class="text-center">🌎 Global Leagues</h2>
             <div class="row g-4">
-                <!-- Real Madrid -->
+                <!-- Ligue 1 -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="team-card el-clasico">
+                    <div class="league-card featured">
                         <div class="card-body text-center p-4">
                             <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
-                                alt="Real Madrid" class="team-logo mb-3">
-                            <h5 class="team-name">Real Madrid CF</h5>
-                            <p class="team-description">Los Blancos - The Royal Club of Champions</p>
-                            <a href="real-madrid.html" class="btn-la-liga">
+                                alt="Ligue 1" class="league-logo mb-3">
+                            <h5 class="league-name">Ligue 1</h5>
+                            <p class="league-description">France's top division featuring PSG, Marseille, and Lyon</p>
+                            <a href="ligue-1.html" class="btn-rotw">
                                 <i class="fas fa-tshirt me-2"></i>View Jerseys
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- FC Barcelona -->
+                <!-- Eredivisie -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="team-card el-clasico">
+                    <div class="league-card">
                         <div class="card-body text-center p-4">
-                            <img src="/index.html/img/Barca.jpg" alt="FC Barcelona" class="team-logo mb-3">
-                            <h5 class="team-name">FC Barcelona</h5>
-                            <p class="team-description">Barça - More Than a Club, Més que un Club</p>
-                            <a href="barcelona.html" class="btn-la-liga">
+                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
+                                alt="Eredivisie" class="league-logo mb-3">
+                            <h5 class="league-name">Eredivisie</h5>
+                            <p class="league-description">Dutch football featuring Ajax, PSV, and Feyenoord</p>
+                            <a href="eredivisie.html" class="btn-rotw">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- MLS -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="league-card featured">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
+                                alt="MLS" class="league-logo mb-3">
+                            <h5 class="league-name">MLS</h5>
+                            <p class="league-description">Major League Soccer - America's growing football league</p>
+                            <a href="mls.html" class="btn-rotw">
                                 <i class="fas fa-tshirt me-2"></i>View Jerseys
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Atlético Madrid -->
+                <!-- Primeira Liga -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
+                    <div class="league-card">
                         <div class="card-body text-center p-4">
                             <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
-                                alt="Atlético Madrid" class="team-logo mb-3">
-                            <h5 class="team-name">Atlético Madrid</h5>
-                            <p class="team-description">Los Colchoneros - The Red & White Warriors</p>
-                            <a href="atletico-madrid.html" class="btn-la-liga">
+                                alt="Primeira Liga" class="league-logo mb-3">
+                            <h5 class="league-name">Primeira Liga</h5>
+                            <p class="league-description">Portugal's top flight with Benfica, Porto, and Sporting</p>
+                            <a href="primeira-liga.html" class="btn-rotw">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Saudi Pro League -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="league-card">
+                        <div class="card-body text-center p-4">
+                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=80&h=80&fit=crop&crop=center"
+                                alt="Saudi Pro League" class="league-logo mb-3">
+                            <h5 class="league-name">Saudi Pro League</h5>
+                            <p class="league-description">Saudi Arabia's premier football league featuring Al-Hilal and
+                                Al-Nassr</p>
+                            <a href="saudi-pro-league.html" class="btn-rotw">
                                 <i class="fas fa-tshirt me-2"></i>View Jerseys
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Sevilla FC -->
+                <!-- Brazilian Série A -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
-                                alt="Sevilla FC" class="team-logo mb-3">
-                            <h5 class="team-name">Sevilla FC</h5>
-                            <p class="team-description">Los Nervionenses - Andalusian Pride</p>
-                            <a href="sevilla.html" class="btn-la-liga">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Athletic Bilbao -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
-                                alt="Athletic Bilbao" class="team-logo mb-3">
-                            <h5 class="team-name">Athletic Bilbao</h5>
-                            <p class="team-description">Los Leones - The Basque Lions</p>
-                            <a href="athletic-bilbao.html" class="btn-la-liga">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Real Betis -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
+                    <div class="league-card featured">
                         <div class="card-body text-center p-4">
                             <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
-                                alt="Real Betis" class="team-logo mb-3">
-                            <h5 class="team-name">Real Betis</h5>
-                            <p class="team-description">Los Verdiblancos - Seville's Green & White</p>
-                            <a href="real-betis.html" class="btn-la-liga">
+                                alt="Brazilian Série A" class="league-logo mb-3">
+                            <h5 class="league-name">Brazilian Série A</h5>
+                            <p class="league-description">Brazil's vibrant football league with samba style</p>
+                            <a href="brazilian-serie-a.html" class="btn-rotw">
                                 <i class="fas fa-tshirt me-2"></i>View Jerseys
                             </a>
                         </div>
@@ -461,8 +463,8 @@
 
     <!-- Footer -->
     <footer class="text-center py-4 mt-5">
-        <p class="mb-1">© 2025 GOKIT | La Liga Collection</p>
-        <p class="mb-0">Not affiliated with La Liga or any football clubs.</p>
+        <p class="mb-1">© 2025 GOKIT | Global Football Collection</p>
+        <p class="mb-0">Not affiliated with any football leagues or clubs.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -476,7 +478,7 @@
             updateCartCount();
 
             // Animate cards on load
-            const cards = document.querySelectorAll('.team-card');
+            const cards = document.querySelectorAll('.league-card');
             cards.forEach((card, index) => {
                 setTimeout(() => {
                     card.classList.add('loaded');
@@ -485,7 +487,7 @@
         });
 
         function updateCartCount() {
-            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            const cartCount = cart.reduce((total, item) => total + (item.quantity || 1), 0);
             document.getElementById('cart-count').textContent = cartCount;
         }
     </script>
