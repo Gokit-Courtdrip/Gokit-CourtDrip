@@ -1,0 +1,4124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoKit.ME - Premium Football Jerseys</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #ecf0f1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .dark-mode-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 0.7rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .dark-mode-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* User Account */
+        .user-account {
+            position: relative;
+        }
+
+        .account-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 0.7rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .account-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .account-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            min-width: 200px;
+            display: none;
+            z-index: 1000;
+        }
+
+        body.dark-mode .account-dropdown {
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        .account-dropdown.show {
+            display: block;
+        }
+
+        .account-dropdown h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        body.dark-mode .account-dropdown h3 {
+            color: #ecf0f1;
+        }
+
+        .account-dropdown ul {
+            list-style: none;
+        }
+
+        .account-dropdown li {
+            margin-bottom: 0.5rem;
+        }
+
+        .account-dropdown a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .account-dropdown a {
+            color: #ecf0f1;
+        }
+
+        .account-dropdown a:hover {
+            background: #f5f5f5;
+            color: #667eea;
+        }
+
+        body.dark-mode .account-dropdown a:hover {
+            background: #34495e;
+            color: #3498db;
+        }
+
+        .account-dropdown .logout-btn {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .account-dropdown .logout-btn {
+            background: #34495e;
+            border-color: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        .account-dropdown .logout-btn:hover {
+            background: #e9ecef;
+        }
+
+        body.dark-mode .account-dropdown .logout-btn:hover {
+            background: #2c3e50;
+        }
+
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            margin-right: 1rem;
+        }
+
+        .search-input {
+            padding: 0.5rem 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 0.9rem;
+            width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 4rem 0;
+            background: white;
+            color: #333;
+        }
+
+        body.dark-mode .products-section {
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        body.dark-mode .section-title {
+            color: #ecf0f1;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        /* Size Guide Button */
+        .size-guide-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .size-guide-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .size-guide-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Fixtures Section */
+        .fixtures-section {
+            padding: 3rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+        }
+
+        .fixtures-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            scroll-behavior: smooth;
+        }
+
+        .fixture-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            min-width: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .fixture-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .fixture-header {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .fixture-teams {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .fixture-team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 40%;
+        }
+
+        .team-badge {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-name {
+            font-weight: bold;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .fixture-vs {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .fixture-info {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .fixture-date {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .fixture-time {
+            opacity: 0.8;
+        }
+
+        .view-team-btn {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-team-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-select {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            background: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .filter-select {
+            background: #34495e;
+            border-color: #555;
+            color: #ecf0f1;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            position: relative;
+        }
+
+        body.dark-mode .product-card {
+            background: #34495e;
+            border-color: #555;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image-container {
+            position: relative;
+            height: 250px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        body.dark-mode .product-image-container {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+        }
+
+        .product-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            transition: all 0.5s ease;
+        }
+
+        .product-image.back {
+            transform: rotateY(180deg);
+            opacity: 0;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #ff6b6b;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .product-view-toggle {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .product-view-toggle {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        .product-view-toggle:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        body.dark-mode .product-view-toggle:hover {
+            background: #2c3e50;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-team {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-badge-small {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        body.dark-mode .team-badge-small {
+            background: #2c3e50;
+        }
+
+        .product-league {
+            color: #667eea;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .add-to-cart-btn {
+            flex: 1;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .wishlist-btn,
+        .quick-view-btn {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            color: #6c757d;
+            padding: 0.8rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .wishlist-btn,
+        body.dark-mode .quick-view-btn {
+            background: #2c3e50;
+            border-color: #555;
+            color: #ecf0f1;
+        }
+
+        .wishlist-btn:hover,
+        .quick-view-btn:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        body.dark-mode .wishlist-btn:hover,
+        body.dark-mode .quick-view-btn:hover {
+            background: #34495e;
+        }
+
+        .wishlist-btn.active {
+            background: #ff6b6b;
+            color: white;
+            border-color: #ff6b6b;
+        }
+
+        /* Social Sharing */
+        .social-share {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .social-btn {
+            padding: 0.3rem 0.6rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .facebook {
+            background: #4267B2;
+        }
+
+        .twitter {
+            background: #1DA1F2;
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        /* Recently Viewed */
+        .recently-viewed {
+            padding: 2rem 0;
+            background: #f8f9fa;
+        }
+
+        body.dark-mode .recently-viewed {
+            background: #2c3e50;
+        }
+
+        .recently-viewed-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .recently-viewed-container {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-behavior: smooth;
+        }
+
+        .recently-viewed-item {
+            min-width: 150px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .recently-viewed-item {
+            background: #34495e;
+        }
+
+        .recently-viewed-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .recently-viewed-image {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            font-size: 3rem;
+        }
+
+        body.dark-mode .recently-viewed-image {
+            background: #2c3e50;
+        }
+
+        .recently-viewed-info {
+            padding: 0.8rem;
+        }
+
+        .recently-viewed-name {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .recently-viewed-price {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .page-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .page-btn:hover:not(.disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-info {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        body.dark-mode .reviews-section {
+            background: #2c3e50;
+        }
+
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .review-card {
+            background: #34495e;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .reviewer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        body.dark-mode .reviewer-avatar {
+            background: #2c3e50;
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+        }
+
+        .review-date {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .review-rating {
+            color: #ffc107;
+            font-size: 1.2rem;
+        }
+
+        .review-product {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #667eea;
+        }
+
+        .review-text {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .review-verified {
+            font-size: 0.8rem;
+            color: #27ae60;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Recommendations Section */
+        .recommendations-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        body.dark-mode .recommendations-section {
+            background: #2c3e50;
+        }
+
+        .recommendations-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .recommendation-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .recommendation-card {
+            background: #34495e;
+        }
+
+        .recommendation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .recommendation-image {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .recommendation-title {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .recommendation-price {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        body.dark-mode .contact-section {
+            background: #2c3e50;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        body.dark-mode .contact-details h3 {
+            color: #ecf0f1;
+        }
+
+        .contact-details p {
+            color: #666;
+        }
+
+        body.dark-mode .contact-details p {
+            color: #bbb;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .contact-form {
+            background: #34495e;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        body.dark-mode .form-label {
+            color: #ecf0f1;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .form-input,
+        body.dark-mode .form-textarea {
+            background: #2c3e50;
+            border-color: #555;
+            color: #ecf0f1;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Chatbot */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 5rem;
+            right: 2rem;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 1001;
+            overflow: hidden;
+        }
+
+        body.dark-mode .chatbot-window {
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-info h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .chatbot-info p {
+            margin: 0;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.2rem;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 0.8rem 1rem;
+            border-radius: 15px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        .user-message {
+            background: #667eea;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .bot-message {
+            background: #f1f3f4;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+
+        body.dark-mode .bot-message {
+            background: #34495e;
+            color: #ecf0f1;
+        }
+
+        .typing-indicator {
+            padding: 0.5rem 1rem;
+            font-style: italic;
+            color: #666;
+            display: none;
+        }
+
+        body.dark-mode .typing-indicator {
+            color: #bbb;
+        }
+
+        .quick-replies {
+            padding: 0.5rem 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .quick-reply-btn {
+            background: #e9ecef;
+            border: 1px solid #dee2e6;
+            color: #495057;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .quick-reply-btn {
+            background: #34495e;
+            border-color: #555;
+            color: #ecf0f1;
+        }
+
+        .quick-reply-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        body.dark-mode .chatbot-input {
+            border-top-color: #555;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            margin-right: 0.5rem;
+        }
+
+        body.dark-mode .chatbot-input input {
+            background: #34495e;
+            border-color: #555;
+            color: #ecf0f1;
+        }
+
+        .chatbot-send {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-send:hover {
+            background: #5a6fd8;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        body.dark-mode .modal-content {
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        .modal-title {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Improved Close Button */
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.1);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        body.dark-mode .modal-close {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ecf0f1;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+        }
+
+        body.dark-mode .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Quick View Modal */
+        .quick-view-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 1rem;
+        }
+
+        .quick-view-image-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .quick-view-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+            transition: all 0.5s ease;
+        }
+
+        .quick-view-image.back {
+            transform: rotateY(180deg);
+            opacity: 0;
+        }
+
+        .quick-view-toggle {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        body.dark-mode .quick-view-toggle {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        .quick-view-details {
+            width: 100%;
+        }
+
+        .quick-view-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .quick-view-team {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .quick-view-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #27ae60;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .quick-view-description {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Customization Section */
+        .customization-section {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #ddd;
+        }
+
+        body.dark-mode .customization-section {
+            border-top-color: #555;
+        }
+
+        .customization-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .customization-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .customization-option {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .customization-label {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .customization-price {
+            color: #27ae60;
+        }
+
+        .customization-input {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        body.dark-mode .customization-input {
+            background: #34495e;
+            border-color: #555;
+            color: #ecf0f1;
+        }
+
+        .player-names {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .player-name-btn {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .player-name-btn {
+            background: #34495e;
+            border-color: #555;
+            color: #ecf0f1;
+        }
+
+        .player-name-btn:hover {
+            background: #e9ecef;
+        }
+
+        body.dark-mode .player-name-btn:hover {
+            background: #2c3e50;
+        }
+
+        .player-name-btn.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .patches-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .patch-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .patch-checkbox {
+            width: 18px;
+            height: 18px;
+        }
+
+        .total-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 1.5rem 0;
+            text-align: right;
+        }
+
+        .total-price-value {
+            color: #27ae60;
+            font-size: 1.5rem;
+        }
+
+        .quick-view-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .quick-view-add-btn {
+            flex: 1;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .quick-view-add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .quick-view-wishlist-btn {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            color: #6c757d;
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .quick-view-wishlist-btn {
+            background: #34495e;
+            border-color: #555;
+            color: #ecf0f1;
+        }
+
+        .quick-view-wishlist-btn:hover {
+            background: #e9ecef;
+        }
+
+        body.dark-mode .quick-view-wishlist-btn:hover {
+            background: #2c3e50;
+        }
+
+        /* Signup Modal */
+        .signup-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .signup-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode .signup-content {
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        .signup-decoration {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+
+        .signup-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #333;
+        }
+
+        body.dark-mode .signup-title {
+            color: #ecf0f1;
+        }
+
+        .signup-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .signup-description {
+            color: #666;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        body.dark-mode .signup-description {
+            color: #bbb;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .form-input {
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        body.dark-mode .form-input {
+            background: #34495e;
+            border-color: #555;
+            color: #ecf0f1;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .signup-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .signup-later {
+            background: transparent;
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .signup-later {
+            border-color: #555;
+            color: #ecf0f1;
+        }
+
+        .signup-later:hover {
+            background: #f8f9fa;
+        }
+
+        body.dark-mode .signup-later:hover {
+            background: #34495e;
+        }
+
+        /* Notifications */
+        #notificationContainer {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .notification {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transform: translateX(400px);
+            transition: all 0.3s ease;
+            max-width: 350px;
+        }
+
+        body.dark-mode .notification {
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            border-left: 4px solid #27ae60;
+        }
+
+        .notification.error {
+            border-left: 4px solid #e74c3c;
+        }
+
+        .notification.warning {
+            border-left: 4px solid #f39c12;
+        }
+
+        .notification.info {
+            border-left: 4px solid #3498db;
+        }
+
+        .notification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .notification-title {
+            font-weight: bold;
+        }
+
+        .notification-close {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        body.dark-mode .notification-close {
+            color: #bbb;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Secure Payment Badges */
+        .secure-payment {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .payment-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .payment-icon {
+            font-size: 2rem;
+            color: #6c757d;
+        }
+
+        .payment-text {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        /* Mobile Bottom Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        body.dark-mode .mobile-nav {
+            background: #2c3e50;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        body.dark-mode .mobile-nav-link {
+            color: #ecf0f1;
+        }
+
+        .mobile-nav-icon {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #3498db;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #34495e;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #3498db;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 1rem;
+            text-align: center;
+            color: #bbb;
+        }
+
+        /* Responsive Design - Improved for Mobile */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .filters {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .filter-select {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            /* Improved mobile product grid */
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .product-card {
+                min-height: 350px;
+            }
+
+            .product-image-container {
+                height: 180px;
+            }
+
+            .product-image {
+                font-size: 5rem;
+            }
+
+            .product-title {
+                font-size: 1rem;
+            }
+
+            .product-price {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .wishlist-btn,
+            .quick-view-btn {
+                padding: 0.5rem;
+            }
+
+            .chatbot-window {
+                width: 90%;
+                height: 70vh;
+                right: 5%;
+                left: 5%;
+            }
+
+            .search-input {
+                width: 150px;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .chatbot-toggle {
+                bottom: 5rem;
+            }
+
+            /* Improved size chart modal for mobile */
+            .size-chart-table {
+                font-size: 0.8rem;
+            }
+
+            .size-chart-table th,
+            .size-chart-table td {
+                padding: 0.5rem;
+            }
+
+            /* Better modal close buttons for mobile */
+            .modal-close {
+                top: 0.5rem;
+                right: 0.5rem;
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* For very small screens */
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .product-image-container {
+                height: 150px;
+            }
+
+            .product-image {
+                font-size: 4rem;
+            }
+
+            .product-title {
+                font-size: 0.9rem;
+            }
+
+            .product-price {
+                font-size: 1rem;
+            }
+
+            .add-to-cart-btn {
+                padding: 0.6rem 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            .social-share {
+                gap: 0.3rem;
+            }
+
+            .social-btn {
+                padding: 0.2rem 0.4rem;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-futbol"></i>
+                GoKit.ME
+            </a>
+            <nav class="nav-links">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search jerseys..." id="searchInput">
+                </div>
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Jerseys</a>
+                <a href="#" class="nav-link">Leagues</a>
+                <a href="#" class="nav-link">Sale</a>
+                <a href="#" class="nav-link">Contact</a>
+                <div class="user-account">
+                    <button class="account-btn" onclick="toggleAccountDropdown()">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="account-dropdown" id="accountDropdown">
+                        <h3 id="accountName">My Account</h3>
+                        <ul>
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="orders.html">Orders</a></li>
+                            <li><a href="wishlist.html">Wishlist</a></li>
+                            <li><a href="settings.html">Settings</a></li>
+                        </ul>
+                        <button class="logout-btn" onclick="logout()">Logout</button>
+                    </div>
+
+                </div>
+                <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Premium Football Jerseys</h1>
+            <p class="hero-subtitle">High-quality jerseys from your favorite teams and players worldwide</p>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Jerseys Available</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Teams & Leagues</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10K+</span>
+                    <span class="stat-label">Happy Customers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Fixtures Section -->
+    <section class="fixtures-section">
+        <div class="container">
+            <h2 class="section-title">Upcoming Matches</h2>
+            <p class="section-subtitle">Get your jersey ready for the big game</p>
+
+            <div class="fixtures-container" id="fixturesContainer">
+                <!-- Fixtures will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Featured Jerseys</h2>
+            <p class="section-subtitle">Discover the latest and most popular football jerseys</p>
+
+            <!-- Size Guide Button -->
+            <div class="size-guide-container">
+                <button class="size-guide-btn" onclick="openSizeChart()">
+                    <i class="fas fa-ruler"></i> Size Guide
+                </button>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters">
+                <select class="filter-select" id="leagueFilter">
+                    <option value="">All Leagues</option>
+                    <option value="premier-league">Premier League</option>
+                    <option value="la-liga">La Liga</option>
+                    <option value="serie-a">Serie A</option>
+                    <option value="bundesliga">Bundesliga</option>
+                    <option value="ligue-1">Ligue 1</option>
+                </select>
+                <select class="filter-select" id="teamFilter">
+                    <option value="">All Teams</option>
+                    <option value="manchester-united">Manchester United</option>
+                    <option value="barcelona">Barcelona</option>
+                    <option value="real-madrid">Real Madrid</option>
+                    <option value="juventus">Juventus</option>
+                    <option value="psg">PSG</option>
+                </select>
+                <select class="filter-select" id="priceFilter">
+                    <option value="">All Prices</option>
+                    <option value="0-50">AED 0 - AED 50</option>
+                    <option value="50-100">AED 50 - AED 100</option>
+                    <option value="100-150">AED 100 - AED 150</option>
+                    <option value="150+">AED 150+</option>
+                </select>
+                <select class="filter-select" id="sortFilter">
+                    <option value="featured">Featured</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="newest">Newest First</option>
+                    <option value="popular">Most Popular</option>
+                </select>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <button class="page-btn" id="prevBtn" onclick="changePage(-1)">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div class="pagination-info">
+                    <span>Page <span id="currentPage">1</span> of <span id="totalPages">5</span></span>
+                </div>
+                <button class="page-btn" id="nextBtn" onclick="changePage(1)">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Secure Payment Badges -->
+            <div class="secure-payment">
+                <div class="payment-badge">
+                    <i class="fas fa-lock payment-icon"></i>
+                    <span class="payment-text">Secure Payment</span>
+                </div>
+                <div class="payment-badge">
+                    <i class="fas fa-truck payment-icon"></i>
+                    <span class="payment-text">Fast Delivery</span>
+                </div>
+                <div class="payment-badge">
+                    <i class="fas fa-shield-alt payment-icon"></i>
+                    <span class="payment-text">Buyer Protection</span>
+                </div>
+                <div class="payment-badge">
+                    <i class="fas fa-undo payment-icon"></i>
+                    <span class="payment-text">Easy Returns</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recently Viewed Section -->
+    <section class="recently-viewed">
+        <div class="container">
+            <h2 class="recently-viewed-title">Recently Viewed</h2>
+            <div class="recently-viewed-container" id="recentlyViewedContainer">
+                <!-- Recently viewed items will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2 class="section-title">Customer Reviews</h2>
+            <p class="section-subtitle">See what our customers are saying</p>
+
+            <div class="reviews-container" id="reviewsContainer">
+                <!-- Reviews will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Have questions? We're here to help!</p>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+971 50 123 4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>info@gokit.me</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>WhatsApp</h3>
+                            <p>+971 50 123 4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Instagram</h3>
+                            <p>@gokit.me</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label">Full Name*</label>
+                        <input type="text" class="form-input" id="contactName" placeholder="Enter your full name"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number*</label>
+                        <input type="tel" class="form-input" id="contactPhone" placeholder="Enter your phone number"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email (Optional)</label>
+                        <input type="email" class="form-input" id="contactEmail" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message*</label>
+                        <textarea class="form-textarea" id="contactMessage" placeholder="How can we help you?"
+                            required></textarea>
+                    </div>
+                    <button type="button" class="submit-btn" onclick="submitContactForm()">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GoKit.ME</h3>
+                    <p>Your premier destination for premium football jerseys from teams around the world.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Jerseys</a></li>
+                        <li><a href="#">Leagues</a></li>
+                        <li><a href="#">Sale</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#" onclick="openSizeChart(); return false;">Size Guide</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Payment Methods</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive updates on new arrivals and special offers</p>
+                    <div style="display: flex; margin-top: 1rem;">
+                        <input type="email" placeholder="Your email"
+                            style="flex: 1; padding: 0.8rem; border: none; border-radius: 5px 0 0 5px;">
+                        <button
+                            style="background: #3498db; color: white; border: none; padding: 0.8rem; border-radius: 0 5px 5px 0; cursor: pointer;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 GoKit.ME. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-links">
+            <a href="#" class="mobile-nav-link">
+                <i class="fas fa-home mobile-nav-icon"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="mobile-nav-link">
+                <i class="fas fa-tshirt mobile-nav-icon"></i>
+                <span>Jerseys</span>
+            </a>
+            <a href="#" class="mobile-nav-link">
+                <i class="fas fa-search mobile-nav-icon"></i>
+                <span>Search</span>
+            </a>
+            <a href="#" class="mobile-nav-link">
+                <i class="fas fa-heart mobile-nav-icon"></i>
+                <span>Wishlist</span>
+            </a>
+            <a href="#" class="mobile-nav-link">
+                <i class="fas fa-user mobile-nav-icon"></i>
+                <span>Account</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Chatbot -->
+    <button class="chatbot-toggle" onclick="toggleChatbot()">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <div class="chatbot-info">
+                <h3>GoKit Assistant</h3>
+                <p>Online • Ready to help</p>
+            </div>
+            <button class="chatbot-close" onclick="toggleChatbot()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">👋 Hi! I'm your GoKit assistant. How can I help you find the perfect jersey
+                today?</div>
+        </div>
+
+        <div class="typing-indicator" id="typingIndicator">
+            GoKit Assistant is typing...
+        </div>
+
+        <div class="quick-replies" id="quickReplies">
+            <button class="quick-reply-btn" onclick="sendQuickReply('Show me popular jerseys')">Popular Jerseys</button>
+            <button class="quick-reply-btn" onclick="sendQuickReply('Sizing help')">Sizing Help</button>
+            <button class="quick-reply-btn" onclick="sendQuickReply('Shipping info')">Shipping Info</button>
+            <button class="quick-reply-btn" onclick="sendQuickReply('Find my size')">Find My Size</button>
+        </div>
+
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+            <button class="chatbot-send" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Size Chart Modal -->
+    <div class="modal" id="sizeChartModal">
+        <div class="modal-content size-chart-content">
+            <button class="modal-close" onclick="closeModal('sizeChartModal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="size-chart-title">
+                <i class="fas fa-tshirt"></i> GoKit.ME Player Version Size Chart
+            </h2>
+            <table class="size-chart-table">
+                <thead>
+                    <tr>
+                        <th>Size (cm)</th>
+                        <th>Length (cm)</th>
+                        <th>Shoulder Width (cm)</th>
+                        <th>Sleeve Length (cm)</th>
+                        <th>Cuff Width (cm)</th>
+                        <th>Height Range (cm)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>S</td>
+                        <td>71</td>
+                        <td>46</td>
+                        <td>41.5</td>
+                        <td>16.5</td>
+                        <td>160-165</td>
+                    </tr>
+                    <tr>
+                        <td>M</td>
+                        <td>73</td>
+                        <td>48</td>
+                        <td>43</td>
+                        <td>17</td>
+                        <td>165-170</td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td>75</td>
+                        <td>50</td>
+                        <td>44.5</td>
+                        <td>17.5</td>
+                        <td>170-175</td>
+                    </tr>
+                    <tr>
+                        <td>XL</td>
+                        <td>77</td>
+                        <td>52</td>
+                        <td>46</td>
+                        <td>18</td>
+                        <td>175-180</td>
+                    </tr>
+                    <tr>
+                        <td>2XL</td>
+                        <td>79</td>
+                        <td>54</td>
+                        <td>47.5</td>
+                        <td>18.5</td>
+                        <td>180-185</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="size-chart-note">This is the official GoKit ME player version sizing guide.</p>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('quickViewModal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="quickViewContent">
+                <!-- Quick view content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content signup-content">
+            <button class="modal-close" onclick="closeModal('signupModal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="signup-decoration"></div>
+            <h2 class="signup-title">🎉 Welcome to GoKit.ME!</h2>
+            <p class="signup-subtitle">Get <strong>10% OFF</strong> your first order!</p>
+            <p class="signup-description">Join thousands of football fans who trust GoKit.ME for premium jerseys</p>
+
+            <form class="signup-form" id="signupForm">
+                <div class="form-group">
+                    <label class="form-label">Full Name*</label>
+                    <input type="text" class="form-input" id="signupName" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number*</label>
+                    <input type="tel" class="form-input" id="signupPhone" placeholder="Enter your phone number"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email (Optional)</label>
+                    <input type="email" class="form-input" id="signupEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-checkbox">
+                    <input type="checkbox" id="rememberMe" checked>
+                    <label for="rememberMe">Remember me</label>
+                </div>
+                <button type="button" class="signup-btn" onclick="signupUser()">Get My 10% Discount</button>
+                <button type="button" class="signup-later" onclick="closeModal('signupModal')">Maybe Later</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
+
+    <script>
+        // Global Variables
+        let products = [];
+        let filteredProducts = [];
+        let currentPage = 1;
+        let totalPages = 1;
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        let recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+        let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+        let shakeEnabled = true;
+
+        // Sample Products Data
+        const sampleProducts = [
+            {
+                id: 1,
+                name: "Manchester United Home Jersey 2024",
+                team: "manchester-united",
+                teamBadge: "🔴",
+                league: "premier-league",
+                price: 75,
+                originalPrice: 95,
+                image: "👕",
+                backImage: "👕",
+                badge: "SALE",
+                description: "The official Manchester United home jersey for the 2024 season. Features the iconic red design with subtle patterns inspired by the club's rich history.",
+                popularPlayers: ["Fernandes", "Rashford", "Mount", "Garnacho"]
+            },
+            {
+                id: 2,
+                name: "Barcelona Home Jersey 2024",
+                team: "barcelona",
+                teamBadge: "🔵🔴",
+                league: "la-liga",
+                price: 75,
+                originalPrice: 75,
+                image: "👕",
+                backImage: "👕",
+                badge: "NEW",
+                description: "The official FC Barcelona home jersey for the 2024 season. Features the traditional blaugrana stripes with innovative design elements.",
+                popularPlayers: ["Lewandowski", "Pedri", "Gavi", "De Jong"]
+            },
+            {
+                id: 3,
+                name: "Real Madrid Away Jersey 2024",
+                team: "real-madrid",
+                teamBadge: "⚪",
+                league: "la-liga",
+                price: 75,
+                originalPrice: 90,
+                image: "👕",
+                backImage: "👕",
+                badge: "SALE",
+                description: "The official Real Madrid away jersey for the 2024 season. Elegant design with the club's signature style and premium quality fabric.",
+                popularPlayers: ["Bellingham", "Vinicius Jr", "Rodrygo", "Camavinga"]
+            },
+            {
+                id: 4,
+                name: "Juventus Home Jersey 2024",
+                team: "juventus",
+                teamBadge: "⚫⚪",
+                league: "serie-a",
+                price: 75,
+                originalPrice: 85,
+                image: "👕",
+                backImage: "👕",
+                badge: "POPULAR",
+                description: "The official Juventus home jersey for the 2024 season. Classic black and white stripes with modern design elements.",
+                popularPlayers: ["Vlahovic", "Chiesa", "Locatelli", "Bremer"]
+            },
+            {
+                id: 5,
+                name: "PSG Third Jersey 2024",
+                team: "psg",
+                teamBadge: "🔵🔴",
+                league: "ligue-1",
+                price: 75,
+                originalPrice: 95,
+                image: "👕",
+                backImage: "👕",
+                badge: "LIMITED",
+                description: "The official Paris Saint-Germain third jersey for the 2024 season. Unique design inspired by the city of Paris with premium details.",
+                popularPlayers: ["Mbappé", "Dembélé", "Hakimi", "Marquinhos"]
+            },
+            {
+                id: 6,
+                name: "Bayern Munich Home Jersey 2024",
+                team: "bayern-munich",
+                teamBadge: "🔴",
+                league: "bundesliga",
+                price: 75,
+                originalPrice: 75,
+                image: "👕",
+                backImage: "👕",
+                badge: "",
+                description: "The official Bayern Munich home jersey for the 2024 season. Bold red design with subtle patterns representing Bavarian heritage.",
+                popularPlayers: ["Kane", "Musiala", "Kimmich", "Sané"]
+            },
+            {
+                id: 7,
+                name: "Liverpool Away Jersey 2024",
+                team: "liverpool",
+                teamBadge: "🔴",
+                league: "premier-league",
+                price: 75,
+                originalPrice: 85,
+                image: "👕",
+                backImage: "👕",
+                badge: "SALE",
+                description: "The official Liverpool away jersey for the 2024 season. Sleek design with details inspired by the club's storied history.",
+                popularPlayers: ["Salah", "Van Dijk", "Alexander-Arnold", "Alisson"]
+            },
+            {
+                id: 8,
+                name: "Manchester City Third Jersey 2024",
+                team: "manchester-city",
+                teamBadge: "🔵",
+                league: "premier-league",
+                price: 75,
+                originalPrice: 75,
+                image: "👕",
+                backImage: "👕",
+                badge: "NEW",
+                description: "The official Manchester City third jersey for the 2024 season. Innovative design with unique patterns and premium fabric.",
+                popularPlayers: ["Haaland", "De Bruyne", "Foden", "Rodri"]
+            },
+            {
+                id: 9,
+                name: "Arsenal Home Jersey 2024",
+                team: "arsenal",
+                teamBadge: "🔴",
+                league: "premier-league",
+                price: 75,
+                originalPrice: 90,
+                image: "👕",
+                backImage: "👕",
+                badge: "POPULAR",
+                description: "The official Arsenal home jersey for the 2024 season. Classic red and white design with modern elements inspired by the club's heritage.",
+                popularPlayers: ["Saka", "Odegaard", "Rice", "Martinelli"]
+            }
+        ];
+
+        // Sample Fixtures Data
+        const sampleFixtures = [
+            {
+                id: 1,
+                homeTeam: "manchester-united",
+                homeTeamName: "Manchester United",
+                homeTeamBadge: "🔴",
+                awayTeam: "liverpool",
+                awayTeamName: "Liverpool",
+                awayTeamBadge: "🔴",
+                league: "Premier League",
+                date: "2025-08-24",
+                time: "17:30",
+                stadium: "Old Trafford"
+            },
+            {
+                id: 2,
+                homeTeam: "barcelona",
+                homeTeamName: "Barcelona",
+                homeTeamBadge: "🔵🔴",
+                awayTeam: "real-madrid",
+                awayTeamName: "Real Madrid",
+                awayTeamBadge: "⚪",
+                league: "La Liga",
+                date: "2025-08-25",
+                time: "20:00",
+                stadium: "Camp Nou"
+            },
+            {
+                id: 3,
+                homeTeam: "juventus",
+                homeTeamName: "Juventus",
+                homeTeamBadge: "⚫⚪",
+                awayTeam: "milan",
+                awayTeamName: "AC Milan",
+                awayTeamBadge: "🔴⚫",
+                league: "Serie A",
+                date: "2025-08-26",
+                time: "19:45",
+                stadium: "Allianz Stadium"
+            },
+            {
+                id: 4,
+                homeTeam: "bayern-munich",
+                homeTeamName: "Bayern Munich",
+                homeTeamBadge: "🔴",
+                awayTeam: "dortmund",
+                awayTeamName: "Borussia Dortmund",
+                awayTeamBadge: "🟡⚫",
+                league: "Bundesliga",
+                date: "2025-08-27",
+                time: "18:30",
+                stadium: "Allianz Arena"
+            },
+            {
+                id: 5,
+                homeTeam: "psg",
+                homeTeamName: "Paris Saint-Germain",
+                homeTeamBadge: "🔵🔴",
+                awayTeam: "marseille",
+                awayTeamName: "Marseille",
+                awayTeamBadge: "🔵⚪",
+                league: "Ligue 1",
+                date: "2025-08-28",
+                time: "20:00",
+                stadium: "Parc des Princes"
+            }
+        ];
+
+        // Sample Reviews Data
+        const sampleReviews = [
+            {
+                id: 1,
+                name: "Ahmed K.",
+                avatar: "A",
+                rating: 5,
+                date: "2025-08-15",
+                product: "Manchester United Home Jersey 2024",
+                text: "Amazing quality! The jersey looks and feels great. Fast shipping too! I ordered on Monday and received it by Wednesday. The customization with my name looks perfect.",
+                verified: true
+            },
+            {
+                id: 2,
+                name: "Sarah M.",
+                avatar: "S",
+                rating: 4,
+                date: "2025-08-10",
+                product: "Barcelona Home Jersey 2024",
+                text: "Great jersey, the material is breathable and comfortable. Sizing runs a bit small, so order one size up. I'm usually M but L fits perfectly. The colors are vibrant and the patches look good.",
+                verified: true
+            },
+            {
+                id: 3,
+                name: "Mohammed A.",
+                avatar: "M",
+                rating: 5,
+                date: "2025-08-05",
+                product: "Real Madrid Away Jersey 2024",
+                text: "Perfect! The customization with my name and number looks professional. Will definitely order again. The quality is outstanding for the price, and it arrived well-packaged with no damage.",
+                verified: true
+            },
+            {
+                id: 4,
+                name: "Fatima H.",
+                avatar: "F",
+                rating: 5,
+                date: "2025-07-28",
+                product: "Arsenal Home Jersey 2024",
+                text: "This is my third jersey from GoKit.ME and they never disappoint. The quality is outstanding and delivery was faster than expected! The customer service team was very helpful when I had questions about sizing.",
+                verified: true
+            }
+        ];
+
+        // Initialize App
+        function initializeApp() {
+            products = [...sampleProducts];
+            filteredProducts = [...products];
+            totalPages = Math.ceil(filteredProducts.length / 6);
+
+            loadProducts();
+            loadFixtures();
+            loadReviews();
+            loadRecentlyViewed();
+            setupEventListeners();
+            updateUserInterface();
+
+            // Show signup modal after 3 seconds if not logged in
+            setTimeout(() => {
+                if (!isLoggedIn) {
+                    document.getElementById('signupModal').style.display = 'flex';
+                }
+            }, 3000);
+
+            // Enable shake to random jersey on mobile
+            if (window.DeviceMotionEvent) {
+                window.addEventListener('devicemotion', handleShake, false);
+            }
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Filter event listeners
+            document.getElementById('leagueFilter').addEventListener('change', applyFilters);
+            document.getElementById('teamFilter').addEventListener('change', applyFilters);
+            document.getElementById('priceFilter').addEventListener('change', applyFilters);
+            document.getElementById('sortFilter').addEventListener('change', applyFilters);
+
+            // Search functionality
+            document.getElementById('searchInput').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    searchProducts(this.value);
+                }
+            });
+
+            // Pull to refresh for fixtures
+            const fixturesContainer = document.getElementById('fixturesContainer');
+            let touchStartY = 0;
+            let touchEndY = 0;
+
+            fixturesContainer.addEventListener('touchstart', function (e) {
+                touchStartY = e.touches[0].clientY;
+            }, false);
+
+            fixturesContainer.addEventListener('touchend', function (e) {
+                touchEndY = e.changedTouches[0].clientY;
+                if (touchEndY > touchStartY + 70 && fixturesContainer.scrollTop === 0) {
+                    // Pull to refresh detected
+                    showNotification('Refreshing fixtures...', 'success');
+                    setTimeout(() => {
+                        loadFixtures();
+                    }, 1000);
+                }
+            }, false);
+
+            // Prevent scrolling of main page when modal is open
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('wheel', function (e) {
+                    if (modal.style.display === 'flex') {
+                        e.stopPropagation();
+                    }
+                });
+
+                modal.addEventListener('touchmove', function (e) {
+                    if (modal.style.display === 'flex') {
+                        e.stopPropagation();
+                    }
+                });
+            });
+        }
+
+        // Update User Interface based on login state
+        function updateUserInterface() {
+            const accountBtn = document.querySelector('.account-btn i');
+
+            if (isLoggedIn && currentUser) {
+                accountBtn.className = 'fas fa-user-check';
+                document.getElementById('accountDropdown').querySelector('h3').textContent = `Hi, ${currentUser.name.split(' ')[0]}`;
+            } else {
+                accountBtn.className = 'fas fa-user';
+                document.getElementById('accountDropdown').querySelector('h3').textContent = 'My Account';
+            }
+        }
+
+        // Load Products
+        function loadProducts() {
+            const productGrid = document.getElementById('productGrid');
+            productGrid.innerHTML = '';
+
+            const startIndex = (currentPage - 1) * 6;
+            const endIndex = startIndex + 6;
+            const productsToShow = filteredProducts.slice(startIndex, endIndex);
+
+            if (productsToShow.length === 0) {
+                productGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                        <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 1rem;"></i>
+                        <h3>No products found</h3>
+                        <p>Try adjusting your filters or search criteria</p>
+                    </div>
+                `;
+            } else {
+                productsToShow.forEach(product => {
+                    const productCard = createProductCard(product);
+                    productGrid.appendChild(productCard);
+                });
+            }
+
+            updatePagination();
+        }
+
+        // Create Product Card
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <div class="product-image-container">
+                    <div class="product-image front">${product.image}</div>
+                    <div class="product-image back">${product.backImage}</div>
+                    ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                    <button class="product-view-toggle" onclick="toggleProductView(this)">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <div class="product-team">
+                        <div class="team-badge-small">${product.teamBadge}</div>
+                        <div class="product-league">${getLeagueName(product.league)}</div>
+                    </div>
+                    <h3 class="product-title">${product.name}</h3>
+                    <div class="product-price">
+                        AED ${product.price.toFixed(2)}
+                        ${product.originalPrice !== product.price ?
+                    `<span class="original-price">AED ${product.originalPrice.toFixed(2)}</span>` : ''}
+                    </div>
+                    <div class="product-actions">
+                        <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="wishlist-btn ${wishlist.includes(product.id) ? 'active' : ''}" onclick="toggleWishlist(${product.id})">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button class="quick-view-btn" onclick="quickView(${product.id})">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="social-share">
+                        <button class="social-btn facebook" onclick="shareProduct(${product.id}, 'facebook')">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button class="social-btn twitter" onclick="shareProduct(${product.id}, 'twitter')">
+                            <i class="fab fa-twitter"></i>
+                        </button>
+                        <button class="social-btn whatsapp" onclick="shareProduct(${product.id}, 'whatsapp')">
+                            <i class="fab fa-whatsapp"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        // Toggle Product View (Front/Back)
+        function toggleProductView(button) {
+            const container = button.closest('.product-image-container');
+            const frontImage = container.querySelector('.front');
+            const backImage = container.querySelector('.back');
+
+            if (frontImage.style.opacity !== '0') {
+                frontImage.style.opacity = '0';
+                frontImage.style.transform = 'rotateY(-180deg)';
+                backImage.style.opacity = '1';
+                backImage.style.transform = 'rotateY(0)';
+            } else {
+                frontImage.style.opacity = '1';
+                frontImage.style.transform = 'rotateY(0)';
+                backImage.style.opacity = '0';
+                backImage.style.transform = 'rotateY(180deg)';
+            }
+        }
+
+        // Load Fixtures
+        function loadFixtures() {
+            const fixturesContainer = document.getElementById('fixturesContainer');
+            fixturesContainer.innerHTML = '';
+
+            sampleFixtures.forEach(fixture => {
+                const fixtureCard = createFixtureCard(fixture);
+                fixturesContainer.appendChild(fixtureCard);
+            });
+        }
+
+        // Create Fixture Card
+        function createFixtureCard(fixture) {
+            const card = document.createElement('div');
+            card.className = 'fixture-card';
+
+            // Format date
+            const fixtureDate = new Date(fixture.date);
+            const formattedDate = fixtureDate.toLocaleDateString('en-US', {
+                weekday: 'short',
+                month: 'short',
+                day: 'numeric'
+            });
+
+            card.innerHTML = `
+                <div class="fixture-header">${fixture.league}</div>
+                <div class="fixture-teams">
+                    <div class="fixture-team">
+                        <div class="team-badge">${fixture.homeTeamBadge}</div>
+                        <div class="team-name">${fixture.homeTeamName}</div>
+                    </div>
+                    <div class="fixture-vs">VS</div>
+                    <div class="fixture-team">
+                        <div class="team-badge">${fixture.awayTeamBadge}</div>
+                        <div class="team-name">${fixture.awayTeamName}</div>
+                    </div>
+                </div>
+                <div class="fixture-info">
+                    <div class="fixture-date">${formattedDate}</div>
+                    <div class="fixture-time">${fixture.time} • ${fixture.stadium}</div>
+                </div>
+                <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                    <a href="#" onclick="showComingSoon('${fixture.homeTeamName} Jerseys'); return false;" class="view-team-btn">
+                        ${fixture.homeTeamName} Jerseys
+                    </a>
+                    <a href="#" onclick="showComingSoon('${fixture.awayTeamName} Jerseys'); return false;" class="view-team-btn">
+                        ${fixture.awayTeamName} Jerseys
+                    </a>
+                </div>
+            `;
+            return card;
+        }
+
+        // Load Reviews
+        function loadReviews() {
+            const reviewsContainer = document.getElementById('reviewsContainer');
+            reviewsContainer.innerHTML = '';
+
+            sampleReviews.forEach(review => {
+                const reviewCard = createReviewCard(review);
+                reviewsContainer.appendChild(reviewCard);
+            });
+        }
+
+        // Create Review Card
+        function createReviewCard(review) {
+            const card = document.createElement('div');
+            card.className = 'review-card';
+
+            // Generate stars based on rating
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= review.rating) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+
+            // Format date
+            const reviewDate = new Date(review.date);
+            const formattedDate = reviewDate.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+
+            card.innerHTML = `
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">${review.avatar}</div>
+                        <div>
+                            <div class="reviewer-name">${review.name}</div>
+                            <div class="review-date">${formattedDate}</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">${stars}</div>
+                </div>
+                <div class="review-product">
+                    <i class="fas fa-tshirt"></i> ${review.product}
+                </div>
+                <div class="review-text">${review.text}</div>
+                ${review.verified ?
+                    `<div class="review-verified">
+                        <i class="fas fa-check-circle"></i> Verified Purchase
+                    </div>` : ''}
+            `;
+            return card;
+        }
+
+        // Load Recently Viewed
+        function loadRecentlyViewed() {
+            const container = document.getElementById('recentlyViewedContainer');
+            container.innerHTML = '';
+
+            if (recentlyViewed.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 2rem; width: 100%;">
+                        <p>No recently viewed items</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Get the product objects from IDs
+            const recentProducts = recentlyViewed
+                .map(id => products.find(p => p.id === id))
+                .filter(p => p !== undefined);
+
+            recentProducts.forEach(product => {
+                const item = document.createElement('div');
+                item.className = 'recently-viewed-item';
+                item.innerHTML = `
+                    <div class="recently-viewed-image">${product.image}</div>
+                    <div class="recently-viewed-info">
+                        <div class="recently-viewed-name">${product.name}</div>
+                        <div class="recently-viewed-price">AED ${product.price.toFixed(2)}</div>
+                    </div>
+                `;
+                item.addEventListener('click', () => quickView(product.id));
+                container.appendChild(item);
+            });
+        }
+
+        // Get League Name
+        function getLeagueName(league) {
+            const leagues = {
+                'premier-league': 'Premier League',
+                'la-liga': 'La Liga',
+                'serie-a': 'Serie A',
+                'bundesliga': 'Bundesliga',
+                'ligue-1': 'Ligue 1'
+            };
+            return leagues[league] || 'International';
+        }
+
+        // Apply Filters
+        function applyFilters() {
+            const leagueFilter = document.getElementById('leagueFilter').value;
+            const teamFilter = document.getElementById('teamFilter').value;
+            const priceFilter = document.getElementById('priceFilter').value;
+            const sortFilter = document.getElementById('sortFilter').value;
+
+            filteredProducts = products.filter(product => {
+                let matches = true;
+
+                if (leagueFilter && product.league !== leagueFilter) matches = false;
+                if (teamFilter && product.team !== teamFilter) matches = false;
+
+                if (priceFilter) {
+                    const [min, max] = priceFilter.split('-').map(p => parseInt(p.replace('+', '')));
+                    const price = product.price;
+                    if (priceFilter === '150+') {
+                        if (price < 150) matches = false;
+                    } else {
+                        if (price < min || price > max) matches = false;
+                    }
+                }
+
+                return matches;
+            });
+
+            // Apply sorting
+            if (sortFilter === 'price-low') {
+                filteredProducts.sort((a, b) => a.price - b.price);
+            } else if (sortFilter === 'price-high') {
+                filteredProducts.sort((a, b) => b.price - a.price);
+            } else if (sortFilter === 'newest') {
+                filteredProducts.sort((a, b) => b.id - a.id);
+            } else if (sortFilter === 'popular') {
+                // Sort by popularity (using a hypothetical popularity score)
+                filteredProducts.sort((a, b) => {
+                    const aPopular = a.badge === 'POPULAR' ? 1 : 0;
+                    const bPopular = b.badge === 'POPULAR' ? 1 : 0;
+                    return bPopular - aPopular;
+                });
+            }
+
+            currentPage = 1;
+            totalPages = Math.ceil(filteredProducts.length / 6);
+            loadProducts();
+        }
+
+        // Search Products
+        function searchProducts(query) {
+            if (!query.trim()) {
+                filteredProducts = [...products];
+                currentPage = 1;
+                totalPages = Math.ceil(filteredProducts.length / 6);
+                loadProducts();
+                return;
+            }
+
+            const searchTerm = query.toLowerCase();
+            filteredProducts = products.filter(product =>
+                product.name.toLowerCase().includes(searchTerm) ||
+                product.team.toLowerCase().includes(searchTerm) ||
+                getLeagueName(product.league).toLowerCase().includes(searchTerm)
+            );
+
+            currentPage = 1;
+            totalPages = Math.ceil(filteredProducts.length / 6);
+            loadProducts();
+
+            if (filteredProducts.length === 0) {
+                showNotification('No products found matching your search.', 'warning');
+            } else {
+                showNotification(`Found ${filteredProducts.length} products matching "${query}"`, 'success');
+            }
+        }
+
+        // Pagination
+        function changePage(direction) {
+            const newPage = currentPage + direction;
+            if (newPage >= 1 && newPage <= totalPages) {
+                currentPage = newPage;
+                loadProducts();
+                window.scrollTo({ top: document.querySelector('.products-section').offsetTop - 100, behavior: 'smooth' });
+            }
+        }
+
+        function updatePagination() {
+            document.getElementById('currentPage').textContent = currentPage;
+            document.getElementById('totalPages').textContent = totalPages;
+
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            prevBtn.classList.toggle('disabled', currentPage === 1);
+            nextBtn.classList.toggle('disabled', currentPage === totalPages);
+        }
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                const button = event.target.closest('.add-to-cart-btn');
+                addLoadingState(button, 1500);
+
+                // Haptic feedback on mobile
+                if (navigator.vibrate) {
+                    navigator.vibrate(200);
+                }
+
+                setTimeout(() => {
+                    showNotification(`${product.name} added to cart!`, 'success');
+                }, 1500);
+            }
+        }
+
+        // Toggle Wishlist
+        function toggleWishlist(productId) {
+            const product = products.find(p => p.id === productId);
+            const button = event.target.closest('.wishlist-btn');
+
+            if (wishlist.includes(productId)) {
+                wishlist = wishlist.filter(id => id !== productId);
+                button.classList.remove('active');
+                showNotification(`${product.name} removed from wishlist`, 'success');
+            } else {
+                wishlist.push(productId);
+                button.classList.add('active');
+                showNotification(`${product.name} added to wishlist!`, 'success');
+            }
+
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        }
+
+        // Quick View
+        function quickView(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                // Add to recently viewed
+                if (!recentlyViewed.includes(product.id)) {
+                    recentlyViewed.unshift(product.id);
+                    if (recentlyViewed.length > 6) {
+                        recentlyViewed.pop();
+                    }
+                    localStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed));
+                    loadRecentlyViewed();
+                }
+
+                const content = document.getElementById('quickViewContent');
+                content.innerHTML = `
+                    <div class="quick-view-content">
+                        <div class="quick-view-image-container">
+                            <div class="quick-view-image front">${product.image}</div>
+                            <div class="quick-view-image back">${product.backImage}</div>
+                            <button class="quick-view-toggle" onclick="toggleQuickViewImage(this)">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                        <div class="quick-view-details">
+                            <h3 class="quick-view-title">${product.name}</h3>
+                            <p class="quick-view-team">${getLeagueName(product.league)} • ${product.teamBadge} ${product.team.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</p>
+                            <div class="quick-view-price">
+                                AED ${product.price.toFixed(2)}
+                                ${product.originalPrice !== product.price ?
+                        `<span class="original-price">AED ${product.originalPrice.toFixed(2)}</span>` : ''}
+                            </div>
+                            <p class="quick-view-description">${product.description}</p>
+                            
+                            <div class="customization-section">
+                                <h4 class="customization-title">Customize Your Jersey</h4>
+                                <div class="customization-options">
+                                    <div class="customization-option">
+                                        <div class="customization-label">
+                                            <span>Name & Number</span>
+                                            <span class="customization-price">+AED 15.00</span>
+                                        </div>
+                                        <input type="text" class="customization-input" id="customName" placeholder="Enter name" oninput="updateTotalPrice(${product.id})">
+                                        <input type="number" class="customization-input" id="customNumber" placeholder="Enter number" min="1" max="99" oninput="updateTotalPrice(${product.id})">
+                                        <div class="player-names">
+                                            ${product.popularPlayers.map(player =>
+                            `<button class="player-name-btn" onclick="selectPlayerName('${player}', ${product.id})">${player}</button>`
+                        ).join('')}
+                                        </div>
+                                    </div>
+                                    <div class="customization-option">
+                                        <div class="customization-label">
+                                            <span>Patches & Badges</span>
+                                            <span class="customization-price">+AED 5.00 each</span>
+                                        </div>
+                                        <div class="patches-options">
+                                            <div class="patch-option">
+                                                <input type="checkbox" id="leaguePatch" class="patch-checkbox" onchange="updateTotalPrice(${product.id})">
+                                                <label for="leaguePatch">League Patch</label>
+                                            </div>
+                                            <div class="patch-option">
+                                                <input type="checkbox" id="championsLeaguePatch" class="patch-checkbox" onchange="updateTotalPrice(${product.id})">
+                                                <label for="championsLeaguePatch">Champions League</label>
+                                            </div>
+                                            <div class="patch-option">
+                                                <input type="checkbox" id="respectPatch" class="patch-checkbox" onchange="updateTotalPrice(${product.id})">
+                                                <label for="respectPatch">Respect Patch</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="total-price">
+                                    Total: <span class="total-price-value" id="totalPrice">AED ${product.price.toFixed(2)}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="quick-view-actions">
+                                <button class="quick-view-add-btn" onclick="addCustomizedToCart(${product.id})">
+                                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                                </button>
+                                <button class="quick-view-wishlist-btn ${wishlist.includes(product.id) ? 'active' : ''}" onclick="toggleQuickViewWishlist(${product.id})">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('quickViewModal').style.display = 'flex';
+
+                // Prevent body scrolling when modal is open
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Toggle Quick View Image
+        function toggleQuickViewImage(button) {
+            const container = button.closest('.quick-view-image-container');
+            const frontImage = container.querySelector('.front');
+            const backImage = container.querySelector('.back');
+
+            if (frontImage.style.opacity !== '0') {
+                frontImage.style.opacity = '0';
+                frontImage.style.transform = 'rotateY(-180deg)';
+                backImage.style.opacity = '1';
+                backImage.style.transform = 'rotateY(0)';
+            } else {
+                frontImage.style.opacity = '1';
+                frontImage.style.transform = 'rotateY(0)';
+                backImage.style.opacity = '0';
+                backImage.style.transform = 'rotateY(180deg)';
+            }
+        }
+
+        // Select Player Name
+        function selectPlayerName(playerName, productId) {
+            document.getElementById('customName').value = playerName;
+
+            // Toggle selected class on buttons
+            const buttons = document.querySelectorAll('.player-name-btn');
+            buttons.forEach(btn => {
+                if (btn.textContent === playerName) {
+                    btn.classList.add('selected');
+                } else {
+                    btn.classList.remove('selected');
+                }
+            });
+
+            updateTotalPrice(productId);
+        }
+
+        // Update Total Price
+        function updateTotalPrice(productId) {
+            const product = products.find(p => p.id === productId);
+            let totalPrice = product.price;
+
+            // Check if name/number is added
+            const customName = document.getElementById('customName').value;
+            const customNumber = document.getElementById('customNumber').value;
+            if (customName || customNumber) {
+                totalPrice += 15; // Add AED 15 for name/number
+            }
+
+            // Count patches
+            const leaguePatch = document.getElementById('leaguePatch').checked;
+            const championsLeaguePatch = document.getElementById('championsLeaguePatch').checked;
+            const respectPatch = document.getElementById('respectPatch').checked;
+
+            const patchCount = [leaguePatch, championsLeaguePatch, respectPatch].filter(Boolean).length;
+            totalPrice += patchCount * 5; // Add AED 5 for each patch
+
+            document.getElementById('totalPrice').textContent = `AED ${totalPrice.toFixed(2)}`;
+        }
+
+        // Add Customized Jersey to Cart
+        function addCustomizedToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const customName = document.getElementById('customName').value;
+            const customNumber = document.getElementById('customNumber').value;
+
+            // Count patches
+            const leaguePatch = document.getElementById('leaguePatch').checked;
+            const championsLeaguePatch = document.getElementById('championsLeaguePatch').checked;
+            const respectPatch = document.getElementById('respectPatch').checked;
+
+            const button = event.target.closest('.quick-view-add-btn');
+            addLoadingState(button, 1500);
+
+            // Haptic feedback on mobile
+            if (navigator.vibrate) {
+                navigator.vibrate(200);
+            }
+
+            setTimeout(() => {
+                let message = `${product.name} added to cart!`;
+                if (customName || customNumber) {
+                    message += ` With customization: ${customName} ${customNumber}`;
+                }
+                showNotification(message, 'success');
+                closeModal('quickViewModal');
+            }, 1500);
+        }
+
+        // Toggle Wishlist from Quick View
+        function toggleQuickViewWishlist(productId) {
+            const product = products.find(p => p.id === productId);
+            const button = event.target.closest('.quick-view-wishlist-btn');
+
+            if (wishlist.includes(productId)) {
+                wishlist = wishlist.filter(id => id !== productId);
+                button.classList.remove('active');
+                showNotification(`${product.name} removed from wishlist`, 'success');
+            } else {
+                wishlist.push(productId);
+                button.classList.add('active');
+                showNotification(`${product.name} added to wishlist!`, 'success');
+            }
+
+            // Update the product card wishlist button too
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                const cardButton = card.querySelector(`.wishlist-btn`);
+                if (card.querySelector('.product-title').textContent === product.name) {
+                    if (wishlist.includes(productId)) {
+                        cardButton.classList.add('active');
+                    } else {
+                        cardButton.classList.remove('active');
+                    }
+                }
+            });
+
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        }
+
+        // Share Product
+        function shareProduct(productId, platform) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(`Check out this amazing ${product.name} at GoKit.ME!`);
+
+            let shareUrl = '';
+            switch (platform) {
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+                    break;
+                case 'whatsapp':
+                    shareUrl = `https://wa.me/?text=${text}%20${url}`;
+                    break;
+            }
+
+            if (shareUrl) {
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+                showNotification('Thanks for sharing!', 'success');
+            }
+        }
+
+        // Signup User with Firebase
+        function signupUser() {
+            const name = document.getElementById('signupName').value;
+            const phone = document.getElementById('signupPhone').value;
+            const email = document.getElementById('signupEmail').value || `${phone}@gokit.me`;
+            const password = "GoKit2025!"; // Default password
+
+            if (!name || !phone) {
+                showNotification('Please enter your name and phone number', 'error');
+                return;
+            }
+
+            // Simulate loading
+            const button = document.querySelector('.signup-btn');
+            addLoadingState(button, 2000);
+
+            // Check if user already exists with this phone
+            db.collection("users").where("phone", "==", phone).get()
+                .then((querySnapshot) => {
+                    if (!querySnapshot.empty) {
+                        // User exists, log them in
+                        const userData = querySnapshot.docs[0].data();
+                        auth.signInWithEmailAndPassword(userData.email, password)
+                            .then((userCredential) => {
+                                localStorage.setItem('isLoggedIn', 'true');
+                                currentUser = userData;
+                                isLoggedIn = true;
+                                updateUserInterface();
+                                closeModal('signupModal');
+                                showNotification('Welcome back to GoKit.ME!', 'success');
+                            })
+                            .catch((error) => {
+                                showNotification('Error logging in: ' + error.message, 'error');
+                            });
+                    } else {
+                        // Create new user
+                        auth.createUserWithEmailAndPassword(email, password)
+                            .then((userCredential) => {
+                                const user = userCredential.user;
+
+                                // Update display name
+                                user.updateProfile({
+                                    displayName: name
+                                });
+
+                                // Save user data to Firestore
+                                return db.collection("users").doc(user.uid).set({
+                                    name: name,
+                                    phone: phone,
+                                    email: email,
+                                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                                });
+                            })
+                            .then(() => {
+                                localStorage.setItem('isLoggedIn', 'true');
+                                currentUser = { name, phone, email };
+                                isLoggedIn = true;
+                                updateUserInterface();
+                                closeModal('signupModal');
+                                showNotification('Welcome to GoKit.ME! Your 10% discount code: WELCOME10', 'success');
+                            })
+                            .catch((error) => {
+                                showNotification('Error creating account: ' + error.message, 'error');
+                            });
+                    }
+                })
+                .catch((error) => {
+                    showNotification('Error: ' + error.message, 'error');
+                });
+        }
+
+        // Logout function
+        function logout() {
+            auth.signOut()
+                .then(() => {
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('currentUser');
+                    isLoggedIn = false;
+                    currentUser = null;
+                    updateUserInterface();
+                    showNotification('You have been logged out', 'success');
+
+                    // Force page reload to ensure all state is reset
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                })
+                .catch((error) => {
+                    showNotification('Error logging out: ' + error.message, 'error');
+                });
+        }
+
+        // Check auth state on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    // User is signed in
+                    isLoggedIn = true;
+
+                    // Get user data from Firestore
+                    db.collection("users").doc(user.uid).get()
+                        .then((doc) => {
+                            if (doc.exists) {
+                                currentUser = doc.data();
+                                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                                localStorage.setItem('isLoggedIn', 'true');
+                                updateUserInterface();
+                            }
+                        });
+                } else {
+                    // User is signed out
+                    isLoggedIn = false;
+                    currentUser = null;
+                    localStorage.removeItem('currentUser');
+                    localStorage.removeItem('isLoggedIn');
+                    updateUserInterface();
+                }
+            });
+        });
+
+
+        // Modal Functions
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            // Re-enable body scrolling
+            document.body.style.overflow = '';
+        }
+
+        // Open Size Chart
+        function openSizeChart() {
+            document.getElementById('sizeChartModal').style.display = 'flex';
+            // Prevent body scrolling
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Show Coming Soon notification for features in development
+        function showComingSoon(feature) {
+            showNotification(`${feature} page coming soon!`, 'info');
+        }
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+
+            const icon = document.querySelector('.dark-mode-toggle i');
+            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+
+            showNotification(`${isDark ? 'Dark' : 'Light'} mode activated!`, 'success');
+        }
+
+        // Chatbot Functions
+        function toggleChatbot() {
+            const chatWindow = document.getElementById('chatbotWindow');
+            chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+
+            if (chatWindow.style.display === 'flex') {
+                document.getElementById('chatInput').focus();
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (message) {
+                addMessage(message, 'user');
+                input.value = '';
+
+                // Show typing indicator
+                showTypingIndicator();
+
+                // Generate bot response
+                setTimeout(() => {
+                    hideTypingIndicator();
+                    const response = generateBotResponse(message);
+                    addMessage(response, 'bot');
+                }, 1500);
+            }
+        }
+
+        function sendQuickReply(message) {
+            addMessage(message, 'user');
+            showTypingIndicator();
+
+            setTimeout(() => {
+                hideTypingIndicator();
+                const response = generateBotResponse(message);
+                addMessage(response, 'bot');
+            }, 1000);
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function addMessage(message, sender) {
+            const messagesContainer = document.getElementById('chatbotMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            messageDiv.textContent = message;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            document.getElementById('typingIndicator').style.display = 'block';
+            document.getElementById('chatbotMessages').scrollTop = document.getElementById('chatbotMessages').scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            document.getElementById('typingIndicator').style.display = 'none';
+        }
+
+        function generateBotResponse(message) {
+            const msg = message.toLowerCase();
+
+            // Size-related queries
+            if (msg.includes('find my size') || msg.includes('size help')) {
+                return "Let me help you find your perfect size! Please tell me:\n\n1. Your height (in cm)\n2. Your weight (kg)\n3. Do you prefer a tight or loose fit?\n\nOr you can check our detailed size chart by typing 'size chart'.";
+            }
+
+            if (msg.includes('size chart')) {
+                // Show size chart modal
+                setTimeout(() => {
+                    document.getElementById('sizeChartModal').style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                }, 500);
+
+                return "I've opened our official size chart for you! Here's a quick summary:\n\nS: Height 160-165cm\nM: Height 165-170cm\nL: Height 170-175cm\nXL: Height 175-180cm\n2XL: Height 180-185cm\n\nFor more details, check the chart I just opened.";
+            }
+
+            // Height and weight based recommendations with improved algorithm
+            if (msg.includes('cm') && (msg.includes('kg') || msg.includes('kilo'))) {
+                // Extract height and weight
+                const heightMatch = msg.match(/(\d+)\s*cm/);
+                const weightMatch = msg.match(/(\d+)\s*kg/);
+
+                if (heightMatch && weightMatch) {
+                    const height = parseInt(heightMatch[1]);
+                    const weight = parseInt(weightMatch[1]);
+
+                    // Base size from height
+                    let recommendedSize = '';
+                    if (height < 165) recommendedSize = 'S';
+                    else if (height < 170) recommendedSize = 'M';
+                    else if (height < 175) recommendedSize = 'L';
+                    else if (height < 180) recommendedSize = 'XL';
+                    else recommendedSize = '2XL';
+
+                    // Weight adjustments - more significant impact
+                    // For average height to weight ratio
+                    const heightToWeightRatio = height / weight;
+
+                    if (heightToWeightRatio < 2.0) {
+                        // Heavier build - go up a size
+                        recommendedSize = getNextSize(recommendedSize);
+                    } else if (heightToWeightRatio > 2.8) {
+                        // Slimmer build - go down a size
+                        recommendedSize = getPreviousSize(recommendedSize);
+                    }
+
+                    // Check if message mentions fit preference
+                    let fitAdjustment = "";
+                    if (msg.includes('loose') || msg.includes('baggy')) {
+                        if (recommendedSize !== '2XL') {
+                            fitAdjustment = `\n\nSince you prefer a looser fit, you might also consider a ${getNextSize(recommendedSize)}.`;
+                        }
+                    } else if (msg.includes('tight') || msg.includes('slim') || msg.includes('fitted')) {
+                        if (recommendedSize !== 'S') {
+                            fitAdjustment = `\n\nSince you prefer a tighter fit, you might also consider a ${getPreviousSize(recommendedSize)}.`;
+                        }
+                    }
+
+                    return `Based on your height (${height}cm) and weight (${weight}kg), I recommend size ${recommendedSize} for the best fit.${fitAdjustment}\n\nOur jerseys are designed with a modern athletic cut. If you're between sizes, consider your fit preference (tighter or looser).`;
+                }
+            }
+
+            // Just height-based recommendation
+            if (msg.includes('cm') && !msg.includes('kg')) {
+                const heightMatch = msg.match(/(\d+)\s*cm/);
+                if (heightMatch) {
+                    const height = parseInt(heightMatch[1]);
+                    let recommendedSize = '';
+
+                    if (height < 165) recommendedSize = 'S';
+                    else if (height < 170) recommendedSize = 'M';
+                    else if (height < 175) recommendedSize = 'L';
+                    else if (height < 180) recommendedSize = 'XL';
+                    else recommendedSize = '2XL';
+
+                    return `Based on your height of ${height}cm, I recommend size ${recommendedSize}. For a more accurate recommendation, please also share your weight and fit preference (tight or loose).`;
+                }
+            }
+
+            // Product recommendations
+            if (msg.includes('popular') || msg.includes('recommend') || msg.includes('best seller')) {
+                return "🔥 Our most popular jerseys right now:\n\n• Manchester United Home 2024\n• Barcelona Home 2024\n• Arsenal Home 2024\n\nAll are premium quality and available in multiple sizes for just AED 75!";
+            }
+
+            // General sizing info
+            if (msg.includes('size') || msg.includes('sizing')) {
+                return "📏 Size Guide:\n\nS: Height 160-165cm\nM: Height 165-170cm\nL: Height 170-175cm\nXL: Height 175-180cm\n2XL: Height 180-185cm\n\nAll jerseys have a modern athletic fit. Need help choosing? Just ask for 'Find my size'!";
+            }
+
+            // Shipping information
+            if (msg.includes('shipping') || msg.includes('delivery')) {
+                return "🚚 Shipping Information:\n\n• Standard: 3-5 business days (Free over AED 150)\n• Express: 1-2 business days (AED 25)\n• Same Day: Available in Dubai (AED 40)\n\nAll orders include tracking and delivery notifications!";
+            }
+
+            // Return policy
+            if (msg.includes('return') || msg.includes('exchange')) {
+                return "↩️ Easy Returns & Exchanges:\n\n• 30-day return window\n• Free return shipping\n• Full refund or exchange\n• Items must be unworn with tags\n\nNo hassle, no questions asked!";
+            }
+
+            // Pricing and discounts
+            if (msg.includes('price') || msg.includes('cost') || msg.includes('discount')) {
+                return "💰 Pricing & Deals:\n\n• All jerseys: AED 75\n• Customization: +AED 15\n• Patches: +AED 5 each\n• New customer discount: WELCOME10 (10% off)\n• Free shipping over AED 150\n\nBuy 2 jerseys and get 10% off automatically!";
+            }
+
+            // Quality questions (removed mentions of "authentic")
+            if (msg.includes('authentic') || msg.includes('real') || msg.includes('genuine') || msg.includes('fake')) {
+                return "Our jerseys are premium quality replicas with excellent craftsmanship and attention to detail. They look and feel great, and come with all the expected features at a fraction of the price of stadium jerseys.";
+            }
+
+            // General help
+            if (msg.includes('help')) {
+                return "I'm here to help! I can assist you with:\n\n🏆 Product recommendations\n📏 Size guidance\n🚚 Shipping information\n💰 Pricing & deals\n📦 Returns & exchanges\n\nWhat would you like to know more about?";
+            }
+
+            // Payment methods
+            if (msg.includes('payment') || msg.includes('pay')) {
+                return "💳 We accept all major payment methods:\n\n• Credit/Debit Cards (Visa, Mastercard, Amex)\n• Apple Pay\n• Google Pay\n• Cash on Delivery\n\nAll payments are 100% secure with SSL encryption!";
+            }
+
+            // League-specific questions
+            if (msg.includes('league') || msg.includes('competition')) {
+                return "🏆 We have jerseys from all major leagues:\n\n⚽ Premier League (England)\n⚽ La Liga (Spain)\n⚽ Serie A (Italy)\n⚽ Bundesliga (Germany)\n⚽ Ligue 1 (France)\n⚽ Champions League\n⚽ International teams\n\nWhich league interests you most?";
+            }
+
+            // Team-specific questions
+            if (msg.includes('manchester united') || msg.includes('man utd') || msg.includes('man u')) {
+                return "Manchester United jerseys are among our best sellers! We have:\n\n• Home Jersey 2024 (Red)\n• Away Jersey 2024 (White)\n• Third Jersey 2024 (Black)\n\nAll available for AED 75 with optional name/number customization for +AED 15.";
+            }
+
+            if (msg.includes('barcelona') || msg.includes('barca')) {
+                return "Barcelona jerseys are very popular! We currently have:\n\n• Home Jersey 2024 (Blue & Red stripes)\n• Away Jersey 2024 (Gold)\n• Third Jersey 2024 (Teal)\n\nAll premium quality and available for AED 75. Would you like to see them?";
+            }
+
+            if (msg.includes('real madrid') || msg.includes('madrid')) {
+                return "Real Madrid jerseys are in stock! We have:\n\n• Home Jersey 2024 (White)\n• Away Jersey 2024 (Black)\n• Third Jersey 2024 (Purple)\n\nAll available for AED 75. Popular customizations include Bellingham, Vinicius Jr, and Rodrygo.";
+            }
+
+            // Customization questions
+            if (msg.includes('customize') || msg.includes('customization') || msg.includes('name') || msg.includes('number')) {
+                return "✨ Jersey Customization:\n\n• Add any name & number: +AED 15\n• League patches: +AED 5 each\n• Champions League patches: +AED 5 each\n• Respect patches: +AED 5 each\n\nAll customization is done using high-quality materials!";
+            }
+
+            // Contact information
+            if (msg.includes('contact') || msg.includes('phone') || msg.includes('whatsapp') || msg.includes('instagram')) {
+                return "📱 Contact Information:\n\n• Phone: +971 50 123 4567\n• WhatsApp: +971 50 123 4567\n• Email: info@gokit.me\n• Instagram: @gokit.me\n\nOur customer service team is available 7 days a week from 10AM to 10PM.";
+            }
+
+            // Thank you messages
+            if (msg.includes('thank') || msg.includes('thanks')) {
+                return "You're very welcome! 😊 I'm always here to help. Is there anything else I can assist you with today?";
+            }
+
+            // Default response
+            return "I'd be happy to help you with that! For specific product questions, sizing help, or order support, I can provide detailed information. You can also browse our featured jerseys or contact our support team.\n\nWhat would you like to know more about?";
+        }
+
+        // Helper functions for size recommendations
+        function getNextSize(size) {
+            const sizes = ['S', 'M', 'L', 'XL', '2XL'];
+            const currentIndex = sizes.indexOf(size);
+            if (currentIndex < sizes.length - 1) {
+                return sizes[currentIndex + 1];
+            }
+            return size;
+        }
+
+        function getPreviousSize(size) {
+            const sizes = ['S', 'M', 'L', 'XL', '2XL'];
+            const currentIndex = sizes.indexOf(size);
+            if (currentIndex > 0) {
+                return sizes[currentIndex - 1];
+            }
+            return size;
+        }
+
+        // Handle device shake for random jersey
+        function handleShake(event) {
+            if (!shakeEnabled) return;
+
+            const acceleration = event.accelerationIncludingGravity;
+            const shakeThreshold = 15;
+
+            if (
+                acceleration &&
+                (Math.abs(acceleration.x) > shakeThreshold ||
+                    Math.abs(acceleration.y) > shakeThreshold ||
+                    Math.abs(acceleration.z) > shakeThreshold)
+            ) {
+                shakeEnabled = false;
+
+                // Get random product
+                const randomProduct = products[Math.floor(Math.random() * products.length)];
+
+                // Show notification
+                showNotification('🎲 Random jersey selected!', 'success');
+
+                // Show quick view after a short delay
+                setTimeout(() => {
+                    quickView(randomProduct.id);
+
+                    // Re-enable shake after 3 seconds
+                    setTimeout(() => {
+                        shakeEnabled = true;
+                    }, 3000);
+                }, 500);
+            }
+        }
+
+        // Notification System
+        function showNotification(message, type = 'success') {
+            const container = document.getElementById('notificationContainer');
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+
+            const icon = type === 'success' ? '✅' : type === 'error' ? '❌' : type === 'info' ? 'ℹ️' : '⚠️';
+
+            notification.innerHTML = `
+                <div class="notification-header">
+                    <span class="notification-title">${icon} ${type === 'success' ? 'Success' : type === 'error' ? 'Error' : type === 'info' ? 'Info' : 'Notice'}</span>
+                    <button class="notification-close" onclick="closeNotification(this)">×</button>
+                </div>
+                <div class="notification-body">${message}</div>
+            `;
+
+            container.appendChild(notification);
+
+            // Show notification
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    closeNotification(notification.querySelector('.notification-close'));
+                }
+            }, 5000);
+        }
+
+        function closeNotification(button) {
+            const notification = button.closest('.notification');
+            notification.classList.remove('show');
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }
+
+        // Add loading state to buttons
+        function addLoadingState(button, duration = 2000) {
+            const originalText = button.innerHTML;
+            button.innerHTML = '<span class="loading-spinner"></span> Loading...';
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, duration);
+        }
+
+        // Load saved preferences
+        function loadSavedPreferences() {
+            // Load dark mode preference
+            const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (savedDarkMode) {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.dark-mode-toggle i').className = 'fas fa-sun';
+            }
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeApp();
+            loadSavedPreferences();
+
+            // Close account dropdown when clicking outside
+            document.addEventListener('click', function (event) {
+                const dropdown = document.getElementById('accountDropdown');
+                const accountBtn = document.querySelector('.account-btn');
+
+                if (!accountBtn.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function (e) {
+            // Ctrl/Cmd + K to focus search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                document.getElementById('searchInput').focus();
+            }
+
+            // Escape to close modals
+            if (e.key === 'Escape') {
+                closeModal('quickViewModal');
+                closeModal('signupModal');
+                closeModal('sizeChartModal');
+                if (document.getElementById('chatbotWindow').style.display === 'flex') {
+                    toggleChatbot();
+                }
+                document.getElementById('accountDropdown').classList.remove('show');
+            }
+        });
+    </script>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAbMf3bPs97pkfXUKB_44rKoRWmvt9b0yM",
+            authDomain: "gokit-x-courtdripdxb.firebaseapp.com",
+            projectId: "gokit-x-courtdripdxb",
+            storageBucket: "gokit-x-courtdripdxb.firebasestorage.app",
+            messagingSenderId: "384570406205",
+            appId: "1:384570406205:web:966041b461575405b74154"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Create references to Firebase services
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    </script>
+
+</body>
+
+</html>
