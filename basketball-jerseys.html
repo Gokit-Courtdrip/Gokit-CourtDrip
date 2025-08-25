@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COURTDRIPDXB - Premium Basketball Jerseys</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Reset and Basic Styles */
+        :root {
+            /* Dark Theme (Default) */
+            --bg-dark: #121212;
+            --bg-light: #1e1e1e;
+            --bg-lighter: #2a2a2a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b3b3b3;
+            --text-muted: #94a3b8;
+            --border-color: #424242;
+
+            /* Theme-agnostic variables */
+            --accent-orange: #F57C00;
+            --accent-orange-dark: #E65100;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 24px;
+            --space-6: 32px;
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --transition-fast: 0.2s ease;
+            --transition-med: 0.4s ease;
+        }
+
+        body.light {
+            --bg-dark: #f4f4f4;
+            --bg-light: #ffffff;
+            --bg-lighter: #e0e0e0;
+            --text-primary: #212121;
+            --text-secondary: #616161;
+            --text-muted: #9e9e9e;
+            --border-color: #e0e0e0;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-6) 0;
+        }
+
+        /* Header and Navigation */
+        .header {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: var(--space-4) 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-orange-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        .btn {
+            display: inline-flex;
+            /* Ensure it's inline-flex for proper button display */
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+        }
+
+        /* Page Action Buttons - New Section */
+        .page-actions-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            /* Match container width */
+            margin: var(--space-6) auto;
+            /* Add margin to separate from navbar */
+            padding: 0 5%;
+            /* Match header padding */
+        }
+
+        .page-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background: var(--bg-light);
+            /* Use light background */
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .page-action-btn:hover {
+            background: var(--bg-lighter);
+            /* Slightly darker on hover */
+            color: var(--text-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* Subtle shadow */
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(245, 124, 0, 0.4);
+        }
+
+        .btn-ghost {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-ghost:hover {
+            background-color: var(--bg-light);
+            border-color: var(--text-secondary);
+        }
+
+        .icon-btn {
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: var(--text-xl);
+            cursor: pointer;
+            transition: color var(--transition-fast);
+        }
+
+        .icon-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            background-color: var(--accent-orange);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: var(--text-xs);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            transform: scale(0);
+            transition: transform var(--transition-fast);
+        }
+
+        .badge.show {
+            transform: scale(1);
+        }
+
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: var(--space-2) var(--space-4);
+            padding-left: 40px;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-size: var(--text-base);
+        }
+
+        .search-container .fa-search {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            box-shadow: 0 8px 20px var(--shadow-color);
+            width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all var(--transition-fast);
+            z-index: 1001;
+        }
+
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-header {
+            padding: var(--space-4);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-3) var(--space-4);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: background-color var(--transition-fast);
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--bg-lighter);
+            color: var(--text-primary);
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: var(--space-2) 0;
+        }
+
+        /* Main Content */
+        .shop-layout {
+            display: flex;
+            gap: var(--space-6);
+        }
+
+        .filter-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+        }
+
+        .filter-group {
+            margin-bottom: var(--space-5);
+        }
+
+        .filter-group h4 {
+            margin-bottom: var(--space-3);
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #teamFilters label,
+        #conferenceFilters label {
+            display: block;
+            margin-bottom: var(--space-2);
+            cursor: pointer;
+        }
+
+        #teamFilters label span,
+        #conferenceFilters label span {
+            margin-left: var(--space-2);
+        }
+
+        .product-grid-container {
+            flex-grow: 1;
+        }
+
+        .shop-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-5);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-5);
+        }
+
+        /* Product Card */
+        .product-card {
+            background-color: var(--bg-light);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-fast);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        .product-image-container {
+            position: relative;
+            background-color: var(--bg-dark);
+            padding: var(--space-4);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: var(--space-3);
+            left: var(--space-3);
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-orange-dark));
+            color: #fff;
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-sm);
+            font-size: var(--text-xs);
+            font-weight: bold;
+        }
+
+        .product-actions {
+            position: absolute;
+            top: var(--space-3);
+            right: var(--space-3);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+        }
+
+        .action-btn {
+            background-color: rgba(18, 18, 18, 0.8);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .action-btn:hover {
+            background-color: var(--accent-orange);
+            color: #fff;
+        }
+
+        .wishlist-btn.active {
+            color: var(--accent-orange);
+        }
+
+        .product-info {
+            padding: var(--space-4);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-team {
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-1);
+        }
+
+        .product-name {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-3);
+            flex-grow: 1;
+        }
+
+        .product-pricing {
+            display: flex;
+            align-items: baseline;
+            gap: var(--space-2);
+            margin-bottom: var(--space-4);
+        }
+
+        .product-price {
+            font-size: var(--text-xl);
+            font-weight: bold;
+            color: var(--accent-orange);
+        }
+
+        .product-original-price {
+            font-size: var(--text-base);
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        /* Modals */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--transition-fast), visibility var(--transition-fast);
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: var(--bg-light);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transform: scale(0.95);
+            transition: transform var(--transition-fast);
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: var(--text-xl);
+            cursor: pointer;
+        }
+
+        /* Quick View Modal */
+        .quick-view-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: var(--space-6);
+        }
+
+        #quickViewImage {
+            text-align: center;
+        }
+
+        #quickViewImage img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .form-group {
+            margin-bottom: var(--space-4);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--space-3);
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-size: var(--text-base);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: var(--space-4);
+            margin-top: var(--space-2);
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            cursor: pointer;
+            padding: var(--space-2) var(--space-3);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .radio-group label:has(input:checked) {
+            border-color: var(--accent-orange);
+            background: rgba(245, 124, 0, 0.1);
+        }
+
+        /* Pagination Controls */
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-4);
+            margin-top: var(--space-6);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--bg-light);
+            padding: var(--space-6) 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-6);
+            margin-bottom: var(--space-6);
+        }
+
+        .footer-section h3 {
+            color: var(--text-primary);
+            margin-bottom: var(--space-4);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: var(--space-2);
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: var(--space-5);
+        }
+
+        /* Chatbot */
+        .chatbot-fab {
+            position: fixed;
+            bottom: var(--space-5);
+            right: var(--space-5);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-orange-dark));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--bg-dark);
+            font-size: var(--text-2xl);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(245, 124, 0, 0.4);
+            z-index: 1500;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .filter-sidebar {
+                position: fixed;
+                top: 0;
+                left: -300px;
+                width: 300px;
+                height: 100%;
+                background-color: var(--bg-light);
+                z-index: 3000;
+                transition: left var(--transition-med);
+                padding: var(--space-5);
+                overflow-y: auto;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                /* Stronger shadow for overlay */
+                border-radius: 0;
+                /* No rounding for full height sidebar */
+            }
+
+            .filter-sidebar.show {
+                left: 0;
+            }
+
+            .filter-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 2999;
+                display: none;
+            }
+
+            .filter-sidebar.show+.filter-overlay {
+                display: block;
+            }
+
+            .quick-view-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="dark">
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">COURTDRIPDXB</div>
+
+            <div class="nav-actions">
+                <button class="btn btn-ghost" id="darkModeToggle">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search for jerseys...">
+                </div>
+                <button class="icon-btn" id="wishlistBtn">
+                    <i class="fas fa-heart"></i>
+                </button>
+                <button class="icon-btn" id="cartBtn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge" id="cartBadge">0</span>
+                </button>
+                <div class="dropdown account-dropdown">
+                    <button class="btn btn-primary" id="accountBtn" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                        <span>Account</span>
+                    </button>
+                    <div class="dropdown-menu" id="accountDropdown">
+                        <div class="dropdown-header">
+                            <h4>My Account</h4>
+                            <p style="color: var(--text-muted); font-size: var(--text-sm);">Manage your preferences</p>
+                        </div>
+                        <div id="discountCodesList">
+                            <p style="color: var(--text-muted); font-size: var(--text-sm); padding: var(--space-4);">No
+                                discount codes available</p>
+                        </div>
+                        <a href="#" class="dropdown-item" id="viewWishlistBtn">
+                            <i class="fas fa-heart"></i>
+                            <span>Wishlist</span>
+                        </a>
+                        <a href="#" class="dropdown-item" id="viewOrdersBtn">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span>Orders</span>
+                        </a>
+                        <div id="logoutContainer"></div>
+                    </div>
+                </div>
+                <a href="football.html" class="btn btn-primary">
+                    <i class="fas fa-futbol"></i>
+                    <span>Browse Football</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Action Buttons -->
+    <div class="page-actions-container">
+        <a href="index.html" class="page-action-btn">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back to Home</span>
+        </a>
+        <button class="page-action-btn" id="openFilterSidebarBtn"
+            style="min-width: 180px; justify-content: space-between;">
+            <span>Select Conferences</span>
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <main class="container">
+        <div class="shop-layout">
+            <!-- Filter Sidebar (Desktop) -->
+            <aside class="filter-sidebar" id="filterSidebarDesktop">
+                <div class="filter-header"
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-5);">
+                    <h3>Filters</h3>
+                    <button class="modal-close" id="closeFilterSidebarBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="filter-body">
+                    <div class="filter-group">
+                        <h4>Conference</h4>
+                        <div id="conferenceFilters">
+                            <!-- Conference checkboxes will be generated here -->
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Team</h4>
+                        <div id="teamFilters">
+                            <!-- Team checkboxes will be generated here -->
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <input type="range" id="priceRange" min="85" max="100" value="100" style="width: 100%;">
+                        <div id="priceValue">Up to 100 AED</div>
+                    </div>
+                    <button class="btn btn-ghost" id="clearFiltersBtn" style="width: 100%;">Clear All Filters</button>
+                </div>
+            </aside>
+
+            <!-- Product Grid -->
+            <div class="product-grid-container">
+                <div class="shop-header">
+                    <h1 id="productCount">All Jerseys</h1>
+                    <select id="sortBy" class="form-input" style="width: auto;">
+                        <option value="default">Default Sorting</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="name-asc">Name: A to Z</option>
+                        <option value="name-desc">Name: Z to A</option>
+                    </select>
+                </div>
+                <div class="product-grid" id="productGrid">
+                    <!-- Products will be rendered here -->
+                </div>
+                <div class="pagination-controls" id="paginationControls">
+                    <!-- Pagination buttons will be rendered here -->
+                </div>
+            </div>
+        </div>
+        <div class="filter-overlay" id="filterOverlay"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container" style="padding-top: 0; padding-bottom: 0;">
+            <div class="footer-grid">
+                <div class="footer-section" style="grid-column: span 2;">
+                    <h3>About Us</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
+                        Premium basketball jerseys with professional customization. We deliver quality products with
+                        exceptional service.
+                    </p>
+                    <div style="display: flex; gap: var(--space-4); font-size: var(--text-xl);">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="#">NBA Jerseys</a></li>
+                        <li><a href="#">Football Kits</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">On Sale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#" id="footerSizeGuideLink">Size Guide</a></li>
+                        <li><a href="#" id="footerShippingLink">Shipping & Delivery</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024 COURTDRIPDXB. All rights reserved. | Premium Basketball Jerseys</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quick View Modal -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('quickViewModal')"><i class="fas fa-times"></i></button>
+            <div class="quick-view-layout">
+                <div id="quickViewImage">
+                    <!-- Image will be populated by JS -->
+                </div>
+                <div>
+                    <h2 id="quickViewTitle">Product Name</h2>
+                    <p id="quickViewTeam" style="color: var(--text-secondary); margin-bottom: var(--space-4);">Team Name
+                    </p>
+
+                    <div class="customization-form">
+                        <div class="form-group">
+                            <label class="form-label" for="playerName">Player Name (Optional)</label>
+                            <input type="text" id="playerName" class="form-input" placeholder="e.g. JAMES">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="playerNumber">Player Number (Optional)</label>
+                            <input type="number" id="playerNumber" class="form-input" placeholder="e.g. 23" min="0"
+                                max="99">
+                        </div>
+
+                        <!-- Embroidery Option -->
+                        <div class="form-group">
+                            <label class="form-label">Print Style</label>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="printStyle" value="printed" checked>
+                                    <span>Printed (Standard)</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="printStyle" value="embroidered">
+                                    <span>Embroidered (+15 AED)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-summary" style="margin-top: var(--space-5);">
+                        <h4 style="margin-bottom: var(--space-4);">Price Summary</h4>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                            <span>Base Jersey</span>
+                            <span id="basePrice">85 AED</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2); display: none;"
+                            id="nameNumberLine">
+                            <span>Name & Number</span>
+                            <span>Included</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2); display: none;"
+                            id="embroideryLine">
+                            <span>Embroidery</span>
+                            <span>15 AED</span>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; margin-bottom: var(--space-4); font-weight: 700; font-size: var(--text-lg); color: var(--accent-orange);">
+                            <span>Total Price</span>
+                            <span id="totalPrice">85 AED</span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" id="addToCartBtn"
+                        style="width: 100%; justify-content: center; padding: var(--space-3);">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Add to Cart</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div class="modal" id="wishlistModal">
+        <div class="modal-content" style="max-width: 800px;">
+            <button class="modal-close" onclick="closeModal('wishlistModal')"><i class="fas fa-times"></i></button>
+            <h2 style="margin-bottom: var(--space-5);">My Wishlist</h2>
+            <div id="wishlistItems" class="product-grid">
+                <!-- Wishlist items will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Orders Modal -->
+    <div class="modal" id="ordersModal">
+        <div class="modal-content" style="max-width: 800px;">
+            <button class="modal-close" onclick="closeModal('ordersModal')"><i class="fas fa-times"></i></button>
+            <h2 style="margin-bottom: var(--space-5);">My Orders</h2>
+            <div id="orderItemsContainer">
+                <!-- Order items will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal" id="forgotPasswordModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <div>
+                    <h2>Forgot Password?</h2>
+                    <p style="color: var(--text-muted);">Enter your email to reset your password</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('forgotPasswordModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="forgotPasswordForm">
+                    <div class="form-group">
+                        <label class="form-label" for="forgotPasswordEmail">Email Address</label>
+                        <input type="email" id="forgotPasswordEmail" class="form-input" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <i class="fas fa-envelope"></i>
+                        <span>Send Reset Link</span>
+                    </button>
+                    <p id="forgotPasswordMessage"
+                        style="color: var(--accent-orange); text-align: center; margin-top: var(--space-4); font-size: var(--text-sm); display: none;">
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div class="modal" id="signInModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <div>
+                    <h2>Welcome Back!</h2>
+                    <p style="color: var(--text-muted);">Sign in to your COURTDRIPDXB account</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('signInModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="signInForm">
+                    <div class="form-group">
+                        <label class="form-label" for="signInEmail">Email Address</label>
+                        <input type="email" id="signInEmail" class="form-input" required>
+                    </div>
+                    <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+                        <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer;">
+                            <input type="checkbox" id="rememberMe" checked>
+                            <span>Remember Me</span>
+                        </label>
+                        <a href="#" id="forgotPasswordLink"
+                            style="color: var(--accent-orange); font-weight: 600; font-size: var(--text-sm);">
+                            Forgot Password?
+                        </a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Sign In</span>
+                    </button>
+                    <p id="signInError"
+                        style="color: #ff4d4d; text-align: center; margin-top: var(--space-4); font-size: var(--text-sm); display: none;">
+                    </p>
+                </form>
+                <div style="text-align: center; margin-top: var(--space-4); font-size: var(--text-sm);">
+                    <p style="color: var(--text-muted);">Don't have an account? <a href="#" id="switchToSignUp"
+                            style="color: var(--accent-orange); font-weight: 600;">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Welcome Modal -->
+    <div class="modal" id="welcomeModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <div>
+                    <h2>Welcome to COURTDRIPDXB! 🎉</h2>
+                    <p style="color: var(--text-muted);">Get 10% off your first 3 orders</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('welcomeModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="welcomeForm">
+                    <div class="form-group">
+                        <label class="form-label" for="welcomeName">Your Name</label>
+                        <input type="text" id="welcomeName" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="welcomeEmail">Email Address</label>
+                        <input type="email" id="welcomeEmail" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="welcomePhone">Phone Number</label>
+                        <input type="tel" id="welcomePhone" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="jerseyRequest">Looking for any specific jersey?</label>
+                        <input type="text" id="jerseyRequest" class="form-input"
+                            placeholder="e.g., Lakers, Jordan jersey...">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <i class="fas fa-gift"></i>
+                        <span>Get My Discount Code</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- FIREBASE INITIALIZATION ---
+            try {
+                const firebaseConfig = {
+                    apiKey: "AIzaSyAbMf3bPs97pkfXUKB_44rKoRWmvt9b0yM",
+                    authDomain: "gokit-x-courtdripdxb.firebaseapp.com",
+                    projectId: "gokit-x-courtdripdxb",
+                    storageBucket: "gokit-x-courtdripdxb.firebasestorage.app",
+                    messagingSenderId: "384570406205",
+                    appId: "1:384570406205:web:966041b461575405b74154"
+                };
+                if (!firebase.apps.length) {
+                    firebase.initializeApp(firebaseConfig);
+                }
+                window.db = firebase.firestore();
+                console.log('Firebase initialized successfully for basketball page.');
+            } catch (error) {
+                console.error('Firebase initialization error:', error);
+                window.db = null;
+            }
+
+            // --- STATE MANAGEMENT ---
+            const state = {
+                currentPage: 1,
+                itemsPerPage: 12,
+                totalPages: 1,
+                sortBy: 'default',
+                activeFilters: {
+                    conferences: [],
+                    teams: [],
+                    maxPrice: 100
+                },
+            };
+
+            // --- DATA ---
+            const products = [
+                // --- Eastern Conference ---
+                { id: 101, name: "Celtics Icon Edition 23/24", team: "Boston Celtics", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/celtics-24.png" alt="Celtics Icon Edition 23/24">', badge: "Popular" },
+                { id: 102, name: "Nets Statement Edition 23/24", team: "Brooklyn Nets", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/nets-24.png" alt="Nets Statement Edition 23/24">', badge: "New" },
+                { id: 103, name: "Knicks Classic Edition 23/24", team: "New York Knicks", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/knicks-24.png" alt="Knicks Classic Edition 23/24">', badge: "Classic" },
+                { id: 104, name: "76ers City Edition 23/24", team: "Philadelphia 76ers", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/76ers-24.png" alt="76ers City Edition 23/24">', badge: "Hot" },
+                { id: 105, name: "Raptors Icon Edition 23/24", team: "Toronto Raptors", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/raptors-24.png" alt="Raptors Icon Edition 23/24">', badge: "Popular" },
+                { id: 106, name: "Bulls Icon Edition 23/24", team: "Chicago Bulls", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/bulls-24.png" alt="Bulls Icon Edition 23/24">', badge: "Classic" },
+                { id: 107, name: "Cavaliers Statement Edition 23/24", team: "Cleveland Cavaliers", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/cavaliers-24.png" alt="Cavaliers Statement Edition 23/24">', badge: "New" },
+                { id: 108, name: "Pistons City Edition 23/24", team: "Detroit Pistons", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/pistons-24.png" alt="Pistons City Edition 23/24">', badge: "New" },
+                { id: 109, name: "Pacers Icon Edition 23/24", team: "Indiana Pacers", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/pacers-24.png" alt="Pacers Icon Edition 23/24">', badge: "Popular" },
+                { id: 110, name: "Bucks Statement Edition 23/24", team: "Milwaukee Bucks", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/bucks-24.png" alt="Bucks Statement Edition 23/24">', badge: "Hot" },
+                { id: 111, name: "Hawks City Edition 23/24", team: "Atlanta Hawks", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/hawks-24.png" alt="Hawks City Edition 23/24">', badge: "New" },
+                { id: 112, name: "Hornets Classic Edition 23/24", team: "Charlotte Hornets", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/hornets-24.png" alt="Hornets Classic Edition 23/24">', badge: "Popular" },
+                { id: 113, name: "Heat Vice City Edition 23/24", team: "Miami Heat", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/heat-24.png" alt="Heat Vice City Edition 23/24">', badge: "Hot" },
+                { id: 114, name: "Magic Icon Edition 23/24", team: "Orlando Magic", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/magic-24.png" alt="Magic Icon Edition 23/24">', badge: "New" },
+                { id: 115, name: "Wizards Statement Edition 23/24", team: "Washington Wizards", league: "NBA", conference: "Eastern", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/wizards-24.png" alt="Wizards Statement Edition 23/24">', badge: "New" },
+                // --- Western Conference ---
+                { id: 116, name: "Mavericks City Edition 23/24", team: "Dallas Mavericks", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/mavericks-24.png" alt="Mavericks City Edition 23/24">', badge: "Popular" },
+                { id: 117, name: "Nuggets Icon Edition 23/24", team: "Denver Nuggets", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/nuggets-24.png" alt="Nuggets Icon Edition 23/24">', badge: "Hot" },
+                { id: 118, name: "Warriors City Edition 23/24", team: "Golden State Warriors", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/warriors-24.png" alt="Warriors City Edition 23/24">', badge: "Popular" },
+                { id: 119, name: "Rockets Statement Edition 23/24", team: "Houston Rockets", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/rockets-24.png" alt="Rockets Statement Edition 23/24">', badge: "New" },
+                { id: 120, name: "Clippers Icon Edition 23/24", team: "Los Angeles Clippers", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/clippers-24.png" alt="Clippers Icon Edition 23/24">', badge: "Popular" },
+                { id: 121, name: "Lakers Statement Edition 23/24", team: "Los Angeles Lakers", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/lakers-24.png" alt="Lakers Statement Edition 23/24">', badge: "Classic" },
+                { id: 122, name: "Grizzlies City Edition 23/24", team: "Memphis Grizzlies", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/grizzlies-24.png" alt="Grizzlies City Edition 23/24">', badge: "Hot" },
+                { id: 123, name: "Timberwolves Icon Edition 23/24", team: "Minnesota Timberwolves", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/timberwolves-24.png" alt="Timberwolves Icon Edition 23/24">', badge: "New" },
+                { id: 124, name: "Pelicans Statement Edition 23/24", team: "New Orleans Pelicans", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/pelicans-24.png" alt="Pelicans Statement Edition 23/24">', badge: "Popular" },
+                { id: 125, name: "Thunder City Edition 23/24", team: "Oklahoma City Thunder", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/thunder-24.png" alt="Thunder City Edition 23/24">', badge: "Hot" },
+                { id: 126, name: "Suns Icon Edition 23/24", team: "Phoenix Suns", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/suns-24.png" alt="Suns Icon Edition 23/24">', badge: "Popular" },
+                { id: 127, name: "Trail Blazers Statement Edition 23/24", team: "Portland Trail Blazers", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/blazers-24.png" alt="Trail Blazers Statement Edition 23/24">', badge: "New" },
+                { id: 128, name: "Kings Classic Edition 23/24", team: "Sacramento Kings", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/kings-24.png" alt="Kings Classic Edition 23/24">', badge: "Classic" },
+                { id: 129, name: "Spurs City Edition 23/24", team: "San Antonio Spurs", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/spurs-24.png" alt="Spurs City Edition 23/24">', badge: "Popular" },
+                { id: 130, name: "Jazz Statement Edition 23/24", team: "Utah Jazz", league: "NBA", conference: "Western", price: 85, originalPrice: 100, discount: 15, image: '<img src="../assets/images/products/jazz-24.png" alt="Jazz Statement Edition 23/24">', badge: "New" }
+            ];
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            // --- DOM ELEMENTS ---
+            const productGrid = document.getElementById('productGrid');
+            const searchInput = document.getElementById('searchInput');
+            const sortBySelect = document.getElementById('sortBy');
+            const productCountEl = document.getElementById('productCount');
+            const quickViewModal = document.getElementById('quickViewModal');
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const accountBtn = document.getElementById('accountBtn');
+            const accountDropdown = document.getElementById('accountDropdown');
+
+            // --- INITIALIZATION ---
+            function init() {
+                syncUserSession();
+                setupEventListeners();
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'light') {
+                    document.body.classList.add('light');
+                }
+                updateThemeIcon();
+                populateFilters();
+                render();
+                updateAccountDropdown();
+                updateCartIcon();
+
+                if (!localStorage.getItem('hasVisited')) {
+                    setTimeout(() => {
+                        if (!document.querySelector('.modal.show')) {
+                            showModal('welcomeModal');
+                        }
+                    }, 1500);
+                }
+            }
+
+            async function syncUserSession() {
+                const userData = JSON.parse(localStorage.getItem('userData'));
+                if (userData && userData.id) {
+                    // In a full app, you might load user-specific data here
+                }
+            }
+
+            // --- EVENT LISTENERS ---
+            function setupEventListeners() {
+                // Main product grid click handler (for Customize, Wishlist, etc.)
+                productGrid.addEventListener('click', handleProductGridClick);
+
+                // Sorting
+                sortBySelect.addEventListener('change', (e) => {
+                    state.sortBy = e.target.value;
+                    render();
+                });
+
+                // Filtering
+                document.getElementById('conferenceFilters').addEventListener('change', () => {
+                    populateTeamCheckboxes();
+                    render();
+                });
+                document.getElementById('teamFilters').addEventListener('change', render);
+                document.getElementById('priceRange').addEventListener('input', debounce(render, 200));
+                document.getElementById('clearFiltersBtn').addEventListener('click', () => {
+                    resetFilters();
+                    render();
+                });
+
+                // Quick View Modal Customization
+                document.getElementById('playerName').addEventListener('input', updatePrice);
+                document.getElementById('playerNumber').addEventListener('input', updatePrice);
+                document.querySelectorAll('input[name="printStyle"]').forEach(radio => {
+                    radio.addEventListener('change', updatePrice);
+                });
+                document.getElementById('addToCartBtn').addEventListener('click', addToCart);
+
+                // Dark Mode
+                darkModeToggle.addEventListener('click', toggleDarkMode);
+
+                // Account Dropdown
+                accountBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    accountDropdown.classList.toggle('show');
+                });
+                document.addEventListener('click', (e) => {
+                    if (!accountDropdown.contains(e.target) && !accountBtn.contains(e.target)) {
+                        accountDropdown.classList.remove('show');
+                    }
+                });
+                const welcomeForm = document.getElementById('welcomeForm');
+                if (welcomeForm) welcomeForm.addEventListener('submit', handleWelcomeForm);
+
+                // Sign In Form
+                const signInForm = document.getElementById('signInForm');
+                if (signInForm) signInForm.addEventListener('submit', handleSignIn);
+
+                // Switch from Sign In to Sign Up
+                const switchToSignUp = document.getElementById('switchToSignUp');
+                if (switchToSignUp) {
+                    switchToSignUp.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        closeModal('signInModal');
+                        showModal('welcomeModal');
+                    });
+                }
+
+                // Forgot Password Link
+                const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+                if (forgotPasswordLink) {
+                    forgotPasswordLink.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        showForgotPassword();
+                    });
+                }
+
+                // Open Filter Sidebar Button (for mobile)
+                const openFilterSidebarBtn = document.getElementById('openFilterSidebarBtn');
+                const filterSidebarDesktop = document.getElementById('filterSidebarDesktop'); // This is the sidebar
+                const filterOverlay = document.getElementById('filterOverlay'); // This is the overlay
+
+                if (openFilterSidebarBtn) {
+                    openFilterSidebarBtn.addEventListener('click', () => {
+                        filterSidebarDesktop.classList.add('show');
+                        filterOverlay.classList.add('show');
+                    });
+                }
+                // Close Filter Sidebar Button
+                const closeFilterSidebarBtn = document.getElementById('closeFilterSidebarBtn');
+                if (closeFilterSidebarBtn) {
+                    closeFilterSidebarBtn.addEventListener('click', () => {
+                        filterSidebarDesktop.classList.remove('show');
+                        filterOverlay.classList.remove('show');
+                    });
+                }
+                // Close Filter Sidebar when clicking overlay
+                if (filterOverlay) {
+                    filterOverlay.addEventListener('click', () => {
+                        filterSidebarDesktop.classList.remove('show');
+                        filterOverlay.classList.remove('show');
+                    });
+                }
+
+
+                // Account Dropdown actions
+                document.getElementById('viewWishlistBtn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showWishlistModal();
+                });
+                document.getElementById('viewOrdersBtn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showOrdersModal();
+                });
+                document.getElementById('wishlistBtn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showWishlistModal();
+                });
+            }
+
+            // --- RENDERING & DOM MANIPULATION ---
+            function render() {
+                const filteredProducts = getFilteredAndSortedProducts();
+                productGrid.innerHTML = ''; // Clear grid
+
+                if (filteredProducts.length === 0) {
+                    productGrid.innerHTML = '<p>No jerseys found matching your criteria.</p>';
+                    productCountEl.textContent = '0 Jerseys Found';
+                    return;
+                }
+
+                productCountEl.textContent = `${filteredProducts.length} Jerseys Found`;
+
+                filteredProducts.forEach(product => {
+                    const card = createProductCard(product);
+                    productGrid.appendChild(card);
+                });
+            }
+
+            function createProductCard(product) {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.dataset.productId = product.id;
+                card.innerHTML = `
+                    <div class="product-image-container">
+                        <div class="product-badge">${product.badge}</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn ${wishlist.includes(product.id) ? 'active' : ''}" data-action="wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="action-btn" data-action="quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="product-image">${product.image}</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-team">${product.team}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-pricing">
+                            <span class="product-price">${product.price} AED</span>
+                            <span class="product-original-price">${product.originalPrice} AED</span>
+                        </div>
+                        <button class="btn btn-primary" data-action="quick-view" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-tshirt"></i>
+                            <span>Customize</span>
+                        </button>
+                    </div>
+                `;
+                return card;
+            }
+
+            // --- FILTERING & SORTING LOGIC ---
+            function getFilteredAndSortedProducts() {
+                let currentProducts = [...products];
+
+                // 1. Search
+                const searchQuery = searchInput.value.toLowerCase().trim();
+                if (searchQuery) {
+                    currentProducts = currentProducts.filter(p =>
+                        p.name.toLowerCase().includes(searchQuery) || p.team.toLowerCase().includes(searchQuery)
+                    );
+                }
+
+                // 2. Conference Filter
+                const selectedConferences = Array.from(document.querySelectorAll('#conferenceFilters input:checked')).map(cb => cb.value);
+                if (selectedConferences.length > 0) {
+                    currentProducts = currentProducts.filter(p => selectedConferences.includes(p.conference));
+                }
+
+                // 3. Team Filter
+                const selectedTeams = Array.from(document.querySelectorAll('#teamFilters input:checked')).map(cb => cb.value);
+                if (selectedTeams.length > 0) {
+                    currentProducts = currentProducts.filter(p => selectedTeams.includes(p.team));
+                }
+
+                // 4. Price Filter
+                const maxPrice = parseInt(document.getElementById('priceRange').value);
+                document.getElementById('priceValue').textContent = `Up to ${maxPrice} AED`;
+                currentProducts = currentProducts.filter(p => p.price <= maxPrice);
+
+                // 5. Sorting
+                switch (state.sortBy) {
+                    case 'price-asc': return currentProducts.sort((a, b) => a.price - b.price);
+                    case 'price-desc': return currentProducts.sort((a, b) => b.price - a.price);
+                    case 'name-asc': return currentProducts.sort((a, b) => a.name.localeCompare(b.name));
+                    case 'name-desc': return currentProducts.sort((a, b) => b.name.localeCompare(a.name));
+                    default: return currentProducts.sort((a, b) => a.id - b.id);
+                }
+            }
+
+            function populateFilters() {
+                const conferenceFiltersContainer = document.getElementById('conferenceFilters');
+                const conferences = [...new Set(products.map(p => p.conference))].sort();
+                conferenceFiltersContainer.innerHTML = conferences.map(conf => `
+                    <label>
+                        <input type="checkbox" value="${conf}" name="conference">
+                        <span>${conf} Conference</span>
+                    </label>
+                `).join('');
+                populateTeamCheckboxes();
+            }
+
+            function populateTeamCheckboxes() {
+                const teamFiltersContainer = document.getElementById('teamFilters');
+                const selectedConferences = Array.from(document.querySelectorAll('#conferenceFilters input:checked')).map(cb => cb.value);
+
+                if (selectedConferences.length === 0) {
+                    teamFiltersContainer.innerHTML = `<p style="font-size: var(--text-sm); color: var(--text-muted);">Select a conference to see teams.</p>`;
+                    return;
+                }
+
+                const teamsToDisplay = [...new Set(products
+                    .filter(p => selectedConferences.includes(p.conference))
+                    .map(p => p.team)
+                )].sort();
+
+                teamFiltersContainer.innerHTML = teamsToDisplay.map(team => `
+                    <label>
+                        <input type="checkbox" value="${team}" name="team">
+                        <span>${team}</span>
+                    </label>
+                `).join('');
+            }
+
+            function resetFilters() {
+                document.querySelectorAll('#conferenceFilters input, #teamFilters input').forEach(cb => cb.checked = false);
+                const priceRange = document.getElementById('priceRange');
+                priceRange.value = priceRange.max;
+                populateTeamCheckboxes();
+            }
+
+            // --- EVENT HANDLERS ---
+            function handleProductGridClick(event) {
+                const target = event.target;
+                const actionButton = target.closest('[data-action]');
+                if (!actionButton) return;
+
+                const productCard = target.closest('.product-card');
+                if (!productCard) return;
+
+                const productId = parseInt(productCard.dataset.productId);
+                const action = actionButton.dataset.action;
+
+                if (action === 'quick-view') {
+                    openQuickView(productId);
+                } else if (action === 'wishlist') {
+                    toggleWishlist(productId, event);
+                }
+            }
+
+            // --- MODAL & CUSTOMIZATION LOGIC ---
+            function openQuickView(productId) {
+                const product = products.find(p => p.id === productId);
+                if (!product) return;
+
+                // Populate modal
+                quickViewModal.dataset.productId = productId;
+                document.getElementById('quickViewTitle').textContent = product.name;
+                document.getElementById('quickViewTeam').textContent = product.team;
+                document.getElementById('quickViewImage').innerHTML = product.image;
+                document.getElementById('basePrice').textContent = `${product.price} AED`;
+
+                // Reset form
+                document.getElementById('playerName').value = '';
+                document.getElementById('playerNumber').value = '';
+                document.querySelector('input[name="printStyle"][value="printed"]').checked = true;
+
+                updatePrice(); // Initial price calculation
+                showModal('quickViewModal');
+            }
+
+            function updatePrice() {
+                const basePrice = 85;
+                let totalPrice = basePrice;
+
+                const nameNumberLine = document.getElementById('nameNumberLine');
+                const embroideryLine = document.getElementById('embroideryLine');
+
+                // Name & Number pricing
+                if (document.getElementById('playerName').value || document.getElementById('playerNumber').value) {
+                    nameNumberLine.style.display = 'flex';
+                } else {
+                    nameNumberLine.style.display = 'none';
+                }
+
+                // Embroidery pricing
+                if (document.querySelector('input[name="printStyle"]:checked').value === 'embroidered') {
+                    totalPrice += 15;
+                    embroideryLine.style.display = 'flex';
+                } else {
+                    embroideryLine.style.display = 'none';
+                }
+
+                document.getElementById('totalPrice').textContent = `${totalPrice} AED`;
+            }
+
+            function addToCart() {
+                const productId = parseInt(quickViewModal.dataset.productId);
+                const product = products.find(p => p.id === productId);
+
+                const cartItem = {
+                    id: Date.now(),
+                    productId: productId,
+                    name: product.name,
+                    playerName: document.getElementById('playerName').value,
+                    playerNumber: document.getElementById('playerNumber').value,
+                    printStyle: document.querySelector('input[name="printStyle"]:checked').value,
+                    price: parseInt(document.getElementById('totalPrice').textContent),
+                    image: product.image
+                };
+
+                cart.push(cartItem);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                console.log('Added to cart:', cartItem);
+                updateCartIcon();
+                // showToast(`${product.name} added to cart!`); // Placeholder for toast notifications
+                closeModal('quickViewModal');
+            }
+
+            // --- WISHLIST & ORDERS ---
+            function toggleWishlist(productId, event) {
+                if (event) {
+                    event.stopPropagation();
+                }
+
+                const index = wishlist.indexOf(productId);
+                if (index > -1) {
+                    wishlist.splice(index, 1);
+                } else {
+                    wishlist.push(productId);
+                }
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+                // Update button on the card
+                const cardBtn = document.querySelector(`.product-card[data-product-id="${productId}"] .wishlist-btn`);
+                if (cardBtn) {
+                    cardBtn.classList.toggle('active', index === -1);
+                }
+
+                // If wishlist modal is open, re-render it
+                if (document.getElementById('wishlistModal').classList.contains('show')) {
+                    showWishlistModal();
+                }
+            }
+
+            function showWishlistModal() {
+                const wishlistItemsContainer = document.getElementById('wishlistItems');
+                wishlistItemsContainer.innerHTML = '';
+
+                if (wishlist.length === 0) {
+                    wishlistItemsContainer.innerHTML = `
+                    <div style="text-align: center; padding: var(--space-8); color: var(--text-muted); grid-column: 1 / -1;">
+                        <i class="fas fa-heart-broken" style="font-size: 3rem; margin-bottom: var(--space-4);"></i>
+                        <h3>Your wishlist is empty</h3>
+                        <p>Add items to your wishlist to see them here.</p>
+                    </div>
+                `;
+                } else {
+                    wishlist.forEach(productId => {
+                        const product = products.find(p => p.id === productId);
+                        if (!product) return;
+                        const card = createProductCard(product);
+                        wishlistItemsContainer.appendChild(card);
+                    });
+                }
+                accountDropdown.classList.remove('show');
+                showModal('wishlistModal');
+            }
+
+            function showOrdersModal() {
+                const orderItemsContainer = document.getElementById('orderItemsContainer');
+                orderItemsContainer.innerHTML = '';
+                const orders = JSON.parse(localStorage.getItem('cart')) || []; // Using 'cart' as the order history
+
+                if (orders.length === 0) {
+                    orderItemsContainer.innerHTML = `
+                     <div style="text-align: center; padding: var(--space-8); color: var(--text-muted);">
+                        <i class="fas fa-receipt" style="font-size: 3rem; margin-bottom: var(--space-4);"></i>
+                        <h3>You have no past orders</h3>
+                        <p>Once you place an order, it will appear here.</p>
+                    </div>
+                `;
+                } else {
+                    orders.forEach(item => {
+                        const product = products.find(p => p.id === item.productId);
+                        if (!product) return;
+
+                        let customizationDetails = '';
+                        if (item.playerName || item.playerNumber) {
+                            customizationDetails += `<li>Name/Number: ${item.playerName || ''} #${item.playerNumber || ''}</li>`;
+                        }
+                        if (item.printStyle === 'embroidered') {
+                            customizationDetails += `<li>Style: Embroidered</li>`;
+                        }
+                        const orderDate = new Date(item.timestamp).toLocaleString();
+
+                        const itemEl = document.createElement('div');
+                        itemEl.innerHTML = `
+                        <div style="display: flex; gap: var(--space-4); padding: var(--space-4) 0; border-bottom: 1px solid var(--border-color);">
+                            <div style="font-size: 3rem; width: 80px; text-align: center;">${product.image}</div>
+                            <div style="flex: 1;">
+                                <h4 class="product-name">${product.name}</h4>
+                                <ul style="font-size: var(--text-sm); color: var(--text-muted); list-style-position: inside; padding-left: 0;">${customizationDetails || '<li>Standard Jersey</li>'}</ul>
+                                <div style="font-size: var(--text-xs); color: var(--text-muted); margin-top: var(--space-2);">Ordered on: ${orderDate}</div>
+                            </div>
+                            <div style="text-align: right;"><div class="product-price">${item.price} AED</div><div style="margin-top: var(--space-2); font-size: var(--text-sm); color: var(--accent-blue);">Status: Shipped</div></div>
+                        </div>`;
+                        orderItemsContainer.appendChild(itemEl);
+                    });
+                }
+                accountDropdown.classList.remove('show');
+                showModal('ordersModal');
+            }
+
+            // --- ACCOUNT & USER FUNCTIONS ---
+            function updateAccountDropdown() {
+                const userData = JSON.parse(localStorage.getItem('userData'));
+                const accountBtnText = accountBtn.querySelector('span');
+                const dropdownHeader = accountDropdown.querySelector('.dropdown-header h4');
+                const logoutContainer = document.getElementById('logoutContainer');
+
+                if (userData && userData.name) {
+                    const firstName = userData.name.split(' ')[0];
+                    if (accountBtnText) accountBtnText.textContent = `Hi, ${firstName}`;
+                    if (dropdownHeader) dropdownHeader.textContent = `Welcome, ${userData.name}`;
+
+                    logoutContainer.innerHTML = `
+                        <a href="#" class="dropdown-item" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Log Out</span>
+                        </a>
+                    `;
+                    document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+                } else {
+                    if (accountBtnText) accountBtnText.textContent = 'Account';
+                    if (dropdownHeader) dropdownHeader.textContent = 'My Account';
+                    logoutContainer.innerHTML = `
+                        <a href="#" class="dropdown-item" id="signInBtn">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>Sign In</span>
+                        </a>
+                        <a href="#" class="dropdown-item" id="signUpBtn">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Sign Up</span>
+                        </a>
+                    `;
+                    document.getElementById('signInBtn').addEventListener('click', (e) => {
+                        e.preventDefault();
+                        accountDropdown.classList.remove('show');
+                        showModal('signInModal');
+                    });
+                    document.getElementById('signUpBtn').addEventListener('click', (e) => {
+                        e.preventDefault();
+                        accountDropdown.classList.remove('show');
+                        showModal('welcomeModal');
+                    });
+                }
+                updateDiscountCodes();
+            }
+
+            function handleLogout(e) {
+                e.preventDefault();
+                localStorage.removeItem('userData');
+                localStorage.removeItem('discountCodes');
+                // showToast('You have been logged out.', 'fas fa-sign-out-alt');
+                accountDropdown.classList.remove('show');
+                updateAccountDropdown();
+            }
+
+            async function handleWelcomeForm(e) {
+                e.preventDefault();
+                const formData = {
+                    name: document.getElementById('welcomeName').value,
+                    email: document.getElementById('welcomeEmail').value,
+                    phone: document.getElementById('welcomePhone').value,
+                    jerseyRequest: document.getElementById('jerseyRequest').value
+                };
+
+                localStorage.setItem('hasVisited', 'true');
+                const discountCode = generateDiscountCode();
+                localStorage.setItem('discountCodes', JSON.stringify([discountCode]));
+
+                if (window.db) {
+                    try {
+                        const docRef = await window.db.collection('users').add({ ...formData, discountCode, timestamp: new Date() });
+                        formData.id = docRef.id;
+                    } catch (error) {
+                        console.error("Error saving user to Firebase: ", error);
+                    }
+                }
+
+                localStorage.setItem('userData', JSON.stringify(formData));
+                closeModal('welcomeModal');
+                // showToast(`Welcome ${formData.name}! Your discount code: ${discountCode}`, 'fas fa-gift');
+                updateAccountDropdown();
+            }
+
+            function showForgotPassword() {
+                closeModal('signInModal'); // Close sign-in modal if open
+                showModal('forgotPasswordModal');
+                document.getElementById('forgotPasswordEmail').value = ''; // Clear previous email
+                document.getElementById('forgotPasswordMessage').style.display = 'none'; // Hide previous messages
+
+                const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+                if (forgotPasswordForm) {
+                    forgotPasswordForm.onsubmit = async (e) => {
+                        e.preventDefault();
+                        const email = document.getElementById('forgotPasswordEmail').value.trim();
+                        const messageElement = document.getElementById('forgotPasswordMessage');
+                        messageElement.style.display = 'block';
+
+                        if (!email) {
+                            messageElement.textContent = 'Please enter your email address.';
+                            return;
+                        }
+
+                        // In a real application, you would integrate with Firebase Authentication here:
+                        // await firebase.auth().sendPasswordResetEmail(email);
+                        messageElement.textContent = `If an account exists for ${email}, a password reset link has been sent.`;
+                        // Optionally, close modal after a delay: setTimeout(() => closeModal('forgotPasswordModal'), 3000);
+                    };
+                }
+            }
+
+            async function handleSignIn(e) {
+                e.preventDefault();
+                const email = document.getElementById('signInEmail').value.trim();
+                const signInError = document.getElementById('signInError');
+                signInError.style.display = 'none';
+
+                if (!email) {
+                    signInError.textContent = 'Please enter your email address.';
+                    signInError.style.display = 'block';
+                    return;
+                }
+
+                if (!window.db) {
+                    signInError.textContent = 'Cannot connect to the database. Please try again later.';
+                    signInError.style.display = 'block';
+                    return;
+                }
+
+                try {
+                    const usersRef = window.db.collection('users');
+                    const snapshot = await usersRef.where('email', '==', email).limit(1).get();
+
+                    if (snapshot.empty) {
+                        signInError.textContent = 'No account found with this email. Please sign up.';
+                        signInError.style.display = 'block';
+                        return;
+                    }
+
+                    const userDoc = snapshot.docs[0];
+                    const userData = {
+                        id: userDoc.id,
+                        ...userDoc.data()
+                    };
+
+                    localStorage.setItem('userData', JSON.stringify(userData));
+                    if (userData.discountCode) {
+                        localStorage.setItem('discountCodes', JSON.stringify([userData.discountCode]));
+                    }
+
+                    closeModal('signInModal');
+                    updateAccountDropdown();
+                } catch (error) {
+                    console.error("Error signing in: ", error);
+                    signInError.textContent = 'An error occurred during sign in. Please try again.';
+                    signInError.style.display = 'block';
+                }
+            }
+
+            // --- THEME FUNCTIONS ---
+            function toggleDarkMode() {
+                document.body.classList.toggle('light');
+                if (document.body.classList.contains('light')) {
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    localStorage.removeItem('theme'); // Default is dark
+                }
+                updateThemeIcon();
+            }
+
+            function updateThemeIcon() {
+                const icon = darkModeToggle.querySelector('i');
+                if (document.body.classList.contains('light')) {
+                    icon.className = 'fas fa-moon';
+                } else {
+                    icon.className = 'fas fa-sun';
+                }
+            }
+
+            // --- UTILITY FUNCTIONS ---
+            function showModal(modalId) {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.add('show');
+                    document.body.classList.add('modal-open');
+                }
+            }
+
+            function updateCartIcon() {
+                const cartBadge = document.getElementById('cartBadge');
+                const cartItemCount = cart.length;
+                cartBadge.textContent = cartItemCount;
+                if (cartItemCount > 0) {
+                    cartBadge.classList.add('show');
+                } else {
+                    cartBadge.classList.remove('show');
+                }
+            }
+
+            function generateDiscountCode() {
+                const codes = ['WELCOME10', 'FIRST10', 'GOKIT10', 'NEWBIE10', 'START10'];
+                return codes[Math.floor(Math.random() * codes.length)];
+            }
+
+            function updateDiscountCodes() {
+                const codes = JSON.parse(localStorage.getItem('discountCodes')) || [];
+                const codesList = document.getElementById('discountCodesList');
+                if (codes.length > 0) {
+                    codesList.innerHTML = codes.map(code => `<div class="dropdown-item"><i class="fas fa-tag"></i><span>${code} - 10% OFF</span></div>`).join('');
+                }
+            }
+
+            window.closeModal = function (modalId) { // Make it globally accessible for inline onclick
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.remove('show');
+                    document.body.classList.remove('modal-open');
+                }
+            }
+
+            function debounce(func, delay) {
+                let timeout;
+                return function (...args) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(this, args), delay);
+                };
+            }
+
+            // --- START THE APP ---
+            init();
+        });
+    </script>
+</body>
+
+</html>
