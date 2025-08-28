@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Policy - Gokit X CourtDripDxb</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:900,700,400&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            color: #e0e0e0;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 80%, rgba(255, 165, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 69, 0, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff6b35, #f7931e, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .main-content {
+            padding-top: 120px;
+            padding-bottom: 60px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .page-title {
+            color: #fff;
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .policy-container {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            line-height: 1.8;
+        }
+
+        .policy-container h2 {
+            color: #ff6b35;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 107, 53, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .policy-container h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .policy-container p,
+        .policy-container li {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+        }
+
+        .policy-container ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .policy-container li::before {
+            content: '\f058';
+            /* Font Awesome check icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #ff6b35;
+            margin-right: 10px;
+            margin-left: -20px;
+        }
+
+        .policy-container a {
+            color: #ffc107;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .policy-container a:hover {
+            text-decoration: underline;
+        }
+
+        .back-btn-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .back-to-cart-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            border: none;
+        }
+
+        .back-to-cart-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .footer-brands-container {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            text-align: center;
+        }
+
+        .brand-title {
+            color: #ff6b35;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .social-media-links {
+            margin-bottom: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-media-links a {
+            color: white;
+            font-size: 1.2rem;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-media-links a:hover {
+            background-color: #ff6b35;
+            border-color: #ff6b35;
+            transform: scale(1.1);
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Gokit X CourtDripDxb</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="league.html" class="nav-link">Leagues</a>
+                <a href="basketball.html" class="nav-link">Basketball</a>
+                <a href="cart.html" class="nav-link">Cart</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <h1 class="page-title"><i class="fas fa-truck"></i> Shipping Policy</h1>
+        <div class="policy-container">
+            <h2>Delivery Timeframes</h2>
+            <p>Our goal is to get your order to you as quickly as possible. As we source high-quality jerseys from
+                various locations, delivery times can range from <strong>2 days to 4 weeks</strong>. This depends on
+                stock availability and the origin of the item.</p>
+            <p>We appreciate your patience and understanding as we ensure you receive the best products.</p>
+
+            <h2>Our Delivery Guarantee</h2>
+            <p>We stand by our service. If, for any reason, your order is not delivered to your doorstep within
+                <strong>4 weeks (28 days)</strong> from the date of your purchase, we believe you deserve compensation
+                for the delay.
+            </p>
+            <p>In such cases, you are eligible to request a discount on your order. This can be in the form of a partial
+                refund or a discount code for a future purchase.</p>
+
+            <h2>How to Claim</h2>
+            <ul>
+                <li>Once your order has passed the 4-week delivery window, please contact our support team.</li>
+                <li>Provide your order number and a brief message regarding the delay.</li>
+                <li>Our team will verify the delivery status and promptly assist you with your compensation.</li>
+            </ul>
+
+            <h2>Contact Us</h2>
+            <p>If you have any questions about your order or our shipping policy, please don't hesitate to reach out to
+                us at <a href="mailto:support@gokit-courtdrip.com">support@gokit-courtdrip.com</a>.</p>
+        </div>
+        <div class="back-btn-container">
+            <a href="cart.html" class="back-to-cart-btn">
+                <i class="fas fa-arrow-left"></i> Back to Cart
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-brands-container">
+            <div class="footer-brand">
+                <h3 class="brand-title">Gokit</h3>
+                <div class="social-media-links">
+                    <a href="#" target="_blank" title="Gokit Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" title="Gokit WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" title="Gokit TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" target="_blank" title="Gokit Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-brand">
+                <h3 class="brand-title">CourtDripDxb</h3>
+                <div class="social-media-links">
+                    <a href="#" target="_blank" title="CourtDripDxb Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" title="CourtDripDxb WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" title="CourtDripDxb TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" target="_blank" title="CourtDripDxb Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <p>© 2025 Gokit X CourtDripDxb — Football & Basketball Jerseys from Around the World</p>
+    </footer>
+
+</body>
+
+</html>

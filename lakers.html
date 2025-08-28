@@ -9,24 +9,27 @@
     <style>
         /* Base Styles */
         body {
-            background-color: #121212;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0d2e 100%);
             color: #f8f9fa;
             padding-bottom: 70px;
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
         }
 
         /* Navbar */
         .lakers-header {
-            background: linear-gradient(90deg, #552583, #FDB927);
+            background: linear-gradient(135deg, #552583, #FDB927, #552583);
             color: white;
+            box-shadow: 0 4px 15px rgba(253, 185, 39, 0.3);
         }
 
-        /* Hero Section */
+        /* Hero Section - Simplified */
         .hero-section {
-            background-color: #1a1a1a;
+            background: linear-gradient(135deg, #552583 0%, #1a0d2e 50%, #552583 100%);
             border-bottom: 4px solid #FDB927;
-            padding: 4rem 0;
+            padding: 3rem 0;
             text-align: center;
+            position: relative;
         }
 
         .hero-section h1 {
@@ -34,13 +37,41 @@
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: clamp(2rem, 8vw, 4rem);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero-section p {
-            color: #ccc;
-            font-size: 1.25rem;
-            font-weight: 500;
+            color: #e6d7ff;
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            margin-bottom: 2rem;
+        }
+
+        .lakers-legacy {
+            display: flex;
+            justify-content: center;
+            gap: clamp(1rem, 5vw, 3rem);
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .legacy-item {
+            text-align: center;
+        }
+
+        .legacy-number {
+            color: #FDB927;
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            font-weight: 900;
+            display: block;
+        }
+
+        .legacy-label {
+            color: #e6d7ff;
+            font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+            text-transform: uppercase;
+            margin-top: 0.5rem;
         }
 
         /* Back Button */
@@ -48,18 +79,19 @@
             display: inline-block;
             border: 2px solid #FDB927;
             color: #FDB927;
-            font-weight: 600;
-            padding: 0.5rem 1.5rem;
-            border-radius: 0.3rem;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            transition: all 0.2s ease;
             text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
         }
 
-        .btn-back:hover,
-        .btn-back:focus {
+        .btn-back:hover {
             background-color: #FDB927;
-            color: #121212;
-            outline: none;
+            color: #552583;
+            transform: translateY(-2px);
         }
 
         .back-container {
@@ -69,72 +101,165 @@
 
         /* Category Sections */
         .category-section {
-            padding: 3rem 0 4rem;
+            padding: 3rem 0;
+            margin: 1rem 0;
+            background: rgba(30, 30, 30, 0.3);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(253, 185, 39, 0.2);
         }
 
         .category-section h2 {
             color: #FDB927;
-            font-weight: 700;
-            margin-bottom: 2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
             text-align: center;
-            font-size: 1.8rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            text-transform: uppercase;
         }
 
-        /* Cards */
+        .category-description {
+            text-align: center;
+            color: #e6d7ff;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        /* Simplified Cards */
         .card {
-            background-color: #1e1e1e;
-            border: none;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 10px rgb(255 185 0 / 0.25);
-            transition: transform 0.3s ease;
-            cursor: default;
+            background: rgba(30, 30, 30, 0.8);
+            border: 2px solid rgba(253, 185, 39, 0.3);
+            border-radius: 1.2rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            overflow: hidden;
+            height: 100%;
         }
 
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(253, 185, 39, 0.2);
+            border-color: #FDB927;
         }
 
         .card-img-top {
             height: 250px;
             object-fit: cover;
-            border-top-left-radius: 0.5rem;
-            border-top-right-radius: 0.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover .card-img-top {
+            transform: scale(1.02);
         }
 
         .card-body {
             text-align: center;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
         }
 
+        /* Customization Options */
+        .customization-options {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .custom-input,
+        .custom-select {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(253, 185, 39, 0.4);
+            color: #f8f9fa;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .custom-input::placeholder {
+            color: rgba(248, 249, 250, 0.5);
+        }
+
+        .custom-input:focus,
+        .custom-select:focus {
+            outline: none;
+            border-color: #FDB927;
+            box-shadow: 0 0 0 3px rgba(253, 185, 39, 0.2);
+        }
+
+        .custom-select.is-invalid {
+            border-color: #f00 !important;
+            box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2) !important;
+        }
+
+        /* Simplified Card Content */
         .card-title {
             color: #FDB927;
-            font-weight: 700;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            text-transform: uppercase;
+        }
+
+        .player-number {
+            color: #fff;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 900;
+            margin: 0.5rem 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .player-position {
+            color: #e6d7ff;
+            font-size: clamp(0.9rem, 3vw, 1rem);
             margin-bottom: 1rem;
-            font-size: 1.25rem;
+            font-weight: 500;
         }
 
         .card-price {
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            color: #FDB927;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-weight: 900;
+            margin: 1rem 0;
         }
 
-        /* Buttons */
+        /* Simplified Buttons */
         .btn-lakers {
-            background-color: #552583;
+            background: linear-gradient(45deg, #552583, #FDB927);
             color: white;
             border: none;
-            padding: 0.5rem 1.25rem;
+            padding: 0.75rem 1.5rem;
             font-weight: 700;
-            border-radius: 0.3rem;
-            transition: background-color 0.3s ease;
-            user-select: none;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            width: 100%;
         }
 
-        .btn-lakers:hover,
-        .btn-lakers:focus {
-            background-color: #3e1d63;
-            outline: none;
+        .btn-lakers:hover {
+            background: linear-gradient(45deg, #3e1d63, #e0ac00);
+            transform: translateY(-2px);
+        }
+
+        /* Jersey Type Badges */
+        .jersey-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #FDB927;
+            color: #552583;
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 2;
         }
 
         /* Floating Cart Button */
@@ -142,43 +267,40 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #FDB927;
+            background: linear-gradient(45deg, #FDB927, #ffdd57);
             border: none;
-            color: #121212;
+            color: #552583;
             font-weight: 700;
-            padding: 14px 22px;
+            padding: 16px 24px;
             border-radius: 50px;
-            box-shadow: 0 4px 12px rgba(255, 185, 0, 0.8);
+            box-shadow: 0 6px 20px rgba(253, 185, 39, 0.6);
             cursor: pointer;
             z-index: 1050;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             font-size: 1rem;
-            user-select: none;
-            transition: background-color 0.3s ease;
+            transition: all 0.2s ease;
         }
 
-        #cart-toggle-btn:hover,
-        #cart-toggle-btn:focus {
-            background: #e0ac00;
-            outline: none;
+        #cart-toggle-btn:hover {
+            background: linear-gradient(45deg, #e0ac00, #f0c040);
+            transform: translateY(-2px);
         }
 
-        /* Cart Overlay */
+        /* Simplified Cart Overlay */
         #cart-overlay {
             position: fixed;
             top: 0;
             right: -100%;
-            width: 320px;
+            width: min(380px, 100vw);
             height: 100vh;
-            background-color: #1e1e1e;
-            box-shadow: -4px 0 12px rgba(0, 0, 0, 0.8);
+            background: linear-gradient(135deg, #1e1e1e 0%, #2d1a4a 100%);
+            box-shadow: -6px 0 25px rgba(0, 0, 0, 0.5);
             transition: right 0.3s ease;
             z-index: 1040;
             display: flex;
             flex-direction: column;
-            font-size: 0.9rem;
         }
 
         #cart-overlay.active {
@@ -186,43 +308,46 @@
         }
 
         #cart-header {
-            background: linear-gradient(90deg, #552583, #FDB927);
-            padding: 1rem 1.25rem;
+            background: linear-gradient(135deg, #552583, #FDB927);
+            padding: 1.5rem;
             color: white;
             font-weight: 700;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 1.2rem;
         }
 
         #cart-header button {
             background: transparent;
-            border: none;
+            border: 2px solid white;
             color: white;
-            font-size: 1.75rem;
-            line-height: 1;
+            font-size: 1.5rem;
             cursor: pointer;
-            padding: 0;
-            user-select: none;
-            transition: color 0.3s ease;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
         }
 
-        #cart-header button:hover,
-        #cart-header button:focus {
-            color: #ccc;
-            outline: none;
+        #cart-header button:hover {
+            background: white;
+            color: #552583;
         }
 
         #cart-items {
             flex-grow: 1;
             overflow-y: auto;
-            padding: 1rem 1.25rem;
+            padding: 1.5rem;
             color: #f8f9fa;
         }
 
         .cart-item {
-            border-bottom: 1px solid #444;
-            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(253, 185, 39, 0.2);
+            padding: 1rem 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -233,70 +358,101 @@
         }
 
         .cart-item-name {
-            font-weight: 600;
+            font-weight: 700;
             color: #FDB927;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
         }
 
         .cart-item-price {
-            font-size: 0.9rem;
-            color: #ccc;
+            color: #e6d7ff;
         }
 
         .cart-item-qty {
-            font-size: 0.9rem;
-            color: #ccc;
-            margin: 0 10px;
-            user-select: none;
+            color: #fff;
+            margin: 0 15px;
+            background: linear-gradient(45deg, #552583, #FDB927);
+            padding: 0.4rem 0.8rem;
+            border-radius: 1rem;
+            font-weight: 700;
+            min-width: 40px;
+            text-align: center;
         }
 
         .cart-item-remove {
             background: transparent;
-            border: none;
+            border: 2px solid #f00;
             color: #f00;
             font-weight: 700;
             cursor: pointer;
-            font-size: 1.2rem;
-            user-select: none;
-            transition: color 0.3s ease;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
         }
 
-        .cart-item-remove:hover,
-        .cart-item-remove:focus {
-            color: #ff5555;
-            outline: none;
+        .cart-item-remove:hover {
+            background: #f00;
+            color: white;
         }
 
         #cart-total {
-            padding: 1rem 1.25rem;
-            border-top: 1px solid #444;
-            font-weight: 700;
+            padding: 2rem 1.5rem;
+            border-top: 2px solid rgba(253, 185, 39, 0.3);
+            font-weight: 900;
             color: #FDB927;
-            font-size: 1.2rem;
-            text-align: right;
-            user-select: none;
+            font-size: 1.4rem;
+            text-align: center;
+            background: rgba(253, 185, 39, 0.1);
         }
 
         #cart-empty {
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 3rem;
             color: #888;
             font-style: italic;
-            user-select: none;
         }
 
         /* Responsive */
-        @media (max-width: 576px) {
-            #cart-overlay {
-                width: 100%;
+        @media (max-width: 768px) {
+            .lakers-legacy {
+                gap: 1.5rem;
             }
 
             #cart-toggle-btn {
-                right: 10px;
                 bottom: 80px;
-                padding: 12px 18px;
-                font-size: 0.9rem;
+                right: 15px;
             }
+
+            .card-img-top {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .lakers-legacy {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .category-section {
+                margin: 0.5rem;
+            }
+        }
+
+        /* Performance optimizations */
+        * {
+            will-change: auto;
+        }
+
+        .card:hover {
+            will-change: transform;
+        }
+
+        .btn-lakers:hover {
+            will-change: transform;
         }
     </style>
 </head>
@@ -317,11 +473,8 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item" href="nba.html">NBA Teams</a></li>
-                            <li><a class="dropdown-item" href="europe.html">European Leagues</a></li>
+                            <li><a class="dropdown-item" href="league.html">Football Leagues</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="basketball.html">Basketball</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cart.html">🛒 Cart</a>
@@ -334,57 +487,143 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <h1>Los Angeles Lakers</h1>
-            <p>Shop the latest gear and jerseys for the legendary Lakers.</p>
+            <div class="hero-content">
+                <h1>Los Angeles Lakers</h1>
+                <p>Legendary Purple & Gold • Champions Legacy</p>
+                <div class="lakers-legacy">
+                    <div class="legacy-item">
+                        <span class="legacy-number">17</span>
+                        <div class="legacy-label">Championships</div>
+                    </div>
+                    <div class="legacy-item">
+                        <span class="legacy-number">32</span>
+                        <div class="legacy-label">Hall of Famers</div>
+                    </div>
+                    <div class="legacy-item">
+                        <span class="legacy-number">AED 85</span>
+                        <div class="legacy-label">Base Price</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Back Button -->
     <div class="back-container">
-        <a href="nba.html" class="btn-back">← Back to NBA Teams</a>
+        <a href="western.html" class="btn-back">← Back to Western Teams</a>
     </div>
 
-    <!-- Jerseys Section -->
+    <!-- Current Jerseys Section -->
     <section class="category-section">
         <div class="container">
-            <h2>New Jerseys</h2>
+            <h2>Current Roster</h2>
+            <p class="category-description">Shop the latest jerseys from today's Lakers superstars</p>
             <div class="row g-4 justify-content-center">
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
+                        <div class="jersey-badge">Current</div>
                         <img src="img/jersey1.png" class="card-img-top" alt="Anthony Davis Lakers Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">Anthony Davis Jersey</h3>
-                            <p class="card-price">AED 79</p>
-                            <button class="btn-lakers add-to-cart-btn" data-name="Anthony Davis Jersey" data-price="79"
-                                data-image="img/jersey1.png">
-                                Add to Cart
-                            </button>
+                            <div>
+                                <h3 class="card-title">Association Edition 23/24</h3>
+                            </div>
+                            <div>
+                                <div class="customization-options">
+                                    <select class="custom-select size-select" required>
+                                        <option value="" disabled selected>Select a Size</option>
+                                        <option value="S">Size: S</option>
+                                        <option value="M">Size: M</option>
+                                        <option value="L">Size: L</option>
+                                        <option value="XL">Size: XL</option>
+                                        <option value="XXL">Size: XXL</option>
+                                    </select>
+                                    <input type="text" class="custom-input" placeholder="Custom Name (e.g. SMITH)">
+                                    <input type="number" class="custom-input" placeholder="Custom Number (e.g. 10)">
+                                    <div class="finish-options-group" style="display: none;">
+                                        <select class="custom-select finish-select">
+                                            <option value="printed" data-price-add="0">Printed Finish</option>
+                                            <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED
+                                                15)
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <p class="card-price" data-base-price="85">AED 85</p>
+                                <button class="btn-lakers add-to-cart-btn" data-name="Lakers Association Edition 23/24"
+                                    data-base-price="85" data-image="img/jersey1.png">Add to Cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
+                        <div class="jersey-badge">Current</div>
                         <img src="img/jersey2.png" class="card-img-top" alt="LeBron James Lakers Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">LeBron James Jersey</h3>
-                            <p class="card-price">AED 79</p>
-                            <button class="btn-lakers add-to-cart-btn" data-name="LeBron James Jersey" data-price="79"
-                                data-image="img/jersey2.png">
-                                Add to Cart
-                            </button>
+                            <div>
+                                <h3 class="card-title">Icon Edition 23/24</h3>
+                            </div>
+                            <div>
+                                <div class="customization-options">
+                                    <select class="custom-select size-select" required>
+                                        <option value="" disabled selected>Select a Size</option>
+                                        <option value="S">Size: S</option>
+                                        <option value="M">Size: M</option>
+                                        <option value="L">Size: L</option>
+                                        <option value="XL">Size: XL</option>
+                                        <option value="XXL">Size: XXL</option>
+                                    </select>
+                                    <input type="text" class="custom-input" placeholder="Custom Name (e.g. SMITH)">
+                                    <input type="number" class="custom-input" placeholder="Custom Number (e.g. 10)">
+                                    <div class="finish-options-group" style="display: none;">
+                                        <select class="custom-select finish-select">
+                                            <option value="printed" data-price-add="0">Printed Finish</option>
+                                            <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED
+                                                15)
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <p class="card-price" data-base-price="85">AED 85</p>
+                                <button class="btn-lakers add-to-cart-btn" data-name="Lakers Icon Edition 23/24"
+                                    data-base-price="85" data-image="img/jersey2.png">Add to Cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
-                        <img src="img/jersey3.png" class="card-img-top" alt="Russell Westbrook Lakers Jersey" />
+                        <div class="jersey-badge">Current</div>
+                        <img src="img/jersey3.png" class="card-img-top" alt="Austin Reaves Lakers Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">Russell Westbrook Jersey</h3>
-                            <p class="card-price">AED 79</p>
-                            <button class="btn-lakers add-to-cart-btn" data-name="Russell Westbrook Jersey"
-                                data-price="79" data-image="img/jersey3.png">
-                                Add to Cart
-                            </button>
+                            <div>
+                                <h3 class="card-title">Statement Edition 23/24</h3>
+                            </div>
+                            <div>
+                                <div class="customization-options">
+                                    <select class="custom-select size-select" required>
+                                        <option value="" disabled selected>Select a Size</option>
+                                        <option value="S">Size: S</option>
+                                        <option value="M">Size: M</option>
+                                        <option value="L">Size: L</option>
+                                        <option value="XL">Size: XL</option>
+                                        <option value="XXL">Size: XXL</option>
+                                    </select>
+                                    <input type="text" class="custom-input" placeholder="Custom Name (e.g. SMITH)">
+                                    <input type="number" class="custom-input" placeholder="Custom Number (e.g. 10)">
+                                    <div class="finish-options-group" style="display: none;">
+                                        <select class="custom-select finish-select">
+                                            <option value="printed" data-price-add="0">Printed Finish</option>
+                                            <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED
+                                                15)
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <p class="card-price" data-base-price="85">AED 85</p>
+                                <button class="btn-lakers add-to-cart-btn" data-name="Lakers Statement Edition 23/24"
+                                    data-base-price="85" data-image="img/jersey3.png">Add to Cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -392,47 +631,117 @@
         </div>
     </section>
 
-    <!-- Retro Jerseys Section -->
+    <!-- Legends Jerseys Section -->
     <section class="category-section">
         <div class="container">
-            <h2>Retro Jerseys</h2>
+            <h2>Lakers Legends</h2>
+            <p class="category-description">Honor the greatest players in Lakers history</p>
             <div class="row g-4 justify-content-center">
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
-                        <img src="img/jersey-retro1.png" class="card-img-top" alt="Magic Johnson Retro Jersey" />
+                        <div class="jersey-badge">Legend</div>
+                        <img src="img/jersey-retro1.png" class="card-img-top" alt="Magic Johnson Lakers Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">Magic Johnson Jersey</h3>
-                            <p class="card-price">AED 79</p>
-                            <button class="btn-lakers add-to-cart-btn" data-name="Magic Johnson Jersey" data-price="79"
-                                data-image="img/jersey-retro1.png">
-                                Add to Cart
-                            </button>
+                            <div>
+                                <h3 class="card-title">Retro Jersey '87</h3>
+                            </div>
+                            <div>
+                                <div class="customization-options">
+                                    <select class="custom-select size-select" required>
+                                        <option value="" disabled selected>Select a Size</option>
+                                        <option value="S">Size: S</option>
+                                        <option value="M">Size: M</option>
+                                        <option value="L">Size: L</option>
+                                        <option value="XL">Size: XL</option>
+                                        <option value="XXL">Size: XXL</option>
+                                    </select>
+                                    <input type="text" class="custom-input" placeholder="Custom Name (e.g. SMITH)">
+                                    <input type="number" class="custom-input" placeholder="Custom Number (e.g. 10)">
+                                    <div class="finish-options-group" style="display: none;">
+                                        <select class="custom-select finish-select">
+                                            <option value="printed" data-price-add="0">Printed Finish</option>
+                                            <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED
+                                                15)
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <p class="card-price" data-base-price="85">AED 85</p>
+                                <button class="btn-lakers add-to-cart-btn" data-name="Lakers Retro Jersey '87"
+                                    data-base-price="85" data-image="img/jersey-retro1.png">Add to Cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
-                        <img src="img/jersey-retro2.png" class="card-img-top" alt="Kobe Bryant Retro Jersey" />
+                        <div class="jersey-badge">Legend</div>
+                        <img src="img/jersey-retro2.png" class="card-img-top" alt="Kobe Bryant Lakers Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">Kobe Bryant Jersey</h3>
-                            <p class="card-price">AED 79</p>
-                            <button class="btn-lakers add-to-cart-btn" data-name="Kobe Bryant Jersey" data-price="79"
-                                data-image="img/jersey-retro2.png">
-                                Add to Cart
-                            </button>
+                            <div>
+                                <h3 class="card-title">Retro Jersey '09</h3>
+                            </div>
+                            <div>
+                                <div class="customization-options">
+                                    <select class="custom-select size-select" required>
+                                        <option value="" disabled selected>Select a Size</option>
+                                        <option value="S">Size: S</option>
+                                        <option value="M">Size: M</option>
+                                        <option value="L">Size: L</option>
+                                        <option value="XL">Size: XL</option>
+                                        <option value="XXL">Size: XXL</option>
+                                    </select>
+                                    <input type="text" class="custom-input" placeholder="Custom Name (e.g. SMITH)">
+                                    <input type="number" class="custom-input" placeholder="Custom Number (e.g. 10)">
+                                    <div class="finish-options-group" style="display: none;">
+                                        <select class="custom-select finish-select">
+                                            <option value="printed" data-price-add="0">Printed Finish</option>
+                                            <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED
+                                                15)
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <p class="card-price" data-base-price="85">AED 85</p>
+                                <button class="btn-lakers add-to-cart-btn" data-name="Lakers Retro Jersey '09"
+                                    data-base-price="85" data-image="img/jersey-retro2.png">Add to Cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
-                        <img src="img/jersey-retro3.png" class="card-img-top" alt="Jerry West Retro Jersey" />
+                        <div class="jersey-badge">Legend</div>
+                        <img src="img/jersey-retro3.png" class="card-img-top" alt="Shaquille O'Neal Lakers Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">Jerry West Jersey</h3>
-                            <p class="card-price">AED 79</p>
-                            <button class="btn-lakers add-to-cart-btn" data-name="Jerry West Jersey" data-price="79"
-                                data-image="img/jersey-retro3.png">
-                                Add to Cart
-                            </button>
+                            <div>
+                                <h3 class="card-title">Retro Jersey '01</h3>
+                            </div>
+                            <div>
+                                <div class="customization-options">
+                                    <select class="custom-select size-select" required>
+                                        <option value="" disabled selected>Select a Size</option>
+                                        <option value="S">Size: S</option>
+                                        <option value="M">Size: M</option>
+                                        <option value="L">Size: L</option>
+                                        <option value="XL">Size: XL</option>
+                                        <option value="XXL">Size: XXL</option>
+                                    </select>
+                                    <input type="text" class="custom-input" placeholder="Custom Name (e.g. SMITH)">
+                                    <input type="number" class="custom-input" placeholder="Custom Number (e.g. 10)">
+                                    <div class="finish-options-group" style="display: none;">
+                                        <select class="custom-select finish-select">
+                                            <option value="printed" data-price-add="0">Printed Finish</option>
+                                            <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED
+                                                15)
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <p class="card-price" data-base-price="85">AED 85</p>
+                                <button class="btn-lakers add-to-cart-btn" data-name="Lakers Retro Jersey '01"
+                                    data-base-price="85" data-image="img/jersey-retro3.png">Add to Cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -446,157 +755,252 @@
     </button>
 
     <!-- Cart Overlay -->
-    <aside id="cart-overlay">
+    <div id="cart-overlay">
         <div id="cart-header">
-            <span>Shopping Cart</span>
-            <button id="cart-close-btn">×</button>
+            <span>Your Cart</span>
+            <button id="close-cart">×</button>
         </div>
         <div id="cart-items">
-            <p id="cart-empty">Your cart is empty.</p>
+            <div id="cart-empty">Your cart is empty</div>
         </div>
-        <div id="cart-total">Total: AED 0.00</div>
-    </aside>
+        <div id="cart-total">Total: AED 0</div>
+    </div>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Optimized Cart Functionality -->
     <script>
-        // Cart functionality
-        (() => {
-            const cartToggleBtn = document.getElementById("cart-toggle-btn");
-            const cartOverlay = document.getElementById("cart-overlay");
-            const cartCloseBtn = document.getElementById("cart-close-btn");
-            const cartItemsContainer = document.getElementById("cart-items");
-            const cartTotal = document.getElementById("cart-total");
-            const cartCount = document.getElementById("cart-count");
-            const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+        // Cart functionality - optimized for performance
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-            // Load cart from localStorage
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        // Debounce function to prevent excessive updates
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
 
-            // Save cart to localStorage
-            function saveCart() {
-                localStorage.setItem('cart', JSON.stringify(cart));
+        function updateCardPrice(cardElement) {
+            if (!cardElement) return;
+
+            const priceEl = cardElement.querySelector('.card-price');
+            const finishSelect = cardElement.querySelector('.finish-select');
+            const finishGroup = cardElement.querySelector('.finish-options-group');
+
+            const basePrice = parseFloat(priceEl.dataset.basePrice);
+            let priceAdd = 0;
+
+            // Only add the finish cost if the options are visible
+            if (finishGroup && finishGroup.style.display !== 'none') {
+                priceAdd = parseFloat(finishSelect.options[finishSelect.selectedIndex].dataset.priceAdd);
             }
 
-            // Update cart count in button
-            function updateCartCount() {
-                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-                cartCount.textContent = totalItems;
+            const newPrice = basePrice + priceAdd;
+            priceEl.textContent = `AED ${newPrice.toFixed(2)}`;
+        }
+
+        function toggleFinishOptionsVisibility(inputElement) {
+            const card = inputElement.closest('.card');
+            if (!card) return;
+
+            const nameInput = card.querySelector('input[type="text"]');
+            const numberInput = card.querySelector('input[type="number"]');
+            const finishGroup = card.querySelector('.finish-options-group');
+
+            if (!nameInput || !numberInput || !finishGroup) return;
+
+            const shouldShow = nameInput.value.trim() !== '' || numberInput.value.trim() !== '';
+            finishGroup.style.display = shouldShow ? 'block' : 'none';
+
+            // If we are hiding the options, reset the select to 'printed' to avoid confusion
+            if (!shouldShow) {
+                card.querySelector('.finish-select').value = 'printed';
             }
 
-            // Open/Close Cart Functions
-            function openCart() {
-                cartOverlay.classList.add("active");
-            }
+            updateCardPrice(card);
+        }
 
-            function closeCart() {
-                cartOverlay.classList.remove("active");
-            }
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
 
-            // Update Cart UI
-            function updateCartUI() {
-                cartItemsContainer.innerHTML = "";
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            cartCount.textContent = totalItems;
 
-                if (cart.length === 0) {
-                    cartItemsContainer.innerHTML = `<p id="cart-empty">Your cart is empty.</p>`;
-                    cartTotal.textContent = "Total: AED 0.00";
-                    updateCartCount();
-                    return;
-                }
+            // Update cart items
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div id="cart-empty">Your cart is empty</div>';
+            } else {
+                cartItems.innerHTML = cart.map(item => {
+                    // Defensively get the name and price, providing fallbacks for different structures
+                    const itemName = item.name || item.productName || 'Unknown Item';
+                    const itemPrice = parseFloat(item.price) || 0; // Ensure price is always a number
+                    const itemQuantity = item.quantity || 1;
 
-                let totalPrice = 0;
+                    // Escape single quotes in the name to prevent breaking the onclick handler
+                    const escapedItemName = itemName.replace(/'/g, "\\'");
 
-                cart.forEach((item, index) => {
-                    const itemTotal = item.price * item.quantity;
-                    totalPrice += itemTotal;
-
-                    const itemDiv = document.createElement("div");
-                    itemDiv.className = "cart-item";
-
-                    itemDiv.innerHTML = `
+                    return `
+                    <div class="cart-item">
                         <div class="cart-item-info">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">AED ${item.price.toFixed(2)} each</div>
+                            <div class="cart-item-name">${itemName}</div>
+                            <div class="cart-item-price">AED ${itemPrice.toFixed(2)}</div>
                         </div>
-                        <span class="cart-item-qty">x${item.quantity}</span>
-                        <button class="cart-item-remove" data-index="${index}">×</button>
-                    `;
-
-                    cartItemsContainer.appendChild(itemDiv);
-                });
-
-                cartTotal.textContent = `Total: AED ${totalPrice.toFixed(2)}`;
-                updateCartCount();
+                        <div class="cart-item-qty">${itemQuantity}</div>
+                        <button class="cart-item-remove" onclick="removeFromCart('${escapedItemName}')">×</button>
+                    </div>
+                `}).join('');
             }
 
-            // Add to Cart Event
-            addToCartButtons.forEach(button => {
-                button.addEventListener("click", () => {
-                    const name = button.getAttribute("data-name");
-                    const price = parseFloat(button.getAttribute("data-price"));
-                    const image = button.getAttribute("data-image");
+            // Update total
+            const total = cart.reduce((sum, item) => sum + ((parseFloat(item.price) || 0) * (item.quantity || 1)), 0);
+            cartTotal.textContent = `Total: AED ${total.toFixed(2)}`;
+        }
 
-                    // Check if item already exists
-                    const existingItem = cart.find(item => item.name === name);
+        const debouncedUpdateCart = debounce(updateCartDisplay, 100);
 
-                    if (existingItem) {
-                        existingItem.quantity += 1;
-                    } else {
-                        cart.push({
-                            name: name,
-                            price: price,
-                            image: image,
-                            quantity: 1
-                        });
+        function addToCart(name, price, image) {
+            const existingItem = cart.find(item => (item.name || item.productName) === name);
+
+            if (existingItem) {
+                existingItem.quantity = (existingItem.quantity || 1) + 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price, // Price is already a number
+                    image: image,
+                    quantity: 1
+                });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            debouncedUpdateCart();
+
+            // Show cart briefly
+            const cartOverlay = document.getElementById('cart-overlay');
+            cartOverlay.classList.add('active');
+            setTimeout(() => {
+                cartOverlay.classList.remove('active');
+            }, 1500);
+        }
+
+        function removeFromCart(name) {
+            // Defensively check for the item's name before filtering
+            cart = cart.filter(item => {
+                const itemName = item.name || item.productName;
+                return itemName !== name;
+            });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            debouncedUpdateCart();
+        }
+
+        // Event listeners - optimized
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCartDisplay();
+
+            // Add to cart buttons - use event delegation
+            document.addEventListener('click', function (e) {
+                if (e.target.matches('.add-to-cart-btn')) {
+                    const button = e.target;
+                    const card = button.closest('.card');
+
+                    // Get base info
+                    let name = button.dataset.name;
+                    const basePrice = parseFloat(button.dataset.basePrice);
+                    const image = button.dataset.image;
+
+                    // Get customization info
+                    const sizeSelect = card.querySelector('.size-select');
+                    const customNameInput = card.querySelector('input[type="text"]');
+                    const customNumberInput = card.querySelector('input[type="number"]');
+                    const finishSelect = card.querySelector('.finish-select');
+
+                    // --- VALIDATION ---
+                    const selectedSize = sizeSelect.value;
+                    if (!selectedSize) {
+                        alert('Please select a size before adding to cart.');
+                        sizeSelect.classList.add('is-invalid');
+                        return; // Stop the function
                     }
 
-                    saveCart();
-                    updateCartUI();
-                    openCart();
-                });
-            });
+                    const customName = customNameInput.value.trim().toUpperCase();
+                    const customNumber = customNumberInput.value.trim();
+                    const selectedFinish = finishSelect.options[finishSelect.selectedIndex];
+                    const finishType = selectedFinish.value;
+                    const priceAdd = parseFloat(selectedFinish.dataset.priceAdd);
 
-            // Remove from cart
-            cartItemsContainer.addEventListener('click', (e) => {
-                if (e.target.classList.contains('cart-item-remove')) {
-                    const index = parseInt(e.target.getAttribute('data-index'));
-                    cart.splice(index, 1);
-                    saveCart();
-                    updateCartUI();
+                    // Build final name and price
+                    const finalPrice = basePrice + priceAdd;
+                    let customizationDetails = [];
+                    customizationDetails.push(`Size: ${selectedSize}`);
+                    if (customName) customizationDetails.push(`Name: ${customName}`);
+                    if (customNumber) customizationDetails.push(`Number: ${customNumber}`);
+                    if (finishType) customizationDetails.push(finishType.charAt(0).toUpperCase() + finishType.slice(1));
+
+                    if (customizationDetails.length > 0) {
+                        name += ` (${customizationDetails.join(', ')})`;
+                    }
+
+                    addToCart(name, finalPrice, image);
                 }
             });
 
-            // Toggle cart open/close
-            cartToggleBtn.addEventListener("click", () => {
-                if (cartOverlay.classList.contains("active")) {
-                    closeCart();
-                } else {
-                    openCart();
+            // Cart toggle
+            document.getElementById('cart-toggle-btn').addEventListener('click', function () {
+                document.getElementById('cart-overlay').classList.toggle('active');
+            });
+
+            // Close cart
+            document.getElementById('close-cart').addEventListener('click', function () {
+                document.getElementById('cart-overlay').classList.remove('active');
+            });
+
+            // Close cart when clicking outside - throttled
+            let isThrottled = false;
+            document.addEventListener('click', function (e) {
+                if (isThrottled) return;
+                isThrottled = true;
+                setTimeout(() => {
+                    isThrottled = false;
+                }, 100);
+
+                const cartOverlay = document.getElementById('cart-overlay');
+                const cartBtn = document.getElementById('cart-toggle-btn');
+
+                if (!cartOverlay.contains(e.target) && !cartBtn.contains(e.target)) {
+                    cartOverlay.classList.remove('active');
                 }
             });
 
-            cartCloseBtn.addEventListener("click", closeCart);
+            // Listen for changes on select dropdowns
+            document.addEventListener('change', function (e) {
+                // Update price display when finish type changes
+                if (e.target.matches('.finish-select')) {
+                    updateCardPrice(e.target.closest('.card'));
+                }
 
-            // Close cart on Escape key
-            document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape" && cartOverlay.classList.contains("active")) {
-                    closeCart();
+                // Remove invalid state from size select when a size is chosen
+                if (e.target.matches('.size-select.is-invalid')) {
+                    e.target.classList.remove('is-invalid');
                 }
             });
 
-            // Close cart if clicking outside
-            document.addEventListener("click", (e) => {
-                if (
-                    cartOverlay.classList.contains("active") &&
-                    !cartOverlay.contains(e.target) &&
-                    !cartToggleBtn.contains(e.target)
-                ) {
-                    closeCart();
+            // Listen for input on customization fields to toggle finish options
+            document.addEventListener('input', function (e) {
+                if (e.target.matches('.custom-input[type="text"]') || e.target.matches('.custom-input[type="number"]')) {
+                    toggleFinishOptionsVisibility(e.target);
                 }
             });
-
-            // Initial cart UI
-            updateCartUI();
-        })();
+        });
     </script>
 </body>
 

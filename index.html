@@ -5,10 +5,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GOKIT × CourtDripDxb</title>
+
+    <!-- Preload critical assets for better performance -->
+    <link rel="preload" href="img/indexhero.png" as="image">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap"
+        as="style">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --football-color: #00c851;
+            --football-hover: #00a63f;
+            --basketball-color: #ff8800;
+            --basketball-hover: #ff6600;
+            --dark-bg: #0a0a14;
+            --text-light: #fff;
+            --text-muted: rgba(255, 255, 255, 0.8);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -18,38 +34,86 @@
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-            color: #fff;
+            color: var(--text-light);
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Enhanced Navbar */
+        /* Navbar */
         .navbar {
             background: rgba(0, 0, 0, 0.9) !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem 0;
+            padding: 0.75rem 0;
             transition: all 0.3s ease;
         }
 
         .navbar-brand {
             font-weight: 900 !important;
-            font-size: 1.5rem !important;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: clamp(1.1rem, 4vw, 1.5rem) !important;
             letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-football {
+            color: var(--football-color);
+        }
+
+        .brand-basketball {
+            color: var(--basketball-color);
         }
 
         .nav-link {
             font-weight: 600 !important;
             transition: all 0.3s ease;
-            margin: 0 0.5rem;
+            margin: 0 0.25rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         .nav-link:hover {
-            color: #667eea !important;
+            color: var(--basketball-color) !important;
             transform: translateY(-2px);
+            will-change: transform;
+        }
+
+        /* Style for the logged-in user name in the navbar */
+        .nav-link.logged-in-user {
+            color: var(--football-color) !important;
+            font-weight: 700 !important;
+        }
+
+        .nav-link-cart {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Cart Icon Badge */
+        .cart-icon-container {
+            position: relative;
+            display: inline-block;
+            line-height: 1;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background-color: var(--basketball-color);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: none;
+            border: 2px solid var(--dark-bg);
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .cart-badge.show {
+            display: block;
         }
 
         .dropdown-menu {
@@ -60,61 +124,226 @@
         }
 
         .dropdown-item {
-            color: #fff !important;
+            color: var(--text-light) !important;
             padding: 0.75rem 1.5rem;
             transition: all 0.3s ease;
             font-weight: 500;
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
         }
 
         .dropdown-item:hover {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: #fff !important;
+            background: linear-gradient(135deg, var(--basketball-color), var(--basketball-hover));
+            color: var(--dark-bg) !important;
         }
 
-        /* Enhanced Hero Section */
+        .dropdown-football:hover {
+            background: linear-gradient(135deg, var(--football-color), var(--football-hover));
+            color: var(--dark-bg) !important;
+        }
+
+        .dropdown-basketball:hover {
+            background: linear-gradient(135deg, var(--basketball-color), var(--basketball-hover));
+            color: var(--dark-bg) !important;
+        }
+
+        /* Account Dropdown Discount Item */
+        .discount-item {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            cursor: default !important;
+            /* It's not a link anymore */
+            background: none !important;
+            /* Override hover background */
+        }
+
+        .discount-item:hover {
+            background: none !important;
+        }
+
+        .copy-code-btn {
+            background: var(--basketball-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.25rem 0.7rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .copy-code-btn:hover {
+            background: var(--basketball-hover);
+            transform: scale(1.05);
+        }
+
+        /* Enhanced Shop Dropdown */
+        .shop-dropdown-menu {
+            width: 300px;
+            /* Wider dropdown */
+        }
+
+        .shop-dropdown-item {
+            display: flex !important;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem !important;
+        }
+
+        .shop-dropdown-item .icon-container {
+            font-size: 1.5rem;
+            width: 40px;
+            text-align: center;
+        }
+
+        .shop-dropdown-item .text-container .shop-item-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .shop-dropdown-item .text-container .shop-item-desc {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin: 0;
+        }
+
+        /* Search Bar in Navbar */
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            min-width: 250px;
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            /* Adjust padding */
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-input:focus {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: var(--basketball-color);
+            box-shadow: 0 0 0 2px rgba(255, 136, 0, 0.3);
+            outline: none;
+        }
+
+        .search-container .fa-search {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Hero Section */
         .hero {
-            background:
-                linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)),
-                url('img/basketball.jpg') center/cover;
-            height: 50vh;
+            background: var(--dark-bg);
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: url('img/indexhero.png') center/contain no-repeat;
+            z-index: 1;
+            max-width: 1600px;
+            max-height: 900px;
+            opacity: 0.95;
+            will-change: transform;
         }
 
         .hero-content {
             text-align: center;
-            max-width: 800px;
-            padding: 2rem;
+            max-width: 85%;
+            padding: 1.25rem;
+            position: relative;
+            z-index: 2;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
+        /* More Subtle Hero Title Enhancement */
+        .title-container {
+            background: rgba(10, 10, 20, 0.5);
+            /* Glassmorphism effect */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.2rem;
+            border-radius: 15px;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff, #f0f0f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            display: inline-block;
+            /* Only takes up as much space as needed */
+            max-width: 100%;
+        }
+
+        /* Make the title text pop more */
+        .hero h1 {
+            font-size: clamp(1.8rem, 7vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+            /* Enhanced text shadow */
+        }
+
+        .hero-title-football {
+            color: var(--football-color);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 200, 81, 0.4);
+            /* Subtle glow with stronger shadow */
+        }
+
+        .hero-title-basketball {
+            color: var(--basketball-color);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 136, 0, 0.4);
+            /* Subtle glow with stronger shadow */
         }
 
         .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-            font-weight: 300;
+            font-size: clamp(0.9rem, 3vw, 1.3rem);
+            margin-bottom: 0;
+            font-weight: 400;
+            line-height: 1.4;
+            color: var(--text-light);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            /* Enhanced text shadow */
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
+            margin-top: 2rem;
             justify-content: center;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .hero-btn {
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
+            padding: clamp(0.7rem, 1.8vw, 0.9rem) clamp(1.4rem, 3.5vw, 2.2rem);
+            font-size: clamp(0.85rem, 2.3vw, 1rem);
             font-weight: 700;
             border: none;
             border-radius: 50px;
@@ -122,63 +351,149 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-width: 140px;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: hero-btn-fade-in-up 0.6s ease-out forwards;
+            overflow: hidden;
         }
 
         .hero-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            will-change: transform;
         }
 
         .btn-football {
-            background: linear-gradient(135deg, #00c851, #00a63f);
+            background: linear-gradient(135deg, var(--football-color), var(--football-hover));
             color: white;
+        }
+
+        .hero-btn.btn-football {
+            animation-delay: 0.4s;
         }
 
         .btn-basketball {
-            background: linear-gradient(135deg, #ff8800, #ff6600);
+            background: linear-gradient(135deg, var(--basketball-color), var(--basketball-hover));
             color: white;
         }
 
-        /* Enhanced Section Cards */
+        .hero-btn.btn-basketball {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes hero-btn-fade-in-up {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Ripple effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 600ms linear;
+            background-color: rgba(255, 255, 255, 0.6);
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: clamp(2rem, 6vw, 4rem) 0;
+            margin: clamp(2rem, 6vw, 4rem) 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: clamp(1rem, 3vw, 2rem) 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .stat-number {
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--basketball-color), var(--basketball-hover));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            opacity: 0.8;
+            font-weight: 300;
+            line-height: 1.3;
+        }
+
+        /* Sections Container */
         .sections-container {
-            padding: 5rem 0;
+            padding: clamp(2rem, 8vw, 5rem) 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: clamp(2rem, 6vw, 4rem);
+            padding: 0 1rem;
         }
 
         .section-title h2 {
-            font-size: 3rem;
+            font-size: clamp(1.8rem, 6vw, 3rem);
             font-weight: 900;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, var(--basketball-color), var(--basketball-hover));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
         .section-title p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             opacity: 0.8;
             font-weight: 300;
+            line-height: 1.4;
         }
 
         .section-card {
             position: relative;
             overflow: hidden;
-            height: 400px;
+            height: clamp(250px, 50vw, 400px);
             border-radius: 25px;
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .section-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            will-change: transform;
         }
 
         .section-card img {
@@ -206,34 +521,48 @@
             align-items: center;
             text-align: center;
             z-index: 2;
-            padding: 2rem;
+            padding: clamp(1rem, 4vw, 2rem);
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
         }
 
         .section-card-content h3 {
             font-weight: 900;
-            font-size: 2.2rem;
-            color: #fff;
+            font-size: clamp(1.4rem, 5vw, 2.2rem);
             margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .football-title {
+            color: var(--football-color);
+        }
+
+        .basketball-title {
+            color: var(--basketball-color);
         }
 
         .section-card-content p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            margin-bottom: 1.5rem;
             color: #ddd;
             font-weight: 300;
             opacity: 0.9;
+            line-height: 1.4;
         }
 
         .section-card-content .btn {
-            padding: 1rem 2rem;
+            padding: clamp(0.75rem, 2vw, 1rem) clamp(1.25rem, 3vw, 2rem);
             font-weight: 700;
-            font-size: 1rem;
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
             border-radius: 50px;
             border: none;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
         }
 
         .section-card-content .btn:hover {
@@ -241,62 +570,34 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
-        /* Stats Section */
-        .stats-section {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 4rem 0;
-            margin: 4rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            font-weight: 300;
-        }
-
-        /* Enhanced Footer */
+        /* Footer */
         footer {
             background: rgba(0, 0, 0, 0.9);
-            padding: 3rem 0 2rem;
+            padding: clamp(2rem, 5vw, 3rem) 0 clamp(1rem, 3vw, 2rem);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 4rem;
+            margin-top: clamp(2rem, 6vw, 4rem);
         }
 
         .footer-content {
             text-align: center;
+            padding: 0 1rem;
         }
 
         .footer-brand {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
             font-weight: 900;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: clamp(1rem, 4vw, 2rem);
             margin: 2rem 0;
             flex-wrap: wrap;
         }
@@ -306,98 +607,653 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .footer-links a:hover {
-            color: #667eea;
+            color: var(--basketball-color);
             transform: translateY(-2px);
+        }
+
+        /* Social Media Sections */
+        .social-sections {
+            display: flex;
+            justify-content: center;
+            gap: clamp(3rem, 8vw, 6rem);
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social-section {
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .social-section h4 {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .football-heading {
+            color: var(--football-color);
+        }
+
+        .basketball-heading {
+            color: var(--basketball-color);
+        }
+
+        .developer-heading {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .social-icons {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin: 2rem 0;
+            flex-wrap: wrap;
         }
 
         .social-icon {
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--dark-bg);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 1.2rem;
+            position: relative;
+        }
+
+        /* Fix for social icons */
+        .social-icon i {
+            /* Make sure icons are properly centered and visible */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Fix for Instagram icon specifically */
+        .fab.fa-instagram {
+            font-size: 1.3rem;
+            /* Slightly larger for better visibility */
+        }
+
+        /* Ensure consistent icon sizes */
+        .fab.fa-facebook-f {
+            font-size: 1.1rem;
+            /* Facebook icon is naturally smaller */
+        }
+
+        .football-icon {
+            border: 2px solid var(--football-color);
+            color: var(--football-color);
+            animation: pulse-glow-football 3s infinite ease-in-out;
+        }
+
+        .football-icon:hover {
+            background: var(--football-color);
+            color: var(--dark-bg);
+            box-shadow: 0 0 25px rgba(0, 200, 81, 0.5);
+            animation: none;
+        }
+
+        .basketball-icon {
+            border: 2px solid var(--basketball-color);
+            color: var(--basketball-color);
+            background-color: rgba(10, 10, 20, 0.95);
+            /* Slightly lighter than default */
+            animation: pulse-glow-basketball 3s infinite ease-in-out;
+        }
+
+        .basketball-icon:hover {
+            background: var(--basketball-color);
+            color: var(--dark-bg);
+            box-shadow: 0 0 25px rgba(255, 136, 0, 0.6);
+            animation: none;
+        }
+
+        .developer-icon {
+            border: 2px solid #667eea;
+            color: #667eea;
+            animation: pulse-glow-developer 3s infinite ease-in-out;
+        }
+
+        .developer-icon:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: var(--dark-bg);
+            border-color: #667eea;
+            box-shadow: 0 0 25px rgba(102, 126, 234, 0.4);
+            animation: none;
         }
 
         .social-icon:hover {
             transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            will-change: transform;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .footer-bottom small {
+            font-size: clamp(0.7rem, 1.8vw, 0.85rem);
+            opacity: 0.6;
+        }
+
+        /* Loading animation */
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--basketball-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loaded {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Focus styles for keyboard navigation */
+        .keyboard-navigation *:focus {
+            outline: 2px solid var(--basketball-color) !important;
+            outline-offset: 2px !important;
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+        @media (max-width: 575.98px) {
+            .social-sections {
+                flex-direction: column;
+                gap: 2rem;
             }
 
-            .hero p {
+            .social-section {
+                min-width: auto;
+            }
+
+            .social-icons {
+                gap: 0.75rem;
+            }
+
+            .social-icon {
+                width: 45px;
+                height: 45px;
                 font-size: 1.1rem;
             }
 
             .hero-buttons {
                 flex-direction: column;
-                align-items: center;
+                width: 100%;
             }
 
-            .section-title h2 {
-                font-size: 2rem;
+            .hero-btn {
+                width: 100%;
             }
 
-            .section-card {
-                height: 300px;
+            .title-container {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
             }
 
-            .section-card-content h3 {
-                font-size: 1.8rem;
+            .hero h1 {
+                margin-bottom: 0.5rem;
             }
+        }
+
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            .social-sections {
+                gap: 2.5rem;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .social-sections {
+                gap: 4rem;
+            }
+        }
+
+        /* Accessibility - Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Glow Animations for Social Icons */
+        @keyframes pulse-glow-football {
+
+            0%,
+            100% {
+                box-shadow: 0 0 8px rgba(0, 200, 81, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(0, 200, 81, 0.6);
+            }
+        }
+
+        @keyframes pulse-glow-basketball {
+
+            0%,
+            100% {
+                box-shadow: 0 0 8px rgba(255, 136, 0, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(255, 136, 0, 0.7);
+            }
+        }
+
+        @keyframes pulse-glow-developer {
+
+            0%,
+            100% {
+                box-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+            }
+        }
+
+        /* --- REBUILT, HIGH-CONTRAST WELCOME MODAL --- */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            /* FULL VIEWPORT WIDTH */
+            height: 100vh;
+            /* FULL VIEWPORT HEIGHT */
+            background: #000000 !important;
+            /* PURE BLACK SOLID BACKGROUND */
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999 !important;
+            /* SUPER HIGH Z-INDEX */
+            padding: 1rem;
+            opacity: 1 !important;
+            /* FORCE FULL OPACITY */
+        }
+
+        .modal-backdrop.show {
+            display: flex !important;
+        }
+
+        /* ALTERNATIVE BACKDROP OPTIONS - CHOOSE ONE: */
+
+        /* OPTION 1: PURE BLACK BACKDROP */
+        .modal-backdrop {
+            background: #000000 !important;
+        }
+
+        /* OPTION 2: DARK BLUE BACKDROP */
+        /* 
+.modal-backdrop {
+    background: #001122 !important;
+}
+*/
+
+        /* OPTION 3: DARK PURPLE BACKDROP */
+        /* 
+.modal-backdrop {
+    background: #2d1b69 !important;
+}
+*/
+
+        /* OPTION 4: DARK GREEN BACKDROP */
+        /* 
+.modal-backdrop {
+    background: #0d4f3c !important;
+}
+*/
+
+        .modal-content-new {
+            background: #FFFFFF !important;
+            opacity: 1 !important;
+            border: 1px solid #dee2e6;
+            /* A more refined, subtle border */
+            border-radius: 15px;
+            max-width: 500px;
+            width: 100%;
+            color: #212529 !important;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 200, 81, 0.15), 0 0 30px rgba(255, 136, 0, 0.15);
+            /* Deeper shadow with subtle themed glows */
+            animation: modal-fade-in 0.4s ease-out;
+            position: relative;
+            z-index: 10000 !important;
+            /* HIGHER THAN BACKDROP */
+        }
+
+        @keyframes modal-fade-in {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1 !important;
+                transform: scale(1);
+            }
+        }
+
+        .modal-header-new {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 2px solid #dee2e6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #FFFFFF !important;
+        }
+
+        .modal-header-new h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 900 !important;
+            background: linear-gradient(45deg, var(--football-color), var(--basketball-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-close-new {
+            background: #f8f9fa !important;
+            border: 2px solid #dee2e6 !important;
+            color: #495057 !important;
+            font-size: 2.5rem;
+            font-weight: 300;
+            cursor: pointer;
+            line-height: 1;
+            transition: all 0.2s ease;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close-new:hover {
+            background: #e2e6ea !important;
+            color: var(--basketball-color) !important;
+            transform: rotate(90deg);
+        }
+
+        .modal-body-new {
+            padding: 1.5rem;
+            background: #FFFFFF !important;
+        }
+
+        .modal-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #495057 !important;
+            font-weight: 500;
+        }
+
+        .form-group-new {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group-new label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+            color: #212529 !important;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input-new {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 2px solid #ced4da !important;
+            border-radius: 8px;
+            background: #f8f9fa !important;
+            color: #212529 !important;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 700;
+            opacity: 1 !important;
+        }
+
+        .form-input-new::placeholder {
+            color: #6c757d !important;
+            font-weight: 400;
+        }
+
+        .form-input-new:focus {
+            outline: none;
+            border-color: var(--basketball-color) !important;
+            background: #FFFFFF !important;
+            box-shadow: 0 0 0 3px rgba(255, 136, 0, 0.25) !important;
+        }
+
+        .sport-selector-new {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .sport-selector-new label {
+            flex: 1;
+        }
+
+        .sport-selector-new input[type="radio"] {
+            display: none;
+        }
+
+        .sport-selector-new span {
+            display: block;
+            text-align: center;
+            padding: 0.75rem;
+            border: 2px solid #dee2e6 !important;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 900;
+            background: #f8f9fa !important;
+            color: #495057 !important;
+        }
+
+        .sport-selector-new input[type="radio"]:checked+span {
+            color: white !important;
+        }
+
+        .sport-selector-new input[type="radio"][value="Football"]:checked+span {
+            background: var(--football-color) !important;
+            border-color: var(--football-color) !important;
+            color: #FFFFFF !important;
+        }
+
+        .sport-selector-new input[type="radio"][value="Basketball"]:checked+span {
+            background: var(--basketball-color) !important;
+            border-color: var(--basketball-color) !important;
+            color: #FFFFFF !important;
+        }
+
+        .sport-selector-new input[type="radio"][value="Both"]:checked+span {
+            background: linear-gradient(135deg, var(--football-color), var(--basketball-color)) !important;
+            border-color: var(--football-color) !important;
+            color: #FFFFFF !important;
+        }
+
+        .submit-btn-new {
+            width: 100%;
+            padding: 0.9rem;
+            font-size: 1.1rem;
+            font-weight: 900;
+            border: none !important;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--basketball-color), var(--basketball-hover));
+            color: white;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            opacity: 1;
+        }
+
+        #welcomeModal .submit-btn-new:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Toast Notification */
+        .toast-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--basketball-color), var(--basketball-hover));
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 10001;
+            /* HIGHER THAN MODAL */
+            transform: translateX(120%);
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            font-weight: 600;
+            max-width: 350px;
+            opacity: 1;
+        }
+
+        .toast-notification.show {
+            transform: translateX(0);
+        }
+
+        /* EXTRA SAFETY - HIDE PAGE CONTENT WHEN MODAL IS OPEN */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        body.modal-open>*:not(.modal-backdrop) {
+            filter: blur(0px);
+            /* Remove any blur that might cause transparency */
         }
     </style>
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-container" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
     <!-- Enhanced Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <i class="fas fa-bolt"></i> GOKIT × CourtDripDxb
+                <i class="fas fa-bolt"></i> <span class="brand-football">GOKIT</span> × <span
+                    class="brand-basketball">CourtDripDxb</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav align-items-center">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button"
-                            data-bs-toggle="dropdown">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-store"></i> Shop
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="league.html">
-                                    <i class="fas fa-futbol"></i> GOKIT (Football)
-                                </a></li>
-                            <li><a class="dropdown-item" href="basketball.html">
-                                    <i class="fas fa-basketball-ball"></i> CourtDripDxb
-                                </a></li>
+                        <ul class="dropdown-menu shop-dropdown-menu">
+                            <li><a class="dropdown-item dropdown-football shop-dropdown-item" href="league.html">
+                                    <div class="icon-container"><i class="fas fa-futbol"></i></div>
+                                    <div class="text-container">
+                                        <div class="shop-item-title">GOKIT</div>
+                                        <div class="shop-item-desc">Premium Football Jerseys</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li><a class="dropdown-item dropdown-basketball shop-dropdown-item" href="nba.html">
+                                    <div class="icon-container"><i class="fas fa-basketball-ball"></i></div>
+                                    <div class="text-container">
+                                        <div class="shop-item-title">CourtDripDxb</div>
+                                        <div class="shop-item-desc">Elite Basketball Gear</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Account Dropdown -->
+                    <li class="nav-item dropdown" id="accountNav">
+                        <a class="nav-link dropdown-toggle" href="#" id="accountDropdownToggle" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i> Account
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="accountDropdownToggle" id="accountDropdownMenu">
+                            <!-- Populated by JS -->
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cart.html" id="cartLink">
-                            <i class="fas fa-shopping-cart"></i> Cart
+                        <a class="nav-link nav-link-cart" href="cart.html" id="cartLink">
+                            <span class="cart-icon-container">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-badge" id="cartBadge"></span>
+                            </span>
+                            <span>Cart</span>
                         </a>
                     </li>
                 </ul>
@@ -405,16 +1261,19 @@
         </div>
     </nav>
 
-    <!-- Enhanced Hero Section -->
+    <!-- Updated Hero Section with Subtle Text Enhancement -->
     <header class="hero">
         <div class="hero-content">
-            <h1><i class="fas fa-crown"></i> GOKIT × CourtDripDxb</h1>
-            <p>Wear The Game. Own The Court. - Elite Football & Basketball Apparel</p>
+            <div class="title-container">
+                <h1><i class="fas fa-crown"></i> <span class="hero-title-football">GOKIT</span> × <span
+                        class="hero-title-basketball">CourtDripDxb</span></h1>
+                <p>Wear The Game. Own The Game. - Football & Basketball Jerseys</p>
+            </div>
             <div class="hero-buttons">
-                <a href="league.html" class="hero-btn btn-football">
+                <a href="football-jerseys.html" class="hero-btn btn-football">
                     <i class="fas fa-futbol"></i> Shop Football
                 </a>
-                <a href="basketball.html" class="hero-btn btn-basketball">
+                <a href="nba.html" class="hero-btn btn-basketball">
                     <i class="fas fa-basketball-ball"></i> Shop Basketball
                 </a>
             </div>
@@ -427,25 +1286,25 @@
             <div class="row">
                 <div class="col-md-3 col-6">
                     <div class="stat-item">
-                        <div class="stat-number">500+</div>
+                        <div class="stat-number" data-target="500">500+</div>
                         <div class="stat-label">Premium Jerseys</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="stat-item">
-                        <div class="stat-number">50+</div>
+                        <div class="stat-number" data-target="50">50+</div>
                         <div class="stat-label">Teams Available</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="stat-item">
-                        <div class="stat-number">1000+</div>
+                        <div class="stat-number" data-target="1000">1000+</div>
                         <div class="stat-label">Happy Customers</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="stat-item">
-                        <div class="stat-number">24/7</div>
+                        <div class="stat-number" data-target="24">24/7</div>
                         <div class="stat-label">Support</div>
                     </div>
                 </div>
@@ -463,9 +1322,9 @@
             <div class="row">
                 <div class="col-lg-6 mb-4">
                     <div class="section-card">
-                        <img src="img/football.jpg" alt="Football Section">
+                        <img src="img/football.jpg" alt="Football Section" loading="lazy">
                         <div class="section-card-content">
-                            <h3><i class="fas fa-futbol"></i> GOKIT</h3>
+                            <h3 class="football-title"><i class="fas fa-futbol"></i> GOKIT</h3>
                             <p>Premium football kits from top leagues worldwide<br>Retro classics & latest seasons</p>
                             <a href="league.html" class="btn btn-success">
                                 <i class="fas fa-arrow-right"></i> Explore Football
@@ -475,9 +1334,9 @@
                 </div>
                 <div class="col-lg-6 mb-4">
                     <div class="section-card">
-                        <img src="img/basketball.jpg" alt="Basketball Section">
+                        <img src="img/basketball.jpg" alt="Basketball Section" loading="lazy">
                         <div class="section-card-content">
-                            <h3><i class="fas fa-basketball-ball"></i> CourtDripDxb</h3>
+                            <h3 class="basketball-title"><i class="fas fa-basketball-ball"></i> CourtDripDxb</h3>
                             <p>Elite basketball jerseys & streetwear<br>NBA legends & current stars</p>
                             <a href="basketball.html" class="btn btn-warning">
                                 <i class="fas fa-arrow-right"></i> Explore Basketball
@@ -489,52 +1348,297 @@
         </div>
     </section>
 
-    <!-- Enhanced Footer -->
+    <!-- Simplified Footer with Single Social Links -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <i class="fas fa-bolt"></i> GOKIT × CourtDripDxb
+                    <i class="fas fa-bolt"></i> <span class="brand-football">GOKIT</span> × <span
+                        class="brand-basketball">CourtDripDxb</span>
                 </div>
+
                 <div class="footer-links">
                     <a href="#"><i class="fas fa-home"></i> Home</a>
                     <a href="league.html"><i class="fas fa-futbol"></i> Football</a>
                     <a href="basketball.html"><i class="fas fa-basketball-ball"></i> Basketball</a>
                     <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
                 </div>
-                <div class="social-icons">
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+
+                <!-- Simplified Social Media Sections -->
+                <div class="social-sections">
+                    <div class="social-section">
+                        <h4 class="football-heading"><i class="fas fa-futbol"></i> GOKIT</h4>
+                        <div class="social-icons">
+                            <a href="https://instagram.com/gokit_me" target="_blank" rel="noopener"
+                                class="social-icon football-icon" aria-label="GOKIT Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://tiktok.com/@gokit_me" target="_blank" rel="noopener"
+                                class="social-icon football-icon" aria-label="GOKIT TikTok">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="https://facebook.com/gokit.me" target="_blank" rel="noopener"
+                                class="social-icon football-icon" aria-label="GOKIT Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://wa.me/971501234567?text=Hi! I'm interested in GOKIT football jerseys"
+                                target="_blank" rel="noopener" class="social-icon football-icon"
+                                aria-label="GOKIT WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://twitter.com/gokit_official" target="_blank" rel="noopener"
+                                class="social-icon football-icon" aria-label="GOKIT Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="social-section">
+                        <h4 class="basketball-heading"><i class="fas fa-basketball-ball"></i> CourtDripDxb</h4>
+                        <div class="social-icons">
+                            <a href="https://instagram.com/courtdripdxb" target="_blank" rel="noopener"
+                                class="social-icon basketball-icon" aria-label="CourtDripDxb Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://tiktok.com/@courtdripdxb" target="_blank" rel="noopener"
+                                class="social-icon basketball-icon" aria-label="CourtDripDxb TikTok">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="https://facebook.com/courtdripdxb" target="_blank" rel="noopener"
+                                class="social-icon basketball-icon" aria-label="CourtDripDxb Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://wa.me/971501234567?text=Hi! I'm interested in CourtDripDxb basketball jerseys"
+                                target="_blank" rel="noopener" class="social-icon basketball-icon"
+                                aria-label="CourtDripDxb WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://twitter.com/courtdripdxb" target="_blank" rel="noopener"
+                                class="social-icon basketball-icon" aria-label="CourtDripDxb Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Developer Section -->
+                    <div class="social-section">
+                        <h4 class="developer-heading"><i class="fas fa-code"></i> Developer</h4>
+                        <div class="social-icons">
+                            <a href="https://github.com/Gokit-Courtdrip" target="_blank" rel="noopener"
+                                class="social-icon developer-icon" aria-label="Developer GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://instagram.com/4rshia_mv" target="_blank" rel="noopener"
+                                class="social-icon developer-icon" aria-label="Developer Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://wa.me/971503500109?text=Hi! I'm interested in your web development services"
+                                target="_blank" rel="noopener" class="social-icon developer-icon"
+                                aria-label="Developer WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <p>© 2025 GOKIT × CourtDripDxb. All rights reserved.</p>
-                <p><small><i class="fas fa-info-circle"></i> Not affiliated with any official leagues or teams.</small>
-                </p>
+
+                <div class="footer-bottom">
+                    <p>© 2025 GOKIT × CourtDripDxb. All rights reserved.</p>
+                    <p><small><i class="fas fa-info-circle"></i> Not affiliated with any official leagues or
+                            teams.</small></p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Welcome Modal -->
+    <div class="modal-backdrop" id="welcomeModal">
+        <div class="modal-content-new">
+            <div class="modal-header-new">
+                <h2>Welcome to the Club! 🎉</h2>
+                <button class="modal-close-new" id="welcomeClose">&times;</button>
+            </div>
+            <div class="modal-body-new">
+                <p class="modal-subtitle">Sign up to get <strong>10% OFF</strong> your first 3 orders!</p>
+                <form id="welcomeForm">
+                    <div class="form-group-new">
+                        <label for="welcomeName">Your Name</label>
+                        <input type="text" id="welcomeName" class="form-input-new" placeholder="e.g., John Doe"
+                            required>
+                    </div>
+                    <div class="form-group-new">
+                        <label for="welcomeEmail">Email Address</label>
+                        <input type="email" id="welcomeEmail" class="form-input-new"
+                            placeholder="e.g., john.doe@example.com" required>
+                    </div>
+                    <div class="form-group-new">
+                        <label for="welcomePhone">Phone Number</label>
+                        <input type="tel" id="welcomePhone" class="form-input-new" placeholder="e.g., +971 50 123 4567"
+                            required>
+                    </div>
+                    <div class="form-group-new">
+                        <label>What are you looking for?</label>
+                        <div class="sport-selector-new">
+                            <label><input type="radio" name="sportRequest" value="Football" checked><span><i
+                                        class="fas fa-futbol"></i> Football</span></label>
+                            <label><input type="radio" name="sportRequest" value="Basketball"><span><i
+                                        class="fas fa-basketball-ball"></i> Basketball</span></label>
+                            <label><input type="radio" name="sportRequest" value="Both"><span><i
+                                        class="fas fa-layer-group"></i> Both</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group-new">
+                        <label for="jerseyRequest">What jerseys should we stock up on? (Optional)</label>
+                        <input type="text" id="jerseyRequest" class="form-input-new"
+                            placeholder="e.g., Retro AC Milan, Lakers City Edition...">
+                    </div>
+                    <button type="submit" class="submit-btn-new">
+                        <i class="fas fa-gift"></i> Get My Discount Code
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
     <script>
+        // Firebase Configuration
+        let db;
+        try {
+            const firebaseConfig = {
+                apiKey: "AIzaSyAbMf3bPs97pkfXUKB_44rKoRWmvt9b0yM",
+                authDomain: "gokit-x-courtdripdxb.firebaseapp.com",
+                projectId: "gokit-x-courtdripdxb",
+                storageBucket: "gokit-x-courtdripdxb.firebasestorage.app",
+                messagingSenderId: "384570406205",
+                appId: "1:384570406205:web:966041b461575405b74154"
+            };
+
+            firebase.initializeApp(firebaseConfig);
+            db = firebase.firestore();
+            console.log('Firebase initialized successfully on index page.');
+        } catch (error) {
+            console.log('Firebase initialization error:', error);
+            db = null;
+        }
+
+        // Loading screen
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                document.getElementById('loading').classList.add('loaded');
+            }, 500);
+        });
+
         // Update cart display
         function updateCartDisplay() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-            const cartLink = document.getElementById('cartLink');
+            const totalItems = cart.reduce((sum, item) => sum + (parseInt(item.quantity) || 1), 0);
+            const cartBadge = document.getElementById('cartBadge');
 
-            if (totalItems > 0) {
-                cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart (${totalItems})`;
-            } else {
-                cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart`;
+            if (cartBadge) {
+                if (totalItems > 0) {
+                    cartBadge.textContent = totalItems;
+                    cartBadge.classList.add('show');
+                } else {
+                    cartBadge.classList.remove('show');
+                }
             }
         }
 
         // Initialize cart display
-        document.addEventListener('DOMContentLoaded', updateCartDisplay);
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartDisplay();
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', function () {
+            // Welcome Modal Logic
+            const welcomeModal = document.getElementById('welcomeModal');
+            const welcomeCloseBtn = document.getElementById('welcomeClose');
+            const welcomeForm = document.getElementById('welcomeForm');
+            const accountDropdownMenu = document.getElementById('accountDropdownMenu');
+
+            if (welcomeModal && welcomeCloseBtn && welcomeForm) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const forceShowForm = urlParams.get('showForm') === 'true';
+                const hasSignedUp = localStorage.getItem('userData') !== null;
+                const hasDismissedInSession = sessionStorage.getItem('welcomeModalDismissed') === 'true';
+
+                // Show modal if forced, OR if the user hasn't signed up and hasn't dismissed it in this session.
+                // A delay is added for a better user experience.
+                if (forceShowForm || (!hasSignedUp && !hasDismissedInSession)) {
+                    setTimeout(() => {
+                        showModal('welcomeModal');
+                    }, 2000); // 2-second delay before showing the modal
+                }
+
+                welcomeCloseBtn.addEventListener('click', () => {
+                    // Mark that the user has dismissed the modal for the current browser session.
+                    sessionStorage.setItem('welcomeModalDismissed', 'true');
+                    closeModal('welcomeModal');
+                });
+                welcomeForm.addEventListener('submit', handleWelcomeForm);
+            }
+
+            // Set up account navigation and its event listeners using event delegation
+            if (accountDropdownMenu) {
+                accountDropdownMenu.addEventListener('click', (e) => { // Handle clicks within the account dropdown
+                    const copyBtn = e.target.closest('.copy-code-btn');
+                    if (copyBtn) {
+                        e.stopPropagation(); // Prevent dropdown from closing on button click
+                        const codeToCopy = copyBtn.dataset.code;
+
+                        navigator.clipboard.writeText(codeToCopy).then(() => {
+                            showToast(`Code "${codeToCopy}" copied!`, 'fas fa-copy');
+                            copyBtn.textContent = 'Copied!';
+                            copyBtn.disabled = true;
+                            copyBtn.style.backgroundColor = 'var(--football-color)'; // Visual feedback
+                            setTimeout(() => {
+                                copyBtn.textContent = 'Copy';
+                                copyBtn.disabled = false;
+                                copyBtn.style.backgroundColor = ''; // Revert to original
+                            }, 2500);
+                        }).catch(err => {
+                            console.error('Failed to copy code: ', err);
+                            showToast('Could not copy code.', 'fas fa-exclamation-circle');
+                        });
+                        return; // Stop further processing
+                    }
+
+                    const linkTarget = e.target.closest('a');
+                    if (!linkTarget) return;
+
+                    if (linkTarget.id === 'loginPromptBtn') {
+                        e.preventDefault();
+                        const dropdownInstance = bootstrap.Dropdown.getInstance(document.getElementById('accountDropdownToggle'));
+                        if (dropdownInstance) dropdownInstance.hide();
+                        showModal('welcomeModal');
+                    }
+
+                    if (linkTarget.id === 'logoutBtn') {
+                        e.preventDefault();
+                        localStorage.removeItem('userData');
+                        localStorage.removeItem('discountCodes');
+                        // Clear the session dismissed flag so the welcome modal can appear again if they browse as a guest.
+                        sessionStorage.removeItem('welcomeModalDismissed');
+                        localStorage.removeItem('welcomeModalDismissed'); // Also remove old flag
+                        showToast('You have been logged out.', 'fas fa-sign-out-alt');
+                        updateAccountNav();
+                    }
+                });
+            }
+
+            updateAccountNav(); // Initial call to set up the nav state
+
+        });
+
+        // Navbar scroll effect with throttling
+        let lastScrollTime = 0;
+        function updateNavbar() {
+            const now = Date.now();
+            if (now - lastScrollTime < 50) return; // Throttle to 50ms
+
+            lastScrollTime = now;
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 100) {
                 navbar.style.background = 'rgba(0, 0, 0, 0.95)';
@@ -543,7 +1647,375 @@
                 navbar.style.background = 'rgba(0, 0, 0, 0.9)';
                 navbar.style.boxShadow = 'none';
             }
+        }
+
+        window.addEventListener('scroll', updateNavbar, { passive: true });
+
+        // Add ripple effect to buttons
+        function createRipple(event) {
+            const button = event.currentTarget;
+
+            // Check if button already has a ripple
+            const ripple = button.querySelector('.ripple');
+            if (ripple) {
+                ripple.remove();
+            }
+
+            const circle = document.createElement("span");
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+
+            // Calculate position relative to the button
+            const rect = button.getBoundingClientRect();
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - rect.left - radius}px`;
+            circle.style.top = `${event.clientY - rect.top - radius}px`;
+            circle.classList.add("ripple");
+
+            button.appendChild(circle);
+
+            // Remove ripple after animation completes
+            setTimeout(() => {
+                if (circle.parentElement) {
+                    circle.remove();
+                }
+            }, 600);
+        }
+
+        // Add ripple effect to all buttons
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.btn, .hero-btn').forEach(button => {
+                button.addEventListener('click', createRipple);
+                button.addEventListener('touchstart', function (e) {
+                    // For touch devices
+                    const touch = e.touches[0];
+                    const event = new MouseEvent('click', {
+                        clientX: touch.clientX,
+                        clientY: touch.clientY
+                    });
+                    createRipple(event);
+                }, { passive: true });
+            });
         });
+
+        // Intersection Observer for animations
+        document.addEventListener('DOMContentLoaded', function () {
+            if ('IntersectionObserver' in window) {
+                const animationObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            animationObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                document.querySelectorAll('.stat-item, .section-card').forEach(el => {
+                    animationObserver.observe(el);
+                });
+            } else {
+                // Fallback for browsers that don't support Intersection Observer
+                document.querySelectorAll('.stat-item, .section-card').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                });
+            }
+        });
+
+        // Stats Animation with performance optimization
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            const animationDuration = 2000; // 2 seconds
+
+            const easeOutQuad = t => t * (2 - t);
+
+            stats.forEach(stat => {
+                const originalText = stat.textContent;
+                const targetValue = parseInt(stat.getAttribute('data-target'));
+
+                if (isNaN(targetValue) || stat.classList.contains('animated')) {
+                    return;
+                }
+                stat.classList.add('animated');
+
+                if (originalText === '24/7') {
+                    stat.textContent = '0/7';
+                    let startTimestamp = null;
+                    const step = (timestamp) => {
+                        if (!startTimestamp) startTimestamp = timestamp;
+                        const progress = Math.min((timestamp - startTimestamp) / animationDuration, 1);
+                        const currentValue = Math.floor(easeOutQuad(progress) * 24);
+                        stat.textContent = `${currentValue}/7`;
+                        if (progress < 1) {
+                            window.requestAnimationFrame(step);
+                        } else {
+                            stat.textContent = '24/7';
+                        }
+                    };
+                    window.requestAnimationFrame(step);
+                } else {
+                    const hasPlus = originalText.includes('+');
+                    let startTimestamp = null;
+                    const startValue = 0;
+                    const step = (timestamp) => {
+                        if (!startTimestamp) startTimestamp = timestamp;
+                        const progress = Math.min((timestamp - startTimestamp) / animationDuration, 1);
+                        const currentValue = Math.floor(easeOutQuad(progress) * (targetValue - startValue) + startValue);
+                        stat.textContent = currentValue + (hasPlus ? '+' : '');
+                        if (progress < 1) {
+                            window.requestAnimationFrame(step);
+                        } else {
+                            stat.textContent = targetValue + (hasPlus ? '+' : '');
+                        }
+                    };
+                    window.requestAnimationFrame(step);
+                }
+            });
+        }
+
+        // Trigger stats animation when in view
+        document.addEventListener('DOMContentLoaded', function () {
+            if ('IntersectionObserver' in window) {
+                const statsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            setTimeout(animateStats, 300); // Slight delay for better UX
+                            statsObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.2
+                });
+
+                const statsSection = document.querySelector('.stats-section');
+                if (statsSection) {
+                    statsObserver.observe(statsSection);
+                }
+            } else {
+                // Fallback for browsers without Intersection Observer
+                setTimeout(animateStats, 1000);
+            }
+        });
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', function () {
+            document.body.classList.remove('keyboard-navigation');
+        });
+
+        // Smooth scrolling for anchor links
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+
+                    // Only process actual anchor links, not just "#"
+                    if (href !== '#') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            // Check if browser supports smooth scrolling
+                            if ('scrollBehavior' in document.documentElement.style) {
+                                target.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            } else {
+                                // Fallback for browsers that don't support smooth scrolling
+                                target.scrollIntoView();
+                            }
+                        }
+                    }
+                });
+            });
+        });
+
+        // Optimize for different connection speeds
+        document.addEventListener('DOMContentLoaded', function () {
+            if ('connection' in navigator) {
+                const connection = navigator.connection;
+                if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+                    // Disable animations for slow connections
+                    document.querySelectorAll('.stat-item, .section-card').forEach(el => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                        el.style.transition = 'none';
+                    });
+
+                    // Load lower quality images
+                    document.querySelectorAll('img').forEach(img => {
+                        if (img.src.includes('?')) {
+                            img.src = img.src + '&q=60'; // Lower quality
+                        } else {
+                            img.src = img.src + '?q=60'; // Lower quality
+                        }
+                    });
+                }
+            }
+        });
+
+        // Error handling for images
+        document.addEventListener('error', function (e) {
+            if (e.target.tagName === 'IMG') {
+                console.log('Image failed to load:', e.target.src);
+                // Replace with fallback image
+                e.target.src = 'img/placeholder.jpg';
+                e.target.onerror = null; // Prevent infinite loop
+            }
+        }, true);
+
+        // Service Worker registration for better caching (optional)
+        if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function (registration) {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(function (registrationError) {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+
+        // --- Welcome Modal and Form Logic ---
+
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function showToast(message, iconClass = 'fas fa-check-circle') {
+            const toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.innerHTML = `
+                <i class="${iconClass}"></i>
+                <span>${message}</span>
+            `;
+
+            document.body.appendChild(toast);
+
+            setTimeout(() => toast.classList.add('show'), 100);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => document.body.removeChild(toast), 500);
+            }, 4000);
+        }
+
+        function generateDiscountCode() {
+            const codes = ['WELCOME10', 'FIRST10', 'GOKIT10', 'NEWBIE10', 'START10'];
+            return codes[Math.floor(Math.random() * codes.length)];
+        }
+
+        async function handleWelcomeForm(e) {
+            e.preventDefault();
+            const selectedSport = document.querySelector('input[name="sportRequest"]:checked').value;
+
+            const formData = {
+                name: document.getElementById('welcomeName').value,
+                email: document.getElementById('welcomeEmail').value,
+                phone: document.getElementById('welcomePhone').value,
+                sportPreference: selectedSport,
+                jerseyRequest: document.getElementById('jerseyRequest').value
+            };
+
+            // By signing up, the modal won't show again because 'userData' exists.
+            // We also clear the session 'dismissed' flag in case they log out later in the same session.
+            sessionStorage.removeItem('welcomeModalDismissed');
+
+            const discountCode = generateDiscountCode();
+            localStorage.setItem('discountCodes', JSON.stringify([discountCode]));
+
+            if (db) {
+                try {
+                    const docRef = await db.collection('users').add({
+                        ...formData,
+                        discountCode: discountCode,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    formData.id = docRef.id;
+                    localStorage.setItem('userData', JSON.stringify(formData));
+                    console.log("User data saved to Firebase with ID: ", docRef.id);
+                } catch (error) {
+                    console.log('Firebase save error:', error);
+                    localStorage.setItem('userData', JSON.stringify(formData));
+                }
+            } else {
+                localStorage.setItem('userData', JSON.stringify(formData));
+            }
+
+            closeModal('welcomeModal');
+            showToast(`Welcome, ${formData.name.split(' ')[0]}! Your code: ${discountCode}`, 'fas fa-gift');
+            updateAccountNav();
+        }
+
+        function updateAccountNav() {
+            const accountNav = document.getElementById('accountNav');
+            if (!accountNav) return;
+
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            const accountDropdownToggle = document.getElementById('accountDropdownToggle');
+            const accountDropdownMenu = document.getElementById('accountDropdownMenu');
+
+            if (userData && userData.name) {
+                const firstName = userData.name.split(' ')[0];
+                accountDropdownToggle.innerHTML = `<i class="fas fa-user-check"></i> Hi, ${firstName}`;
+                accountDropdownToggle.classList.add('logged-in-user');
+
+                const discountCodes = JSON.parse(localStorage.getItem('discountCodes')) || [];
+                let discountHTML = '';
+                if (discountCodes.length > 0) {
+                    discountHTML = discountCodes.map(code => `
+                        <li>
+                            <div class="dropdown-item discount-item">
+                                <span><i class="fas fa-tag"></i> ${code} - 10% OFF</span>
+                                <button class="copy-code-btn" data-code="${code}" title="Copy code">Copy</button>
+                            </div>
+                        </li>
+                    `).join('');
+                } else {
+                    discountHTML = `<li><span class="dropdown-item text-muted" style="cursor: default; background: none;">No discounts yet.</span></li>`;
+                }
+
+                accountDropdownMenu.innerHTML = `
+                    <li><h6 class="dropdown-header">Welcome, ${userData.name}</h6></li>
+                    ${discountHTML}
+                    <li><hr class="dropdown-divider" style="border-color: rgba(255,255,255,0.2);"></li>
+                    <li><a class="dropdown-item" href="wishlist.html"><i class="fas fa-heart"></i> Wishlist</a></li>
+                    <li><a class="dropdown-item" href="football-jerseys.html?action=view_orders"><i class="fas fa-shopping-bag"></i> My Orders</a></li>
+                    <li><hr class="dropdown-divider" style="border-color: rgba(255,255,255,0.2);"></li>
+                    <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Log
+                            Out</a></li>
+                `;
+            } else {
+                accountDropdownToggle.innerHTML = `<i class="fas fa-user"></i> Account`;
+                accountDropdownToggle.classList.remove('logged-in-user');
+                accountDropdownMenu.innerHTML = `
+                    <li><a class="dropdown-item" href="#" id="loginPromptBtn" style="font-weight: 700;">
+                        <i class="fas fa-user-plus"></i> Sign Up & Get 10% OFF
+                    </a></li>
+                `;
+            }
+        }
     </script>
 </body>
 

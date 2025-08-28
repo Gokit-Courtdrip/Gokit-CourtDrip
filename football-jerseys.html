@@ -1880,76 +1880,11 @@
     </div>
 
     <!-- Size Guide Modal -->
-    <div class="modal size-guide-modal" id="sizeGuideModal">
+    <div class="modal" id="sizeGuideModal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">GoKit.ME Player Version Size Chart</h2>
-                <button class="modal-close" id="sizeGuideClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-
-            <div class="modal-body">
-                <div class="jersey-icon">
-                    <i class="fas fa-tshirt"></i>
-                </div>
-
-                <table class="size-guide-table">
-                    <thead>
-                        <tr>
-                            <th>Size (cm)</th>
-                            <th>Length (cm)</th>
-                            <th>Shoulder Width (cm)</th>
-                            <th>Sleeve Length (cm)</th>
-                            <th>Cuff Width (cm)</th>
-                            <th>Height Range (cm)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>S</td>
-                            <td>71</td>
-                            <td>46</td>
-                            <td>41.5</td>
-                            <td>16.5</td>
-                            <td>160-165</td>
-                        </tr>
-                        <tr>
-                            <td>M</td>
-                            <td>73</td>
-                            <td>48</td>
-                            <td>43</td>
-                            <td>17</td>
-                            <td>165-170</td>
-                        </tr>
-                        <tr>
-                            <td>L</td>
-                            <td>75</td>
-                            <td>50</td>
-                            <td>44.5</td>
-                            <td>17.5</td>
-                            <td>170-175</td>
-                        </tr>
-                        <tr>
-                            <td>XL</td>
-                            <td>77</td>
-                            <td>52</td>
-                            <td>46</td>
-                            <td>18</td>
-                            <td>175-180</td>
-                        </tr>
-                        <tr>
-                            <td>2XL</td>
-                            <td>79</td>
-                            <td>54</td>
-                            <td>47.5</td>
-                            <td>18.5</td>
-                            <td>180-185</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <p class="size-guide-note">This is the official GoKit ME player version sizing guide.</p>
+            <button class="modal-close" id="sizeGuideClose"><i class="fas fa-times"></i></button>
+            <div class="size-guide-content">
+                <img src="img/GokitSize.jpg" alt="GoKit Sizing Guide">
             </div>
         </div>
     </div>
@@ -2162,10 +2097,38 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
-    <!-- Load central product data -->
-    <script src="../data/products.js"></script>
-
     <script>
+        // Define Football products directly in the page since products.js does not exist
+        const products = [
+            { id: 1, name: "Real Madrid Home 23/24", team: "Real Madrid", league: "La Liga", price: 75, originalPrice: 90, discount: 17, badge: "Best Seller", image: "⚽", hasUcl: true, uclStars: 14 },
+            { id: 2, name: "Barcelona Away 23/24", team: "Barcelona", league: "La Liga", price: 75, originalPrice: 90, discount: 17, badge: "New", image: "👕", hasUcl: true, uclStars: 5 },
+            { id: 3, name: "Man United Home 23/24", team: "Manchester United", league: "Premier League", price: 80, originalPrice: 95, discount: 16, badge: "Popular", image: "⚽", hasUcl: true, uclStars: 3 },
+            { id: 4, name: "Liverpool Home 23/24", team: "Liverpool", league: "Premier League", price: 80, originalPrice: 95, discount: 16, badge: "Hot", image: "👕", hasUcl: true, uclStars: 6 },
+            { id: 5, name: "AC Milan Home 23/24", team: "AC Milan", league: "Serie A", price: 75, originalPrice: 90, discount: 17, badge: "Classic", image: "⚽", hasUcl: true, uclStars: 7 },
+            { id: 6, name: "Inter Milan Away 23/24", team: "Inter Milan", league: "Serie A", price: 75, originalPrice: 90, discount: 17, badge: "New", image: "👕", hasUcl: true, uclStars: 3 },
+            { id: 7, name: "Bayern Munich Home 23/24", team: "Bayern Munich", league: "Bundesliga", price: 85, originalPrice: 100, discount: 15, badge: "Popular", image: "⚽", hasUcl: true, uclStars: 6 },
+            { id: 8, name: "Dortmund Home 23/24", team: "Borussia Dortmund", league: "Bundesliga", price: 80, originalPrice: 95, discount: 16, badge: "Fan Favorite", image: "👕", hasUcl: true, uclStars: 1 },
+            { id: 9, name: "PSG Home 23/24", team: "Paris Saint-Germain", league: "Ligue 1", price: 85, originalPrice: 100, discount: 15, badge: "Hot", image: "⚽", hasUcl: false, uclStars: 0 },
+            { id: 10, name: "Man City Home 23/24", team: "Manchester City", league: "Premier League", price: 85, originalPrice: 100, discount: 15, badge: "Best Seller", image: "👕", hasUcl: true, uclStars: 1 },
+            { id: 11, name: "Arsenal Home 23/24", team: "Arsenal", league: "Premier League", price: 80, originalPrice: 95, discount: 16, badge: "Popular", image: "⚽", hasUcl: false, uclStars: 0 },
+            { id: 12, name: "Chelsea Home 23/24", team: "Chelsea", league: "Premier League", price: 80, originalPrice: 95, discount: 16, badge: "New", image: "👕", hasUcl: true, uclStars: 2 }
+        ];
+        window.products = products; // Make it available globally for other functions on the page
+
+        // Define NBA products inline so this page can find them
+        const nba_products = [
+            { id: 101, name: "Celtics Icon Edition 23/24", team: "Boston Celtics", conference: "Eastern", price: 85, image: 'img/products/celtics-24.png', tags: ['nba', 'celtics'] },
+            { id: 102, name: "Nets Statement Edition 23/24", team: "Brooklyn Nets", conference: "Eastern", price: 85, image: 'img/products/nets-24.png', tags: ['nba', 'nets'] },
+            { id: 106, name: "Bulls Icon Edition 23/24", team: "Chicago Bulls", conference: "Eastern", price: 85, image: 'img/products/bulls-24.png', tags: ['nba', 'bulls', 'classic'] },
+            { id: 117, name: "Nuggets Icon Edition 23/24", team: "Denver Nuggets", conference: "Western", price: 85, image: 'img/products/nuggets-24.png', tags: ['nba', 'nuggets'] },
+            { id: 118, name: "Warriors City Edition 23/24", team: "Golden State Warriors", conference: "Western", price: 85, image: 'img/products/warriors-24.png', tags: ['nba', 'warriors'] },
+            { id: 121, name: "Lakers Statement Edition 23/24", team: "Los Angeles Lakers", conference: "Western", price: 85, image: 'img/products/lakers-24.png', tags: ['nba', 'lakers', 'classic'] },
+            // Add other key NBA products here as needed for cross-page functionality
+        ];
+
+        // Combine all product data into one master list
+        const allProducts = products.concat(nba_products);
+
         // Firebase Configuration
         try {
             const firebaseConfig = {
@@ -2194,8 +2157,8 @@
         }
 
         // Ensure products are loaded from the central file
-        if (typeof products === 'undefined') {
-            console.error("CRITICAL: Product data not loaded. Make sure 'products.js' is linked correctly.");
+        if (typeof allProducts === 'undefined' || allProducts.length === 0) {
+            console.error("CRITICAL: Product data not loaded. Make sure 'products.js' is included and nba_products are defined.");
         }
 
         // Global Variables
@@ -2217,6 +2180,28 @@
             },
             // In a full refactor, products, wishlist, etc. would also be here
         };
+
+        // This code should be placed inside the main <script> tag of football-jerseys.html
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // ... all your existing initialization code like initializeState() and syncUserSession() ...
+
+            // Check for URL parameters to open modals
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('action') === 'view_orders') {
+                // A small delay ensures the page is fully ready before showing the modal
+                setTimeout(() => {
+                    const userData = JSON.parse(localStorage.getItem('userData'));
+                    if (userData && userData.name) {
+                        showOrdersModal();
+                    } else {
+                        // Optional: prompt to log in or show a message
+                        showToast('Please sign up or log in to view your orders.', 'fas fa-user-plus');
+                    }
+                }, 300);
+            }
+        });
+
 
         // Size Chart Data
         const sizeChart = {
@@ -2817,7 +2802,7 @@
                 return;
             }
 
-            const results = products.filter(p =>
+            const results = allProducts.filter(p =>
                 p.name.toLowerCase().includes(query) ||
                 p.team.toLowerCase().includes(query)
             ).slice(0, 5); // Limit to 5 results
@@ -2888,7 +2873,7 @@
                 `;
             } else {
                 wishlist.forEach(productId => {
-                    const product = products.find(p => p.id === productId);
+                    const product = allProducts.find(p => p.id === productId);
                     if (!product) return;
 
                     const addedDate = localStorage.getItem(`wishlist_time_${productId}`);
@@ -2950,7 +2935,7 @@
                 `;
             } else {
                 orders.forEach(item => {
-                    const product = products.find(p => p.id === item.productId);
+                    const product = allProducts.find(p => p.id === item.productId);
                     if (!product) return;
 
                     const itemEl = document.createElement('div');
@@ -3030,7 +3015,7 @@
                 event.stopPropagation();
             }
 
-            const product = products.find(p => p.id === productId);
+            const product = allProducts.find(p => p.id === productId);
             if (!product) return;
 
             document.getElementById('quickViewTitle').textContent = product.name;
@@ -3222,7 +3207,7 @@
             for (const keyword of keywords) {
                 query = query.replace(keyword, '').trim();
             }
-            const foundProducts = products.filter(p => p.name.toLowerCase().includes(query) || p.team.toLowerCase().includes(query));
+            const foundProducts = allProducts.filter(p => p.name.toLowerCase().includes(query) || p.team.toLowerCase().includes(query));
             if (foundProducts.length > 0) {
                 return `Yes, we have kits for ${query}! You can use the main search bar at the top of the page to see all available options.`;
             }
@@ -3412,54 +3397,73 @@
         }
 
         async function addToCart() {
-            const productId = parseInt(quickViewModal.dataset.productId);
+            const addToCartBtn = document.getElementById('addToCartBtn');
+            const originalBtnHTML = addToCartBtn.innerHTML;
 
-            const cartItem = {
-                id: Date.now(),
-                productId: productId,
-                playerName: document.getElementById('playerName').value,
-                playerNumber: document.getElementById('playerNumber').value,
-                patches: Array.from(selectedPatches),
-                customerNote: document.getElementById('customerNote').value,
-                price: parseInt(document.getElementById('totalPrice').textContent),
-                quantity: 1,
-                timestamp: new Date().toISOString()
-            };
+            // Disable button to prevent multiple clicks
+            addToCartBtn.disabled = true;
+            addToCartBtn.innerHTML = `
+                <i class="fas fa-spinner fa-spin"></i>
+                <span>Adding...</span>
+            `;
 
-            // Save to local storage first for a fast, responsive UI
-            cart.push(cartItem);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartIcon(); // Update the cart badge immediately
+            try {
+                const productId = parseInt(quickViewModal.dataset.productId);
 
-            const orderId = cartItem.id.toString(); // Use the unique cart item ID as the Order ID
-            const userData = JSON.parse(localStorage.getItem('userData'));
+                const cartItem = {
+                    id: Date.now(),
+                    productId: productId,
+                    playerName: document.getElementById('playerName').value,
+                    playerNumber: document.getElementById('playerNumber').value,
+                    patches: Array.from(selectedPatches),
+                    customerNote: document.getElementById('customerNote').value,
+                    price: parseInt(document.getElementById('totalPrice').textContent),
+                    quantity: 1,
+                    timestamp: new Date().toISOString()
+                };
 
-            // Save to Firebase cart if a user is logged in
-            if (window.db && userData && userData.id) {
-                const userId = userData.id;
-                try {
-                    // Create promises for both Firebase operations
-                    const userCartPromise = db.collection('users').doc(userId).collection('cart').doc(orderId).set({
-                        ...cartItem,
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                    });
+                // Save to local storage first for a fast, responsive UI
+                cart.push(cartItem);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartIcon(); // Update the cart badge immediately
 
-                    const orderPromise = db.collection('orders').doc(orderId).set({
-                        userId: userId,
-                        items: [cartItem], // In a real app, this would be the whole cart
-                        totalPrice: cartItem.price,
-                        status: 'Processing', // Initial status
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                    });
+                const orderId = cartItem.id.toString(); // Use the unique cart item ID as the Order ID
+                const userData = JSON.parse(localStorage.getItem('userData'));
 
-                    // Wait for both operations to complete
-                    await Promise.all([userCartPromise, orderPromise]);
-                    console.log("Successfully saved cart and order to Firebase.");
+                // Save to Firebase cart if a user is logged in
+                if (window.db && userData && userData.id) {
+                    const userId = userData.id;
+                    try {
+                        // Create promises for both Firebase operations
+                        const userCartPromise = db.collection('users').doc(userId).collection('cart').doc(orderId).set({
+                            ...cartItem,
+                            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                        });
 
-                } catch (error) {
-                    console.error('Firebase write error:', error);
-                    showToast('Could not save cart to your account.', 'fas fa-exclamation-circle');
+                        const orderPromise = db.collection('orders').doc(orderId).set({
+                            userId: userId,
+                            items: [cartItem], // In a real app, this would be the whole cart
+                            totalPrice: cartItem.price,
+                            status: 'Processing', // Initial status
+                            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                        });
+
+                        // Wait for both operations to complete
+                        await Promise.all([userCartPromise, orderPromise]);
+                        console.log("Successfully saved cart and order to Firebase.");
+
+                    } catch (error) {
+                        console.error('Firebase write error:', error);
+                        showToast('Could not save cart to your account.', 'fas fa-exclamation-circle');
+                    }
                 }
+            } catch (error) {
+                console.error("Error adding to cart:", error);
+                showToast('Failed to add item to cart.', 'fas fa-exclamation-circle');
+            } finally {
+                // Re-enable button after operation is complete
+                addToCartBtn.disabled = false;
+                addToCartBtn.innerHTML = originalBtnHTML;
             }
 
             closeModal('quickViewModal');
@@ -3569,7 +3573,7 @@
 
             if (viewedIds.length > 0) {
                 viewedIds.forEach(id => {
-                    const product = products.find(p => p.id === id);
+                    const product = allProducts.find(p => p.id === id);
                     if (product) {
                         const card = createProductCard(product);
                         recentlyViewedGrid.appendChild(card);
