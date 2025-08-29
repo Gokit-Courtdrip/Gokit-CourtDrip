@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Houston Rockets — CourtDripDxb</title>
+    <title>Miami Heat — CourtDripDxb</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
         /* Base Styles */
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 100%);
             color: #f8f9fa;
             padding-bottom: 70px;
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -17,38 +17,38 @@
         }
 
         /* Navbar */
-        .rockets-header {
-            background: linear-gradient(135deg, #000000, #CE1141, #000000);
+        .heat-header {
+            background: linear-gradient(135deg, #98002E, #F9A01B, #98002E);
             color: white;
-            box-shadow: 0 4px 15px rgba(206, 17, 65, 0.3);
+            box-shadow: 0 4px 15px rgba(152, 0, 46, 0.3);
         }
 
-        /* Hero Section */
+        /* Hero Section - Simplified */
         .hero-section {
-            background: linear-gradient(135deg, #000000 0%, #0f1419 50%, #CE1141 100%);
-            border-bottom: 4px solid #CE1141;
+            background: linear-gradient(135deg, #98002E 0%, #1a0a0a 50%, #F9A01B 100%);
+            border-bottom: 4px solid #F9A01B;
             padding: 3rem 0;
             text-align: center;
             position: relative;
         }
 
         .hero-section h1 {
-            color: #CE1141;
+            color: #F9A01B;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 1rem;
             font-size: clamp(2rem, 8vw, 4rem);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
 
         .hero-section p {
-            color: #e6f3ff;
+            color: #ffe6e6;
             font-size: clamp(1rem, 4vw, 1.3rem);
             margin-bottom: 2rem;
         }
 
-        .rockets-legacy {
+        .heat-legacy {
             display: flex;
             justify-content: center;
             gap: clamp(1rem, 5vw, 3rem);
@@ -61,14 +61,14 @@
         }
 
         .legacy-number {
-            color: #CE1141;
+            color: #F9A01B;
             font-size: clamp(1.5rem, 5vw, 2.2rem);
             font-weight: 900;
             display: block;
         }
 
         .legacy-label {
-            color: #e6f3ff;
+            color: #ffe6e6;
             font-size: clamp(0.7rem, 2.5vw, 0.9rem);
             text-transform: uppercase;
             margin-top: 0.5rem;
@@ -77,8 +77,8 @@
         /* Back Button */
         .btn-back {
             display: inline-block;
-            border: 2px solid #CE1141;
-            color: #CE1141;
+            border: 2px solid #F9A01B;
+            color: #F9A01B;
             font-weight: 700;
             padding: 0.75rem 2rem;
             border-radius: 50px;
@@ -89,8 +89,8 @@
         }
 
         .btn-back:hover {
-            background-color: #CE1141;
-            color: #000000;
+            background-color: #F9A01B;
+            color: #98002E;
             transform: translateY(-2px);
         }
 
@@ -105,11 +105,11 @@
             margin: 1rem 0;
             background: rgba(30, 30, 30, 0.3);
             border-radius: 1.5rem;
-            border: 1px solid rgba(206, 17, 65, 0.2);
+            border: 1px solid rgba(249, 160, 27, 0.2);
         }
 
         .category-section h2 {
-            color: #CE1141;
+            color: #F9A01B;
             font-weight: 900;
             margin-bottom: 1rem;
             text-align: center;
@@ -119,16 +119,16 @@
 
         .category-description {
             text-align: center;
-            color: #e6f3ff;
+            color: #ffe6e6;
             font-size: clamp(0.9rem, 3vw, 1.1rem);
             margin-bottom: 3rem;
             font-style: italic;
         }
 
-        /* Cards */
+        /* Simplified Cards */
         .card {
             background: rgba(30, 30, 30, 0.8);
-            border: 2px solid rgba(206, 17, 65, 0.3);
+            border: 2px solid rgba(249, 160, 27, 0.3);
             border-radius: 1.2rem;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             overflow: hidden;
@@ -137,8 +137,8 @@
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(206, 17, 65, 0.2);
-            border-color: #CE1141;
+            box-shadow: 0 15px 30px rgba(249, 160, 27, 0.2);
+            border-color: #F9A01B;
         }
 
         .card-img-top {
@@ -160,9 +160,9 @@
             flex-grow: 1;
         }
 
-        /* Card Content */
+        /* Simplified Card Content */
         .card-title {
-            color: #CE1141;
+            color: #F9A01B;
             font-weight: 900;
             margin-bottom: 0.5rem;
             font-size: clamp(1.1rem, 4vw, 1.3rem);
@@ -174,18 +174,18 @@
             font-size: clamp(2rem, 6vw, 3rem);
             font-weight: 900;
             margin: 0.5rem 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
 
         .player-position {
-            color: #e6f3ff;
+            color: #ffe6e6;
             font-size: clamp(0.9rem, 3vw, 1rem);
             margin-bottom: 1rem;
             font-weight: 500;
         }
 
         .card-price {
-            color: #CE1141;
+            color: #F9A01B;
             font-size: clamp(1.2rem, 4vw, 1.5rem);
             font-weight: 900;
             margin: 1rem 0;
@@ -202,8 +202,8 @@
         .custom-select,
         .custom-input {
             background-color: rgba(10, 10, 10, 0.5);
-            border: 1px solid rgba(206, 17, 65, 0.4);
-            /* Rockets Red */
+            border: 1px solid rgba(249, 160, 27, 0.4);
+            /* Heat Yellow */
             color: #f8f9fa;
             padding: 0.65rem 1rem;
             border-radius: 8px;
@@ -216,9 +216,9 @@
         .custom-select:focus,
         .custom-input:focus {
             outline: none;
-            border-color: #CE1141;
-            /* Rockets Red */
-            box-shadow: 0 0 0 3px rgba(206, 17, 65, 0.3);
+            border-color: #F9A01B;
+            /* Heat Yellow */
+            box-shadow: 0 0 0 3px rgba(249, 160, 27, 0.3);
         }
 
         .custom-input::placeholder {
@@ -230,7 +230,7 @@
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23CE1141' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23F9A01B' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 1rem center;
             background-size: 1em;
@@ -240,10 +240,10 @@
             background-color: #1a1a2e;
         }
 
-        /* Buttons */
-        .btn-rockets {
-            background: linear-gradient(45deg, #000000, #CE1141);
-            color: #ffffff;
+        /* Simplified Buttons */
+        .btn-heat {
+            background: linear-gradient(45deg, #98002E, #F9A01B);
+            color: white;
             border: none;
             padding: 0.75rem 1.5rem;
             font-weight: 700;
@@ -254,8 +254,8 @@
             width: 100%;
         }
 
-        .btn-rockets:hover {
-            background: linear-gradient(45deg, #1a1a1a, #a50e33);
+        .btn-heat:hover {
+            background: linear-gradient(45deg, #7a0025, #e0910f);
             transform: translateY(-2px);
         }
 
@@ -264,8 +264,8 @@
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: #CE1141;
-            color: #ffffff;
+            background: #F9A01B;
+            color: #98002E;
             padding: 0.3rem 0.8rem;
             border-radius: 1rem;
             font-size: 0.7rem;
@@ -279,13 +279,13 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: linear-gradient(45deg, #CE1141, #e53e5a);
+            background: linear-gradient(45deg, #98002E, #F9A01B);
             border: none;
-            color: #ffffff;
+            color: white;
             font-weight: 700;
             padding: 16px 24px;
             border-radius: 50px;
-            box-shadow: 0 6px 20px rgba(206, 17, 65, 0.6);
+            box-shadow: 0 6px 20px rgba(152, 0, 46, 0.6);
             cursor: pointer;
             z-index: 1050;
             display: flex;
@@ -296,19 +296,19 @@
         }
 
         #cart-toggle-btn:hover {
-            background: linear-gradient(45deg, #a50e33, #c23247);
+            background: linear-gradient(45deg, #7a0025, #e0910f);
             transform: translateY(-2px);
         }
 
-        /* Cart Overlay */
+        /* Simplified Cart Overlay */
         #cart-overlay {
             position: fixed;
             top: 0;
             right: -100%;
             width: min(380px, 100vw);
             height: 100vh;
-            background: linear-gradient(135deg, #1e1e1e 0%, #1a2a3d 100%);
-            box-shadow: -6px 0 25px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #1e1e1e 0%, #1a0a0a 100%);
+            box-shadow: -6px 0 25px rgba(0, 0, 0, 0.8);
             transition: right 0.3s ease;
             z-index: 1040;
             display: flex;
@@ -320,7 +320,7 @@
         }
 
         #cart-header {
-            background: linear-gradient(135deg, #000000, #CE1141);
+            background: linear-gradient(135deg, #98002E, #F9A01B);
             padding: 1.5rem;
             color: white;
             font-weight: 700;
@@ -347,7 +347,7 @@
 
         #cart-header button:hover {
             background: white;
-            color: #000000;
+            color: #98002E;
         }
 
         #cart-items {
@@ -358,7 +358,7 @@
         }
 
         .cart-item {
-            border-bottom: 1px solid rgba(206, 17, 65, 0.2);
+            border-bottom: 1px solid rgba(249, 160, 27, 0.2);
             padding: 1rem 0;
             display: flex;
             justify-content: space-between;
@@ -371,18 +371,18 @@
 
         .cart-item-name {
             font-weight: 700;
-            color: #CE1141;
+            color: #F9A01B;
             margin-bottom: 0.5rem;
         }
 
         .cart-item-price {
-            color: #e6f3ff;
+            color: #ffe6e6;
         }
 
         .cart-item-qty {
             color: #fff;
             margin: 0 15px;
-            background: linear-gradient(45deg, #000000, #CE1141);
+            background: linear-gradient(45deg, #98002E, #F9A01B);
             padding: 0.4rem 0.8rem;
             border-radius: 1rem;
             font-weight: 700;
@@ -412,12 +412,12 @@
 
         #cart-total {
             padding: 2rem 1.5rem;
-            border-top: 2px solid rgba(206, 17, 65, 0.3);
+            border-top: 2px solid rgba(249, 160, 27, 0.3);
             font-weight: 900;
-            color: #CE1141;
+            color: #F9A01B;
             font-size: 1.4rem;
             text-align: center;
-            background: rgba(206, 17, 65, 0.1);
+            background: rgba(249, 160, 27, 0.1);
         }
 
         #cart-empty {
@@ -429,7 +429,7 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .rockets-legacy {
+            .heat-legacy {
                 gap: 1.5rem;
             }
 
@@ -444,7 +444,7 @@
         }
 
         @media (max-width: 576px) {
-            .rockets-legacy {
+            .heat-legacy {
                 flex-direction: column;
                 gap: 1rem;
             }
@@ -463,7 +463,7 @@
             will-change: transform;
         }
 
-        .btn-rockets:hover {
+        .btn-heat:hover {
             will-change: transform;
         }
 
@@ -483,7 +483,7 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark rockets-header sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark heat-header sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">🏀 CourtDripDxb</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -512,15 +512,15 @@
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <h1>Houston Rockets</h1>
-                <p>Red Glare • Clutch City 🚀</p>
-                <div class="rockets-legacy">
+                <h1>Miami Heat</h1>
+                <p>Heat Culture • Miami Vice</p>
+                <div class="heat-legacy">
                     <div class="legacy-item">
-                        <span class="legacy-number">2</span>
+                        <span class="legacy-number">3</span>
                         <div class="legacy-label">Championships</div>
                     </div>
                     <div class="legacy-item">
-                        <span class="legacy-number">1995</span>
+                        <span class="legacy-number">2013</span>
                         <div class="legacy-label">Last Title</div>
                     </div>
                     <div class="legacy-item">
@@ -534,19 +534,19 @@
 
     <!-- Back Button -->
     <div class="back-container">
-        <a href="western.html" class="btn-back">← Back to Western Teams</a>
+        <a href="eastern.html" class="btn-back">← Back to Eastern Teams</a>
     </div>
 
     <!-- Current Jerseys Section -->
     <section class="category-section">
         <div class="container">
             <h2>Current Roster</h2>
-            <p class="category-description">Shop the latest jerseys from Houston</p>
+            <p class="category-description">Shop the latest jerseys from South Beach</p>
             <div class="row g-4 justify-content-center">
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="jersey-badge">Current</div>
-                        <img src="img/rockets1.png" class="card-img-top" alt="Jalen Green Rockets Jersey" />
+                        <img src="img/jersey1.png" class="card-img-top" alt="Jimmy Butler Heat Jersey" />
                         <div class="card-body">
                             <h3 class="card-title">Association Edition 23/24</h3>
                             <div class="customization-options">
@@ -569,15 +569,15 @@
                                 </div>
                             </div>
                             <p class="card-price" data-base-price="85">AED 85</p>
-                            <button class="btn-rockets add-to-cart-btn" data-name="Rockets Association Edition 23/24"
-                                data-base-price="85" data-image="img/rockets1.png">Add to Cart</button>
+                            <button class="btn-heat add-to-cart-btn" data-name="Heat Association Edition 23/24"
+                                data-base-price="85" data-image="img/jersey1.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="jersey-badge">Current</div>
-                        <img src="img/rockets2.png" class="card-img-top" alt="Alperen Sengun Rockets Jersey" />
+                        <img src="img/jersey2.png" class="card-img-top" alt="Bam Adebayo Heat Jersey" />
                         <div class="card-body">
                             <h3 class="card-title">Icon Edition 23/24</h3>
                             <div class="customization-options">
@@ -600,15 +600,15 @@
                                 </div>
                             </div>
                             <p class="card-price" data-base-price="85">AED 85</p>
-                            <button class="btn-rockets add-to-cart-btn" data-name="Rockets Icon Edition 23/24"
-                                data-base-price="85" data-image="img/rockets2.png">Add to Cart</button>
+                            <button class="btn-heat add-to-cart-btn" data-name="Heat Icon Edition 23/24"
+                                data-base-price="85" data-image="img/jersey2.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="jersey-badge">Current</div>
-                        <img src="img/rockets3.png" class="card-img-top" alt="Fred VanVleet Rockets Jersey" />
+                        <img src="img/jersey3.png" class="card-img-top" alt="Tyler Herro Heat Jersey" />
                         <div class="card-body">
                             <h3 class="card-title">Statement Edition 23/24</h3>
                             <div class="customization-options">
@@ -631,8 +631,8 @@
                                 </div>
                             </div>
                             <p class="card-price" data-base-price="85">AED 85</p>
-                            <button class="btn-rockets add-to-cart-btn" data-name="Rockets Statement Edition 23/24"
-                                data-base-price="85" data-image="img/rockets3.png">Add to Cart</button>
+                            <button class="btn-heat add-to-cart-btn" data-name="Heat Statement Edition 23/24"
+                                data-base-price="85" data-image="img/jersey3.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -643,15 +643,15 @@
     <!-- Legends Jerseys Section -->
     <section class="category-section">
         <div class="container">
-            <h2>Rockets Legends</h2>
-            <p class="category-description">Honor the greatest players in Rockets history</p>
+            <h2>Heat Legends</h2>
+            <p class="category-description">Honor the Big Three and Heat legends</p>
             <div class="row g-4 justify-content-center">
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="jersey-badge">Legend</div>
-                        <img src="img/rockets-retro1.png" class="card-img-top" alt="Hakeem Olajuwon Rockets Jersey" />
+                        <img src="img/jersey-retro1.png" class="card-img-top" alt="Dwyane Wade Heat Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">'The Dream' Throwback</h3>
+                            <h3 class="card-title">'Flash' Throwback</h3>
                             <div class="customization-options">
                                 <select class="custom-select size-select" required>
                                     <option value="" disabled selected>Select a Size</option>
@@ -672,17 +672,17 @@
                                 </div>
                             </div>
                             <p class="card-price" data-base-price="85">AED 85</p>
-                            <button class="btn-rockets add-to-cart-btn" data-name="Rockets 'The Dream' Throwback"
-                                data-base-price="85" data-image="img/rockets-retro1.png">Add to Cart</button>
+                            <button class="btn-heat add-to-cart-btn" data-name="Heat 'Flash' Throwback"
+                                data-base-price="85" data-image="img/jersey-retro1.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="jersey-badge">Legend</div>
-                        <img src="img/rockets-retro2.png" class="card-img-top" alt="Yao Ming Rockets Jersey" />
+                        <img src="img/jersey-retro2.png" class="card-img-top" alt="LeBron James Heat Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">'The Great Wall' Throwback</h3>
+                            <h3 class="card-title">'Big Three' Era Throwback</h3>
                             <div class="customization-options">
                                 <select class="custom-select size-select" required>
                                     <option value="" disabled selected>Select a Size</option>
@@ -703,17 +703,17 @@
                                 </div>
                             </div>
                             <p class="card-price" data-base-price="85">AED 85</p>
-                            <button class="btn-rockets add-to-cart-btn" data-name="Rockets 'The Great Wall' Throwback"
-                                data-base-price="85" data-image="img/rockets-retro2.png">Add to Cart</button>
+                            <button class="btn-heat add-to-cart-btn" data-name="Heat 'Big Three' Era Throwback"
+                                data-base-price="85" data-image="img/jersey-retro2.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
                         <div class="jersey-badge">Legend</div>
-                        <img src="img/rockets-retro3.png" class="card-img-top" alt="James Harden Rockets Jersey" />
+                        <img src="img/jersey-retro3.png" class="card-img-top" alt="Chris Bosh Heat Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">'The Beard' Era Throwback</h3>
+                            <h3 class="card-title">'CB4' Throwback</h3>
                             <div class="customization-options">
                                 <select class="custom-select size-select" required>
                                     <option value="" disabled selected>Select a Size</option>
@@ -734,8 +734,8 @@
                                 </div>
                             </div>
                             <p class="card-price" data-base-price="85">AED 85</p>
-                            <button class="btn-rockets add-to-cart-btn" data-name="Rockets 'The Beard' Era Throwback"
-                                data-base-price="85" data-image="img/rockets-retro3.png">Add to Cart</button>
+                            <button class="btn-heat add-to-cart-btn" data-name="Heat 'CB4' Throwback"
+                                data-base-price="85" data-image="img/jersey-retro3.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>

@@ -191,6 +191,54 @@
             margin: 1rem 0;
         }
 
+        /* Customization Inputs */
+        .customization-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .custom-select,
+        .custom-input {
+            background-color: rgba(10, 10, 10, 0.5);
+            border: 1px solid rgba(255, 199, 44, 0.4);
+            color: #f8f9fa;
+            padding: 0.65rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            width: 100%;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            box-sizing: border-box;
+            /* Important for consistent sizing */
+        }
+
+        .custom-select:focus,
+        .custom-input:focus {
+            outline: none;
+            border-color: #FFC72C;
+            box-shadow: 0 0 0 3px rgba(255, 199, 44, 0.3);
+        }
+
+        .custom-input::placeholder {
+            color: #aab;
+            opacity: 0.7;
+        }
+
+        .custom-select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23FFC72C' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .custom-select option {
+            background-color: #1a1a2e;
+        }
+
         /* Buttons */
         .btn-warriors {
             background: linear-gradient(45deg, #1D428A, #FFC72C);
@@ -417,6 +465,18 @@
         .btn-warriors:hover {
             will-change: transform;
         }
+
+        /* Hide number input spinners for a cleaner look */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+            /* For Firefox */
+        }
     </style>
 </head>
 
@@ -463,8 +523,8 @@
                         <div class="legacy-label">Last Title</div>
                     </div>
                     <div class="legacy-item">
-                        <span class="legacy-number">AED 79</span>
-                        <div class="legacy-label">Per Jersey</div>
+                        <span class="legacy-number">AED 85</span>
+                        <div class="legacy-label">Starting Price</div>
                     </div>
                 </div>
             </div>
@@ -487,32 +547,30 @@
                         <div class="jersey-badge">Current</div>
                         <img src="img/warriors1.png" class="card-img-top" alt="Stephen Curry Warriors Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">Stephen Curry</h3>
-                            <div class="player-number">#30</div>
-                            <p class="player-position">Point Guard</p>
+                            <h3 class="card-title">Association Edition 23/24</h3>
                             <div class="customization-options">
-                                <select class="custom-select size-select">
-                                    <option value="">Select Size</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
                                 </select>
                                 <input type="text" class="custom-input" placeholder="PLAYER NAME">
                                 <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
                                 <div class="finish-options-group" style="display: none;">
                                     <select class="custom-select finish-select">
                                         <option value="printed" data-price-add="0">Printed Finish</option>
-                                        <option value="embroidered" data-price-add="15">Embroidered (+ AED 15)</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED
+                                            15)
+                                        </option>
                                     </select>
                                 </div>
                             </div>
-                            <p class="card-price" data-base-price="79">AED 79</p>
-                            <button class="btn-warriors add-to-cart-btn" data-name="Stephen Curry Warriors Jersey"
-                                data-image="img/warriors1.png">
-                                Add to Cart
-                            </button>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-warriors add-to-cart-btn" data-name="Warriors Association Edition 23/24"
+                                data-base-price="85" data-image="img/warriors1.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -521,32 +579,30 @@
                         <div class="jersey-badge">Current</div>
                         <img src="img/warriors2.png" class="card-img-top" alt="Klay Thompson Warriors Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">Klay Thompson</h3>
-                            <div class="player-number">#11</div>
-                            <p class="player-position">Shooting Guard</p>
+                            <h3 class="card-title">Icon Edition 23/24</h3>
                             <div class="customization-options">
-                                <select class="custom-select size-select">
-                                    <option value="">Select Size</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
                                 </select>
                                 <input type="text" class="custom-input" placeholder="PLAYER NAME">
                                 <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
                                 <div class="finish-options-group" style="display: none;">
                                     <select class="custom-select finish-select">
                                         <option value="printed" data-price-add="0">Printed Finish</option>
-                                        <option value="embroidered" data-price-add="15">Embroidered (+ AED 15)</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED
+                                            15)
+                                        </option>
                                     </select>
                                 </div>
                             </div>
-                            <p class="card-price" data-base-price="79">AED 79</p>
-                            <button class="btn-warriors add-to-cart-btn" data-name="Klay Thompson Warriors Jersey"
-                                data-image="img/warriors2.png">
-                                Add to Cart
-                            </button>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-warriors add-to-cart-btn" data-name="Warriors Icon Edition 23/24"
+                                data-base-price="85" data-image="img/warriors2.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -555,32 +611,30 @@
                         <div class="jersey-badge">Current</div>
                         <img src="img/warriors3.png" class="card-img-top" alt="Draymond Green Warriors Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">Draymond Green</h3>
-                            <div class="player-number">#23</div>
-                            <p class="player-position">Power Forward</p>
+                            <h3 class="card-title">Statement Edition 23/24</h3>
                             <div class="customization-options">
-                                <select class="custom-select size-select">
-                                    <option value="">Select Size</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
                                 </select>
                                 <input type="text" class="custom-input" placeholder="PLAYER NAME">
                                 <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
                                 <div class="finish-options-group" style="display: none;">
                                     <select class="custom-select finish-select">
                                         <option value="printed" data-price-add="0">Printed Finish</option>
-                                        <option value="embroidered" data-price-add="15">Embroidered (+ AED 15)</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED
+                                            15)
+                                        </option>
                                     </select>
                                 </div>
                             </div>
-                            <p class="card-price" data-base-price="79">AED 79</p>
-                            <button class="btn-warriors add-to-cart-btn" data-name="Draymond Green Warriors Jersey"
-                                data-image="img/warriors3.png">
-                                Add to Cart
-                            </button>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-warriors add-to-cart-btn" data-name="Warriors Statement Edition 23/24"
+                                data-base-price="85" data-image="img/warriors3.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -600,32 +654,30 @@
                         <img src="img/warriors-retro1.png" class="card-img-top"
                             alt="Wilt Chamberlain Warriors Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">Wilt Chamberlain</h3>
-                            <div class="player-number">#13</div>
-                            <p class="player-position">The Big Dipper</p>
+                            <h3 class="card-title">'The Big Dipper' Throwback</h3>
                             <div class="customization-options">
-                                <select class="custom-select size-select">
-                                    <option value="">Select Size</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
                                 </select>
                                 <input type="text" class="custom-input" placeholder="PLAYER NAME">
                                 <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
                                 <div class="finish-options-group" style="display: none;">
                                     <select class="custom-select finish-select">
                                         <option value="printed" data-price-add="0">Printed Finish</option>
-                                        <option value="embroidered" data-price-add="15">Embroidered (+ AED 15)</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED
+                                            15)
+                                        </option>
                                     </select>
                                 </div>
                             </div>
-                            <p class="card-price" data-base-price="79">AED 79</p>
-                            <button class="btn-warriors add-to-cart-btn" data-name="Wilt Chamberlain Warriors Jersey"
-                                data-image="img/warriors-retro1.png">
-                                Add to Cart
-                            </button>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-warriors add-to-cart-btn" data-name="Warriors 'The Big Dipper' Throwback"
+                                data-base-price="85" data-image="img/warriors-retro1.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -634,32 +686,30 @@
                         <div class="jersey-badge">Legend</div>
                         <img src="img/warriors-retro2.png" class="card-img-top" alt="Rick Barry Warriors Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">Rick Barry</h3>
-                            <div class="player-number">#24</div>
-                            <p class="player-position">1975 Champion</p>
+                            <h3 class="card-title">'Underhand' Throwback</h3>
                             <div class="customization-options">
-                                <select class="custom-select size-select">
-                                    <option value="">Select Size</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
                                 </select>
                                 <input type="text" class="custom-input" placeholder="PLAYER NAME">
                                 <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
                                 <div class="finish-options-group" style="display: none;">
                                     <select class="custom-select finish-select">
                                         <option value="printed" data-price-add="0">Printed Finish</option>
-                                        <option value="embroidered" data-price-add="15">Embroidered (+ AED 15)</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED
+                                            15)
+                                        </option>
                                     </select>
                                 </div>
                             </div>
-                            <p class="card-price" data-base-price="79">AED 79</p>
-                            <button class="btn-warriors add-to-cart-btn" data-name="Rick Barry Warriors Jersey"
-                                data-image="img/warriors-retro2.png">
-                                Add to Cart
-                            </button>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-warriors add-to-cart-btn" data-name="Warriors 'Underhand' Throwback"
+                                data-base-price="85" data-image="img/warriors-retro2.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -668,32 +718,30 @@
                         <div class="jersey-badge">Legend</div>
                         <img src="img/warriors-retro3.png" class="card-img-top" alt="Chris Mullin Warriors Jersey" />
                         <div class="card-body">
-                            <h3 class="card-title">Chris Mullin</h3>
-                            <div class="player-number">#17</div>
-                            <p class="player-position">Run TMC Era</p>
+                            <h3 class="card-title">'Run TMC' Era Throwback</h3>
                             <div class="customization-options">
-                                <select class="custom-select size-select">
-                                    <option value="">Select Size</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
                                 </select>
                                 <input type="text" class="custom-input" placeholder="PLAYER NAME">
                                 <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
                                 <div class="finish-options-group" style="display: none;">
                                     <select class="custom-select finish-select">
                                         <option value="printed" data-price-add="0">Printed Finish</option>
-                                        <option value="embroidered" data-price-add="15">Embroidered (+ AED 15)</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED
+                                            15)
+                                        </option>
                                     </select>
                                 </div>
                             </div>
-                            <p class="card-price" data-base-price="79">AED 79</p>
-                            <button class="btn-warriors add-to-cart-btn" data-name="Chris Mullin Warriors Jersey"
-                                data-image="img/warriors-retro3.png">
-                                Add to Cart
-                            </button>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-warriors add-to-cart-btn" data-name="Warriors 'Run TMC' Era Throwback"
+                                data-base-price="85" data-image="img/warriors-retro3.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -723,221 +771,202 @@
 
     <!-- Optimized Cart Functionality -->
     <script>
-        // Cart functionality - optimized for performance
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        function updateCardPrice(cardElement) {
-            if (!cardElement) return;
-
-            const priceEl = cardElement.querySelector('.card-price');
-            const finishSelect = cardElement.querySelector('.finish-select');
-            const finishGroup = cardElement.querySelector('.finish-options-group');
-
-            const basePrice = parseFloat(priceEl.dataset.basePrice);
-            let priceAdd = 0;
-
-            // Only add the finish cost if the options are visible
-            if (finishGroup && finishGroup.style.display !== 'none') {
-                priceAdd = parseFloat(finishSelect.options[finishSelect.selectedIndex].dataset.priceAdd);
-            }
-
-            const newPrice = basePrice + priceAdd;
-            priceEl.textContent = `AED ${newPrice.toFixed(2)}`;
-        }
-
-        function toggleFinishOptionsVisibility(inputElement) {
-            const card = inputElement.closest('.card');
-            if (!card) return;
-
-            const nameInput = card.querySelector('input[type="text"]');
-            const numberInput = card.querySelector('input[type="number"]');
-            const finishGroup = card.querySelector('.finish-options-group');
-
-            if (!nameInput || !numberInput || !finishGroup) return;
-
-            const shouldShow = nameInput.value.trim() !== '' || numberInput.value.trim() !== '';
-            finishGroup.style.display = shouldShow ? 'block' : 'none';
-
-            if (!shouldShow) {
-                card.querySelector('.finish-select').value = 'printed';
-            }
-            updateCardPrice(card);
-        }
-
-        // Debounce function to prevent excessive updates
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
-
-        function updateCartDisplay() {
-            const cartCount = document.getElementById('cart-count');
-            const cartItems = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
-
-            // Update cart count
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCount.textContent = totalItems;
-
-            // Update cart items
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div id="cart-empty">Your cart is empty</div>';
-            } else {
-                cartItems.innerHTML = cart.map(item => `
-                    <div class="cart-item">
-                        <div class="cart-item-info">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">AED ${item.price}</div>
-                        </div>
-                        <div class="cart-item-qty">${item.quantity}</div>
-                        <button class="cart-item-remove" data-cart-id="${item.id}">×</button>
-                    </div>
-                `).join('');
-            }
-
-            // Update total
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            cartTotal.textContent = `Total: AED ${total}`;
-        }
-
-        const debouncedUpdateCart = debounce(updateCartDisplay, 100);
-
-        function addToCart(itemDetails) {
-            const existingItem = cart.find(item => item.name === itemDetails.name);
-
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    id: Date.now(),
-                    name: itemDetails.name,
-                    price: itemDetails.price,
-                    image: itemDetails.image,
-                    quantity: 1,
-                });
-            }
-
-            localStorage.setItem('cart', JSON.stringify(cart));
-            debouncedUpdateCart();
-
-            // Show cart briefly
-            const cartOverlay = document.getElementById('cart-overlay');
-            cartOverlay.classList.add('active');
-            setTimeout(() => {
-                cartOverlay.classList.remove('active');
-            }, 1500);
-        }
-
-        function removeFromCart(cartId) {
-            const idToRemove = parseInt(cartId);
-            const itemIndex = cart.findIndex(item => item.id === idToRemove);
-            if (itemIndex > -1) {
-                cart.splice(itemIndex, 1);
-            }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            debouncedUpdateCart();
-        }
-
-        // Event listeners - optimized
         document.addEventListener('DOMContentLoaded', function () {
-            updateCartDisplay();
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-            // Add to cart buttons - use event delegation
-            document.addEventListener('click', function (e) {
+            // --- Cart Display Functions ---
+            function updateCartDisplay() {
+                const cartCount = document.getElementById('cart-count');
+                const cartItemsContainer = document.getElementById('cart-items');
+                const cartTotalEl = document.getElementById('cart-total');
+
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<div id="cart-empty">Your cart is empty</div>';
+                } else {
+                    cartItemsContainer.innerHTML = cart.map(item => `
+            <div class="cart-item">
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">AED ${item.price}</div>
+                </div>
+                <div class="cart-item-qty">x${item.quantity}</div>
+                <button class="cart-item-remove" data-name="${item.name}">×</button>
+            </div>
+            `).join('');
+                }
+
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotalEl.textContent = `Total: AED ${total}`;
+            }
+
+            // --- Cart Modification Functions ---
+            function addToCart(item) {
+                const existingItem = cart.find(cartItem => cartItem.name === item.name);
+
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({
+                        ...item,
+                        quantity: 1
+                    });
+                }
+                saveAndRedrawCart();
+                flashCartButton();
+            }
+
+            function removeFromCart(itemName) {
+                cart = cart.filter(item => item.name !== itemName);
+                saveAndRedrawCart();
+            }
+
+            function saveAndRedrawCart() {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            }
+
+            function flashCartButton() {
+                const cartBtn = document.getElementById('cart-toggle-btn');
+                if (!cartBtn) return;
+                const originalBg = getComputedStyle(cartBtn).background;
+                cartBtn.style.transition = 'all 0.2s ease-in-out';
+                cartBtn.style.transform = 'scale(1.1)';
+                cartBtn.style.background = 'linear-gradient(45deg, #28a745, #218838)'; // Green success
+                setTimeout(() => {
+                    cartBtn.style.transform = 'scale(1)';
+                    cartBtn.style.background = originalBg;
+                }, 600);
+            }
+
+            // --- Dynamic Price & Options Update ---
+            function updateCardPrice(card) {
+                const priceEl = card.querySelector('.card-price');
+                const basePrice = parseFloat(priceEl.getAttribute('data-base-price'));
+                const nameInput = card.querySelector('input[type="text"]');
+                const numberInput = card.querySelector('input[type="number"]');
+                const finishSelect = card.querySelector('.finish-select');
+                const finishGroup = card.querySelector('.finish-options-group');
+
+                let additionalPrice = 0;
+                const isCustomized = nameInput.value.trim() || numberInput.value.trim();
+
+                if (isCustomized) {
+                    finishGroup.style.display = 'block';
+                    const selectedFinish = finishSelect.options[finishSelect.selectedIndex];
+                    additionalPrice = parseFloat(selectedFinish.getAttribute('data-price-add'));
+                } else {
+                    finishGroup.style.display = 'none';
+                }
+
+                const finalPrice = basePrice + additionalPrice;
+                priceEl.textContent = `AED ${finalPrice}`;
+            }
+
+            // --- Event Listeners ---
+            document.body.addEventListener('click', function (e) {
+                // Add to Cart
                 if (e.target.classList.contains('add-to-cart-btn')) {
                     const card = e.target.closest('.card');
-                    let name = e.target.dataset.name;
-                    const image = e.target.dataset.image;
-                    const priceEl = card.querySelector('.card-price');
-                    const basePrice = parseFloat(priceEl.dataset.basePrice);
-
+                    let name = e.target.getAttribute('data-name');
+                    const basePrice = parseFloat(e.target.getAttribute('data-base-price'));
+                    const image = e.target.getAttribute('data-image');
                     const sizeSelect = card.querySelector('.size-select');
-                    const customNameInput = card.querySelector('input[type="text"]');
-                    const customNumberInput = card.querySelector('input[type="number"]');
+                    const nameInput = card.querySelector('input[type="text"]');
+                    const numberInput = card.querySelector('input[type="number"]');
                     const finishSelect = card.querySelector('.finish-select');
-                    const finishGroup = card.querySelector('.finish-options-group');
 
                     const selectedSize = sizeSelect.value;
                     if (!selectedSize) {
-                        alert('Please select a size before adding to cart.');
-                        sizeSelect.classList.add('is-invalid');
+                        alert('Please select a size.');
+                        sizeSelect.style.borderColor = 'red';
                         return;
                     }
+                    sizeSelect.style.borderColor = '';
 
-                    let priceAdd = 0;
-                    const customName = customNameInput.value.trim().toUpperCase();
-                    const customNumber = customNumberInput.value.trim();
-                    const selectedFinish = finishSelect.options[finishSelect.selectedIndex];
-                    const finishType = selectedFinish.value;
+                    const customName = nameInput.value.trim().toUpperCase();
+                    const customNumber = numberInput.value.trim();
 
-                    let customizationDetails = [`Size: ${selectedSize}`];
-                    if (customName) customizationDetails.push(`Name: ${customName}`);
-                    if (customNumber) customizationDetails.push(`Number: ${customNumber}`);
-
-                    if (finishGroup && finishGroup.style.display !== 'none') {
-                        priceAdd = parseFloat(selectedFinish.dataset.priceAdd);
-                        customizationDetails.push(finishType.charAt(0).toUpperCase() + finishType.slice(1));
+                    if (!customName || !customNumber) {
+                        alert('Please provide a player name and number.');
+                        if (!customName) nameInput.style.borderColor = 'red';
+                        else nameInput.style.borderColor = '';
+                        if (!customNumber) numberInput.style.borderColor = 'red';
+                        else numberInput.style.borderColor = '';
+                        return;
                     }
-                    const finalPrice = basePrice + priceAdd;
-                    name += ` (${customizationDetails.join(', ')})`;
+                    nameInput.style.borderColor = '';
+                    numberInput.style.borderColor = '';
 
-                    addToCart({ name, price: finalPrice, image });
+                    let finalPrice = basePrice;
+                    let finalName = `${name} (Size: ${selectedSize})`;
+                    let customizationDetails = [];
+
+                    if (customName && customNumber) {
+                        customizationDetails.push(`${customName} #${customNumber}`);
+                        const selectedFinish = finishSelect.options[finishSelect.selectedIndex];
+                        const priceAdd = parseFloat(selectedFinish.getAttribute('data-price-add'));
+                        finalPrice += priceAdd;
+                        if (priceAdd > 0) {
+                            customizationDetails.push(selectedFinish.textContent.split('(')[0].trim());
+                        }
+                    }
+
+                    if (customizationDetails.length > 0) {
+                        finalName += `, ${customizationDetails.join(', ')}`;
+                    }
+
+                    const newItem = {
+                        name: finalName,
+                        price: finalPrice,
+                        image: image,
+                    };
+
+                    addToCart(newItem);
                 }
 
+                // Remove from Cart
                 if (e.target.classList.contains('cart-item-remove')) {
-                    const cartId = e.target.dataset.cartId;
-                    removeFromCart(cartId);
+                    const itemName = e.target.getAttribute('data-name');
+                    if (itemName) {
+                        removeFromCart(itemName);
+                    }
+                }
+
+                // Cart Toggle
+                if (e.target.closest('#cart-toggle-btn')) {
+                    document.getElementById('cart-overlay').classList.toggle('active');
+                }
+
+                // Close Cart
+                if (e.target.closest('#close-cart')) {
+                    document.getElementById('cart-overlay').classList.remove('active');
                 }
             });
 
-            // Cart toggle
-            document.getElementById('cart-toggle-btn').addEventListener('click', function () {
-                document.getElementById('cart-overlay').classList.toggle('active');
+            // Update price on input change
+            document.querySelectorAll('.customization-options').forEach(group => {
+                group.addEventListener('input', (e) => {
+                    const card = e.target.closest('.card');
+                    updateCardPrice(card);
+                });
+                group.addEventListener('change', (e) => {
+                    const card = e.target.closest('.card');
+                    updateCardPrice(card);
+                });
             });
 
-            // Close cart
-            document.getElementById('close-cart').addEventListener('click', function () {
-                document.getElementById('cart-overlay').classList.remove('active');
-            });
+            // Initial setup
+            updateCartDisplay();
 
-            // Close cart when clicking outside - throttled
-            let isThrottled = false;
+            // Close cart when clicking outside
             document.addEventListener('click', function (e) {
-                if (isThrottled) return;
-                isThrottled = true;
-
-                setTimeout(() => {
-                    isThrottled = false;
-                }, 100);
-
                 const cartOverlay = document.getElementById('cart-overlay');
                 const cartBtn = document.getElementById('cart-toggle-btn');
-
-                if (!cartOverlay.contains(e.target) && !cartBtn.contains(e.target)) {
+                if (cartOverlay && cartBtn && !cartOverlay.contains(e.target) && !e.target.closest('.add-to-cart-btn') && !cartBtn.contains(e.target)) {
                     cartOverlay.classList.remove('active');
-                }
-            });
-
-            // Listen for changes on selects and inputs for dynamic updates
-            document.addEventListener('change', function (e) {
-                if (e.target.matches('.finish-select')) {
-                    updateCardPrice(e.target.closest('.card'));
-                }
-                if (e.target.matches('.size-select.is-invalid')) {
-                    e.target.classList.remove('is-invalid');
-                }
-            });
-
-            document.addEventListener('input', function (e) {
-                if (e.target.matches('.custom-input')) {
-                    toggleFinishOptionsVisibility(e.target);
                 }
             });
         });

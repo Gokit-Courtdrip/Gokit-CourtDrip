@@ -160,37 +160,53 @@
             flex-grow: 1;
         }
 
-        /* Customization Options */
+        /* Customization Inputs */
         .customization-options {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
+            margin: 1rem 0;
         }
 
+        .custom-select,
         .custom-input,
         .custom-select {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(200, 16, 46, 0.4);
+            background-color: rgba(10, 10, 10, 0.5);
+            border: 1px solid rgba(200, 16, 46, 0.4);
+            /* Clippers Red */
             color: #f8f9fa;
+            padding: 0.65rem 1rem;
             border-radius: 8px;
-            padding: 0.5rem 1rem;
-            font-family: inherit;
+            font-size: 0.9rem;
+            width: 100%;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .custom-input::placeholder {
+            color: #aab;
+            opacity: 0.7;
         }
 
         .custom-input:focus,
         .custom-select:focus {
             outline: none;
             border-color: #c8102e;
-            box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.2);
+            box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.3);
         }
 
-        .custom-select.is-invalid {
-            border-color: #c8102e !important;
-            box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.2) !important;
+        .custom-select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23c8102e' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .custom-select option {
+            background-color: #1a1a2e;
         }
 
         /* Card Content */
@@ -497,7 +513,7 @@
                     </div>
                     <div class="legacy-item">
                         <span class="legacy-number">AED 85</span>
-                        <div class="legacy-label">Base Price</div>
+                        <div class="legacy-label">Starting Price</div>
                     </div>
                 </div>
             </div>
@@ -520,33 +536,29 @@
                         <div class="jersey-badge">Current</div>
                         <img src="img/clippers1.png" class="card-img-top" alt="Kawhi Leonard Clippers Jersey" />
                         <div class="card-body">
-                            <div>
-                                <h3 class="card-title">Icon Edition 23/24</h3>
-                            </div>
-                            <div>
-                                <div class="customization-options">
-                                    <select class="custom-select size-select" required>
-                                        <option value="" disabled selected>Select a Size</option>
-                                        <option value="S">Size: S</option>
-                                        <option value="M">Size: M</option>
-                                        <option value="L">Size: L</option>
-                                        <option value="XL">Size: XL</option>
-                                        <option value="XXL">Size: XXL</option>
+                            <h3 class="card-title">Icon Edition 23/24</h3>
+                            <div class="customization-options">
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
+                                </select>
+                                <input type="text" class="custom-input" placeholder="PLAYER NAME">
+                                <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
+                                <div class="finish-options-group" style="display: none;">
+                                    <select class="custom-select finish-select">
+                                        <option value="printed" data-price-add="0">Printed Finish</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED 15)
+                                        </option>
                                     </select>
-                                    <input type="text" class="custom-input" placeholder="PLAYER NAME">
-                                    <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
-                                    <div class="finish-options-group" style="display: none;">
-                                        <select class="custom-select finish-select">
-                                            <option value="printed" data-price-add="0">Printed Finish</option>
-                                            <option value="embroidered" data-price-add="15">Embroidered (+ AED 15)
-                                            </option>
-                                        </select>
-                                    </div>
                                 </div>
-                                <p class="card-price" data-base-price="85">AED 85</p>
-                                <button class="btn-clippers add-to-cart-btn" data-name="Clippers Icon Edition 23/24"
-                                    data-base-price="85" data-image="img/clippers1.png">Add to Cart</button>
                             </div>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-clippers add-to-cart-btn" data-name="Clippers Icon Edition 23/24"
+                                data-base-price="85" data-image="img/clippers1.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -555,34 +567,29 @@
                         <div class="jersey-badge">Current</div>
                         <img src="img/clippers2.png" class="card-img-top" alt="Paul George Clippers Jersey" />
                         <div class="card-body">
-                            <div>
-                                <h3 class="card-title">Association Edition 23/24</h3>
-                            </div>
-                            <div>
-                                <div class="customization-options">
-                                    <select class="custom-select size-select" required>
-                                        <option value="" disabled selected>Select a Size</option>
-                                        <option value="S">Size: S</option>
-                                        <option value="M">Size: M</option>
-                                        <option value="L">Size: L</option>
-                                        <option value="XL">Size: XL</option>
-                                        <option value="XXL">Size: XXL</option>
+                            <h3 class="card-title">Association Edition 23/24</h3>
+                            <div class="customization-options">
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
+                                </select>
+                                <input type="text" class="custom-input" placeholder="PLAYER NAME">
+                                <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
+                                <div class="finish-options-group" style="display: none;">
+                                    <select class="custom-select finish-select">
+                                        <option value="printed" data-price-add="0">Printed Finish</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED 15)
+                                        </option>
                                     </select>
-                                    <input type="text" class="custom-input" placeholder="PLAYER NAME">
-                                    <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
-                                    <div class="finish-options-group" style="display: none;">
-                                        <select class="custom-select finish-select">
-                                            <option value="printed" data-price-add="0">Printed Finish</option>
-                                            <option value="embroidered" data-price-add="15">Embroidered (+ AED 15)
-                                            </option>
-                                        </select>
-                                    </div>
                                 </div>
-                                <p class="card-price" data-base-price="85">AED 85</p>
-                                <button class="btn-clippers add-to-cart-btn"
-                                    data-name="Clippers Association Edition 23/24" data-base-price="85"
-                                    data-image="img/clippers2.png">Add to Cart</button>
                             </div>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-clippers add-to-cart-btn" data-name="Clippers Association Edition 23/24"
+                                data-base-price="85" data-image="img/clippers2.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -591,34 +598,29 @@
                         <div class="jersey-badge">Current</div>
                         <img src="img/clippers3.png" class="card-img-top" alt="James Harden Clippers Jersey" />
                         <div class="card-body">
-                            <div>
-                                <h3 class="card-title">Statement Edition 23/24</h3>
-                            </div>
-                            <div>
-                                <div class="customization-options">
-                                    <select class="custom-select size-select" required>
-                                        <option value="" disabled selected>Select a Size</option>
-                                        <option value="S">Size: S</option>
-                                        <option value="M">Size: M</option>
-                                        <option value="L">Size: L</option>
-                                        <option value="XL">Size: XL</option>
-                                        <option value="XXL">Size: XXL</option>
+                            <h3 class="card-title">Statement Edition 23/24</h3>
+                            <div class="customization-options">
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
+                                </select>
+                                <input type="text" class="custom-input" placeholder="PLAYER NAME">
+                                <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
+                                <div class="finish-options-group" style="display: none;">
+                                    <select class="custom-select finish-select">
+                                        <option value="printed" data-price-add="0">Printed Finish</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED 15)
+                                        </option>
                                     </select>
-                                    <input type="text" class="custom-input" placeholder="PLAYER NAME">
-                                    <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
-                                    <div class="finish-options-group" style="display: none;">
-                                        <select class="custom-select finish-select">
-                                            <option value="printed" data-price-add="0">Printed Finish</option>
-                                            <option value="embroidered" data-price-add="15">Embroidered (+ AED 15)
-                                            </option>
-                                        </select>
-                                    </div>
                                 </div>
-                                <p class="card-price" data-base-price="85">AED 85</p>
-                                <button class="btn-clippers add-to-cart-btn"
-                                    data-name="Clippers Statement Edition 23/24" data-base-price="85"
-                                    data-image="img/clippers3.png">Add to Cart</button>
                             </div>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-clippers add-to-cart-btn" data-name="Clippers Statement Edition 23/24"
+                                data-base-price="85" data-image="img/clippers3.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -637,33 +639,29 @@
                         <div class="jersey-badge">Legend</div>
                         <img src="img/clippers-retro1.png" class="card-img-top" alt="Chris Paul Clippers Jersey" />
                         <div class="card-body">
-                            <div>
-                                <h3 class="card-title">Retro Jersey '13</h3>
-                            </div>
-                            <div>
-                                <div class="customization-options">
-                                    <select class="custom-select size-select" required>
-                                        <option value="" disabled selected>Select a Size</option>
-                                        <option value="S">Size: S</option>
-                                        <option value="M">Size: M</option>
-                                        <option value="L">Size: L</option>
-                                        <option value="XL">Size: XL</option>
-                                        <option value="XXL">Size: XXL</option>
+                            <h3 class="card-title">'Lob City - CP3' Throwback</h3>
+                            <div class="customization-options">
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
+                                </select>
+                                <input type="text" class="custom-input" placeholder="PLAYER NAME">
+                                <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
+                                <div class="finish-options-group" style="display: none;">
+                                    <select class="custom-select finish-select">
+                                        <option value="printed" data-price-add="0">Printed Finish</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED 15)
+                                        </option>
                                     </select>
-                                    <input type="text" class="custom-input" placeholder="PLAYER NAME">
-                                    <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
-                                    <div class="finish-options-group" style="display: none;">
-                                        <select class="custom-select finish-select">
-                                            <option value="printed" data-price-add="0">Printed Finish</option>
-                                            <option value="embroidered" data-price-add="15">Embroidered (+ AED 15)
-                                            </option>
-                                        </select>
-                                    </div>
                                 </div>
-                                <p class="card-price" data-base-price="85">AED 85</p>
-                                <button class="btn-clippers add-to-cart-btn" data-name="Clippers Retro Jersey '13"
-                                    data-base-price="85" data-image="img/clippers-retro1.png">Add to Cart</button>
                             </div>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-clippers add-to-cart-btn" data-name="Clippers 'Lob City - CP3' Throwback"
+                                data-base-price="85" data-image="img/clippers-retro1.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -672,33 +670,30 @@
                         <div class="jersey-badge">Legend</div>
                         <img src="img/clippers-retro2.png" class="card-img-top" alt="Blake Griffin Clippers Jersey" />
                         <div class="card-body">
-                            <div>
-                                <h3 class="card-title">Retro Jersey '14</h3>
-                            </div>
-                            <div>
-                                <div class="customization-options">
-                                    <select class="custom-select size-select" required>
-                                        <option value="" disabled selected>Select a Size</option>
-                                        <option value="S">Size: S</option>
-                                        <option value="M">Size: M</option>
-                                        <option value="L">Size: L</option>
-                                        <option value="XL">Size: XL</option>
-                                        <option value="XXL">Size: XXL</option>
+                            <h3 class="card-title">'Lob City - Blake' Throwback</h3>
+                            <div class="customization-options">
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
+                                </select>
+                                <input type="text" class="custom-input" placeholder="PLAYER NAME">
+                                <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
+                                <div class="finish-options-group" style="display: none;">
+                                    <select class="custom-select finish-select">
+                                        <option value="printed" data-price-add="0">Printed Finish</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED 15)
+                                        </option>
                                     </select>
-                                    <input type="text" class="custom-input" placeholder="PLAYER NAME">
-                                    <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
-                                    <div class="finish-options-group" style="display: none;">
-                                        <select class="custom-select finish-select">
-                                            <option value="printed" data-price-add="0">Printed Finish</option>
-                                            <option value="embroidered" data-price-add="15">Embroidered (+ AED 15)
-                                            </option>
-                                        </select>
-                                    </div>
                                 </div>
-                                <p class="card-price" data-base-price="85">AED 85</p>
-                                <button class="btn-clippers add-to-cart-btn" data-name="Clippers Retro Jersey '14"
-                                    data-base-price="85" data-image="img/clippers-retro2.png">Add to Cart</button>
                             </div>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-clippers add-to-cart-btn"
+                                data-name="Clippers 'Lob City - Blake' Throwback" data-base-price="85"
+                                data-image="img/clippers-retro2.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -707,33 +702,29 @@
                         <div class="jersey-badge">Legend</div>
                         <img src="img/clippers-retro3.png" class="card-img-top" alt="DeAndre Jordan Clippers Jersey" />
                         <div class="card-body">
-                            <div>
-                                <h3 class="card-title">Retro Jersey '15</h3>
-                            </div>
-                            <div>
-                                <div class="customization-options">
-                                    <select class="custom-select size-select" required>
-                                        <option value="" disabled selected>Select a Size</option>
-                                        <option value="S">Size: S</option>
-                                        <option value="M">Size: M</option>
-                                        <option value="L">Size: L</option>
-                                        <option value="XL">Size: XL</option>
-                                        <option value="XXL">Size: XXL</option>
+                            <h3 class="card-title">'Lob City - DJ' Throwback</h3>
+                            <div class="customization-options">
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
+                                </select>
+                                <input type="text" class="custom-input" placeholder="PLAYER NAME">
+                                <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
+                                <div class="finish-options-group" style="display: none;">
+                                    <select class="custom-select finish-select">
+                                        <option value="printed" data-price-add="0">Printed Finish</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED 15)
+                                        </option>
                                     </select>
-                                    <input type="text" class="custom-input" placeholder="PLAYER NAME">
-                                    <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
-                                    <div class="finish-options-group" style="display: none;">
-                                        <select class="custom-select finish-select">
-                                            <option value="printed" data-price-add="0">Printed Finish</option>
-                                            <option value="embroidered" data-price-add="15">Embroidered (+ AED 15)
-                                            </option>
-                                        </select>
-                                    </div>
                                 </div>
-                                <p class="card-price" data-base-price="85">AED 85</p>
-                                <button class="btn-clippers add-to-cart-btn" data-name="Clippers Retro Jersey '15"
-                                    data-base-price="85" data-image="img/clippers-retro3.png">Add to Cart</button>
                             </div>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-clippers add-to-cart-btn" data-name="Clippers 'Lob City - DJ' Throwback"
+                                data-base-price="85" data-image="img/clippers-retro3.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -763,218 +754,202 @@
 
     <!-- Optimized Cart Functionality -->
     <script>
-        // Cart functionality - optimized for performance
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        // Debounce function to prevent excessive updates
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
-
-        function updateCardPrice(cardElement) {
-            if (!cardElement) return;
-
-            const priceEl = cardElement.querySelector('.card-price');
-            const finishSelect = cardElement.querySelector('.finish-select');
-            const finishGroup = cardElement.querySelector('.finish-options-group');
-
-            const basePrice = parseFloat(priceEl.dataset.basePrice);
-            let priceAdd = 0;
-
-            // Only add the finish cost if the options are visible
-            if (finishGroup && finishGroup.style.display !== 'none') {
-                priceAdd = parseFloat(finishSelect.options[finishSelect.selectedIndex].dataset.priceAdd);
-            }
-
-            const newPrice = basePrice + priceAdd;
-            priceEl.textContent = `AED ${newPrice.toFixed(2)}`;
-        }
-
-        function toggleFinishOptionsVisibility(inputElement) {
-            const card = inputElement.closest('.card');
-            if (!card) return;
-
-            const nameInput = card.querySelector('input[type="text"]');
-            const numberInput = card.querySelector('input[type="number"]');
-            const finishGroup = card.querySelector('.finish-options-group');
-
-            if (!nameInput || !numberInput || !finishGroup) return;
-
-            const shouldShow = nameInput.value.trim() !== '' || numberInput.value.trim() !== '';
-            finishGroup.style.display = shouldShow ? 'block' : 'none';
-
-            if (!shouldShow) {
-                card.querySelector('.finish-select').value = 'printed';
-            }
-            updateCardPrice(card);
-        }
-
-        function updateCartDisplay() {
-            const cartCount = document.getElementById('cart-count');
-            const cartItems = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
-
-            // Update cart count
-            const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-            cartCount.textContent = totalItems;
-
-            // Update cart items
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div id="cart-empty">Your cart is empty</div>';
-            } else {
-                cartItems.innerHTML = cart.map(item => {
-                    const itemName = item.name || item.productName || 'Unknown Item';
-                    const itemPrice = item.price || 0;
-                    const itemQuantity = item.quantity || 1;
-                    const escapedItemName = itemName.replace(/'/g, "\\'");
-
-                    return `
-                    <div class="cart-item">
-                        <div class="cart-item-info">
-                            <div class="cart-item-name">${itemName}</div>
-                            <div class="cart-item-price">AED ${itemPrice.toFixed(2)}</div>
-                        </div>
-                        <div class="cart-item-qty">${itemQuantity}</div>
-                        <button class="cart-item-remove" onclick="removeFromCart('${escapedItemName}')">×</button>
-                    </div>
-                `}).join('');
-            }
-
-            // Update total
-            const total = cart.reduce((sum, item) => sum + ((item.price || 0) * (item.quantity || 1)), 0);
-            cartTotal.textContent = `Total: AED ${total.toFixed(2)}`;
-        }
-
-        const debouncedUpdateCart = debounce(updateCartDisplay, 100);
-
-        function addToCart(name, price, image) {
-            const existingItem = cart.find(item => (item.name || item.productName) === name);
-
-            if (existingItem) {
-                existingItem.quantity = (existingItem.quantity || 1) + 1;
-            } else {
-                cart.push({
-                    name: name,
-                    price: price,
-                    image: image,
-                    quantity: 1
-                });
-            }
-
-            localStorage.setItem('cart', JSON.stringify(cart));
-            debouncedUpdateCart();
-
-            // Show cart briefly
-            const cartOverlay = document.getElementById('cart-overlay');
-            cartOverlay.classList.add('active');
-            setTimeout(() => {
-                cartOverlay.classList.remove('active');
-            }, 1500);
-        }
-
-        function removeFromCart(name) {
-            cart = cart.filter(item => (item.name || item.productName) !== name);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            debouncedUpdateCart();
-        }
-
-        // Event listeners - optimized
         document.addEventListener('DOMContentLoaded', function () {
-            updateCartDisplay();
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-            // Add to cart buttons - use event delegation
-            document.addEventListener('click', function (e) {
-                if (e.target.matches('.add-to-cart-btn')) {
-                    const button = e.target;
-                    const card = button.closest('.card');
+            // --- Cart Display Functions ---
+            function updateCartDisplay() {
+                const cartCount = document.getElementById('cart-count');
+                const cartItemsContainer = document.getElementById('cart-items');
+                const cartTotalEl = document.getElementById('cart-total');
 
-                    let name = button.dataset.name;
-                    const basePrice = parseFloat(button.dataset.basePrice);
-                    const image = button.dataset.image;
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
 
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<div id="cart-empty">Your cart is empty</div>';
+                } else {
+                    cartItemsContainer.innerHTML = cart.map(item => `
+            <div class="cart-item">
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">AED ${item.price}</div>
+                </div>
+                <div class="cart-item-qty">x${item.quantity}</div>
+                <button class="cart-item-remove" data-name="${item.name}">×</button>
+            </div>
+            `).join('');
+                }
+
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotalEl.textContent = `Total: AED ${total}`;
+            }
+
+            // --- Cart Modification Functions ---
+            function addToCart(item) {
+                const existingItem = cart.find(cartItem => cartItem.name === item.name);
+
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({
+                        ...item,
+                        quantity: 1
+                    });
+                }
+                saveAndRedrawCart();
+                flashCartButton();
+            }
+
+            function removeFromCart(itemName) {
+                cart = cart.filter(item => item.name !== itemName);
+                saveAndRedrawCart();
+            }
+
+            function saveAndRedrawCart() {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            }
+
+            function flashCartButton() {
+                const cartBtn = document.getElementById('cart-toggle-btn');
+                if (!cartBtn) return;
+                const originalBg = getComputedStyle(cartBtn).background;
+                cartBtn.style.transition = 'all 0.2s ease-in-out';
+                cartBtn.style.transform = 'scale(1.1)';
+                cartBtn.style.background = 'linear-gradient(45deg, #28a745, #218838)'; // Green success
+                setTimeout(() => {
+                    cartBtn.style.transform = 'scale(1)';
+                    cartBtn.style.background = originalBg;
+                }, 600);
+            }
+
+            // --- Dynamic Price & Options Update ---
+            function updateCardPrice(card) {
+                const priceEl = card.querySelector('.card-price');
+                const basePrice = parseFloat(priceEl.getAttribute('data-base-price'));
+                const nameInput = card.querySelector('input[type="text"]');
+                const numberInput = card.querySelector('input[type="number"]');
+                const finishSelect = card.querySelector('.finish-select');
+                const finishGroup = card.querySelector('.finish-options-group');
+
+                let additionalPrice = 0;
+                const isCustomized = nameInput.value.trim() || numberInput.value.trim();
+
+                if (isCustomized) {
+                    finishGroup.style.display = 'block';
+                    const selectedFinish = finishSelect.options[finishSelect.selectedIndex];
+                    additionalPrice = parseFloat(selectedFinish.getAttribute('data-price-add'));
+                } else {
+                    finishGroup.style.display = 'none';
+                }
+
+                const finalPrice = basePrice + additionalPrice;
+                priceEl.textContent = `AED ${finalPrice}`;
+            }
+
+            // --- Event Listeners ---
+            document.body.addEventListener('click', function (e) {
+                // Add to Cart
+                if (e.target.classList.contains('add-to-cart-btn')) {
+                    const card = e.target.closest('.card');
+                    let name = e.target.getAttribute('data-name');
+                    const basePrice = parseFloat(e.target.getAttribute('data-base-price'));
+                    const image = e.target.getAttribute('data-image');
                     const sizeSelect = card.querySelector('.size-select');
-                    const customNameInput = card.querySelector('input[type="text"]');
-                    const customNumberInput = card.querySelector('input[type="number"]');
+                    const nameInput = card.querySelector('input[type="text"]');
+                    const numberInput = card.querySelector('input[type="number"]');
                     const finishSelect = card.querySelector('.finish-select');
-                    const finishGroup = card.querySelector('.finish-options-group');
 
                     const selectedSize = sizeSelect.value;
                     if (!selectedSize) {
-                        alert('Please select a size before adding to cart.');
-                        sizeSelect.classList.add('is-invalid');
+                        alert('Please select a size.');
+                        sizeSelect.style.borderColor = 'red';
                         return;
                     }
+                    sizeSelect.style.borderColor = '';
 
-                    let priceAdd = 0;
-                    const customName = customNameInput.value.trim().toUpperCase();
-                    const customNumber = customNumberInput.value.trim();
-                    const selectedFinish = finishSelect.options[finishSelect.selectedIndex];
-                    const finishType = selectedFinish.value;
+                    const customName = nameInput.value.trim().toUpperCase();
+                    const customNumber = numberInput.value.trim();
 
-                    let customizationDetails = [`Size: ${selectedSize}`];
-                    if (customName) customizationDetails.push(`Name: ${customName}`);
-                    if (customNumber) customizationDetails.push(`Number: ${customNumber}`);
-
-                    if (finishGroup && finishGroup.style.display !== 'none') {
-                        priceAdd = parseFloat(selectedFinish.dataset.priceAdd);
-                        customizationDetails.push(finishType.charAt(0).toUpperCase() + finishType.slice(1));
+                    if (!customName || !customNumber) {
+                        alert('Please provide a player name and number.');
+                        if (!customName) nameInput.style.borderColor = 'red';
+                        else nameInput.style.borderColor = '';
+                        if (!customNumber) numberInput.style.borderColor = 'red';
+                        else numberInput.style.borderColor = '';
+                        return;
                     }
-                    const finalPrice = basePrice + priceAdd;
+                    nameInput.style.borderColor = '';
+                    numberInput.style.borderColor = '';
 
-                    name += ` (${customizationDetails.join(', ')})`;
+                    let finalPrice = basePrice;
+                    let finalName = `${name} (Size: ${selectedSize})`;
+                    let customizationDetails = [];
 
-                    addToCart(name, finalPrice, image);
+                    if (customName && customNumber) {
+                        customizationDetails.push(`${customName} #${customNumber}`);
+                        const selectedFinish = finishSelect.options[finishSelect.selectedIndex];
+                        const priceAdd = parseFloat(selectedFinish.getAttribute('data-price-add'));
+                        finalPrice += priceAdd;
+                        if (priceAdd > 0) {
+                            customizationDetails.push(selectedFinish.textContent.split('(')[0].trim());
+                        }
+                    }
+
+                    if (customizationDetails.length > 0) {
+                        finalName += `, ${customizationDetails.join(', ')}`;
+                    }
+
+                    const newItem = {
+                        name: finalName,
+                        price: finalPrice,
+                        image: image,
+                    };
+
+                    addToCart(newItem);
+                }
+
+                // Remove from Cart
+                if (e.target.classList.contains('cart-item-remove')) {
+                    const itemName = e.target.getAttribute('data-name');
+                    if (itemName) {
+                        removeFromCart(itemName);
+                    }
+                }
+
+                // Cart Toggle
+                if (e.target.closest('#cart-toggle-btn')) {
+                    document.getElementById('cart-overlay').classList.toggle('active');
+                }
+
+                // Close Cart
+                if (e.target.closest('#close-cart')) {
+                    document.getElementById('cart-overlay').classList.remove('active');
                 }
             });
 
-            // Cart toggle
-            document.getElementById('cart-toggle-btn').addEventListener('click', function () {
-                document.getElementById('cart-overlay').classList.toggle('active');
+            // Update price on input change
+            document.querySelectorAll('.customization-options').forEach(group => {
+                group.addEventListener('input', (e) => {
+                    const card = e.target.closest('.card');
+                    updateCardPrice(card);
+                });
+                group.addEventListener('change', (e) => {
+                    const card = e.target.closest('.card');
+                    updateCardPrice(card);
+                });
             });
 
-            // Close cart
-            document.getElementById('close-cart').addEventListener('click', function () {
-                document.getElementById('cart-overlay').classList.remove('active');
-            });
+            // Initial setup
+            updateCartDisplay();
 
-            // Close cart when clicking outside - throttled
-            let isThrottled = false;
+            // Close cart when clicking outside
             document.addEventListener('click', function (e) {
-                if (isThrottled) return;
-                isThrottled = true;
-
-                setTimeout(() => {
-                    isThrottled = false;
-                }, 100);
-
                 const cartOverlay = document.getElementById('cart-overlay');
                 const cartBtn = document.getElementById('cart-toggle-btn');
-
-                if (!cartOverlay.contains(e.target) && !cartBtn.contains(e.target)) {
+                if (cartOverlay && cartBtn && !cartOverlay.contains(e.target) && !e.target.closest('.add-to-cart-btn') && !cartBtn.contains(e.target)) {
                     cartOverlay.classList.remove('active');
-                }
-            });
-
-            document.addEventListener('change', function (e) {
-                if (e.target.matches('.finish-select')) {
-                    updateCardPrice(e.target.closest('.card'));
-                }
-                if (e.target.matches('.size-select.is-invalid')) {
-                    e.target.classList.remove('is-invalid');
-                }
-            });
-
-            document.addEventListener('input', function (e) {
-                if (e.target.matches('.custom-input[type="text"]') || e.target.matches('.custom-input[type="number"]')) {
-                    toggleFinishOptionsVisibility(e.target);
                 }
             });
         });

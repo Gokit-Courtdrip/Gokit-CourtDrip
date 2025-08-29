@@ -3,95 +3,485 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dallas Mavericks — CourtDripDxb</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
+        /* Base Styles */
         body {
-            background-color: #1f1f1f;
-            color: white;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #f8f9fa;
+            padding-bottom: 70px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
         }
 
+        /* Navbar */
         .mavs-header {
-            background: linear-gradient(90deg, #002B5E, #0053BC);
+            background: linear-gradient(135deg, #002B5E, #0053BC, #002B5E);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 83, 188, 0.3);
         }
 
-        .navbar .nav-link,
-        .navbar-brand {
-            color: white !important;
-        }
-
+        /* Hero Section */
         .hero-section {
-            background-color: #000000;
-            /* ← Changed from white to black */
-            padding: 4rem 0;
+            background: linear-gradient(135deg, #002B5E 0%, #0f1419 50%, #0053BC 100%);
             border-bottom: 4px solid #0053BC;
+            padding: 3rem 0;
             text-align: center;
+            position: relative;
         }
 
         .hero-section h1 {
-            color: #002B5E;
-            font-weight: 800;
+            color: #0053BC;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-size: clamp(2rem, 8vw, 4rem);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero-section p {
-            color: #aaaaaa;
-        }
-
-        .back-btn-container {
-            background-color: #1f1f1f;
-            padding: 1rem 0;
-        }
-
-        .back-btn-container .btn {
-            border-left: 4px solid #0053BC;
-        }
-
-        .category-section {
-            padding: 3rem 0;
-        }
-
-        .category-section h2 {
-            color: #ffffff;
-            font-weight: bold;
+            color: #e6f3ff;
+            font-size: clamp(1rem, 4vw, 1.3rem);
             margin-bottom: 2rem;
+        }
+
+        .mavs-legacy {
+            display: flex;
+            justify-content: center;
+            gap: clamp(1rem, 5vw, 3rem);
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .legacy-item {
             text-align: center;
         }
 
+        .legacy-number {
+            color: #0053BC;
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            font-weight: 900;
+            display: block;
+        }
+
+        .legacy-label {
+            color: #e6f3ff;
+            font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        /* Back Button */
+        .btn-back {
+            display: inline-block;
+            border: 2px solid #0053BC;
+            color: #0053BC;
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .btn-back:hover {
+            background-color: #0053BC;
+            color: #002B5E;
+            transform: translateY(-2px);
+        }
+
+        .back-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        /* Category Sections */
+        .category-section {
+            padding: 3rem 0;
+            margin: 1rem 0;
+            background: rgba(30, 30, 30, 0.3);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(0, 83, 188, 0.2);
+        }
+
+        .category-section h2 {
+            color: #0053BC;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            text-transform: uppercase;
+        }
+
+        .category-description {
+            text-align: center;
+            color: #e6f3ff;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        /* Cards */
         .card {
-            background-color: #1f1f1f;
-            border: none;
+            background: rgba(30, 30, 30, 0.8);
+            border: 2px solid rgba(0, 83, 188, 0.3);
+            border-radius: 1.2rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            overflow: hidden;
+            height: 100%;
         }
 
-        .card-title {
-            color: #ffffff;
-            font-weight: 600;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 83, 188, 0.2);
+            border-color: #0053BC;
         }
 
-        .card img {
+        .card-img-top {
             height: 250px;
             object-fit: cover;
+            transition: transform 0.2s ease;
         }
 
+        .card:hover .card-img-top {
+            transform: scale(1.02);
+        }
+
+        .card-body {
+            text-align: center;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        /* Card Content */
+        .card-title {
+            color: #0053BC;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            text-transform: uppercase;
+        }
+
+        .player-number {
+            color: #fff;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 900;
+            margin: 0.5rem 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .player-position {
+            color: #e6f3ff;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .card-price {
+            color: #0053BC;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-weight: 900;
+            margin: 1rem 0;
+        }
+
+        /* Customization Inputs */
+        .customization-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .custom-select,
+        .custom-input {
+            background-color: rgba(10, 10, 10, 0.5);
+            border: 1px solid rgba(0, 83, 188, 0.4);
+            /* Mavs Blue */
+            color: #f8f9fa;
+            padding: 0.65rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            width: 100%;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .custom-select:focus,
+        .custom-input:focus {
+            outline: none;
+            border-color: #0053BC;
+            /* Mavs Blue */
+            box-shadow: 0 0 0 3px rgba(0, 83, 188, 0.3);
+        }
+
+        .custom-input::placeholder {
+            color: #aab;
+            opacity: 0.7;
+        }
+
+        .custom-select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%230053BC' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .custom-select option {
+            background-color: #1a1a2e;
+        }
+
+        /* Buttons */
         .btn-mavs {
-            background-color: #0053BC;
-            color: white;
+            background: linear-gradient(45deg, #002B5E, #0053BC);
+            color: #ffffff;
             border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            width: 100%;
         }
 
         .btn-mavs:hover {
-            background-color: #003f94;
+            background: linear-gradient(45deg, #001a3d, #003f94);
+            transform: translateY(-2px);
         }
 
-        footer {
-            background: linear-gradient(90deg, #002B5E, #0053BC);
+        /* Jersey Type Badges */
+        .jersey-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #0053BC;
+            color: #ffffff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        /* Floating Cart Button */
+        #cart-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #0053BC, #4785d1);
+            border: none;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 16px 24px;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(0, 83, 188, 0.6);
+            cursor: pointer;
+            z-index: 1050;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        #cart-toggle-btn:hover {
+            background: linear-gradient(45deg, #003f94, #3670b8);
+            transform: translateY(-2px);
+        }
+
+        /* Cart Overlay */
+        #cart-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: min(380px, 100vw);
+            height: 100vh;
+            background: linear-gradient(135deg, #1e1e1e 0%, #1a2a3d 100%);
+            box-shadow: -6px 0 25px rgba(0, 0, 0, 0.5);
+            transition: right 0.3s ease;
+            z-index: 1040;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #cart-overlay.active {
+            right: 0;
+        }
+
+        #cart-header {
+            background: linear-gradient(135deg, #002B5E, #0053BC);
+            padding: 1.5rem;
             color: white;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        #cart-header button {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        #cart-header button:hover {
+            background: white;
+            color: #002B5E;
+        }
+
+        #cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            color: #f8f9fa;
+        }
+
+        .cart-item {
+            border-bottom: 1px solid rgba(0, 83, 188, 0.2);
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 700;
+            color: #0053BC;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: #e6f3ff;
+        }
+
+        .cart-item-qty {
+            color: #fff;
+            margin: 0 15px;
+            background: linear-gradient(45deg, #002B5E, #0053BC);
+            padding: 0.4rem 0.8rem;
+            border-radius: 1rem;
+            font-weight: 700;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .cart-item-remove {
+            background: transparent;
+            border: 2px solid #f00;
+            color: #f00;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .cart-item-remove:hover {
+            background: #f00;
+            color: white;
+        }
+
+        #cart-total {
+            padding: 2rem 1.5rem;
+            border-top: 2px solid rgba(0, 83, 188, 0.3);
+            font-weight: 900;
+            color: #0053BC;
+            font-size: 1.4rem;
+            text-align: center;
+            background: rgba(0, 83, 188, 0.1);
+        }
+
+        #cart-empty {
+            text-align: center;
+            margin-top: 3rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mavs-legacy {
+                gap: 1.5rem;
+            }
+
+            #cart-toggle-btn {
+                bottom: 80px;
+                right: 15px;
+            }
+
+            .card-img-top {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .mavs-legacy {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .category-section {
+                margin: 0.5rem;
+            }
+        }
+
+        /* Performance optimizations */
+        * {
+            will-change: auto;
+        }
+
+        .card:hover {
+            will-change: transform;
+        }
+
+        .btn-mavs:hover {
+            will-change: transform;
+        }
+
+        /* Hide number input spinners for a cleaner look */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+            /* For Firefox */
         }
     </style>
 </head>
 
 <body>
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark mavs-header sticky-top">
         <div class="container">
@@ -105,10 +495,9 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             🏆 Browse Leagues
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="nba.html">NBA</a></li>
-                            <li><a class="dropdown-item" href="eastern.html">Eastern Conference</a></li>
-                            <li><a class="dropdown-item" href="western.html">Western Conference</a></li>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="nba.html">NBA Teams</a></li>
+                            <li><a class="dropdown-item" href="league.html">Football Leagues</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -122,65 +511,460 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <h1 class="display-4 text-uppercase">Dallas Mavericks</h1>
-            <p class="lead">Drip fit for Luka’s squad 💫</p>
+            <div class="hero-content">
+                <h1>Dallas Mavericks</h1>
+                <p>MFFL • Luka Magic 💫</p>
+                <div class="mavs-legacy">
+                    <div class="legacy-item">
+                        <span class="legacy-number">1</span>
+                        <div class="legacy-label">Championship</div>
+                    </div>
+                    <div class="legacy-item">
+                        <span class="legacy-number">2011</span>
+                        <div class="legacy-label">Title Year</div>
+                    </div>
+                    <div class="legacy-item">
+                        <span class="legacy-number">AED 85</span>
+                        <div class="legacy-label">Starting Price</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Back Button -->
-    <div class="container-fluid back-btn-container">
-        <div class="container">
-            <a href="western.html" class="btn btn-outline-light fw-bold border-2 shadow-sm">
-                ← Back to Western Conference
-            </a>
-        </div>
+    <div class="back-container">
+        <a href="western.html" class="btn-back">← Back to Western Teams</a>
     </div>
 
-    <!-- New Season Jerseys -->
+    <!-- Current Jerseys Section -->
     <section class="category-section">
         <div class="container">
-            <h2>🆕 New Season Jerseys</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <img src="images/placeholder-jersey.jpg" class="card-img-top" alt="New Jersey">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">2025 Luka Doncic Home Jersey</h5>
-                            <button class="btn btn-mavs">View</button>
+            <h2>Current Roster</h2>
+            <p class="category-description">Shop the latest jerseys from Dallas</p>
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="jersey-badge">Current</div>
+                        <img src="img/mavs1.png" class="card-img-top" alt="Luka Doncic Mavericks Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Association Edition 23/24</h3>
+                            <div class="customization-options">
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
+                                </select>
+                                <input type="text" class="custom-input" placeholder="PLAYER NAME">
+                                <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
+                                <div class="finish-options-group" style="display: none;">
+                                    <select class="custom-select finish-select">
+                                        <option value="printed" data-price-add="0">Printed Finish</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED 15)
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-mavs add-to-cart-btn" data-name="Mavericks Association Edition 23/24"
+                                data-base-price="85" data-image="img/mavs1.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
-                <!-- Add more jerseys -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="jersey-badge">Current</div>
+                        <img src="img/mavs2.png" class="card-img-top" alt="Kyrie Irving Mavericks Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Icon Edition 23/24</h3>
+                            <div class="customization-options">
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
+                                </select>
+                                <input type="text" class="custom-input" placeholder="PLAYER NAME">
+                                <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
+                                <div class="finish-options-group" style="display: none;">
+                                    <select class="custom-select finish-select">
+                                        <option value="printed" data-price-add="0">Printed Finish</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED 15)
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-mavs add-to-cart-btn" data-name="Mavericks Icon Edition 23/24"
+                                data-base-price="85" data-image="img/mavs2.png">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="jersey-badge">Current</div>
+                        <img src="img/mavs3.png" class="card-img-top" alt="Christian Wood Mavericks Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Statement Edition 23/24</h3>
+                            <div class="customization-options">
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
+                                </select>
+                                <input type="text" class="custom-input" placeholder="PLAYER NAME">
+                                <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
+                                <div class="finish-options-group" style="display: none;">
+                                    <select class="custom-select finish-select">
+                                        <option value="printed" data-price-add="0">Printed Finish</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED 15)
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-mavs add-to-cart-btn" data-name="Mavericks Statement Edition 23/24"
+                                data-base-price="85" data-image="img/mavs3.png">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Retro Jerseys -->
+    <!-- Legends Jerseys Section -->
     <section class="category-section">
         <div class="container">
-            <h2>🏀 Retro Jerseys</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <img src="images/placeholder-retro.jpg" class="card-img-top" alt="Retro Jersey">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Dirk Nowitzki 2011 Finals</h5>
-                            <button class="btn btn-mavs">View</button>
+            <h2>Mavs Legends</h2>
+            <p class="category-description">Honor the greatest players in Mavericks history</p>
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="jersey-badge">Legend</div>
+                        <img src="img/mavs-retro1.png" class="card-img-top" alt="Dirk Nowitzki Mavericks Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">'The Big German' Throwback</h3>
+                            <div class="customization-options">
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
+                                </select>
+                                <input type="text" class="custom-input" placeholder="PLAYER NAME">
+                                <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
+                                <div class="finish-options-group" style="display: none;">
+                                    <select class="custom-select finish-select">
+                                        <option value="printed" data-price-add="0">Printed Finish</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED 15)
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-mavs add-to-cart-btn" data-name="Mavericks 'The Big German' Throwback"
+                                data-base-price="85" data-image="img/mavs-retro1.png">Add to Cart</button>
                         </div>
                     </div>
                 </div>
-                <!-- Add more retros -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="jersey-badge">Legend</div>
+                        <img src="img/mavs-retro2.png" class="card-img-top" alt="Jason Kidd Mavericks Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">'03 All-Star Throwback</h3>
+                            <div class="customization-options">
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
+                                </select>
+                                <input type="text" class="custom-input" placeholder="PLAYER NAME">
+                                <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
+                                <div class="finish-options-group" style="display: none;">
+                                    <select class="custom-select finish-select">
+                                        <option value="printed" data-price-add="0">Printed Finish</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED 15)
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-mavs add-to-cart-btn" data-name="Mavericks '03 All-Star Throwback"
+                                data-base-price="85" data-image="img/mavs-retro2.png">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="jersey-badge">Legend</div>
+                        <img src="img/mavs-retro3.png" class="card-img-top" alt="Steve Nash Mavericks Jersey" />
+                        <div class="card-body">
+                            <h3 class="card-title">Early 2000s Throwback</h3>
+                            <div class="customization-options">
+                                <select class="custom-select size-select" required>
+                                    <option value="" disabled selected>Select a Size</option>
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XXL">Size: XXL</option>
+                                </select>
+                                <input type="text" class="custom-input" placeholder="PLAYER NAME">
+                                <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
+                                <div class="finish-options-group" style="display: none;">
+                                    <select class="custom-select finish-select">
+                                        <option value="printed" data-price-add="0">Printed Finish</option>
+                                        <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED 15)
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="card-price" data-base-price="85">AED 85</p>
+                            <button class="btn-mavs add-to-cart-btn" data-name="Mavericks Early 2000s Throwback"
+                                data-base-price="85" data-image="img/mavs-retro3.png">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="text-center py-4 mt-5">
-        <p class="mb-1">&copy; 2025 CourtDripDxb | Dallas Mavericks Collection</p>
-        <p class="mb-0">Not affiliated with the NBA or Dallas Mavericks.</p>
-    </footer>
+    <!-- Floating Cart Button -->
+    <button id="cart-toggle-btn">
+        🛒 Cart (<span id="cart-count">0</span>)
+    </button>
 
+    <!-- Cart Overlay -->
+    <div id="cart-overlay">
+        <div id="cart-header">
+            <span>Your Cart</span>
+            <button id="close-cart">×</button>
+        </div>
+        <div id="cart-items">
+            <div id="cart-empty">Your cart is empty</div>
+        </div>
+        <div id="cart-total">Total: AED 0</div>
+    </div>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Optimized Cart Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // --- Cart Display Functions ---
+            function updateCartDisplay() {
+                const cartCount = document.getElementById('cart-count');
+                const cartItemsContainer = document.getElementById('cart-items');
+                const cartTotalEl = document.getElementById('cart-total');
+
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<div id="cart-empty">Your cart is empty</div>';
+                } else {
+                    cartItemsContainer.innerHTML = cart.map(item => `
+            <div class="cart-item">
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">AED ${item.price}</div>
+                </div>
+                <div class="cart-item-qty">x${item.quantity}</div>
+                <button class="cart-item-remove" data-name="${item.name}">×</button>
+            </div>
+            `).join('');
+                }
+
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotalEl.textContent = `Total: AED ${total}`;
+            }
+
+            // --- Cart Modification Functions ---
+            function addToCart(item) {
+                const existingItem = cart.find(cartItem => cartItem.name === item.name);
+
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({
+                        ...item,
+                        quantity: 1
+                    });
+                }
+                saveAndRedrawCart();
+                flashCartButton();
+            }
+
+            function removeFromCart(itemName) {
+                cart = cart.filter(item => item.name !== itemName);
+                saveAndRedrawCart();
+            }
+
+            function saveAndRedrawCart() {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            }
+
+            function flashCartButton() {
+                const cartBtn = document.getElementById('cart-toggle-btn');
+                if (!cartBtn) return;
+                const originalBg = getComputedStyle(cartBtn).background;
+                cartBtn.style.transition = 'all 0.2s ease-in-out';
+                cartBtn.style.transform = 'scale(1.1)';
+                cartBtn.style.background = 'linear-gradient(45deg, #28a745, #218838)'; // Green success
+                setTimeout(() => {
+                    cartBtn.style.transform = 'scale(1)';
+                    cartBtn.style.background = originalBg;
+                }, 600);
+            }
+
+            // --- Dynamic Price & Options Update ---
+            function updateCardPrice(card) {
+                const priceEl = card.querySelector('.card-price');
+                const basePrice = parseFloat(priceEl.getAttribute('data-base-price'));
+                const nameInput = card.querySelector('input[type="text"]');
+                const numberInput = card.querySelector('input[type="number"]');
+                const finishSelect = card.querySelector('.finish-select');
+                const finishGroup = card.querySelector('.finish-options-group');
+
+                let additionalPrice = 0;
+                const isCustomized = nameInput.value.trim() || numberInput.value.trim();
+
+                if (isCustomized) {
+                    finishGroup.style.display = 'block';
+                    const selectedFinish = finishSelect.options[finishSelect.selectedIndex];
+                    additionalPrice = parseFloat(selectedFinish.getAttribute('data-price-add'));
+                } else {
+                    finishGroup.style.display = 'none';
+                }
+
+                const finalPrice = basePrice + additionalPrice;
+                priceEl.textContent = `AED ${finalPrice}`;
+            }
+
+            // --- Event Listeners ---
+            document.body.addEventListener('click', function (e) {
+                // Add to Cart
+                if (e.target.classList.contains('add-to-cart-btn')) {
+                    const card = e.target.closest('.card');
+                    let name = e.target.getAttribute('data-name');
+                    const basePrice = parseFloat(e.target.getAttribute('data-base-price'));
+                    const image = e.target.getAttribute('data-image');
+                    const sizeSelect = card.querySelector('.size-select');
+                    const nameInput = card.querySelector('input[type="text"]');
+                    const numberInput = card.querySelector('input[type="number"]');
+                    const finishSelect = card.querySelector('.finish-select');
+
+                    const selectedSize = sizeSelect.value;
+                    if (!selectedSize) {
+                        alert('Please select a size.');
+                        sizeSelect.style.borderColor = 'red';
+                        return;
+                    }
+                    sizeSelect.style.borderColor = '';
+
+                    const customName = nameInput.value.trim().toUpperCase();
+                    const customNumber = numberInput.value.trim();
+
+                    if (!customName || !customNumber) {
+                        alert('Please provide a player name and number.');
+                        if (!customName) nameInput.style.borderColor = 'red';
+                        else nameInput.style.borderColor = '';
+                        if (!customNumber) numberInput.style.borderColor = 'red';
+                        else numberInput.style.borderColor = '';
+                        return;
+                    }
+                    nameInput.style.borderColor = '';
+                    numberInput.style.borderColor = '';
+
+                    let finalPrice = basePrice;
+                    let finalName = `${name} (Size: ${selectedSize})`;
+                    let customizationDetails = [];
+
+                    if (customName && customNumber) {
+                        customizationDetails.push(`${customName} #${customNumber}`);
+                        const selectedFinish = finishSelect.options[finishSelect.selectedIndex];
+                        const priceAdd = parseFloat(selectedFinish.getAttribute('data-price-add'));
+                        finalPrice += priceAdd;
+                        if (priceAdd > 0) {
+                            customizationDetails.push(selectedFinish.textContent.split('(')[0].trim());
+                        }
+                    }
+
+                    if (customizationDetails.length > 0) {
+                        finalName += `, ${customizationDetails.join(', ')}`;
+                    }
+
+                    const newItem = {
+                        name: finalName,
+                        price: finalPrice,
+                        image: image,
+                    };
+
+                    addToCart(newItem);
+                }
+
+                // Remove from Cart
+                if (e.target.classList.contains('cart-item-remove')) {
+                    const itemName = e.target.getAttribute('data-name');
+                    if (itemName) {
+                        removeFromCart(itemName);
+                    }
+                }
+
+                // Cart Toggle
+                if (e.target.closest('#cart-toggle-btn')) {
+                    document.getElementById('cart-overlay').classList.toggle('active');
+                }
+
+                // Close Cart
+                if (e.target.closest('#close-cart')) {
+                    document.getElementById('cart-overlay').classList.remove('active');
+                }
+            });
+
+            // Update price on input change
+            document.querySelectorAll('.customization-options').forEach(group => {
+                group.addEventListener('input', (e) => {
+                    const card = e.target.closest('.card');
+                    updateCardPrice(card);
+                });
+                group.addEventListener('change', (e) => {
+                    const card = e.target.closest('.card');
+                    updateCardPrice(card);
+                });
+            });
+
+            // Initial setup
+            updateCartDisplay();
+
+            // Close cart when clicking outside
+            document.addEventListener('click', function (e) {
+                const cartOverlay = document.getElementById('cart-overlay');
+                const cartBtn = document.getElementById('cart-toggle-btn');
+                if (cartOverlay && cartBtn && !cartOverlay.contains(e.target) && !e.target.closest('.add-to-cart-btn') && !cartBtn.contains(e.target)) {
+                    cartOverlay.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
