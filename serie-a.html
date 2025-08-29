@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Serie A — CourtDripDxb</title>
+    <title>Serie A — GOKIT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -12,6 +15,7 @@
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d1b1b 100%);
             color: white;
             min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
         }
 
         .serie-a-header {
@@ -153,6 +157,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(10px);
             position: relative;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%230066cc' fill-opacity='0.08' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
             height: 100%;
         }
 
@@ -182,8 +187,9 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: contain;
             border: 3px solid rgba(0, 102, 204, 0.5);
+            background-color: rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
         }
 
@@ -263,15 +269,74 @@
             color: #009639 !important;
         }
 
-        footer {
-            background: linear-gradient(90deg, #0066cc, #ffffff, #009639) !important;
+        .footer {
+            background: linear-gradient(135deg, #2d1b1b, #121212);
+            padding: 4rem 0 2rem;
             margin-top: 4rem;
+            position: relative;
+            border-top: 2px solid #0066cc;
+            text-align: center;
         }
 
-        footer p {
-            color: #000 !important;
-            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #009639;
+            margin-bottom: 0.5rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .footer-motto {
+            font-size: 1rem;
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 1rem;
             font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #009639;
+        }
+
+        .footer .social-icons {
+            margin-bottom: 2rem;
+        }
+
+        .footer .social-icons a {
+            color: #e0e0e0;
+            font-size: 1.5rem;
+            margin: 0 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            color: #009639;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(0, 102, 204, 0.5);
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #a0a0a0;
+        }
+
+        .footer-bottom p {
+            margin: 0;
         }
 
         /* Loading animation */
@@ -299,7 +364,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg serie-a-header sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">⚽ CourtDripDxb</a>
+            <a class="navbar-brand fw-bold" href="index.html">⚽ GOKIT</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -310,7 +375,7 @@
                             🏆 Browse Leagues
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="basketball.html">Baskteball</a></l>
+                            <li><a class="dropdown-item" href="nba.html">Baskteball</a></l>
                             <li><a class="dropdown-item" href="la-liga.html">La Liga</a></li>
                             <li><a class="dropdown-item" href="bundesliga.html">Bundesliga</a></li>
                             <li><a class="dropdown-item" href="national-teams.html">National Teams</a></li>
@@ -354,8 +419,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card">
                         <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
-                                alt="Juventus" class="team-logo mb-3">
+                            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/111.png" alt="Juventus Logo"
+                                class="team-logo mb-3">
                             <h5 class="team-name">Juventus FC</h5>
                             <p class="team-description">La Vecchia Signora - Turin's Black & White Dynasty</p>
                             <a href="juventus.html" class="btn-serie-a">
@@ -369,8 +434,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card">
                         <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=80&h=80&fit=crop&crop=center"
-                                alt="AC Milan" class="team-logo mb-3">
+                            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/103.png" alt="AC Milan Logo"
+                                class="team-logo mb-3">
                             <h5 class="team-name">AC Milan</h5>
                             <p class="team-description">I Rossoneri - Milan's Red & Black Legends</p>
                             <a href="ac-milan.html" class="btn-serie-a">
@@ -384,8 +449,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card">
                         <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
-                                alt="Inter Milan" class="team-logo mb-3">
+                            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/110.png" alt="Inter Milan Logo"
+                                class="team-logo mb-3">
                             <h5 class="team-name">Inter Milan</h5>
                             <p class="team-description">I Nerazzurri - The Blue & Black Pride</p>
                             <a href="inter-milan.html" class="btn-serie-a">
@@ -399,8 +464,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card">
                         <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
-                                alt="AS Roma" class="team-logo mb-3">
+                            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/105.png" alt="AS Roma Logo"
+                                class="team-logo mb-3">
                             <h5 class="team-name">AS Roma</h5>
                             <p class="team-description">I Giallorossi - The Eternal City's Warriors</p>
                             <a href="as-roma.html" class="btn-serie-a">
@@ -414,8 +479,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card">
                         <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=80&h=80&fit=crop&crop=center"
-                                alt="Napoli" class="team-logo mb-3">
+                            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/114.png" alt="Napoli Logo"
+                                class="team-logo mb-3">
                             <h5 class="team-name">SSC Napoli</h5>
                             <p class="team-description">Gli Azzurri - Southern Italy's Champions</p>
                             <a href="napoli.html" class="btn-serie-a">
@@ -424,61 +489,15 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Lazio -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
-                                alt="Lazio" class="team-logo mb-3">
-                            <h5 class="team-name">SS Lazio</h5>
-                            <p class="team-description">Le Aquile - Rome's Sky Blue Eagles</p>
-                            <a href="lazio.html" class="btn-serie-a">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Atalanta -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
-                                alt="Atalanta" class="team-logo mb-3">
-                            <h5 class="team-name">Atalanta BC</h5>
-                            <p class="team-description">La Dea - Bergamo's Attacking Machine</p>
-                            <a href="atalanta.html" class="btn-serie-a">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Fiorentina -->
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card">
                         <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=80&h=80&fit=crop&crop=center"
-                                alt="Fiorentina" class="team-logo mb-3">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b2/ACF_Fiorentina_2_logo.svg/1200px-ACF_Fiorentina_2_logo.svg.png"
+                                alt="Fiorentina Logo" class="team-logo mb-3">
                             <h5 class="team-name">ACF Fiorentina</h5>
                             <p class="team-description">La Viola - Florence's Purple Renaissance</p>
                             <a href="fiorentina.html" class="btn-serie-a">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Torino -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
-                                alt="Torino" class="team-logo mb-3">
-                            <h5 class="team-name">Torino FC</h5>
-                            <p class="team-description">Il Toro - The Granata Bulls of Turin</p>
-                            <a href="torino.html" class="btn-serie-a">
                                 <i class="fas fa-tshirt me-2"></i>View Jerseys
                             </a>
                         </div>
@@ -489,9 +508,27 @@
     </section>
 
     <!-- Footer -->
-    <footer class="text-center py-4 mt-5">
-        <p class="mb-1">© 2025 CourtDripDxb | Serie A Collection</p>
-        <p class="mb-0">Not affiliated with Serie A or any football clubs.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-brand">⚽ GOKIT</h3>
+                <p class="footer-motto">The World's Game, Delivered to Your Doorstep.</p>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="league.html">Leagues</a>
+                    <a href="shipping-policy.html">Shipping</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GOKIT. All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

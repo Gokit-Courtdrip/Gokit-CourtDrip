@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bundesliga — CourtDripDxb</title>
+    <title>Bundesliga — GOKIT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -12,6 +15,7 @@
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d1a0a 100%);
             color: white;
             min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
         }
 
         .bundesliga-header {
@@ -153,6 +157,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(10px);
             position: relative;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23dd0000' fill-opacity='0.08' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
             height: 100%;
         }
 
@@ -182,8 +187,9 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: contain;
             border: 3px solid rgba(221, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
         }
 
@@ -263,15 +269,74 @@
             color: #ffce00 !important;
         }
 
-        footer {
-            background: linear-gradient(90deg, #000000, #dd0000, #ffce00, #000000) !important;
+        .footer {
+            background: linear-gradient(135deg, #2d1a0a, #121212);
+            padding: 4rem 0 2rem;
             margin-top: 4rem;
+            position: relative;
+            border-top: 2px solid #dd0000;
+            text-align: center;
         }
 
-        footer p {
-            color: #fff !important;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffce00;
+            margin-bottom: 0.5rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .footer-motto {
+            font-size: 1rem;
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 1rem;
             font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffce00;
+        }
+
+        .footer .social-icons {
+            margin-bottom: 2rem;
+        }
+
+        .footer .social-icons a {
+            color: #e0e0e0;
+            font-size: 1.5rem;
+            margin: 0 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            color: #ffce00;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(221, 0, 0, 0.5);
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #a0a0a0;
+        }
+
+        .footer-bottom p {
+            margin: 0;
         }
 
         /* Loading animation */
@@ -353,7 +418,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bundesliga-header sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">⚽ CourtDripDxb</a>
+            <a class="navbar-brand fw-bold" href="index.html">⚽ GOKIT</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -364,7 +429,7 @@
                             🏆 Browse Leagues
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="basketball.html">Baskteball</a></l>
+                            <li><a class="dropdown-item" href="nba.html">Baskteball</a></l>
                             <li><a class="dropdown-item" href="la-liga.html">La Liga</a></li>
                             <li><a class="dropdown-item" href="serie-a.html">Serie A</a></li>
                             <li><a class="dropdown-item" href="national-teams.html">National Teams</a></li>
@@ -408,8 +473,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card der-klassiker bavarian">
                         <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
-                                alt="Bayern Munich" class="team-logo mb-3">
+                            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/132.png" alt="Bayern Munich Logo"
+                                class="team-logo mb-3">
                             <h5 class="team-name">FC Bayern Munich</h5>
                             <p class="team-description">The Bavarians - German Football Royalty</p>
                             <a href="bayern-munich.html" class="btn-bundesliga">
@@ -423,8 +488,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card der-klassiker ruhr-valley">
                         <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=80&h=80&fit=crop&crop=center"
-                                alt="Borussia Dortmund" class="team-logo mb-3">
+                            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/124.png" alt="Borussia Dortmund Logo"
+                                class="team-logo mb-3">
                             <h5 class="team-name">Borussia Dortmund</h5>
                             <p class="team-description">BVB - The Yellow Wall Warriors</p>
                             <a href="borussia-dortmund.html" class="btn-bundesliga">
@@ -433,106 +498,15 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- RB Leipzig -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
-                                alt="RB Leipzig" class="team-logo mb-3">
-                            <h5 class="team-name">RB Leipzig</h5>
-                            <p class="team-description">The Red Bulls - Modern German Power</p>
-                            <a href="rb-leipzig.html" class="btn-bundesliga">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Bayer Leverkusen -->
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card">
                         <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
-                                alt="Bayer Leverkusen" class="team-logo mb-3">
+                            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/131.png" alt="Bayer Leverkusen Logo"
+                                class="team-logo mb-3">
                             <h5 class="team-name">Bayer Leverkusen</h5>
                             <p class="team-description">Die Werkself - The Company's Eleven</p>
                             <a href="bayer-leverkusen.html" class="btn-bundesliga">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Schalke 04 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card ruhr-valley">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=80&h=80&fit=crop&crop=center"
-                                alt="Schalke 04" class="team-logo mb-3">
-                            <h5 class="team-name">FC Schalke 04</h5>
-                            <p class="team-description">The Royal Blues - Gelsenkirchen Pride</p>
-                            <a href="schalke.html" class="btn-bundesliga">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Eintracht Frankfurt -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
-                                alt="Eintracht Frankfurt" class="team-logo mb-3">
-                            <h5 class="team-name">Eintracht Frankfurt</h5>
-                            <p class="team-description">The Eagles - Frankfurt's Flying High</p>
-                            <a href="eintracht-frankfurt.html" class="btn-bundesliga">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Borussia Mönchengladbach -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
-                                alt="Borussia Mönchengladbach" class="team-logo mb-3">
-                            <h5 class="team-name">Borussia Mönchengladbach</h5>
-                            <p class="team-description">The Foals - Gladbach's Green & White</p>
-                            <a href="borussia-monchengladbach.html" class="btn-bundesliga">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- VfL Wolfsburg -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=80&h=80&fit=crop&crop=center"
-                                alt="VfL Wolfsburg" class="team-logo mb-3">
-                            <h5 class="team-name">VfL Wolfsburg</h5>
-                            <p class="team-description">The Wolves - Volkswagen's Team</p>
-                            <a href="wolfsburg.html" class="btn-bundesliga">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TSG Hoffenheim -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
-                                alt="TSG Hoffenheim" class="team-logo mb-3">
-                            <h5 class="team-name">TSG Hoffenheim</h5>
-                            <p class="team-description">The Village Club - Small Town, Big Dreams</p>
-                            <a href="hoffenheim.html" class="btn-bundesliga">
                                 <i class="fas fa-tshirt me-2"></i>View Jerseys
                             </a>
                         </div>
@@ -543,9 +517,27 @@
     </section>
 
     <!-- Footer -->
-    <footer class="text-center py-4 mt-5">
-        <p class="mb-1">© 2025 CourtDripDxb | Bundesliga Collection</p>
-        <p class="mb-0">Not affiliated with the Bundesliga or any football clubs.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-brand">⚽ GOKIT</h3>
+                <p class="footer-motto">The World's Game, Delivered to Your Doorstep.</p>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="league.html">Leagues</a>
+                    <a href="shipping-policy.html">Shipping</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GOKIT. All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

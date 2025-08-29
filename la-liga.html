@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>La Liga — CourtDripDxb</title>
+    <title>La Liga — GOKIT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -12,6 +15,7 @@
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d1b0a 100%);
             color: white;
             min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
         }
 
         .la-liga-header {
@@ -154,6 +158,7 @@
             backdrop-filter: blur(10px);
             position: relative;
             height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c60b1e' fill-opacity='0.08' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
         }
 
         .team-card::before {
@@ -182,8 +187,9 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: contain;
             border: 3px solid rgba(198, 11, 30, 0.5);
+            background-color: rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
         }
 
@@ -263,15 +269,74 @@
             color: #ffc400 !important;
         }
 
-        footer {
-            background: linear-gradient(90deg, #c60b1e, #ffc400, #c60b1e) !important;
+        .footer {
+            background: linear-gradient(135deg, #2d1b0a, #121212);
+            padding: 4rem 0 2rem;
             margin-top: 4rem;
+            position: relative;
+            border-top: 2px solid #c60b1e;
+            text-align: center;
         }
 
-        footer p {
-            color: #000 !important;
-            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffc400;
+            margin-bottom: 0.5rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .footer-motto {
+            font-size: 1rem;
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 1rem;
             font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffc400;
+        }
+
+        .footer .social-icons {
+            margin-bottom: 2rem;
+        }
+
+        .footer .social-icons a {
+            color: #e0e0e0;
+            font-size: 1.5rem;
+            margin: 0 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer .social-icons a:hover {
+            color: #ffc400;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(198, 11, 30, 0.5);
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #a0a0a0;
+        }
+
+        .footer-bottom p {
+            margin: 0;
         }
 
         /* Loading animation */
@@ -317,7 +382,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg la-liga-header sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">⚽ CourtDripDxb</a>
+            <a class="navbar-brand fw-bold" href="index.html">⚽ GOKIT</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -328,7 +393,7 @@
                             🏆 Browse Leagues
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="basketball.html">Baskteball</a></l>
+                            <li><a class="dropdown-item" href="nba.html">Baskteball</a></l>
                             <li><a class="dropdown-item" href="serie-a.html">Serie A</a></li>
                             <li><a class="dropdown-item" href="bundesliga.html">Bundesliga</a></li>
                             <li><a class="dropdown-item" href="national-teams.html">National Teams</a></li>
@@ -372,8 +437,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card el-clasico">
                         <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
-                                alt="Real Madrid" class="team-logo mb-3">
+                            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/86.png" alt="Real Madrid Logo"
+                                class="team-logo mb-3">
                             <h5 class="team-name">Real Madrid CF</h5>
                             <p class="team-description">Los Blancos - The Royal Club of Champions</p>
                             <a href="real-madrid.html" class="btn-la-liga">
@@ -387,7 +452,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card el-clasico">
                         <div class="card-body text-center p-4">
-                            <img src="/index.html/img/Barca.jpg" alt="FC Barcelona" class="team-logo mb-3">
+                            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/83.png" alt="FC Barcelona Logo"
+                                class="team-logo mb-3">
                             <h5 class="team-name">FC Barcelona</h5>
                             <p class="team-description">Barça - More Than a Club, Més que un Club</p>
                             <a href="barcelona.html" class="btn-la-liga">
@@ -401,8 +467,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card">
                         <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
-                                alt="Atlético Madrid" class="team-logo mb-3">
+                            <img src="https://a.espncdn.com/i/teamlogos/soccer/500/1068.png" alt="Atlético Madrid Logo"
+                                class="team-logo mb-3">
                             <h5 class="team-name">Atlético Madrid</h5>
                             <p class="team-description">Los Colchoneros - The Red & White Warriors</p>
                             <a href="atletico-madrid.html" class="btn-la-liga">
@@ -416,8 +482,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card">
                         <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
-                                alt="Sevilla FC" class="team-logo mb-3">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Sevilla_FC_logo.svg/1200px-Sevilla_FC_logo.svg.png"
+                                alt="Sevilla FC Logo" class="team-logo mb-3">
                             <h5 class="team-name">Sevilla FC</h5>
                             <p class="team-description">Los Nervionenses - Andalusian Pride</p>
                             <a href="sevilla.html" class="btn-la-liga">
@@ -426,61 +492,15 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Valencia CF -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=80&h=80&fit=crop&crop=center"
-                                alt="Valencia CF" class="team-logo mb-3">
-                            <h5 class="team-name">Valencia CF</h5>
-                            <p class="team-description">Los Che - The Bats of Mestalla</p>
-                            <a href="valencia.html" class="btn-la-liga">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Real Sociedad -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
-                                alt="Real Sociedad" class="team-logo mb-3">
-                            <h5 class="team-name">Real Sociedad</h5>
-                            <p class="team-description">La Real - Basque Country's Royal Club</p>
-                            <a href="real-sociedad.html" class="btn-la-liga">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Athletic Bilbao -->
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card">
                         <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=80&h=80&fit=crop&crop=center"
-                                alt="Athletic Bilbao" class="team-logo mb-3">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/98/Athletic_Bilbao_logo.svg/1200px-Athletic_Bilbao_logo.svg.png"
+                                alt="Athletic Bilbao Logo" class="team-logo mb-3">
                             <h5 class="team-name">Athletic Bilbao</h5>
                             <p class="team-description">Los Leones - The Basque Lions</p>
                             <a href="athletic-bilbao.html" class="btn-la-liga">
-                                <i class="fas fa-tshirt me-2"></i>View Jerseys
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Villarreal CF -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="team-card">
-                        <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=80&h=80&fit=crop&crop=center"
-                                alt="Villarreal CF" class="team-logo mb-3">
-                            <h5 class="team-name">Villarreal CF</h5>
-                            <p class="team-description">El Submarino Amarillo - The Yellow Submarine</p>
-                            <a href="villarreal.html" class="btn-la-liga">
                                 <i class="fas fa-tshirt me-2"></i>View Jerseys
                             </a>
                         </div>
@@ -491,8 +511,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="team-card">
                         <div class="card-body text-center p-4">
-                            <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=80&h=80&fit=crop&crop=center"
-                                alt="Real Betis" class="team-logo mb-3">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/13/Real_betis_logo.svg/1200px-Real_betis_logo.svg.png"
+                                alt="Real Betis Logo" class="team-logo mb-3">
                             <h5 class="team-name">Real Betis</h5>
                             <p class="team-description">Los Verdiblancos - Seville's Green & White</p>
                             <a href="real-betis.html" class="btn-la-liga">
@@ -506,9 +526,27 @@
     </section>
 
     <!-- Footer -->
-    <footer class="text-center py-4 mt-5">
-        <p class="mb-1">© 2025 CourtDripDxb | La Liga Collection</p>
-        <p class="mb-0">Not affiliated with La Liga or any football clubs.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-brand">⚽ GOKIT</h3>
+                <p class="footer-motto">The World's Game, Delivered to Your Doorstep.</p>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="league.html">Leagues</a>
+                    <a href="shipping-policy.html">Shipping</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GOKIT. All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
