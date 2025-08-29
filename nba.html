@@ -921,6 +921,11 @@
             box-shadow: 0 8px 20px var(--shadow-color);
         }
 
+        /* Initially hide the mobile filter button on larger screens */
+        #openFilterSidebarBtn {
+            display: none;
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero-title {
@@ -937,6 +942,15 @@
 
             .conf-title {
                 font-size: 2.2rem;
+            }
+
+            /* On mobile, hide the desktop sidebar and prepare for the mobile button */
+            #filterSidebarDesktop {
+                display: none;
+            }
+
+            #openFilterSidebarBtn {
+                display: inline-flex;
             }
         }
 
@@ -989,8 +1003,14 @@
             }
 
             .conf-btn {
-                padding: 1rem 2rem;
+                padding: 0.8rem 1.5rem;
                 font-size: 0.9rem;
+                white-space: nowrap;
+            }
+
+            .btn {
+                padding: var(--space-2) var(--space-3);
+                font-size: var(--text-sm);
             }
         }
 
@@ -1321,6 +1341,54 @@
         }
     </style>
     <style>
+        /* Customization Inputs - Added for consistency */
+        .customization-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .custom-select,
+        .custom-input {
+            background-color: rgba(10, 10, 10, 0.5);
+            border: 1px solid var(--border-color);
+            color: #f8f9fa;
+            padding: 0.65rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            width: 100%;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .custom-select:focus,
+        .custom-input:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 3px rgba(245, 124, 0, 0.25);
+        }
+
+        .custom-input::placeholder {
+            color: #aab;
+            opacity: 0.7;
+        }
+
+        .custom-select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23F57C00' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .custom-select option {
+            background-color: #1a1a2e;
+        }
+    </style>
+    <style>
         /* Toast Notification */
         .toast-notification {
             position: fixed;
@@ -1343,6 +1411,190 @@
 
         .toast-notification.show {
             transform: translateX(0);
+        }
+    </style>
+    <style>
+        /* Chatbot Styles */
+        #chat-widget-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+
+        #chat-toggle-btn {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--accent-orange-dark));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        #chat-toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        #chat-window {
+            width: 350px;
+            max-width: 90vw;
+            height: 500px;
+            max-height: 80vh;
+            background-color: var(--bg-light);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            transform: scale(1) translateY(0);
+            opacity: 1;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform-origin: bottom right;
+        }
+
+        #chat-window.hidden {
+            transform: scale(0.95) translateY(10px);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #chat-header {
+            background-color: var(--bg-lighter);
+            padding: var(--space-4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        #chat-header h3 {
+            margin: 0;
+            font-size: var(--text-lg);
+            font-weight: 700;
+        }
+
+        #close-chat-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        #chat-body {
+            flex-grow: 1;
+            padding: var(--space-4);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+
+        .chat-message {
+            max-width: 80%;
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
+        }
+
+        .chat-message p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .chat-message.bot {
+            background-color: var(--bg-lighter);
+            align-self: flex-start;
+            border-top-left-radius: 0;
+        }
+
+        .chat-message.user {
+            background-color: var(--primary-orange);
+            color: white;
+            align-self: flex-end;
+            border-top-right-radius: 0;
+        }
+
+        #chat-footer {
+            padding: var(--space-3);
+            display: flex;
+            gap: var(--space-2);
+            border-top: 1px solid var(--border-color);
+        }
+
+        #chat-input {
+            flex-grow: 1;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--space-2) var(--space-3);
+            color: var(--text-primary);
+        }
+
+        #chat-input:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+        }
+
+        #send-chat-btn {
+            background-color: var(--primary-orange);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        /* Contact Modal Styles */
+        .contact-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .contact-option {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            padding: var(--space-4);
+            background-color: var(--bg-lighter);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            transition: all var(--transition-fast);
+        }
+
+        .contact-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            background-color: var(--primary-orange);
+            color: white;
+        }
+
+        .contact-option i {
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-option:hover i {
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -1530,9 +1782,9 @@
                     <div class="footer-section">
                         <h3>Support</h3>
                         <ul>
-                            <li><a href="#">Size Guide</a></li>
-                            <li><a href="#">Shipping & Delivery</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#" id="footerSizeGuideLink">Size Guide</a></li>
+                            <li><a href="shipping-policy.html">Shipping & Delivery</a></li>
+                            <li><a href="#" id="footerContactLink">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1552,43 +1804,9 @@
                 <div id="quickViewImage"></div>
                 <div>
                     <h2 id="quickViewTitle">Product Name</h2>
-                    <p id="quickViewTeam" style="color: var(--text-secondary); margin-bottom: var(--space-4);">Team Name
-                    </p>
-                    <div class="form-group">
-                        <label class="form-label" for="playerName">Player Name (Optional)</label>
-                        <input type="text" id="playerName" class="form-input" placeholder="e.g. JAMES">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="playerNumber">Player Number (Optional)</label>
-                        <input type="number" id="playerNumber" class="form-input" placeholder="e.g. 23" min="0"
-                            max="99">
-                    </div>
-                    <div class="form-group" id="customizationStyleGroup" style="display: none;">
-                        <label class="form-label">Customization Style</label>
-                        <div class="radio-group">
-                            <label>
-                                <input type="radio" name="customizationStyle" value="printed" checked>
-                                <span>Printed</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="customizationStyle" value="embroidered">
-                                <span>Embroidered (+15 AED)</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="price-summary" style="margin-top: var(--space-5);">
-                        <h4 style="margin-bottom: var(--space-4);">Price Summary</h4>
-                        <div
-                            style="display: flex; justify-content: space-between; font-weight: 700; font-size: var(--text-lg); color: var(--primary-orange);">
-                            <span>Total Price</span>
-                            <span id="totalPrice">85 AED</span>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" id="addToCartBtn"
-                        style="width: 100%; justify-content: center; padding: var(--space-3);">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span>Add to Cart</span>
-                    </button>
+                    <p id="quickViewTeam" style="color: var(--text-secondary); margin-bottom: var(--space-4);">Team
+                        Name</p>
+                    <p>Customize your jersey directly on the product card before adding to your cart.</p>
                 </div>
             </div>
         </div>
@@ -1718,6 +1936,67 @@
         </div>
     </div>
 
+    <!-- Filter Modal (for Mobile) -->
+    <div class="modal" id="filterModal">
+        <div class="modal-content" style="max-width: 400px; height: 80%; display: flex; flex-direction: column;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; padding-bottom: var(--space-4); border-bottom: 1px solid var(--border-color);">
+                <h2 style="margin: 0;">Filters</h2>
+                <button class="modal-close" onclick="closeModal('filterModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="mobileFilterBody" style="flex-grow: 1; overflow-y: auto; padding: var(--space-5) 0;">
+                <!-- Mobile filters will be populated here by JS -->
+            </div>
+            <button class="btn btn-primary" onclick="closeModal('filterModal')"
+                style="width: 100%; justify-content: center;">View Results</button>
+        </div>
+    </div>
+
+    <!-- Contact Us Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <button class="modal-close" onclick="closeModal('contactModal')"><i class="fas fa-times"></i></button>
+            <h2 style="margin-bottom: var(--space-5); text-align: center;">Contact Us</h2>
+            <div class="contact-options">
+                <a href="mailto:support@courtdripdxb.com" class="contact-option">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email Us</span>
+                </a>
+                <a href="https://wa.me/971501234567" target="_blank" class="contact-option">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Chat on WhatsApp</span>
+                </a>
+                <a href="https://instagram.com/courtdripdxb" target="_blank" class="contact-option">
+                    <i class="fab fa-instagram"></i>
+                    <span>DM on Instagram</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div id="chat-widget-container">
+        <div id="chat-toggle-btn">
+            <i class="fas fa-basketball-ball"></i>
+        </div>
+        <div id="chat-window" class="hidden">
+            <div id="chat-header">
+                <h3>CourtDrip Assistant</h3>
+                <button id="close-chat-btn">&times;</button>
+            </div>
+            <div id="chat-body">
+                <div class="chat-message bot">
+                    <p>Hello! I'm the CourtDrip Assistant. How can I help you today? You can ask about sizing, shipping,
+                        returns, or customization.</p>
+                </div>
+            </div>
+            <div id="chat-footer">
+                <input type="text" id="chat-input" placeholder="Type your message...">
+                <button id="send-chat-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
@@ -1743,35 +2022,35 @@
 
             const products = [
                 { id: 101, name: "Celtics Icon Edition 23/24", team: "Boston Celtics", conference: "Eastern", price: 85, image: '<img src="img/products/celtics-24.png" alt="Celtics Icon Edition 23/24" loading="lazy">', badge: "Popular" },
-                { id: 102, name: "Nets Statement Edition 23/24", team: "Brooklyn Nets", conference: "Eastern", price: 85, image: 'img/products/nets-24.png', badge: "New" },
-                { id: 103, name: "Knicks Classic Edition 23/24", team: "New York Knicks", conference: "Eastern", price: 85, image: 'img/products/knicks-24.png', badge: "Classic" },
-                { id: 104, name: "76ers City Edition 23/24", team: "Philadelphia 76ers", conference: "Eastern", price: 85, image: 'img/products/76ers-24.png', badge: "Hot" },
-                { id: 105, name: "Raptors Icon Edition 23/24", team: "Toronto Raptors", conference: "Eastern", price: 85, image: 'img/products/raptors-24.png', badge: "Popular" },
-                { id: 106, name: "Bulls Icon Edition 23/24", team: "Chicago Bulls", conference: "Eastern", price: 85, image: 'img/products/bulls-24.png', badge: "Classic" },
-                { id: 107, name: "Cavaliers Statement Edition 23/24", team: "Cleveland Cavaliers", conference: "Eastern", price: 85, image: 'img/products/cavaliers-24.png', badge: "New" },
-                { id: 108, name: "Pistons City Edition 23/24", team: "Detroit Pistons", conference: "Eastern", price: 85, image: 'img/products/pistons-24.png', badge: "New" },
-                { id: 109, name: "Pacers Icon Edition 23/24", team: "Indiana Pacers", conference: "Eastern", price: 85, image: 'img/products/pacers-24.png', badge: "Popular" },
-                { id: 110, name: "Bucks Statement Edition 23/24", team: "Milwaukee Bucks", conference: "Eastern", price: 85, image: 'img/products/bucks-24.png', badge: "Hot" },
-                { id: 111, name: "Hawks City Edition 23/24", team: "Atlanta Hawks", conference: "Eastern", price: 85, image: 'img/products/hawks-24.png', badge: "New" },
-                { id: 112, name: "Hornets Classic Edition 23/24", team: "Charlotte Hornets", conference: "Eastern", price: 85, image: 'img/products/hornets-24.png', badge: "Popular" },
-                { id: 113, name: "Heat Vice City Edition 23/24", team: "Miami Heat", conference: "Eastern", price: 85, image: 'img/products/heat-24.png', badge: "Hot" },
-                { id: 114, name: "Magic Icon Edition 23/24", team: "Orlando Magic", conference: "Eastern", price: 85, image: 'img/products/magic-24.png', badge: "New" },
-                { id: 115, name: "Wizards Statement Edition 23/24", team: "Washington Wizards", conference: "Eastern", price: 85, image: 'img/products/wizards-24.png', badge: "New" },
-                { id: 116, name: "Mavericks City Edition 23/24", team: "Dallas Mavericks", conference: "Western", price: 85, image: 'img/products/mavericks-24.png', badge: "Popular" },
-                { id: 117, name: "Nuggets Icon Edition 23/24", team: "Denver Nuggets", conference: "Western", price: 85, image: 'img/products/nuggets-24.png', badge: "Hot" },
-                { id: 118, name: "Warriors City Edition 23/24", team: "Golden State Warriors", conference: "Western", price: 85, image: 'img/products/warriors-24.png', badge: "Popular" },
-                { id: 119, name: "Rockets Statement Edition 23/24", team: "Houston Rockets", conference: "Western", price: 85, image: 'img/products/rockets-24.png', badge: "New" },
-                { id: 120, name: "Clippers Icon Edition 23/24", team: "Los Angeles Clippers", conference: "Western", price: 85, image: 'img/products/clippers-24.png', badge: "Popular" },
-                { id: 121, name: "Lakers Statement Edition 23/24", team: "Los Angeles Lakers", conference: "Western", price: 85, image: 'img/products/lakers-24.png', badge: "Classic" },
-                { id: 122, name: "Grizzlies City Edition 23/24", team: "Memphis Grizzlies", conference: "Western", price: 85, image: 'img/products/grizzlies-24.png', badge: "Hot" },
-                { id: 123, name: "Timberwolves Icon Edition 23/24", team: "Minnesota Timberwolves", conference: "Western", price: 85, image: 'img/products/timberwolves-24.png', badge: "New" },
-                { id: 124, name: "Pelicans Statement Edition 23/24", team: "New Orleans Pelicans", conference: "Western", price: 85, image: 'img/products/pelicans-24.png', badge: "Popular" },
-                { id: 125, name: "Thunder City Edition 23/24", team: "Oklahoma City Thunder", conference: "Western", price: 85, image: 'img/products/thunder-24.png', badge: "Hot" },
-                { id: 126, name: "Suns Icon Edition 23/24", team: "Phoenix Suns", conference: "Western", price: 85, image: 'img/products/suns-24.png', badge: "Popular" },
-                { id: 127, name: "Trail Blazers Statement Edition 23/24", team: "Portland Trail Blazers", conference: "Western", price: 85, image: 'img/products/blazers-24.png', badge: "New" },
-                { id: 128, name: "Kings Classic Edition 23/24", team: "Sacramento Kings", conference: "Western", price: 85, image: 'img/products/kings-24.png', badge: "Classic" },
-                { id: 129, name: "Spurs City Edition 23/24", team: "San Antonio Spurs", conference: "Western", price: 85, image: 'img/products/spurs-24.png', badge: "Popular" },
-                { id: 130, name: "Jazz Statement Edition 23/24", team: "Utah Jazz", conference: "Western", price: 85, image: 'img/products/jazz-24.png', badge: "New" }
+                { id: 102, name: "Nets Statement Edition 23/24", team: "Brooklyn Nets", conference: "Eastern", price: 85, image: '<img src="img/products/nets-24.png" alt="Nets Statement Edition 23/24" loading="lazy">', badge: "New" },
+                { id: 103, name: "Knicks Classic Edition 23/24", team: "New York Knicks", conference: "Eastern", price: 85, image: '<img src="img/products/knicks-24.png" alt="Knicks Classic Edition 23/24" loading="lazy">', badge: "Classic" },
+                { id: 104, name: "76ers City Edition 23/24", team: "Philadelphia 76ers", conference: "Eastern", price: 85, image: '<img src="img/products/76ers-24.png" alt="76ers City Edition 23/24" loading="lazy">', badge: "Hot" },
+                { id: 105, name: "Raptors Icon Edition 23/24", team: "Toronto Raptors", conference: "Eastern", price: 85, image: '<img src="img/products/raptors-24.png" alt="Raptors Icon Edition 23/24" loading="lazy">', badge: "Popular" },
+                { id: 106, name: "Bulls Icon Edition 23/24", team: "Chicago Bulls", conference: "Eastern", price: 85, image: '<img src="img/products/bulls-24.png" alt="Bulls Icon Edition 23/24" loading="lazy">', badge: "Classic" },
+                { id: 107, name: "Cavaliers Statement Edition 23/24", team: "Cleveland Cavaliers", conference: "Eastern", price: 85, image: '<img src="img/products/cavaliers-24.png" alt="Cavaliers Statement Edition 23/24" loading="lazy">', badge: "New" },
+                { id: 108, name: "Pistons City Edition 23/24", team: "Detroit Pistons", conference: "Eastern", price: 85, image: '<img src="img/products/pistons-24.png" alt="Pistons City Edition 23/24" loading="lazy">', badge: "New" },
+                { id: 109, name: "Pacers Icon Edition 23/24", team: "Indiana Pacers", conference: "Eastern", price: 85, image: '<img src="img/products/pacers-24.png" alt="Pacers Icon Edition 23/24" loading="lazy">', badge: "Popular" },
+                { id: 110, name: "Bucks Statement Edition 23/24", team: "Milwaukee Bucks", conference: "Eastern", price: 85, image: '<img src="img/products/bucks-24.png" alt="Bucks Statement Edition 23/24" loading="lazy">', badge: "Hot" },
+                { id: 111, name: "Hawks City Edition 23/24", team: "Atlanta Hawks", conference: "Eastern", price: 85, image: '<img src="img/products/hawks-24.png" alt="Hawks City Edition 23/24" loading="lazy">', badge: "New" },
+                { id: 112, name: "Hornets Classic Edition 23/24", team: "Charlotte Hornets", conference: "Eastern", price: 85, image: '<img src="img/products/hornets-24.png" alt="Hornets Classic Edition 23/24" loading="lazy">', badge: "Popular" },
+                { id: 113, name: "Heat Vice City Edition 23/24", team: "Miami Heat", conference: "Eastern", price: 85, image: '<img src="img/products/heat-24.png" alt="Heat Vice City Edition 23/24" loading="lazy">', badge: "Hot" },
+                { id: 114, name: "Magic Icon Edition 23/24", team: "Orlando Magic", conference: "Eastern", price: 85, image: '<img src="img/products/magic-24.png" alt="Magic Icon Edition 23/24" loading="lazy">', badge: "New" },
+                { id: 115, name: "Wizards Statement Edition 23/24", team: "Washington Wizards", conference: "Eastern", price: 85, image: '<img src="img/products/wizards-24.png" alt="Wizards Statement Edition 23/24" loading="lazy">', badge: "New" },
+                { id: 116, name: "Mavericks City Edition 23/24", team: "Dallas Mavericks", conference: "Western", price: 85, image: '<img src="img/products/mavericks-24.png" alt="Mavericks City Edition 23/24" loading="lazy">', badge: "Popular" },
+                { id: 117, name: "Nuggets Icon Edition 23/24", team: "Denver Nuggets", conference: "Western", price: 85, image: '<img src="img/products/nuggets-24.png" alt="Nuggets Icon Edition 23/24" loading="lazy">', badge: "Hot" },
+                { id: 118, name: "Warriors City Edition 23/24", team: "Golden State Warriors", conference: "Western", price: 85, image: '<img src="img/products/warriors-24.png" alt="Warriors City Edition 23/24" loading="lazy">', badge: "Popular" },
+                { id: 119, name: "Rockets Statement Edition 23/24", team: "Houston Rockets", conference: "Western", price: 85, image: '<img src="img/products/rockets-24.png" alt="Rockets Statement Edition 23/24" loading="lazy">', badge: "New" },
+                { id: 120, name: "Clippers Icon Edition 23/24", team: "Los Angeles Clippers", conference: "Western", price: 85, image: '<img src="img/products/clippers-24.png" alt="Clippers Icon Edition 23/24" loading="lazy">', badge: "Popular" },
+                { id: 121, name: "Lakers Statement Edition 23/24", team: "Los Angeles Lakers", conference: "Western", price: 85, image: '<img src="img/products/lakers-24.png" alt="Lakers Statement Edition 23/24" loading="lazy">', badge: "Classic" },
+                { id: 122, name: "Grizzlies City Edition 23/24", team: "Memphis Grizzlies", conference: "Western", price: 85, image: '<img src="img/products/grizzlies-24.png" alt="Grizzlies City Edition 23/24" loading="lazy">', badge: "Hot" },
+                { id: 123, name: "Timberwolves Icon Edition 23/24", team: "Minnesota Timberwolves", conference: "Western", price: 85, image: '<img src="img/products/timberwolves-24.png" alt="Timberwolves Icon Edition 23/24" loading="lazy">', badge: "New" },
+                { id: 124, name: "Pelicans Statement Edition 23/24", team: "New Orleans Pelicans", conference: "Western", price: 85, image: '<img src="img/products/pelicans-24.png" alt="Pelicans Statement Edition 23/24" loading="lazy">', badge: "Popular" },
+                { id: 125, name: "Thunder City Edition 23/24", team: "Oklahoma City Thunder", conference: "Western", price: 85, image: '<img src="img/products/thunder-24.png" alt="Thunder City Edition 23/24" loading="lazy">', badge: "Hot" },
+                { id: 126, name: "Suns Icon Edition 23/24", team: "Phoenix Suns", conference: "Western", price: 85, image: '<img src="img/products/suns-24.png" alt="Suns Icon Edition 23/24" loading="lazy">', badge: "Popular" },
+                { id: 127, name: "Trail Blazers Statement Edition 23/24", team: "Portland Trail Blazers", conference: "Western", price: 85, image: '<img src="img/products/blazers-24.png" alt="Trail Blazers Statement Edition 23/24" loading="lazy">', badge: "New" },
+                { id: 128, name: "Kings Classic Edition 23/24", team: "Sacramento Kings", conference: "Western", price: 85, image: '<img src="img/products/kings-24.png" alt="Kings Classic Edition 23/24" loading="lazy">', badge: "Classic" },
+                { id: 129, name: "Spurs City Edition 23/24", team: "San Antonio Spurs", conference: "Western", price: 85, image: '<img src="img/products/spurs-24.png" alt="Spurs City Edition 23/24" loading="lazy">', badge: "Popular" },
+                { id: 130, name: "Jazz Statement Edition 23/24", team: "Utah Jazz", conference: "Western", price: 85, image: '<img src="img/products/jazz-24.png" alt="Jazz Statement Edition 23/24" loading="lazy">', badge: "New" }
             ];
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
@@ -1811,26 +2090,28 @@
             function setupEventListeners() {
                 productGrid.addEventListener('click', handleProductGridClick);
                 document.getElementById('filterSidebarDesktop').addEventListener('change', handleFilterChange);
-                document.getElementById('addToCartBtn').addEventListener('click', handleAddToCart);
+                document.getElementById('mobileFilterBody').addEventListener('change', handleFilterChange);
+                document.getElementById('openFilterSidebarBtn').addEventListener('click', () => showModal('filterModal'));
                 document.getElementById('searchInput').addEventListener('input', debounce(render, 300));
 
-                // Conference card filtering
                 document.querySelectorAll('.conferences-section [data-conference]').forEach(card => {
                     card.addEventListener('click', (e) => {
                         // If the click is on the 'explore' button, let the link do its job and don't filter.
                         if (e.target.closest('.conf-btn')) {
                             return;
                         }
-
                         e.preventDefault();
                         const conference = card.dataset.conference;
-                        const checkbox = document.querySelector(`#conferenceFilters input[value="${conference}"]`);
-                        if (checkbox) {
-                            document.querySelectorAll('#conferenceFilters input').forEach(cb => cb.checked = false);
-                            checkbox.checked = true;
-                            checkbox.dispatchEvent(new Event('change', { bubbles: true }));
-                            document.querySelector('.shop-layout').scrollIntoView({ behavior: 'smooth' });
-                        }
+
+                        // Update state directly
+                        state.activeFilters.conferences = [conference];
+                        state.activeFilters.teams = []; // Reset teams when a new conference is selected
+
+                        // Sync UI and re-render
+                        syncFilterUI();
+                        render();
+
+                        document.querySelector('.shop-layout').scrollIntoView({ behavior: 'smooth' });
                     });
                 });
 
@@ -1863,30 +2144,82 @@
 
                 // Cart Item Removal
                 document.getElementById('cartItemsContainer').addEventListener('click', (e) => {
-                    if (e.target.dataset.action === 'remove-from-cart') {
+                    if (e.target.matches('.cart-item-remove-btn')) {
                         const cartItemEl = e.target.closest('.cart-item');
-                        const cartId = parseInt(cartItemEl.dataset.cartId);
-                        removeFromCart(cartId);
+                        const itemName = cartItemEl.dataset.itemName;
+                        removeFromCart(itemName);
                     }
                 });
 
-                // Customization style change
-                document.querySelectorAll('input[name="customizationStyle"]').forEach(radio => {
-                    radio.addEventListener('change', updatePrice);
+                // Listen for input on customization fields to toggle finish options
+                productGrid.addEventListener('input', (e) => {
+                    if (e.target.matches('.custom-input')) {
+                        toggleCardFinishOptionsVisibility(e.target);
+                    }
+                });
+                productGrid.addEventListener('change', (e) => {
+                    if (e.target.matches('.finish-select')) {
+                        updateCardPrice(e.target.closest('.product-card'));
+                    }
                 });
 
-                // Toggle customization style visibility based on name/number input
-                const playerNameInput = document.getElementById('playerName');
-                const playerNumberInput = document.getElementById('playerNumber');
-                playerNameInput.addEventListener('input', toggleCustomizationVisibility);
-                playerNumberInput.addEventListener('input', toggleCustomizationVisibility);
+                // Chatbot listeners
+                const chatToggleBtn = document.getElementById('chat-toggle-btn');
+                const closeChatBtn = document.getElementById('close-chat-btn');
+                const sendChatBtn = document.getElementById('send-chat-btn');
+                const chatInput = document.getElementById('chat-input');
+
+                chatToggleBtn.addEventListener('click', toggleChatWindow);
+                closeChatBtn.addEventListener('click', toggleChatWindow);
+                sendChatBtn.addEventListener('click', handleSendMessage);
+                chatInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        handleSendMessage();
+                    }
+                });
+
+                // Footer Links
+                const footerSizeGuideLink = document.getElementById('footerSizeGuideLink');
+                if (footerSizeGuideLink) {
+                    footerSizeGuideLink.addEventListener('click', (e) => { e.preventDefault(); showModal('sizeGuideModal'); });
+                }
+                const footerContactLink = document.getElementById('footerContactLink');
+                if (footerContactLink) {
+                    footerContactLink.addEventListener('click', (e) => { e.preventDefault(); showModal('contactModal'); });
+                }
+
             }
 
             function handleFilterChange(event) {
-                if (event.target.name === 'conference') {
-                    populateTeamCheckboxes();
+                const { name, value, checked } = event.target;
+                if (name === 'conference' || name === 'team') {
+                    const filterArray = state.activeFilters[name + 's'];
+                    if (checked) {
+                        if (!filterArray.includes(value)) filterArray.push(value);
+                    } else {
+                        const index = filterArray.indexOf(value);
+                        if (index > -1) filterArray.splice(index, 1);
+                    }
+                    // When conference selection changes, prune teams that are no longer valid.
+                    if (name === 'conference') {
+                        const validTeams = products.filter(p => state.activeFilters.conferences.includes(p.conference)).map(p => p.team);
+                        state.activeFilters.teams = state.activeFilters.teams.filter(t => validTeams.includes(t));
+                    }
+                    syncFilterUI();
+                    render();
                 }
-                render();
+            }
+
+            function syncFilterUI() {
+                // Sync conference checkboxes
+                document.querySelectorAll('input[name="conference"]').forEach(cb => {
+                    cb.checked = state.activeFilters.conferences.includes(cb.value);
+                });
+                // Repopulate and sync team checkboxes
+                populateTeamCheckboxes();
+                document.querySelectorAll('input[name="team"]').forEach(cb => {
+                    cb.checked = state.activeFilters.teams.includes(cb.value);
+                });
             }
 
             function render() {
@@ -1910,18 +2243,17 @@
                         p.name.toLowerCase().includes(searchQuery) || p.team.toLowerCase().includes(searchQuery)
                     );
                 }
-                const selectedConferences = Array.from(document.querySelectorAll('#conferenceFilters input:checked')).map(cb => cb.value);
-                if (selectedConferences.length > 0) {
-                    currentProducts = currentProducts.filter(p => selectedConferences.includes(p.conference));
+                if (state.activeFilters.conferences.length > 0) {
+                    currentProducts = currentProducts.filter(p => state.activeFilters.conferences.includes(p.conference));
                 }
-                const selectedTeams = Array.from(document.querySelectorAll('#teamFilters input:checked')).map(cb => cb.value);
-                if (selectedTeams.length > 0) {
-                    currentProducts = currentProducts.filter(p => selectedTeams.includes(p.team));
+                if (state.activeFilters.teams.length > 0) {
+                    currentProducts = currentProducts.filter(p => state.activeFilters.teams.includes(p.team));
                 }
                 return currentProducts;
             }
 
             function createProductCard(product) {
+                // ... (createProductCard remains the same)
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.dataset.productId = product.id;
@@ -1932,14 +2264,34 @@
                             <button class="action-btn wishlist-btn ${wishlist.includes(product.id) ? 'active' : ''}" data-action="wishlist" title="Add to Wishlist"><i class="fas fa-heart"></i></button>
                             <button class="action-btn" data-action="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
                         </div>
-                        <div class="product-image"><img src="${product.image}" alt="${product.name}"></div>
+                        <div class="product-image">${product.image}</div>
                     </div>
                     <div class="product-info">
                         <div class="product-team">${product.team}</div>
                         <h3 class="product-name">${product.name}</h3>
-                        <div class="product-pricing"><span class="product-price">${product.price} AED</span></div>
-                        <button class="btn btn-primary" data-action="quick-view" style="width: 100%; justify-content: center;">
-                            <i class="fas fa-tshirt"></i> Customize
+                        <div class="customization-options">
+                            <select class="custom-select size-select" required>
+                                <option value="" disabled selected>Select a Size</option>
+                                <option value="S">Size: S</option>
+                                <option value="M">Size: M</option>
+                                <option value="L">Size: L</option>
+                                <option value="XL">Size: XL</option>
+                                <option value="XXL">Size: XXL</option>
+                            </select>
+                            <input type="text" class="custom-input" placeholder="PLAYER NAME">
+                            <input type="number" class="custom-input" placeholder="PLAYER NUMBER">
+                            <div class="finish-options-group" style="display: none;">
+                                <select class="custom-select finish-select">
+                                    <option value="printed" data-price-add="0">Printed Finish</option>
+                                    <option value="embroidered" data-price-add="15">Embroidered Finish (+ AED 15)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="product-pricing">
+                            <span class="product-price" data-base-price="${product.price}">${product.price} AED</span>
+                        </div>
+                        <button class="btn btn-primary" data-action="add-to-cart" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
                         </button>
                     </div>`;
                 return card;
@@ -1947,40 +2299,47 @@
 
             function populateFilters() {
                 const sidebar = document.getElementById('filterSidebarDesktop');
+                const mobileFilterBody = document.getElementById('mobileFilterBody');
                 const conferences = [...new Set(products.map(p => p.conference))].sort();
-                sidebar.innerHTML = `
-                    <div class="filter-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-5);">
-                        <h3>Filters</h3>
-                        <button class="modal-close" id="closeFilterSidebarBtn"><i class="fas fa-times"></i></button>
-                    </div>
-                    <div class="filter-body">
-                        <div class="filter-group">
-                            <h4>Conference</h4>
-                            <div id="conferenceFilters">${conferences.map(conf => `<label><input type="checkbox" value="${conf}" name="conference"><span>${conf}</span></label>`).join('')}</div>
-                        </div>
-                        <div class="filter-group">
-                            <h4>Team</h4>
-                            <div id="teamFilters"><p style="font-size: var(--text-sm); color: var(--text-muted);">Select a conference first.</p></div>
-                        </div>
-                         <button class="btn btn-ghost" id="clearFiltersBtn" style="width: 100%; margin-top: 1rem;">Clear All Filters</button>
-                    </div>`;
 
-                sidebar.querySelector('#clearFiltersBtn').addEventListener('click', () => {
-                    document.querySelectorAll('#conferenceFilters input, #teamFilters input').forEach(cb => cb.checked = false);
-                    populateTeamCheckboxes();
+                const filterContentHTML = `
+                    <div class="filter-group">
+                        <h4>Conference</h4>
+                        <div class="conference-filters">${conferences.map(conf => `<label><input type="checkbox" value="${conf}" name="conference"><span>${conf}</span></label>`).join('')}</div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Team</h4>
+                        <div class="team-filters"><p style="font-size: var(--text-sm); color: var(--text-muted);">Select a conference first.</p></div>
+                    </div>
+                    <button class="btn btn-ghost clear-filters-btn" style="width: 100%; margin-top: 1rem;">Clear All Filters</button>
+                `;
+
+                sidebar.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-5);">
+                        <h3>Filters</h3>
+                    </div>
+                    <div class="filter-body">${filterContentHTML}</div>
+                `;
+                mobileFilterBody.innerHTML = filterContentHTML;
+
+                document.querySelectorAll('.clear-filters-btn').forEach(btn => btn.addEventListener('click', () => {
+                    state.activeFilters.conferences = [];
+                    state.activeFilters.teams = [];
+                    syncFilterUI();
                     render();
-                });
+                }));
             }
 
             function populateTeamCheckboxes() {
-                const teamFiltersContainer = document.getElementById('teamFilters');
-                const selectedConferences = Array.from(document.querySelectorAll('#conferenceFilters input:checked')).map(cb => cb.value);
-                if (selectedConferences.length === 0) {
-                    teamFiltersContainer.innerHTML = `<p style="font-size: var(--text-sm); color: var(--text-muted);">Select a conference to see teams.</p>`;
-                    return;
+                const { conferences } = state.activeFilters;
+                let teamsHTML = `<p style="font-size: var(--text-sm); color: var(--text-muted);">Select a conference to see teams.</p>`;
+                if (conferences.length > 0) {
+                    const teamsToDisplay = [...new Set(products.filter(p => conferences.includes(p.conference)).map(p => p.team))].sort();
+                    teamsHTML = teamsToDisplay.map(team => `<label><input type="checkbox" value="${team}" name="team"><span>${team}</span></label>`).join('');
                 }
-                const teamsToDisplay = [...new Set(products.filter(p => selectedConferences.includes(p.conference)).map(p => p.team))].sort();
-                teamFiltersContainer.innerHTML = teamsToDisplay.map(team => `<label><input type="checkbox" value="${team}" name="team"><span>${team}</span></label>`).join('');
+                document.querySelectorAll('.team-filters').forEach(container => {
+                    container.innerHTML = teamsHTML;
+                });
             }
 
             function handleProductGridClick(event) {
@@ -1990,48 +2349,92 @@
                 const productId = parseInt(productCard.dataset.productId);
                 const action = actionButton.dataset.action;
                 if (action === 'quick-view') openQuickView(productId);
-                else if (action === 'wishlist') toggleWishlist(productId, actionButton);
+                else if (action === 'wishlist') toggleWishlist(productId, actionButton)
+                else if (action === 'add-to-cart') handleAddToCartFromCard(productCard);
             }
 
             function openQuickView(productId) {
                 const product = products.find(p => p.id === productId);
                 if (!product) return;
-                quickViewModal.dataset.productId = productId;
                 document.getElementById('quickViewTitle').textContent = product.name;
                 document.getElementById('quickViewTeam').textContent = product.team;
-                document.getElementById('quickViewImage').innerHTML = `<img src="${product.image}" alt="${product.name}">`;
-                document.getElementById('playerName').value = '';
-                document.getElementById('playerNumber').value = '';
-                document.querySelector('input[name="customizationStyle"][value="printed"]').checked = true;
-                updatePrice();
-                toggleCustomizationVisibility(); // Ensure it's hidden on open
+                document.getElementById('quickViewImage').innerHTML = product.image;
                 showModal('quickViewModal');
             }
 
-            function handleAddToCart() {
-                const productId = parseInt(quickViewModal.dataset.productId);
+            function handleAddToCartFromCard(card) {
+                const productId = parseInt(card.dataset.productId);
                 const product = products.find(p => p.id === productId);
-                const selectedStyle = document.querySelector('input[name="customizationStyle"]:checked').value;
-                const finalPrice = parseInt(document.getElementById('totalPrice').textContent);
+                if (!product) return;
 
-                const cartItem = {
-                    id: Date.now(),
-                    productId: productId,
-                    name: product.name,
-                    team: product.team,
-                    playerName: document.getElementById('playerName').value.trim(),
-                    playerNumber: document.getElementById('playerNumber').value.trim(),
-                    customizationStyle: selectedStyle, // "printed" or "embroidered"
-                    basePrice: product.price, // Store base price for reference
+                let name = product.name;
+                const basePrice = product.price;
+                const image = product.image;
+                const imgSrc = image.match(/src="([^"]+)"/)[1];
+
+                const sizeSelect = card.querySelector('.size-select');
+                const nameInput = card.querySelector('input[type="text"]');
+                const numberInput = card.querySelector('input[type="number"]');
+                const finishSelect = card.querySelector('.finish-select');
+
+                const selectedSize = sizeSelect.value;
+                if (!selectedSize) {
+                    alert('Please select a size.');
+                    sizeSelect.style.border = '2px solid red';
+                    return;
+                }
+                sizeSelect.style.border = '';
+
+                const customName = nameInput.value.trim().toUpperCase();
+                const customNumber = numberInput.value.trim();
+
+                if (!customName || !customNumber) {
+                    alert('Please provide a player name and number.');
+                    if (!customName) nameInput.style.border = '2px solid red'; else nameInput.style.border = '';
+                    if (!customNumber) numberInput.style.border = '2px solid red'; else numberInput.style.border = '';
+                    return;
+                }
+                nameInput.style.border = '';
+                numberInput.style.border = '';
+
+                let finalPrice = basePrice;
+                let finalName = `${name} (Size: ${selectedSize})`;
+                let customizationDetails = [];
+
+                if (customName && customNumber) {
+                    customizationDetails.push(`${customName} #${customNumber}`);
+                    const selectedFinish = finishSelect.options[finishSelect.selectedIndex];
+                    const priceAdd = parseFloat(selectedFinish.getAttribute('data-price-add'));
+                    finalPrice += priceAdd;
+                    if (priceAdd > 0) {
+                        customizationDetails.push(selectedFinish.textContent.split('(')[0].trim());
+                    }
+                }
+
+                if (customizationDetails.length > 0) {
+                    finalName += `, ${customizationDetails.join(', ')}`;
+                }
+
+                const newItem = {
+                    name: finalName,
                     price: finalPrice,
-                    image: product.image, // Store image path
-                    timestamp: new Date().toISOString() // Add timestamp for consistency
+                    image: imgSrc,
                 };
-                cart.push(cartItem);
+
+                addToCart(newItem);
+            }
+
+            function addToCart(item) {
+                const existingItem = cart.find(cartItem => cartItem.name === item.name);
+
+                if (existingItem) {
+                    existingItem.quantity = (existingItem.quantity || 1) + 1;
+                } else {
+                    cart.push({ ...item, quantity: 1 });
+                }
                 localStorage.setItem('cart', JSON.stringify(cart));
                 updateCartIcon();
-                closeModal('quickViewModal');
-                showToast(`${product.name} added to cart!`, 'fas fa-check-circle');
+                showToast(`${item.name.split('(')[0].trim()} added to cart!`, 'fas fa-check-circle');
             }
 
             function toggleWishlist(productId, button) {
@@ -2059,70 +2462,108 @@
                     cartFooter.style.display = 'block';
                     let subtotal = 0;
                     cart.forEach(item => {
-                        const product = products.find(p => p.id === item.productId);
-                        if (!product) return;
-
-                        subtotal += item.price;
-                        const itemEl = document.createElement('div'); // Use item.id for unique key
+                        subtotal += item.price * (item.quantity || 1);
+                        const itemEl = document.createElement('div');
                         itemEl.className = 'cart-item';
-                        itemEl.dataset.cartId = item.id;
+                        itemEl.dataset.itemName = item.name;
                         itemEl.innerHTML = `
                             <div class="cart-item-image"><img src="${item.image}" alt="${item.name}"></div>
                             <div class="cart-item-details">
                                 <h4>${item.name}</h4>
-                                <div class="cart-item-customization">
-                                    ${item.playerName ? `Name: ${item.playerName}` : ''}
-                                    ${item.playerNumber ? ` Number: #${item.playerNumber}` : ''}
-                                    ${item.customizationStyle ? `<br>Style: ${item.customizationStyle.charAt(0).toUpperCase() + item.customizationStyle.slice(1)}` : ''}
-                                </div>
                             </div> 
                             <div class="cart-item-actions">
-                                <div class="cart-item-price">${item.price} AED</div>
+                                <div class="cart-item-price">${item.price} AED x ${item.quantity || 1}</div>
                                 <button class="cart-item-remove-btn" data-action="remove-from-cart">Remove</button>
                             </div>
                         `;
                         container.appendChild(itemEl);
                     });
-                    subtotalEl.textContent = `${subtotal} AED`;
+                    subtotalEl.textContent = `${subtotal.toFixed(2)} AED`;
                 }
                 showModal('cartModal');
             }
 
-            function updatePrice() {
-                const product = products.find(p => p.id === parseInt(quickViewModal.dataset.productId));
-                if (!product) return;
+            function updateCardPrice(card) {
+                if (!card) return;
+                const priceEl = card.querySelector('.product-price');
+                const basePrice = parseFloat(priceEl.dataset.basePrice);
+                const finishSelect = card.querySelector('.finish-select');
+                const finishGroup = card.querySelector('.finish-options-group');
 
-                const basePrice = product.price; // 85
-                const embroideryCost = 15;
-                const selectedStyle = document.querySelector('input[name="customizationStyle"]:checked').value;
-
-                const customizationStyleGroup = document.getElementById('customizationStyleGroup');
-                let finalPrice = basePrice;
-
-                // Only add embroidery cost if the style options are visible and 'embroidered' is selected
-                if (customizationStyleGroup.style.display !== 'none' && selectedStyle === 'embroidered') {
-                    finalPrice += embroideryCost;
+                let priceAdd = 0;
+                if (finishGroup && finishGroup.style.display !== 'none') {
+                    priceAdd = parseFloat(finishSelect.options[finishSelect.selectedIndex].dataset.priceAdd);
                 }
-                document.getElementById('totalPrice').textContent = `${finalPrice} AED`;
+
+                const newPrice = basePrice + priceAdd;
+                priceEl.textContent = `${newPrice} AED`;
             }
 
-            function toggleCustomizationVisibility() {
-                const playerName = document.getElementById('playerName').value.trim();
-                const playerNumber = document.getElementById('playerNumber').value.trim();
-                const customizationStyleGroup = document.getElementById('customizationStyleGroup');
+            function toggleCardFinishOptionsVisibility(inputElement) {
+                const card = inputElement.closest('.product-card');
+                if (!card) return;
 
-                const shouldShow = playerName !== '' || playerNumber !== '';
-                customizationStyleGroup.style.display = shouldShow ? 'block' : 'none';
-                updatePrice(); // Recalculate price whenever visibility changes
+                const nameInput = card.querySelector('input[type="text"]');
+                const numberInput = card.querySelector('input[type="number"]');
+                const finishGroup = card.querySelector('.finish-options-group');
+
+                if (!nameInput || !numberInput || !finishGroup) return;
+
+                const shouldShow = nameInput.value.trim() !== '' || numberInput.value.trim() !== '';
+                finishGroup.style.display = shouldShow ? 'block' : 'none';
+
+                if (!shouldShow) {
+                    card.querySelector('.finish-select').value = 'printed';
+                }
+                updateCardPrice(card);
             }
 
-            function removeFromCart(cartId) {
-                const itemIndex = cart.findIndex(item => item.id === cartId);
-                if (itemIndex > -1) {
-                    cart.splice(itemIndex, 1);
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    updateCartIcon();
-                    showCartModal(); // Re-render the cart modal
+            function removeFromCart(itemName) {
+                cart = cart.filter(item => item.name !== itemName);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartIcon();
+                showCartModal(); // Re-render the cart modal
+            }
+
+            // --- CHATBOT FUNCTIONS ---
+            function toggleChatWindow() {
+                const chatWindow = document.getElementById('chat-window');
+                chatWindow.classList.toggle('hidden');
+            }
+
+            function addMessage(message, sender) {
+                const chatBody = document.getElementById('chat-body');
+                const messageEl = document.createElement('div');
+                messageEl.className = `chat-message ${sender}`;
+                messageEl.innerHTML = `<p>${message}</p>`;
+                chatBody.appendChild(messageEl);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+
+            function getBotResponse(userMessage) {
+                const msg = userMessage.toLowerCase();
+                if (msg.includes('sizing') || msg.includes('size') || msg.includes('fit')) {
+                    return 'Our jerseys fit true to size, similar to standard athletic wear. For a looser, more casual fit, we recommend sizing up. You can also click the "View Size Guide" button above the jersey listings for detailed measurements!';
+                } else if (msg.includes('shipping') || msg.includes('delivery')) {
+                    return 'We offer standard shipping (3-5 business days) for 25 AED and express shipping (1-2 business days) for 40 AED within the UAE. International shipping rates and times vary by destination.';
+                } else if (msg.includes('return') || msg.includes('refund')) {
+                    return 'We accept returns on non-customized items within 14 days of delivery. The item must be in its original, unworn condition. To start a return, please contact our support team via WhatsApp. Please note, all customized jerseys are final sale.';
+                } else if (msg.includes('custom') || msg.includes('name') || msg.includes('number')) {
+                    return 'You can customize any jersey with a name and number directly on the product page! Just type in the fields before adding to the cart. We offer both printed and premium embroidered finishes for an additional fee.';
+                } else if (msg.includes('hello') || msg.includes('hi')) {
+                    return 'Hello there! How can I assist you today? Ask me about sizing, shipping, returns, or customization.';
+                } else {
+                    return "I can help with questions about sizing, shipping, returns, and customization. If you need more specific help, please contact our support team via WhatsApp or Instagram. How can I assist you further?";
+                }
+            }
+
+            function handleSendMessage() {
+                const chatInput = document.getElementById('chat-input');
+                const message = chatInput.value.trim();
+                if (message) {
+                    addMessage(message, 'user');
+                    chatInput.value = '';
+                    setTimeout(() => { addMessage(getBotResponse(message), 'bot'); }, 1000);
                 }
             }
 
@@ -2278,7 +2719,7 @@
 
             function updateCartIcon() {
                 const cartBadge = document.getElementById('cartBadge');
-                cartBadge.textContent = cart.length;
+                cartBadge.textContent = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
                 cartBadge.classList.toggle('show', cart.length > 0);
             }
 
