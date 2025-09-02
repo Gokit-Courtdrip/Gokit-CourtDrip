@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Napoli Jerseys | GOKIT × CourtDripDxb</title>
+    <title>Napoli Jerseys | GOKIT</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap"
         rel="stylesheet">
@@ -348,6 +348,73 @@
             font-weight: 600;
         }
 
+        /* Customization Section */
+        .customization-section {
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+        }
+
+        .custom-option {
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .custom-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: #0099ff;
+            background: rgba(0, 153, 255, 0.1);
+        }
+
+        .patch-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .patch-option label {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .patch-checkbox {
+            display: none;
+            /* Hide the default checkbox */
+        }
+
+        .patch-checkbox:checked+label {
+            background: linear-gradient(135deg, #0099ff, #87ceeb);
+            border-color: #0099ff;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
         .add-to-cart {
             width: 100%;
             background: linear-gradient(135deg, #0099ff, #87ceeb);
@@ -430,7 +497,7 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">GOKIT × CourtDripDxb</a>
+            <a href="index.html" class="logo">GOKIT</a>
             <div class="nav-links">
                 <a href="serie-a.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to Serie A</a>
                 <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
@@ -451,7 +518,7 @@
 
     <div class="choice-buttons">
         <button class="choice-btn active" onclick="showSection('new')">
-            <i class="fas fa-sparkles"></i> New Season (2019–2025)
+            <i class="fas fa-sparkles"></i> New Season (2019-Present)
         </button>
         <button class="choice-btn" onclick="showSection('retro')">
             <i class="fas fa-history"></i> Retro (2018 & older)
@@ -464,19 +531,14 @@
         <div class="product-grid">
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="2024/25 Home Jersey">
+                    <img src="img/napoli/2024-25-home.png" alt="2024/25 Home Jersey">
                     <div class="product-badge">New</div>
                 </div>
                 <div class="product-content">
                     <h3 class="product-name">2024/25 Home Jersey</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> EA7 Design</li>
-                        <li><i class="fas fa-check"></i> Conte's Return</li>
-                        <li><i class="fas fa-check"></i> Kvara & Osimhen</li>
-                        <li><i class="fas fa-check"></i> Champions League</li>
-                    </ul>
+                    <p class="product-features">The latest Azzurri home kit from EA7, ready for a new era of ambition
+                        under Antonio Conte.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -487,6 +549,32 @@
                             <div class="size-option" data-size="XXL">XXL</div>
                         </div>
                     </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., KVARATSKHELIA 77">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="sa-patch-1" class="patch-checkbox"
+                                        data-patch-name="Serie A">
+                                    <label for="sa-patch-1">Serie A</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-patch-1" class="patch-checkbox"
+                                        data-patch-name="UCL">
+                                    <label for="ucl-patch-1">Champions League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-1" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-1">Respect</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button class="add-to-cart" disabled>
                         <i class="fas fa-cart-plus"></i> Select Size First
                     </button>
@@ -495,19 +583,14 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="2022/23 Serie A Champions">
+                    <img src="img/napoli/2022-23-home.png" alt="2022/23 Serie A Champions">
                     <div class="product-badge">Champions</div>
                 </div>
                 <div class="product-content">
                     <h3 class="product-name">2022/23 Serie A Champions</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-star"></i> Scudetto Winners</li>
-                        <li><i class="fas fa-star"></i> Spalletti Magic</li>
-                        <li><i class="fas fa-star"></i> Historic Season</li>
-                        <li><i class="fas fa-star"></i> Azzurri Glory</li>
-                    </ul>
+                    <p class="product-features">The historic Scudetto-winning kit, worn as Spalletti's side brought
+                        the title back to Naples after 33 years.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -518,6 +601,37 @@
                             <div class="size-option" data-size="XXL">XXL</div>
                         </div>
                     </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., OSIMHEN 9">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="sa-patch-2" class="patch-checkbox"
+                                        data-patch-name="Serie A">
+                                    <label for="sa-patch-2">Serie A</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-patch-2" class="patch-checkbox"
+                                        data-patch-name="UCL">
+                                    <label for="ucl-patch-2">Champions League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="scudetto-patch-2" class="patch-checkbox"
+                                        data-patch-name="Scudetto">
+                                    <label for="scudetto-patch-2">Scudetto</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-2" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-2">Respect</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button class="add-to-cart" disabled>
                         <i class="fas fa-cart-plus"></i> Select Size First
                     </button>
@@ -526,19 +640,14 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="2021/22 Europa League">
+                    <img src="img/napoli/2021-22-away.png" alt="2021/22 Europa League">
                     <div class="product-badge">European</div>
                 </div>
                 <div class="product-content">
                     <h3 class="product-name">2021/22 Europa League</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-trophy"></i> European Campaign</li>
-                        <li><i class="fas fa-trophy"></i> Insigne Farewell</li>
-                        <li><i class="fas fa-trophy"></i> Spalletti Era</li>
-                        <li><i class="fas fa-trophy"></i> Napoli Pride</li>
-                    </ul>
+                    <p class="product-features">A vibrant kit from a strong European campaign, marking the final season
+                        of club legend Lorenzo Insigne.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -549,6 +658,32 @@
                             <div class="size-option" data-size="XXL">XXL</div>
                         </div>
                     </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., INSIGNE 24">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="sa-patch-3" class="patch-checkbox"
+                                        data-patch-name="Serie A">
+                                    <label for="sa-patch-3">Serie A</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="uel-patch-3" class="patch-checkbox"
+                                        data-patch-name="UEL">
+                                    <label for="uel-patch-3">Europa League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-3" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-3">Respect</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button class="add-to-cart" disabled>
                         <i class="fas fa-cart-plus"></i> Select Size First
                     </button>
@@ -557,18 +692,13 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="2019/20 Coppa Italia Winners">
+                    <img src="img/napoli/2019-20-home.png" alt="2019/20 Coppa Italia Winners">
                 </div>
                 <div class="product-content">
                     <h3 class="product-name">2019/20 Coppa Italia Winners</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-fire"></i> Coppa Italia</li>
-                        <li><i class="fas fa-fire"></i> Gattuso Triumph</li>
-                        <li><i class="fas fa-fire"></i> Juventus Final</li>
-                        <li><i class="fas fa-fire"></i> Trophy Glory</li>
-                    </ul>
+                    <p class="product-features">The kit worn during the triumphant Coppa Italia final victory over
+                        Juventus, secured under Gennaro Gattuso.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -577,6 +707,27 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., MERTENS 14">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="sa-patch-4" class="patch-checkbox"
+                                        data-patch-name="Serie A">
+                                    <label for="sa-patch-4">Serie A</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="coppa-patch-4" class="patch-checkbox"
+                                        data-patch-name="Coppa Italia">
+                                    <label for="coppa-patch-4">Coppa Italia</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -593,19 +744,14 @@
         <div class="product-grid">
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="1986/87 Serie A Champions">
+                    <img src="img/napoli/1986-87-home.png" alt="1986/87 Serie A Champions">
                     <div class="product-badge">Historic</div>
                 </div>
                 <div class="product-content">
                     <h3 class="product-name">1986/87 Serie A Champions</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-crown"></i> First Scudetto</li>
-                        <li><i class="fas fa-crown"></i> Maradona Magic</li>
-                        <li><i class="fas fa-crown"></i> Historic Achievement</li>
-                        <li><i class="fas fa-crown"></i> Napoli Legend</li>
-                    </ul>
+                    <p class="product-features">The legendary Buitoni kit from the first-ever Scudetto season,
+                        immortalized by the divine Diego Maradona.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -616,6 +762,27 @@
                             <div class="size-option" data-size="XXL">XXL</div>
                         </div>
                     </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., MARADONA 10">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="sa-patch-5" class="patch-checkbox"
+                                        data-patch-name="Serie A">
+                                    <label for="sa-patch-5">Serie A</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="scudetto-patch-5" class="patch-checkbox"
+                                        data-patch-name="Scudetto">
+                                    <label for="scudetto-patch-5">Scudetto</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button class="add-to-cart" disabled>
                         <i class="fas fa-cart-plus"></i> Select Size First
                     </button>
@@ -624,19 +791,14 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="1989/90 Serie A Champions">
+                    <img src="img/napoli/1989-90-home.png" alt="1989/90 Serie A Champions">
                     <div class="product-badge">Legendary</div>
                 </div>
                 <div class="product-content">
                     <h3 class="product-name">1989/90 Serie A Champions</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-trophy"></i> Second Scudetto</li>
-                        <li><i class="fas fa-trophy"></i> Maradona Era</li>
-                        <li><i class="fas fa-trophy"></i> Golden Years</li>
-                        <li><i class="fas fa-trophy"></i> Azzurri Dynasty</li>
-                    </ul>
+                    <p class="product-features">The iconic Mars-sponsored kit from the second Scudetto victory, the
+                        peak of the Maradona era.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -647,6 +809,27 @@
                             <div class="size-option" data-size="XXL">XXL</div>
                         </div>
                     </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., MARADONA 10">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="sa-patch-6" class="patch-checkbox"
+                                        data-patch-name="Serie A">
+                                    <label for="sa-patch-6">Serie A</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="scudetto-patch-6" class="patch-checkbox"
+                                        data-patch-name="Scudetto">
+                                    <label for="scudetto-patch-6">Scudetto</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button class="add-to-cart" disabled>
                         <i class="fas fa-cart-plus"></i> Select Size First
                     </button>
@@ -655,19 +838,14 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="1988/89 UEFA Cup Winners">
+                    <img src="img/napoli/1988-89-home.png" alt="1988/89 UEFA Cup Winners">
                     <div class="product-badge">Miracle</div>
                 </div>
                 <div class="product-content">
                     <h3 class="product-name">1988/89 UEFA Cup Winners</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-magic"></i> UEFA Cup Glory</li>
-                        <li><i class="fas fa-magic"></i> Stuttgart Final</li>
-                        <li><i class="fas fa-magic"></i> European Trophy</li>
-                        <li><i class="fas fa-magic"></i> Maradona's Cup</li>
-                    </ul>
+                    <p class="product-features">The kit from Napoli's first and only major European triumph, the UEFA
+                        Cup, led by the incomparable Maradona.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -678,6 +856,27 @@
                             <div class="size-option" data-size="XXL">XXL</div>
                         </div>
                     </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., CARECA 9">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="sa-patch-7" class="patch-checkbox"
+                                        data-patch-name="Serie A">
+                                    <label for="sa-patch-7">Serie A</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="uefa-cup-patch-7" class="patch-checkbox"
+                                        data-patch-name="UEFA Cup">
+                                    <label for="uefa-cup-patch-7">UEFA Cup</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button class="add-to-cart" disabled>
                         <i class="fas fa-cart-plus"></i> Select Size First
                     </button>
@@ -686,19 +885,14 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="1987 Coppa Italia Winners">
+                    <img src="img/napoli/1986-87-home.png" alt="1987 Coppa Italia Winners">
                     <div class="product-badge">Classic</div>
                 </div>
                 <div class="product-content">
                     <h3 class="product-name">1987 Coppa Italia Winners</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-star"></i> First Coppa Italia</li>
-                        <li><i class="fas fa-star"></i> Atalanta Final</li>
-                        <li><i class="fas fa-star"></i> Double Season</li>
-                        <li><i class="fas fa-star"></i> Historic Year</li>
-                    </ul>
+                    <p class="product-features">The kit from the first Coppa Italia win of the Maradona era, completing
+                        a historic domestic double.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -707,6 +901,20 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., GIORDANO 9">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <input type="checkbox" id="coppa-patch-8" class="patch-checkbox"
+                                    data-patch-name="Coppa Italia">
+                                <label for="coppa-patch-8">Coppa Italia</label>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -719,131 +927,118 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2025 GOKIT × CourtDripDxb — Napoli Jerseys</p>
+        <p>© 2025 GOKIT — Napoli Jerseys</p>
     </footer>
 
     <script>
-        // Cart functionality - fully compatible with cart.html
+        // --- CART STATE ---
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // Show/hide sections function
+        // --- UI FUNCTIONS ---
         function showSection(type) {
-            // Hide all sections
             document.querySelectorAll('.product-section').forEach(section => {
                 section.style.display = 'none';
                 section.classList.remove('active');
             });
-
-            // Show selected section
             const targetSection = document.getElementById(type);
             if (targetSection) {
                 targetSection.style.display = 'block';
                 targetSection.classList.add('active');
             }
-
-            // Update button states
             document.querySelectorAll('.choice-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-
-            // Add active class to clicked button
             if (event && event.target) {
                 event.target.classList.add('active');
             }
         }
 
-        // Size selection functionality
-        document.addEventListener('DOMContentLoaded', function () {
-            // Handle size selection for all product cards
-            document.querySelectorAll('.size-option').forEach(option => {
-                option.addEventListener('click', function () {
-                    const card = this.closest('.product-card');
-                    const sizeOptions = card.querySelectorAll('.size-option');
-                    const addToCartBtn = card.querySelector('.add-to-cart');
+        function updatePrice(productCard) {
+            const basePrice = 75;
+            let finalPrice = basePrice;
+            const customNameInput = productCard.querySelector('.custom-input');
+            if (customNameInput && customNameInput.value.trim() !== '') {
+                finalPrice += 15;
+            }
+            const checkedPatches = productCard.querySelectorAll('.patch-checkbox:checked');
+            finalPrice += (checkedPatches.length * 5);
+            productCard.querySelector('.product-price').textContent = `AED ${finalPrice}`;
+        }
 
-                    // Remove selected class from all size options in this card
-                    sizeOptions.forEach(opt => opt.classList.remove('selected'));
+        function resetProductCard(productCard) {
+            productCard.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+            const addToCartBtn = productCard.querySelector('.add-to-cart');
+            addToCartBtn.disabled = true;
+            addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
+            const customInput = productCard.querySelector('.custom-input');
+            if (customInput) customInput.value = '';
+            productCard.querySelectorAll('.patch-checkbox').forEach(cb => cb.checked = false);
+            productCard.querySelector('.product-price').textContent = 'AED 75';
+        }
 
-                    // Add selected class to clicked option
-                    this.classList.add('selected');
+        // --- CART LOGIC ---
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
 
-                    // Enable add to cart button and update text
-                    addToCartBtn.disabled = false;
-                    addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
-                });
-            });
+        function addToCart(button) {
+            const productCard = button.closest('.product-card');
+            const productName = productCard.querySelector('.product-name').textContent.trim();
+            const productPriceText = productCard.querySelector('.product-price').textContent.trim();
+            const productImage = productCard.querySelector('img').src;
+            const selectedSize = productCard.querySelector('.size-option.selected')?.getAttribute('data-size');
 
-            // Handle add to cart functionality
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', function () {
-                    if (this.disabled) return;
-
-                    const card = this.closest('.product-card');
-                    const productName = card.querySelector('.product-name').textContent;
-                    const productPrice = card.querySelector('.product-price').textContent;
-                    const selectedSize = card.querySelector('.size-option.selected');
-                    const productImage = card.querySelector('img').src;
-
-                    if (!selectedSize) {
-                        alert('Please select a size first!');
-                        return;
-                    }
-
-                    const cartItem = {
-                        id: Date.now() + Math.random(), // Unique ID
-                        name: productName,
-                        price: productPrice,
-                        size: selectedSize.textContent,
-                        image: productImage,
-                        team: 'Napoli',
-                        quantity: 1
-                    };
-
-                    // Add to cart array
-                    cart.push(cartItem);
-
-                    // Save to localStorage
-                    localStorage.setItem('cart', JSON.stringify(cart));
-
-                    // Visual feedback
-                    this.innerHTML = '<i class="fas fa-check"></i> Added to Cart!';
-                    this.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
-
-                    // Reset button after 2 seconds
-                    setTimeout(() => {
-                        this.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
-                        this.style.background = 'linear-gradient(135deg, #0099ff, #87ceeb)';
-
-                        // Reset size selection
-                        const sizeOptions = card.querySelectorAll('.size-option');
-                        sizeOptions.forEach(opt => opt.classList.remove('selected'));
-                        this.disabled = true;
-                        this.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
-                    }, 2000);
-
-                    // Show success message
-                    showNotification('Napoli jersey added to cart successfully!', 'success');
-                });
-            });
-        });
-
-        // Notification function
-        function showNotification(message, type = 'success') {
-            // Remove existing notifications
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) {
-                existingNotification.remove();
+            if (!selectedSize) {
+                alert('Please select a size first!');
+                return;
             }
 
-            // Create notification element
+            const customNameInput = productCard.querySelector('.custom-input');
+            const customName = customNameInput ? customNameInput.value.trim() : '';
+            const selectedPatches = Array.from(productCard.querySelectorAll('.patch-checkbox:checked'))
+                .map(cb => cb.getAttribute('data-patch-name'));
+
+            let nameInCart = `${productName} (Size: ${selectedSize}`;
+            if (customName) nameInCart += `, Name: ${customName.toUpperCase()}`;
+            if (selectedPatches.length > 0) nameInCart += `, Patches: ${selectedPatches.join(', ')}`;
+            nameInCart += ')';
+
+            const priceMatch = productPriceText.match(/\d+/);
+            const finalPrice = priceMatch ? parseFloat(priceMatch[0]) : 75;
+
+            const existingItemIndex = cart.findIndex(item => item.name === nameInCart);
+
+            if (existingItemIndex !== -1) {
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                cart.push({
+                    name: nameInCart,
+                    price: finalPrice,
+                    image: productImage,
+                    size: selectedSize,
+                    customName: customName,
+                    patches: selectedPatches,
+                    quantity: 1
+                });
+            }
+
+            saveCart();
+            updateCartCount();
+            showNotification(`${productName} added to cart!`);
+            resetProductCard(productCard);
+        }
+
+        // --- NOTIFICATIONS & UI UPDATES ---
+        function showNotification(message, type = 'success') {
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) existingNotification.remove();
+
             const notification = document.createElement('div');
             notification.className = `notification ${type}`;
             notification.innerHTML = `
                 <i class="fas fa-check-circle"></i>
                 <span>${message}</span>
             `;
-
-            // Add notification styles
             notification.style.cssText = `
                 position: fixed;
                 top: 100px;
@@ -861,21 +1056,13 @@
                 transform: translateX(400px);
                 transition: transform 0.3s ease;
             `;
-
             document.body.appendChild(notification);
 
-            // Animate in
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-
-            // Remove after 3 seconds
+            setTimeout(() => { notification.style.transform = 'translateX(0)'; }, 100);
             setTimeout(() => {
                 notification.style.transform = 'translateX(400px)';
                 setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.remove();
-                    }
+                    if (notification.parentNode) notification.remove();
                 }, 300);
             }, 3000);
         }
@@ -883,103 +1070,49 @@
         // Update cart count in navbar
         function updateCartCount() {
             const cartCount = cart.length;
-            const cartLink = document.querySelector('.nav-link[href="cart.html"]');
-            if (cartLink && cartCount > 0) {
-                cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart (${cartCount})`;
+            const cartLink = document.querySelector('a[href="cart.html"]');
+            if (cartLink) {
+                cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart ${cartCount > 0 ? `(${cartCount})` : ''}`;
             }
         }
 
-        // Initialize cart count on page load
+        // --- INITIALIZATION ---
+        function initializeProductCard(productCard) {
+            productCard.querySelectorAll('.size-option').forEach(sizeOption => {
+                sizeOption.addEventListener('click', function () {
+                    productCard.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const addToCartBtn = productCard.querySelector('.add-to-cart');
+                    addToCartBtn.disabled = false;
+                    addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+                });
+            });
+
+            const customInput = productCard.querySelector('.custom-input');
+            if (customInput) customInput.addEventListener('input', () => updatePrice(productCard));
+
+            productCard.querySelectorAll('.patch-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', () => updatePrice(productCard));
+            });
+
+            productCard.querySelector('.add-to-cart').addEventListener('click', function () {
+                addToCart(this);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
             updateCartCount();
-        });
+            document.querySelectorAll('.product-card').forEach(card => initializeProductCard(card));
 
-        // Smooth scrolling for better UX
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add loading animation for images
-        document.addEventListener('DOMContentLoaded', function () {
             const images = document.querySelectorAll('.product-card img');
             images.forEach(img => {
                 img.addEventListener('load', function () {
                     this.style.opacity = '1';
                 });
-
-                // Set initial opacity
                 img.style.opacity = '0';
                 img.style.transition = 'opacity 0.3s ease';
             });
         });
-
-        // Keyboard navigation support
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                // Clear all size selections
-                document.querySelectorAll('.size-option.selected').forEach(option => {
-                    option.classList.remove('selected');
-                });
-
-                // Disable all add to cart buttons
-                document.querySelectorAll('.add-to-cart').forEach(btn => {
-                    btn.disabled = true;
-                    btn.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
-                });
-            }
-        });
-
-        // Napoli-specific animations and effects
-        document.addEventListener('DOMContentLoaded', function () {
-            // Add Forza Napoli effect on page load
-            setTimeout(() => {
-                const heroTitle = document.querySelector('.hero h1');
-                if (heroTitle) {
-                    heroTitle.style.animation = 'pulse 2s ease-in-out';
-                }
-            }, 1000);
-
-            // Add special hover effects for Napoli cards
-            document.querySelectorAll('.product-card').forEach(card => {
-                card.addEventListener('mouseenter', function () {
-                    const badge = this.querySelector('.product-badge');
-                    if (badge && (badge.textContent === 'Historic' || badge.textContent === 'Legendary' || badge.textContent === 'Miracle')) {
-                        badge.style.animation = 'glow 1s ease-in-out infinite alternate';
-                    }
-                });
-
-                card.addEventListener('mouseleave', function () {
-                    const badge = this.querySelector('.product-badge');
-                    if (badge) {
-                        badge.style.animation = 'none';
-                    }
-                });
-            });
-        });
-
-        // Add CSS animations dynamically
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0%, 100% { transform: scale(1); }
-                50% { transform: scale(1.05); }
-            }
-            
-            @keyframes glow {
-                0% { box-shadow: 0 0 5px rgba(0, 153, 255, 0.5); }
-                100% { box-shadow: 0 0 20px rgba(0, 153, 255, 0.8), 0 0 30px rgba(135, 206, 235, 0.5); }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 

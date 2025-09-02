@@ -237,26 +237,23 @@
             position: relative;
             height: 240px;
             overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .league-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: auto;
+            height: auto;
+            max-width: 60%;
+            max-height: 60%;
+            object-fit: contain;
             transition: transform 0.4s ease;
         }
 
         .league-card:hover .league-image {
             transform: scale(1.05);
-        }
-
-        .league-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
         }
 
         .league-badge {
@@ -459,9 +456,8 @@
             <!-- Premier League -->
             <div class="league-card">
                 <div class="league-image-container">
-                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        class="league-image" alt="Premier League">
-                    <div class="league-overlay"></div>
+                    <img src="https://media.api-sports.io/football/leagues/39.png" class="league-image"
+                        alt="Premier League Logo">
                     <div class="league-badge">Most Popular</div>
                 </div>
                 <div class="league-content">
@@ -489,9 +485,8 @@
             <!-- La Liga -->
             <div class="league-card">
                 <div class="league-image-container">
-                    <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        class="league-image" alt="La Liga">
-                    <div class="league-overlay"></div>
+                    <img src="https://media.api-sports.io/football/leagues/140.png" class="league-image"
+                        alt="La Liga Logo">
                     <div class="league-badge">El Clásico</div>
                 </div>
                 <div class="league-content">
@@ -519,9 +514,8 @@
             <!-- Serie A -->
             <div class="league-card">
                 <div class="league-image-container">
-                    <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        class="league-image" alt="Serie A">
-                    <div class="league-overlay"></div>
+                    <img src="https://media.api-sports.io/football/leagues/135.png" class="league-image"
+                        alt="Serie A Logo">
                     <div class="league-badge">Tactical</div>
                 </div>
                 <div class="league-content">
@@ -549,9 +543,8 @@
             <!-- Bundesliga -->
             <div class="league-card">
                 <div class="league-image-container">
-                    <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        class="league-image" alt="Bundesliga">
-                    <div class="league-overlay"></div>
+                    <img src="https://media.api-sports.io/football/leagues/78.png" class="league-image"
+                        alt="Bundesliga Logo">
                     <div class="league-badge">Der Klassiker</div>
                 </div>
                 <div class="league-content">
@@ -579,9 +572,8 @@
             <!-- Ligue 1 -->
             <div class="league-card">
                 <div class="league-image-container">
-                    <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        class="league-image" alt="Ligue 1">
-                    <div class="league-overlay"></div>
+                    <img src="https://media.api-sports.io/football/leagues/61.png" class="league-image"
+                        alt="Ligue 1 Logo">
                     <div class="league-badge">Le Classique</div>
                 </div>
                 <div class="league-content">
@@ -609,8 +601,8 @@
             <!-- National Teams -->
             <div class="league-card">
                 <div class="league-image-container">
-                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        class="league-image" alt="National Teams">
+                    <img src="https://images.unsplash.com/photo-1618293224557-5c8a33537bdb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="league-image" alt="International flags at a stadium">
                     <div class="league-overlay"></div>
                     <div class="league-badge">International</div>
                 </div>

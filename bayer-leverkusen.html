@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bayer Leverkusen Jerseys | GOKIT × CourtDripDxb</title>
+    <title>Bayer Leverkusen Jerseys | GOKIT</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap"
         rel="stylesheet">
@@ -348,6 +348,73 @@
             font-weight: 600;
         }
 
+        /* Customization Section */
+        .customization-section {
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+        }
+
+        .custom-option {
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .custom-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: #e32221;
+            background: rgba(227, 34, 33, 0.1);
+        }
+
+        .patch-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .patch-option label {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .patch-checkbox {
+            display: none;
+            /* Hide the default checkbox */
+        }
+
+        .patch-checkbox:checked+label {
+            background: linear-gradient(135deg, #e32221, #000000);
+            border-color: #e32221;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
         .add-to-cart {
             width: 100%;
             background: linear-gradient(135deg, #e32221, #000000);
@@ -430,7 +497,7 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">GOKIT × CourtDripDxb</a>
+            <a href="index.html" class="logo">GOKIT</a>
             <div class="nav-links">
                 <a href="bundesliga.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to Bundesliga</a>
                 <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
@@ -451,7 +518,7 @@
 
     <div class="choice-buttons">
         <button class="choice-btn active" onclick="showSection('new')">
-            <i class="fas fa-sparkles"></i> New Season (2020–2025)
+            <i class="fas fa-sparkles"></i> New Season (2020-Present)
         </button>
         <button class="choice-btn" onclick="showSection('retro')">
             <i class="fas fa-history"></i> Classic Era (1988–2019)
@@ -464,19 +531,14 @@
         <div class="product-grid">
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="2023/24 Bundesliga Champions">
+                    <img src="img/bayer-leverkusen/2023-24-home.png" alt="2023/24 Bundesliga Champions">
                     <div class="product-badge">Champions</div>
                 </div>
                 <div class="product-content">
                     <h3 class="product-name">2023/24 Bundesliga Champions</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-trophy"></i> Invincible Season</li>
-                        <li><i class="fas fa-trophy"></i> Xabi Alonso Magic</li>
-                        <li><i class="fas fa-trophy"></i> Wirtz & Boniface</li>
-                        <li><i class="fas fa-trophy"></i> Historic Achievement</li>
-                    </ul>
+                    <p class="product-features">The historic kit of the 'Invincibles', worn as Xabi Alonso's side won
+                        their first-ever Bundesliga title without a single defeat.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -487,6 +549,37 @@
                             <div class="size-option" data-size="XXL">XXL</div>
                         </div>
                     </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., WIRTZ 10">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="bl-champ-patch-1" class="patch-checkbox"
+                                        data-patch-name="Bundesliga Champions">
+                                    <label for="bl-champ-patch-1">Bundesliga</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="pokal-patch-1" class="patch-checkbox"
+                                        data-patch-name="DFB-Pokal">
+                                    <label for="pokal-patch-1">DFB-Pokal</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="uel-patch-1" class="patch-checkbox"
+                                        data-patch-name="UEL">
+                                    <label for="uel-patch-1">Europa League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-1" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-1">Respect</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button class="add-to-cart" disabled>
                         <i class="fas fa-cart-plus"></i> Select Size First
                     </button>
@@ -495,19 +588,14 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="2024/25 Europa League Winners">
-                    <div class="product-badge">European Glory</div>
+                    <img src="img/bayer-leverkusen/2023-24-cup.png" alt="2023/24 DFB-Pokal Winners">
+                    <div class="product-badge">Double Winners</div>
                 </div>
                 <div class="product-content">
-                    <h3 class="product-name">2024/25 Europa League Winners</h3>
+                    <h3 class="product-name">2023/24 DFB-Pokal Winners</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-star"></i> Dublin Final</li>
-                        <li><i class="fas fa-star"></i> European Trophy</li>
-                        <li><i class="fas fa-star"></i> Alonso's Masterpiece</li>
-                        <li><i class="fas fa-star"></i> Double Winners</li>
-                    </ul>
+                    <p class="product-features">The cup-winning kit from a historic double season, worn as Die
+                        Werkself lifted the DFB-Pokal in Berlin.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -518,6 +606,32 @@
                             <div class="size-option" data-size="XXL">XXL</div>
                         </div>
                     </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., XHAKA 34">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="bl-patch-2" class="patch-checkbox"
+                                        data-patch-name="Bundesliga">
+                                    <label for="bl-patch-2">Bundesliga</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="pokal-patch-2" class="patch-checkbox"
+                                        data-patch-name="DFB-Pokal">
+                                    <label for="pokal-patch-2">DFB-Pokal</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="uel-patch-2" class="patch-checkbox"
+                                        data-patch-name="UEL">
+                                    <label for="uel-patch-2">Europa League</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button class="add-to-cart" disabled>
                         <i class="fas fa-cart-plus"></i> Select Size First
                     </button>
@@ -526,19 +640,14 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="2022/23 Champions League Semi-Final">
+                    <img src="img/bayer-leverkusen/2022-23-home.png" alt="2022/23 Europa League Semi-Final">
                     <div class="product-badge">Historic</div>
                 </div>
                 <div class="product-content">
-                    <h3 class="product-name">2022/23 Champions League Semi-Final</h3>
+                    <h3 class="product-name">2022/23 Europa League Semi-Final</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-fire"></i> European Journey</li>
-                        <li><i class="fas fa-fire"></i> Seoane's Vision</li>
-                        <li><i class="fas fa-fire"></i> Diaby & Schick</li>
-                        <li><i class="fas fa-fire"></i> BayArena Magic</li>
-                    </ul>
+                    <p class="product-features">The home kit from a strong European run that saw the team reach the
+                        semi-finals of the Europa League.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -549,6 +658,32 @@
                             <div class="size-option" data-size="XXL">XXL</div>
                         </div>
                     </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., DIABY 19">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="bl-patch-3" class="patch-checkbox"
+                                        data-patch-name="Bundesliga">
+                                    <label for="bl-patch-3">Bundesliga</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="uel-patch-3" class="patch-checkbox"
+                                        data-patch-name="UEL">
+                                    <label for="uel-patch-3">Europa League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-3" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-3">Respect</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button class="add-to-cart" disabled>
                         <i class="fas fa-cart-plus"></i> Select Size First
                     </button>
@@ -557,18 +692,13 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="2021/22 DFB-Pokal Final">
+                    <img src="img/bayer-leverkusen/2021-22-home.png" alt="2021/22 Home Jersey">
                 </div>
                 <div class="product-content">
-                    <h3 class="product-name">2021/22 DFB-Pokal Final</h3>
+                    <h3 class="product-name">2021/22 Home Jersey</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-medal"></i> Berlin Final</li>
-                        <li><i class="fas fa-medal"></i> Seoane Era</li>
-                        <li><i class="fas fa-medal"></i> Young Talents</li>
-                        <li><i class="fas fa-medal"></i> Cup Final Glory</li>
-                    </ul>
+                    <p class="product-features">A classic home design from a season that secured Champions League
+                        qualification, led by the goals of Patrik Schick.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -577,6 +707,32 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., SCHICK 14">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="bl-patch-4" class="patch-checkbox"
+                                        data-patch-name="Bundesliga">
+                                    <label for="bl-patch-4">Bundesliga</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="uel-patch-4" class="patch-checkbox"
+                                        data-patch-name="UEL">
+                                    <label for="uel-patch-4">Europa League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-4" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-4">Respect</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -593,19 +749,14 @@
         <div class="product-grid">
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="2001/02 Champions League Final">
+                    <img src="img/bayer-leverkusen/2001-02-home.png" alt="2001/02 Champions League Final">
                     <div class="product-badge">Legendary</div>
                 </div>
                 <div class="product-content">
                     <h3 class="product-name">2001/02 Champions League Final</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-crown"></i> Glasgow Final</li>
-                        <li><i class="fas fa-crown"></i> Völler's Team</li>
-                        <li><i class="fas fa-crown"></i> Ballack & Schneider</li>
-                        <li><i class="fas fa-crown"></i> European Dream</li>
-                    </ul>
+                    <p class="product-features">The legendary 'Neverkusen' kit from the heartbreaking treble
+                        runners-up season, worn in the Champions League final at Glasgow.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -616,6 +767,32 @@
                             <div class="size-option" data-size="XXL">XXL</div>
                         </div>
                     </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., BALLACK 13">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="bl-patch-5" class="patch-checkbox"
+                                        data-patch-name="Bundesliga">
+                                    <label for="bl-patch-5">Bundesliga</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-final-patch-5" class="patch-checkbox"
+                                        data-patch-name="UCL Final">
+                                    <label for="ucl-final-patch-5">UCL Final</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-5" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-5">Respect</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button class="add-to-cart" disabled>
                         <i class="fas fa-cart-plus"></i> Select Size First
                     </button>
@@ -624,19 +801,14 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="1992/93 DFB-Pokal Winners">
+                    <img src="img/bayer-leverkusen/1992-93-home.png" alt="1992/93 DFB-Pokal Winners">
                     <div class="product-badge">Cup Winners</div>
                 </div>
                 <div class="product-content">
                     <h3 class="product-name">1992/93 DFB-Pokal Winners</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-trophy"></i> First Major Trophy</li>
-                        <li><i class="fas fa-trophy"></i> Daum Era</li>
-                        <li><i class="fas fa-trophy"></i> Historic Victory</li>
-                        <li><i class="fas fa-trophy"></i> Werkself Pride</li>
-                    </ul>
+                    <p class="product-features">The kit from the club's first major trophy win, the DFB-Pokal,
+                        featuring a classic 90s design.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -647,6 +819,22 @@
                             <div class="size-option" data-size="XXL">XXL</div>
                         </div>
                     </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., KIRSTEN 9">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="bl-patch-6" class="patch-checkbox"
+                                        data-patch-name="Bundesliga">
+                                    <label for="bl-patch-6">Bundesliga</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button class="add-to-cart" disabled>
                         <i class="fas fa-cart-plus"></i> Select Size First
                     </button>
@@ -655,19 +843,14 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="1987/88 UEFA Cup Winners">
+                    <img src="img/bayer-leverkusen/1987-88-home.png" alt="1987/88 UEFA Cup Winners">
                     <div class="product-badge">European Glory</div>
                 </div>
                 <div class="product-content">
                     <h3 class="product-name">1987/88 UEFA Cup Winners</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-star"></i> European Trophy</li>
-                        <li><i class="fas fa-star"></i> Piontek's Glory</li>
-                        <li><i class="fas fa-star"></i> First European Cup</li>
-                        <li><i class="fas fa-star"></i> Historic Achievement</li>
-                    </ul>
+                    <p class="product-features">The iconic jersey from the club's first-ever European triumph, winning
+                        the UEFA Cup in a dramatic final.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -678,6 +861,27 @@
                             <div class="size-option" data-size="XXL">XXL</div>
                         </div>
                     </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., TITA 10">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="bl-patch-7" class="patch-checkbox"
+                                        data-patch-name="Bundesliga">
+                                    <label for="bl-patch-7">Bundesliga</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="uefa-cup-patch-7" class="patch-checkbox"
+                                        data-patch-name="UEFA Cup">
+                                    <label for="uefa-cup-patch-7">UEFA Cup</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button class="add-to-cart" disabled>
                         <i class="fas fa-cart-plus"></i> Select Size First
                     </button>
@@ -686,19 +890,14 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="2009/10 Champions League Semi-Final">
+                    <img src="img/bayer-leverkusen/2009-10-home.png" alt="2009/10 Home Jersey">
                     <div class="product-badge">Historic</div>
                 </div>
                 <div class="product-content">
-                    <h3 class="product-name">2009/10 Champions League Semi-Final</h3>
+                    <h3 class="product-name">2009/10 Home Jersey</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-magic"></i> European Journey</li>
-                        <li><i class="fas fa-magic"></i> Heynckes Return</li>
-                        <li><i class="fas fa-magic"></i> Kiessling Era</li>
-                        <li><i class="fas fa-magic"></i> BayArena Dreams</li>
-                    </ul>
+                    <p class="product-features">A classic home kit from the Jupp Heynckes era, featuring the prolific
+                        goalscorer Stefan Kießling.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -707,6 +906,22 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., KIESSLING 11">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="bl-patch-8" class="patch-checkbox"
+                                        data-patch-name="Bundesliga">
+                                    <label for="bl-patch-8">Bundesliga</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -719,131 +934,118 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2025 GOKIT × CourtDripDxb — Bayer Leverkusen Jerseys</p>
+        <p>© 2025 GOKIT — Bayer Leverkusen Jerseys</p>
     </footer>
 
     <script>
-        // Cart functionality - fully compatible with cart.html
+        // --- CART STATE ---
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // Show/hide sections function
+        // --- UI FUNCTIONS ---
         function showSection(type) {
-            // Hide all sections
             document.querySelectorAll('.product-section').forEach(section => {
                 section.style.display = 'none';
                 section.classList.remove('active');
             });
-
-            // Show selected section
             const targetSection = document.getElementById(type);
             if (targetSection) {
                 targetSection.style.display = 'block';
                 targetSection.classList.add('active');
             }
-
-            // Update button states
             document.querySelectorAll('.choice-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-
-            // Add active class to clicked button
             if (event && event.target) {
                 event.target.classList.add('active');
             }
         }
 
-        // Size selection functionality
-        document.addEventListener('DOMContentLoaded', function () {
-            // Handle size selection for all product cards
-            document.querySelectorAll('.size-option').forEach(option => {
-                option.addEventListener('click', function () {
-                    const card = this.closest('.product-card');
-                    const sizeOptions = card.querySelectorAll('.size-option');
-                    const addToCartBtn = card.querySelector('.add-to-cart');
+        function updatePrice(productCard) {
+            const basePrice = 75;
+            let finalPrice = basePrice;
+            const customNameInput = productCard.querySelector('.custom-input');
+            if (customNameInput && customNameInput.value.trim() !== '') {
+                finalPrice += 15;
+            }
+            const checkedPatches = productCard.querySelectorAll('.patch-checkbox:checked');
+            finalPrice += (checkedPatches.length * 5);
+            productCard.querySelector('.product-price').textContent = `AED ${finalPrice}`;
+        }
 
-                    // Remove selected class from all size options in this card
-                    sizeOptions.forEach(opt => opt.classList.remove('selected'));
+        function resetProductCard(productCard) {
+            productCard.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+            const addToCartBtn = productCard.querySelector('.add-to-cart');
+            addToCartBtn.disabled = true;
+            addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
+            const customInput = productCard.querySelector('.custom-input');
+            if (customInput) customInput.value = '';
+            productCard.querySelectorAll('.patch-checkbox').forEach(cb => cb.checked = false);
+            productCard.querySelector('.product-price').textContent = 'AED 75';
+        }
 
-                    // Add selected class to clicked option
-                    this.classList.add('selected');
+        // --- CART LOGIC ---
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
 
-                    // Enable add to cart button and update text
-                    addToCartBtn.disabled = false;
-                    addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
-                });
-            });
+        function addToCart(button) {
+            const productCard = button.closest('.product-card');
+            const productName = productCard.querySelector('.product-name').textContent.trim();
+            const productPriceText = productCard.querySelector('.product-price').textContent.trim();
+            const productImage = productCard.querySelector('img').src;
+            const selectedSize = productCard.querySelector('.size-option.selected')?.getAttribute('data-size');
 
-            // Handle add to cart functionality
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', function () {
-                    if (this.disabled) return;
-
-                    const card = this.closest('.product-card');
-                    const productName = card.querySelector('.product-name').textContent;
-                    const productPrice = card.querySelector('.product-price').textContent;
-                    const selectedSize = card.querySelector('.size-option.selected');
-                    const productImage = card.querySelector('img').src;
-
-                    if (!selectedSize) {
-                        alert('Please select a size first!');
-                        return;
-                    }
-
-                    const cartItem = {
-                        id: Date.now() + Math.random(), // Unique ID
-                        name: productName,
-                        price: productPrice,
-                        size: selectedSize.textContent,
-                        image: productImage,
-                        team: 'Bayer Leverkusen',
-                        quantity: 1
-                    };
-
-                    // Add to cart array
-                    cart.push(cartItem);
-
-                    // Save to localStorage
-                    localStorage.setItem('cart', JSON.stringify(cart));
-
-                    // Visual feedback
-                    this.innerHTML = '<i class="fas fa-check"></i> Added to Cart!';
-                    this.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
-
-                    // Reset button after 2 seconds
-                    setTimeout(() => {
-                        this.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
-                        this.style.background = 'linear-gradient(135deg, #e32221, #000000)';
-
-                        // Reset size selection
-                        const sizeOptions = card.querySelectorAll('.size-option');
-                        sizeOptions.forEach(opt => opt.classList.remove('selected'));
-                        this.disabled = true;
-                        this.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
-                    }, 2000);
-
-                    // Show success message
-                    showNotification('Bayer Leverkusen jersey added to cart successfully!', 'success');
-                });
-            });
-        });
-
-        // Notification function
-        function showNotification(message, type = 'success') {
-            // Remove existing notifications
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) {
-                existingNotification.remove();
+            if (!selectedSize) {
+                alert('Please select a size first!');
+                return;
             }
 
-            // Create notification element
+            const customNameInput = productCard.querySelector('.custom-input');
+            const customName = customNameInput ? customNameInput.value.trim() : '';
+            const selectedPatches = Array.from(productCard.querySelectorAll('.patch-checkbox:checked'))
+                .map(cb => cb.getAttribute('data-patch-name'));
+
+            let nameInCart = `${productName} (Size: ${selectedSize}`;
+            if (customName) nameInCart += `, Name: ${customName.toUpperCase()}`;
+            if (selectedPatches.length > 0) nameInCart += `, Patches: ${selectedPatches.join(', ')}`;
+            nameInCart += ')';
+
+            const priceMatch = productPriceText.match(/\d+/);
+            const finalPrice = priceMatch ? parseFloat(priceMatch[0]) : 75;
+
+            const existingItemIndex = cart.findIndex(item => item.name === nameInCart);
+
+            if (existingItemIndex !== -1) {
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                cart.push({
+                    name: nameInCart,
+                    price: finalPrice,
+                    image: productImage,
+                    size: selectedSize,
+                    customName: customName,
+                    patches: selectedPatches,
+                    quantity: 1
+                });
+            }
+
+            saveCart();
+            updateCartCount();
+            showNotification(`${productName} added to cart!`);
+            resetProductCard(productCard);
+        }
+
+        // --- NOTIFICATIONS & UI UPDATES ---
+        function showNotification(message, type = 'success') {
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) existingNotification.remove();
+
             const notification = document.createElement('div');
             notification.className = `notification ${type}`;
             notification.innerHTML = `
                 <i class="fas fa-check-circle"></i>
                 <span>${message}</span>
             `;
-
-            // Add notification styles
             notification.style.cssText = `
                 position: fixed;
                 top: 100px;
@@ -861,21 +1063,13 @@
                 transform: translateX(400px);
                 transition: transform 0.3s ease;
             `;
-
             document.body.appendChild(notification);
 
-            // Animate in
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-
-            // Remove after 3 seconds
+            setTimeout(() => { notification.style.transform = 'translateX(0)'; }, 100);
             setTimeout(() => {
                 notification.style.transform = 'translateX(400px)';
                 setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.remove();
-                    }
+                    if (notification.parentNode) notification.remove();
                 }, 300);
             }, 3000);
         }
@@ -883,207 +1077,49 @@
         // Update cart count in navbar
         function updateCartCount() {
             const cartCount = cart.length;
-            const cartLink = document.querySelector('.nav-link[href="cart.html"]');
-            if (cartLink && cartCount > 0) {
-                cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart (${cartCount})`;
+            const cartLink = document.querySelector('a[href="cart.html"]');
+            if (cartLink) {
+                cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart ${cartCount > 0 ? `(${cartCount})` : ''}`;
             }
         }
 
-        // Initialize cart count on page load
+        // --- INITIALIZATION ---
+        function initializeProductCard(productCard) {
+            productCard.querySelectorAll('.size-option').forEach(sizeOption => {
+                sizeOption.addEventListener('click', function () {
+                    productCard.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const addToCartBtn = productCard.querySelector('.add-to-cart');
+                    addToCartBtn.disabled = false;
+                    addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+                });
+            });
+
+            const customInput = productCard.querySelector('.custom-input');
+            if (customInput) customInput.addEventListener('input', () => updatePrice(productCard));
+
+            productCard.querySelectorAll('.patch-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', () => updatePrice(productCard));
+            });
+
+            productCard.querySelector('.add-to-cart').addEventListener('click', function () {
+                addToCart(this);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
             updateCartCount();
-        });
+            document.querySelectorAll('.product-card').forEach(card => initializeProductCard(card));
 
-        // Smooth scrolling for better UX
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add loading animation for images
-        document.addEventListener('DOMContentLoaded', function () {
             const images = document.querySelectorAll('.product-card img');
             images.forEach(img => {
                 img.addEventListener('load', function () {
                     this.style.opacity = '1';
                 });
-
-                // Set initial opacity
                 img.style.opacity = '0';
                 img.style.transition = 'opacity 0.3s ease';
             });
         });
-
-        // Keyboard navigation support
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                // Clear all size selections
-                document.querySelectorAll('.size-option.selected').forEach(option => {
-                    option.classList.remove('selected');
-                });
-
-                // Disable all add to cart buttons
-                document.querySelectorAll('.add-to-cart').forEach(btn => {
-                    btn.disabled = true;
-                    btn.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
-                });
-            }
-        });
-
-        // Bayer Leverkusen-specific animations and effects
-        document.addEventListener('DOMContentLoaded', function () {
-            // Add chemical reaction effect on page load
-            setTimeout(() => {
-                const heroTitle = document.querySelector('.hero h1');
-                if (heroTitle) {
-                    heroTitle.style.animation = 'chemicalReaction 2s ease-in-out';
-                }
-            }, 1000);
-
-            // Add special hover effects for Leverkusen cards
-            document.querySelectorAll('.product-card').forEach(card => {
-                card.addEventListener('mouseenter', function () {
-                    const badge = this.querySelector('.product-badge');
-                    if (badge && (badge.textContent === 'Champions' || badge.textContent === 'European Glory' || badge.textContent === 'Legendary' || badge.textContent === 'Cup Winners')) {
-                        badge.style.animation = 'bayerGlow 1s ease-in-out infinite alternate';
-                    }
-                });
-
-                card.addEventListener('mouseleave', function () {
-                    const badge = this.querySelector('.product-badge');
-                    if (badge) {
-                        badge.style.animation = 'none';
-                    }
-                });
-            });
-
-            // Add chemical flask animation to team badge
-            const teamBadge = document.querySelector('.team-badge');
-            if (teamBadge) {
-                teamBadge.addEventListener('mouseenter', function () {
-                    this.style.animation = 'flaskBubble 0.8s ease-in-out infinite alternate';
-                });
-
-                teamBadge.addEventListener('mouseleave', function () {
-                    this.style.animation = 'none';
-                });
-            }
-
-            // Add special "Invincible Season" effect for 2023/24 Champions jersey
-            const championsCard = document.querySelector('.product-card:first-child');
-            if (championsCard) {
-                championsCard.addEventListener('mouseenter', function () {
-                    this.style.animation = 'invincibleGlow 2s ease-in-out infinite';
-                });
-
-                championsCard.addEventListener('mouseleave', function () {
-                    this.style.animation = 'none';
-                });
-            }
-        });
-
-        // Add CSS animations dynamically
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes chemicalReaction {
-                0%, 100% { 
-                    transform: scale(1); 
-                    text-shadow: 0 0 10px rgba(227, 34, 33, 0.5);
-                }
-                50% { 
-                    transform: scale(1.05); 
-                    text-shadow: 0 0 20px rgba(227, 34, 33, 0.8), 0 0 30px rgba(0, 0, 0, 0.5);
-                }
-            }
-            
-            @keyframes bayerGlow {
-                0% { 
-                    box-shadow: 0 0 5px rgba(227, 34, 33, 0.5);
-                    transform: scale(1);
-                }
-                100% { 
-                    box-shadow: 0 0 20px rgba(227, 34, 33, 0.8), 0 0 30px rgba(0, 0, 0, 0.3);
-                    transform: scale(1.05);
-                }
-            }
-
-            @keyframes flaskBubble {
-                0% { 
-                    transform: scale(1) rotate(-1deg);
-                }
-                100% { 
-                    transform: scale(1.1) rotate(1deg);
-                }
-            }
-
-            @keyframes invincibleGlow {
-                0%, 100% { 
-                    box-shadow: 0 0 20px rgba(227, 34, 33, 0.3);
-                }
-                25% { 
-                    box-shadow: 0 0 40px rgba(227, 34, 33, 0.6), 0 0 60px rgba(255, 215, 0, 0.4);
-                }
-                50% { 
-                    box-shadow: 0 0 60px rgba(255, 215, 0, 0.8), 0 0 80px rgba(227, 34, 33, 0.4);
-                }
-                75% { 
-                    box-shadow: 0 0 40px rgba(227, 34, 33, 0.6), 0 0 60px rgba(255, 215, 0, 0.4);
-                }
-            }
-
-            /* Special Werkself effects */
-            .product-card:hover .product-badge {
-                animation: werkelfEnergy 2s ease-in-out infinite;
-            }
-
-            @keyframes werkelfEnergy {
-                0%, 100% { 
-                    background: rgba(227, 34, 33, 0.9);
-                }
-                50% { 
-                    background: linear-gradient(45deg, #e32221, #000000, #e32221);
-                }
-            }
-
-            /* Atom spinning effect for hero icon */
-            .hero h1 i {
-                animation: atomSpin 4s linear infinite;
-            }
-
-            @keyframes atomSpin {
-                0% { 
-                    transform: rotate(0deg);
-                }
-                100% { 
-                    transform: rotate(360deg);
-                }
-            }
-
-            /* Special Champions badge effect */
-            .product-badge:contains("Champions") {
-                animation: championsPulse 3s ease-in-out infinite;
-            }
-
-            @keyframes championsPulse {
-                0%, 100% { 
-                    background: rgba(227, 34, 33, 0.9);
-                    transform: scale(1);
-                }
-                50% { 
-                    background: linear-gradient(45deg, #FFD700, #e32221, #FFD700);
-                    transform: scale(1.1);
-                }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>European National Teams — GOKIT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #1b1b2d 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .european-header {
+            background: linear-gradient(90deg, #4169e1, #ffffff, #ffd700) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(65, 105, 225, 0.3);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            color: #000 !important;
+            font-weight: 800;
+        }
+
+        .navbar-nav .nav-link {
+            color: #000 !important;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(65, 105, 225, 0.1), rgba(255, 215, 0, 0.1));
+            border-bottom: 4px solid #4169e1;
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(65, 105, 225, 0.03) 10px,
+                    rgba(65, 105, 225, 0.03) 20px);
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-50px) translateY(-50px);
+            }
+
+            100% {
+                transform: translateX(0px) translateY(0px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-section h1 {
+            color: #4169e1;
+            font-weight: 800;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(65, 105, 225, 0.3);
+            }
+
+            to {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 30px rgba(65, 105, 225, 0.6);
+            }
+        }
+
+        .hero-section p {
+            color: #e0e0e0;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .back-btn-container {
+            border-left: 4px solid #4169e1;
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(65, 105, 225, 0.1));
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0 10px 10px 0;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn-container:hover {
+            transform: translateX(5px);
+            box-shadow: 5px 5px 15px rgba(65, 105, 225, 0.3);
+        }
+
+        .back-btn-container a {
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn-container a:hover {
+            color: #4169e1;
+            text-shadow: 0 0 10px rgba(65, 105, 225, 0.5);
+        }
+
+        .teams-section {
+            padding: 3rem 0;
+        }
+
+        .teams-section h2 {
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .teams-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #4169e1, #ffd700);
+            border-radius: 2px;
+        }
+
+        .team-card {
+            background: linear-gradient(135deg, rgba(31, 31, 31, 0.9), rgba(65, 105, 225, 0.1));
+            border: 1px solid rgba(65, 105, 225, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            height: 100%;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+            z-index: 1;
+        }
+
+        .team-card:hover::before {
+            left: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(65, 105, 225, 0.3);
+            border-color: #ffd700;
+        }
+
+        .team-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(65, 105, 225, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover .team-logo {
+            border-color: #ffd700;
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            position: relative;
+            z-index: 2;
+        }
+
+        .team-name {
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .team-description {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-european {
+            background: linear-gradient(45deg, #4169e1, #ffd700);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-european::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-european:hover::before {
+            left: 100%;
+        }
+
+        .btn-european:hover {
+            background: linear-gradient(45deg, #ffd700, #4169e1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(65, 105, 225, 0.4);
+            color: #000;
+            text-decoration: none;
+        }
+
+        .dropdown-menu {
+            background: rgba(31, 31, 31, 0.95) !important;
+            border: 1px solid rgba(65, 105, 225, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown-item {
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(65, 105, 225, 0.2) !important;
+            color: #ffd700 !important;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #4169e1, #ffffff, #ffd700) !important;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: #000 !important;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+        }
+
+        /* Loading animation */
+        .team-card {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .team-card.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* European flag accent */
+        .european-accent {
+            background: linear-gradient(90deg, #4169e1 50%, #ffd700 50%);
+            height: 4px;
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        /* New Badge Styles */
+        .card-badges {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 3;
+            /* Above the hover shine effect */
+        }
+
+        .badge-item {
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .badge-world-cup {
+            background: linear-gradient(45deg, #ff6b35, #ffd700);
+        }
+
+        .badge-euros {
+            background: linear-gradient(45deg, #4169e1, #ffffff);
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg european-header sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">⚽ GOKIT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            🏆 Browse Leagues
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="nba.html">Basketball</a></li>
+                            <li><a class="dropdown-item" href="la-liga.html">La Liga</a></li>
+                            <li><a class="dropdown-item" href="serie-a.html">Serie A</a></li>
+                            <li><a class="dropdown-item" href="bundesliga.html">Bundesliga</a></li>
+                            <li><a class="dropdown-item" href="rotw.html">Rest of the World</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container hero-content">
+            <h1 class="display-4 text-uppercase">European National Teams</h1>
+            <p class="lead">The Continent of Football Legends</p>
+            <div class="european-accent"></div>
+            <div class="mt-3">
+                <span class="badge bg-primary fs-6 me-2">Continental Champions</span>
+                <span class="badge bg-warning text-dark fs-6">European Excellence</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <div class="container">
+        <div class="back-btn-container">
+            <a href="league.html"><i class="fas fa-arrow-left me-2"></i>Back to Leagues</a>
+        </div>
+    </div>
+
+    <!-- Teams Section -->
+    <section class="teams-section">
+        <div class="container">
+            <h2 class="text-center">🏟️ European National Teams</h2>
+            <div class="row g-4">
+                <!-- Spain -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <div class="card-badges">
+                                <span class="badge-item badge-world-cup">🏆 1x World Cup</span>
+                                <span class="badge-item badge-euros">🏆 3x Euros</span>
+                            </div>
+                            <img src="https://media.api-sports.io/football/teams/9.png" alt="Spain National Team Logo"
+                                class="team-logo mb-3">
+                            <h5 class="team-name">Spain</h5>
+                            <p class="team-description">La Roja - The Kings of Tiki-Taka</p>
+                            <a href="spain.html" class="btn-european">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- France -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <div class="card-badges">
+                                <span class="badge-item badge-world-cup">🏆 2x World Cup</span>
+                                <span class="badge-item badge-euros">🏆 2x Euros</span>
+                            </div>
+                            <img src="https://media.api-sports.io/football/teams/2.png" alt="France National Team Logo"
+                                class="team-logo mb-3">
+                            <h5 class="team-name">France</h5>
+                            <p class="team-description">Les Bleus - The Blue Stars</p>
+                            <a href="france.html" class="btn-european">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Germany -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <div class="card-badges">
+                                <span class="badge-item badge-world-cup">🏆 4x World Cup</span>
+                                <span class="badge-item badge-euros">🏆 3x Euros</span>
+                            </div>
+                            <img src="https://media.api-sports.io/football/teams/25.png"
+                                alt="Germany National Team Logo" class="team-logo mb-3">
+                            <h5 class="team-name">Germany</h5>
+                            <p class="team-description">Die Mannschaft - The Machine</p>
+                            <a href="germany.html" class="btn-european">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Italy -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <div class="card-badges">
+                                <span class="badge-item badge-world-cup">🏆 4x World Cup</span>
+                                <span class="badge-item badge-euros">🏆 2x Euros</span>
+                            </div>
+                            <img src="https://media.api-sports.io/football/teams/768.png" alt="Italy National Team Logo"
+                                class="team-logo mb-3">
+                            <h5 class="team-name">Italy</h5>
+                            <p class="team-description">Gli Azzurri - The Blues</p>
+                            <a href="italy.html" class="btn-european">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- England -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <div class="card-badges">
+                                <span class="badge-item badge-world-cup">🏆 1x World Cup</span>
+                            </div>
+                            <img src="https://media.api-sports.io/football/teams/10.png"
+                                alt="England National Team Logo" class="team-logo mb-3">
+                            <h5 class="team-name">England</h5>
+                            <p class="team-description">The Three Lions</p>
+                            <a href="england.html" class="btn-european">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Netherlands -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <div class="card-badges">
+                                <span class="badge-item badge-euros">🏆 1x Euros</span>
+                            </div>
+                            <img src="https://media.api-sports.io/football/teams/1.png"
+                                alt="Netherlands National Team Logo" class="team-logo mb-3">
+                            <h5 class="team-name">Netherlands</h5>
+                            <p class="team-description">Oranje - Total Football</p>
+                            <a href="netherlands.html" class="btn-european">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portugal -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <div class="card-badges">
+                                <span class="badge-item badge-euros">🏆 1x Euros</span>
+                            </div>
+                            <img src="https://media.api-sports.io/football/teams/27.png"
+                                alt="Portugal National Team Logo" class="team-logo mb-3">
+                            <h5 class="team-name">Portugal</h5>
+                            <p class="team-description">A Seleção - Cristiano's Legacy</p>
+                            <a href="portugal.html" class="btn-european">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Belgium -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="card-body text-center p-4">
+                            <img src="https://media.api-sports.io/football/teams/14.png"
+                                alt="Belgium National Team Logo" class="team-logo mb-3">
+                            <h5 class="team-name">Belgium</h5>
+                            <p class="team-description">The Red Devils</p>
+                            <a href="belgium.html" class="btn-european">
+                                <i class="fas fa-tshirt me-2"></i>View Jerseys
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 mt-5">
+        <p class="mb-1">© 2025 GOKIT | European National Teams Collection</p>
+        <p class="mb-0">Not affiliated with UEFA or any national football associations.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Update cart count on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCartCount();
+
+            // Animate cards on load
+            const cards = document.querySelectorAll('.team-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('loaded');
+                }, index * 100);
+            });
+        });
+
+        function updateCartCount() {
+            const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = cartCount;
+        }
+    </script>
+</body>
+
+</html>

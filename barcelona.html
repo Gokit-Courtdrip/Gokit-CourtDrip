@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FC Barcelona Jerseys | GOKIT × CourtDripDxb</title>
+    <title>FC Barcelona Jerseys | GOKIT</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap"
         rel="stylesheet">
@@ -348,6 +348,73 @@
             font-weight: 600;
         }
 
+        /* Customization Section */
+        .customization-section {
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+        }
+
+        .custom-option {
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .custom-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: #004d98;
+            background: rgba(0, 77, 152, 0.1);
+        }
+
+        .patch-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .patch-option label {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .patch-checkbox {
+            display: none;
+            /* Hide the default checkbox */
+        }
+
+        .patch-checkbox:checked+label {
+            background: linear-gradient(135deg, #004d98, #a50044);
+            border-color: #004d98;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
         .add-to-cart {
             width: 100%;
             background: linear-gradient(135deg, #004d98, #a50044);
@@ -431,7 +498,7 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">GOKIT × CourtDripDxb</a>
+            <a href="index.html" class="logo">GOKIT</a>
             <div class="nav-links">
                 <a href="la-liga.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to La Liga</a>
                 <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
@@ -452,7 +519,7 @@
 
     <div class="choice-buttons">
         <button class="choice-btn active" onclick="showSection('new')">
-            <i class="fas fa-sparkles"></i> New Season (2019–2025)
+            <i class="fas fa-sparkles"></i> New Season (2019-Present)
         </button>
         <button class="choice-btn" onclick="showSection('retro')">
             <i class="fas fa-trophy"></i> Retro (2018 & older)
@@ -472,12 +539,8 @@
                 <div class="product-content">
                     <h3 class="product-name">2024/25 Home Jersey</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> Nike Design</li>
-                        <li><i class="fas fa-check"></i> Hansi Flick Era</li>
-                        <li><i class="fas fa-check"></i> Lewandowski #9</li>
-                        <li><i class="fas fa-check"></i> Pedri & Gavi Available</li>
-                    </ul>
+                    <p class="product-features">The latest Blaugrana home kit from Nike, ready for a new era of
+                        ambition under Hansi Flick.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -486,6 +549,32 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., LEWANDOWSKI 9">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ll-patch-1" class="patch-checkbox"
+                                        data-patch-name="La Liga">
+                                    <label for="ll-patch-1">La Liga</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-patch-1" class="patch-checkbox"
+                                        data-patch-name="UCL">
+                                    <label for="ucl-patch-1">Champions League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-1" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-1">Respect</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -503,12 +592,8 @@
                 <div class="product-content">
                     <h3 class="product-name">2023/24 Away Jersey</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> Xavi's Philosophy</li>
-                        <li><i class="fas fa-check"></i> La Liga Campaign</li>
-                        <li><i class="fas fa-check"></i> Premium Fabric</li>
-                        <li><i class="fas fa-check"></i> Raphinha #11 Available</li>
-                    </ul>
+                    <p class="product-features">A clean white away kit from a season that saw the continued development
+                        of a young, exciting squad.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -517,6 +602,32 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., PEDRI 8">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ll-patch-2" class="patch-checkbox"
+                                        data-patch-name="La Liga">
+                                    <label for="ll-patch-2">La Liga</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-patch-2" class="patch-checkbox"
+                                        data-patch-name="UCL">
+                                    <label for="ucl-patch-2">Champions League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-2" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-2">Respect</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -534,12 +645,8 @@
                 <div class="product-content">
                     <h3 class="product-name">2022/23 Third Jersey</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> Europa League Winners</li>
-                        <li><i class="fas fa-check"></i> Lightweight Material</li>
-                        <li><i class="fas fa-check"></i> Comeback Season</li>
-                        <li><i class="fas fa-check"></i> Ansu Fati Legacy</li>
-                    </ul>
+                    <p class="product-features">A unique third kit from a La Liga winning season, showcasing the team's
+                        style and flair.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -548,6 +655,32 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., GAVI 6">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ll-patch-3" class="patch-checkbox"
+                                        data-patch-name="La Liga">
+                                    <label for="ll-patch-3">La Liga</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-patch-3" class="patch-checkbox"
+                                        data-patch-name="UCL">
+                                    <label for="ucl-patch-3">Champions League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-3" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-3">Respect</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -564,12 +697,8 @@
                 <div class="product-content">
                     <h3 class="product-name">2021/22 Home Jersey</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-heart"></i> Post-Messi Era</li>
-                        <li><i class="fas fa-heart"></i> Xavi's Return</li>
-                        <li><i class="fas fa-heart"></i> New Generation</li>
-                        <li><i class="fas fa-heart"></i> Historic Transition</li>
-                    </ul>
+                    <p class="product-features">The home kit that marked the beginning of a new chapter, with Xavi's
+                        return as manager and the rise of a new generation.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -578,6 +707,32 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., DE JONG 21">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ll-patch-4" class="patch-checkbox"
+                                        data-patch-name="La Liga">
+                                    <label for="ll-patch-4">La Liga</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-patch-4" class="patch-checkbox"
+                                        data-patch-name="UCL">
+                                    <label for="ucl-patch-4">Champions League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-4" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-4">Respect</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -601,12 +756,8 @@
                 <div class="product-content">
                     <h3 class="product-name">2014/15 Champions League Winners</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-trophy"></i> Treble Winners</li>
-                        <li><i class="fas fa-trophy"></i> MSN Trio Peak</li>
-                        <li><i class="fas fa-trophy"></i> Juventus Final</li>
-                        <li><i class="fas fa-trophy"></i> Luis Enrique Era</li>
-                    </ul>
+                    <p class="product-features">The kit of the second historic treble, worn by the unstoppable MSN trio
+                        of Messi, Suárez, and Neymar.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -615,6 +766,32 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., MESSI 10">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ll-patch-5" class="patch-checkbox"
+                                        data-patch-name="La Liga">
+                                    <label for="ll-patch-5">La Liga</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-winner-patch-5" class="patch-checkbox"
+                                        data-patch-name="UCL Winners">
+                                    <label for="ucl-winner-patch-5">UCL Winners</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-5" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-5">Respect</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -632,12 +809,8 @@
                 <div class="product-content">
                     <h3 class="product-name">2008/09 Champions League Winners</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-medal"></i> Pep's First Treble</li>
-                        <li><i class="fas fa-medal"></i> Messi's Breakthrough</li>
-                        <li><i class="fas fa-medal"></i> Manchester United Final</li>
-                        <li><i class="fas fa-medal"></i> Tiki-Taka Revolution</li>
-                    </ul>
+                    <p class="product-features">The half-and-half kit from Pep Guardiola's first season, a masterpiece
+                        of a campaign that delivered the club's first treble.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -646,6 +819,32 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., INIESTA 8">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ll-patch-6" class="patch-checkbox"
+                                        data-patch-name="La Liga">
+                                    <label for="ll-patch-6">La Liga</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-winner-patch-6" class="patch-checkbox"
+                                        data-patch-name="UCL Winners">
+                                    <label for="ucl-winner-patch-6">UCL Winners</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-6" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-6">Respect</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -663,12 +862,8 @@
                 <div class="product-content">
                     <h3 class="product-name">2005/06 Champions League Winners</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-history"></i> Arsenal Final Victory</li>
-                        <li><i class="fas fa-history"></i> Ronaldinho Magic</li>
-                        <li><i class="fas fa-history"></i> Frank Rijkaard Era</li>
-                        <li><i class="fas fa-history"></i> Second European Cup</li>
-                    </ul>
+                    <p class="product-features">The jersey of Ronaldinho's magic, worn during the Champions League
+                        final victory in Paris.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -677,6 +872,27 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., RONALDINHO 10">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ll-patch-7" class="patch-checkbox"
+                                        data-patch-name="La Liga">
+                                    <label for="ll-patch-7">La Liga</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-winner-patch-7" class="patch-checkbox"
+                                        data-patch-name="UCL Winners">
+                                    <label for="ucl-winner-patch-7">UCL Winners</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -694,12 +910,8 @@
                 <div class="product-content">
                     <h3 class="product-name">1991/92 European Cup Winners</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-star"></i> First European Cup</li>
-                        <li><i class="fas fa-star"></i> Dream Team Era</li>
-                        <li><i class="fas fa-star"></i> Wembley Final</li>
-                        <li><i class="fas fa-star"></i> Johan Cruyff Legacy</li>
-                    </ul>
+                    <p class="product-features">The iconic orange 'Meyba' kit worn by Cruyff's 'Dream Team' as they
+                        lifted the club's first-ever European Cup at Wembley.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -708,6 +920,19 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., KOEMAN 4">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <input type="checkbox" id="ll-patch-8" class="patch-checkbox" data-patch-name="La Liga">
+                                <label for="ll-patch-8">La Liga</label>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -720,197 +945,118 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2025 GOKIT × CourtDripDxb — FC Barcelona Jerseys</p>
+        <p>© 2025 GOKIT — FC Barcelona Jerseys</p>
     </footer>
 
     <script>
-        // Cart functionality - fully compatible with cart.html
+        // --- CART STATE ---
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // Show/hide sections function
+        // --- UI FUNCTIONS ---
         function showSection(type) {
-            // Hide all sections
             document.querySelectorAll('.product-section').forEach(section => {
                 section.style.display = 'none';
                 section.classList.remove('active');
             });
-
-            // Show selected section
             const targetSection = document.getElementById(type);
             if (targetSection) {
                 targetSection.style.display = 'block';
                 targetSection.classList.add('active');
             }
-
-            // Update button states
             document.querySelectorAll('.choice-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-
-            // Add active class to clicked button
             if (event && event.target) {
                 event.target.classList.add('active');
             }
         }
 
-        // Size selection functionality
-        function initializeSizeSelection() {
-            document.querySelectorAll('.size-option').forEach(sizeOption => {
-                sizeOption.addEventListener('click', function () {
-                    const productCard = this.closest('.product-card');
-                    const sizeOptions = productCard.querySelectorAll('.size-option');
-                    const addToCartBtn = productCard.querySelector('.add-to-cart');
-
-                    // Remove selected class from all sizes in this product
-                    sizeOptions.forEach(option => option.classList.remove('selected'));
-
-                    // Add selected class to clicked size
-                    this.classList.add('selected');
-
-                    // Enable add to cart button and update text
-                    addToCartBtn.disabled = false;
-                    addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
-
-                    // Store selected size in button data attribute
-                    addToCartBtn.setAttribute('data-selected-size', this.getAttribute('data-size'));
-                });
-            });
-        }
-
-        // Save cart to localStorage
-        function saveCart() {
-            localStorage.setItem('cart', JSON.stringify(cart));
-            console.log('Cart saved:', cart);
-        }
-
-        // Update cart display in navbar
-        function updateCartDisplay() {
-            const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-
-            // Update all cart links in navbar
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if (link.textContent.includes('Cart') || link.href.includes('cart.html')) {
-                    if (totalItems > 0) {
-                        link.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart (${totalItems})`;
-                    } else {
-                        link.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart`;
-                    }
-                }
-            });
-        }
-
-        // Add to cart function with size selection
-        function addToCart(button) {
-            try {
-                const productCard = button.closest('.product-card');
-                const productName = productCard.querySelector('.product-name').textContent.trim();
-                const productPriceText = productCard.querySelector('.product-price').textContent.trim();
-                const productImage = productCard.querySelector('img').src;
-                const selectedSize = button.getAttribute('data-selected-size');
-
-                // Check if size is selected
-                if (!selectedSize) {
-                    alert('Please select a size first!');
-                    return;
-                }
-
-                // Extract price number from "AED 75" format
-                const priceMatch = productPriceText.match(/\d+(\.\d+)?/);
-                const price = priceMatch ? parseFloat(priceMatch[0]) : 75; // Default to 75 if parsing fails
-
-                // Create unique product identifier with size
-                const productWithSize = `${productName} (Size: ${selectedSize})`;
-
-                console.log('Adding item:', {
-                    name: productWithSize,
-                    price: price,
-                    image: productImage,
-                    size: selectedSize
-                });
-
-                // Check if item with same name and size already exists in cart
-                const existingItemIndex = cart.findIndex(item => item.name === productWithSize);
-
-                if (existingItemIndex !== -1) {
-                    // Item exists, increase quantity
-                    cart[existingItemIndex].quantity += 1;
-                    console.log('Increased quantity for:', productWithSize);
-                } else {
-                    // New item, add to cart with exact structure as cart.html expects
-                    const newItem = {
-                        name: productWithSize,
-                        price: price,
-                        image: productImage,
-                        size: selectedSize,
-                        quantity: 1
-                    };
-                    cart.push(newItem);
-                    console.log('Added new item:', newItem);
-                }
-
-                // Save to localStorage
-                saveCart();
-
-                // Update cart display
-                updateCartDisplay();
-
-                // Show success animation
-                showSuccessAnimation(button, productWithSize);
-
-                // Reset size selection
-                resetSizeSelection(productCard);
-
-            } catch (error) {
-                console.error('Error adding to cart:', error);
-                alert('Error adding item to cart. Please try again.');
+        function updatePrice(productCard) {
+            const basePrice = 75;
+            let finalPrice = basePrice;
+            const customNameInput = productCard.querySelector('.custom-input');
+            if (customNameInput && customNameInput.value.trim() !== '') {
+                finalPrice += 15;
             }
+            const checkedPatches = productCard.querySelectorAll('.patch-checkbox:checked');
+            finalPrice += (checkedPatches.length * 5);
+            productCard.querySelector('.product-price').textContent = `AED ${finalPrice}`;
         }
 
-        // Reset size selection after adding to cart
-        function resetSizeSelection(productCard) {
-            const sizeOptions = productCard.querySelectorAll('.size-option');
+        function resetProductCard(productCard) {
+            productCard.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
             const addToCartBtn = productCard.querySelector('.add-to-cart');
-
-            // Remove selected class from all sizes
-            sizeOptions.forEach(option => option.classList.remove('selected'));
-
-            // Disable add to cart button and reset text
             addToCartBtn.disabled = true;
             addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
-            addToCartBtn.removeAttribute('data-selected-size');
+            const customInput = productCard.querySelector('.custom-input');
+            if (customInput) customInput.value = '';
+            productCard.querySelectorAll('.patch-checkbox').forEach(cb => cb.checked = false);
+            productCard.querySelector('.product-price').textContent = 'AED 75';
         }
 
-        // Success animation
-        function showSuccessAnimation(button, productName) {
-            const originalHTML = button.innerHTML;
-            const originalStyle = button.style.cssText;
+        // --- CART LOGIC ---
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
 
-            // Change button appearance
-            button.innerHTML = '<i class="fas fa-check"></i> Added!';
-            button.style.background = 'linear-gradient(135deg, #00ff87, #004d98)';
-            button.style.color = '#ffffff';
-            button.disabled = true;
+        function addToCart(button) {
+            const productCard = button.closest('.product-card');
+            const productName = productCard.querySelector('.product-name').textContent.trim();
+            const productPriceText = productCard.querySelector('.product-price').textContent.trim();
+            const productImage = productCard.querySelector('img').src;
+            const selectedSize = productCard.querySelector('.size-option.selected')?.getAttribute('data-size');
 
-            // Show notification
+            if (!selectedSize) {
+                alert('Please select a size first!');
+                return;
+            }
+
+            const customNameInput = productCard.querySelector('.custom-input');
+            const customName = customNameInput ? customNameInput.value.trim() : '';
+            const selectedPatches = Array.from(productCard.querySelectorAll('.patch-checkbox:checked'))
+                .map(cb => cb.getAttribute('data-patch-name'));
+
+            let nameInCart = `${productName} (Size: ${selectedSize}`;
+            if (customName) nameInCart += `, Name: ${customName.toUpperCase()}`;
+            if (selectedPatches.length > 0) nameInCart += `, Patches: ${selectedPatches.join(', ')}`;
+            nameInCart += ')';
+
+            const priceMatch = productPriceText.match(/\d+/);
+            const finalPrice = priceMatch ? parseFloat(priceMatch[0]) : 75;
+
+            const existingItemIndex = cart.findIndex(item => item.name === nameInCart);
+
+            if (existingItemIndex !== -1) {
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                cart.push({
+                    name: nameInCart,
+                    price: finalPrice,
+                    image: productImage,
+                    size: selectedSize,
+                    customName: customName,
+                    patches: selectedPatches,
+                    quantity: 1
+                });
+            }
+
+            saveCart();
+            updateCartCount();
             showNotification(`${productName} added to cart!`);
-
-            // Reset button after 3 seconds
-            setTimeout(() => {
-                button.innerHTML = originalHTML;
-                button.style.cssText = originalStyle;
-                button.disabled = false;
-            }, 3000);
+            resetProductCard(productCard);
         }
 
-        // Show notification
+        // --- NOTIFICATIONS & UI UPDATES ---
         function showNotification(message) {
-            // Remove existing notifications
-            document.querySelectorAll('.cart-notification').forEach(notif => notif.remove());
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) existingNotification.remove();
 
             const notification = document.createElement('div');
-            notification.className = 'cart-notification';
-            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
-
+            notification.className = 'notification';
+            notification.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                <span>${message}</span>
+            `;
             notification.style.cssText = `
                 position: fixed;
                 top: 100px;
@@ -925,99 +1071,63 @@
                 transform: translateX(400px);
                 transition: all 0.3s ease;
                 display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                font-family: 'Poppins', sans-serif;
-                max-width: 300px;
             `;
-
             document.body.appendChild(notification);
 
-            // Animate in
-            setTimeout(() => notification.style.transform = 'translateX(0)', 100);
-
-            // Remove after 4 seconds
+            setTimeout(() => { notification.style.transform = 'translateX(0)'; }, 100);
             setTimeout(() => {
                 notification.style.transform = 'translateX(400px)';
                 setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.remove();
-                    }
+                    if (notification.parentNode) notification.remove();
                 }, 300);
             }, 4000);
         }
 
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('Barcelona page loaded');
+        function updateCartCount() {
+            const cartCount = cart.length;
+            const cartLink = document.querySelector('a[href="cart.html"]');
+            if (cartLink) {
+                cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart ${cartCount > 0 ? `(${cartCount})` : ''}`;
+            }
+        }
 
-            // Load cart from localStorage
-            cart = JSON.parse(localStorage.getItem('cart')) || [];
-            console.log('Current cart:', cart);
-
-            // Update cart display
-            updateCartDisplay();
-
-            // Initialize size selection
-            initializeSizeSelection();
-
-            // Add event listeners to all add-to-cart buttons
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    if (!this.disabled) {
-                        addToCart(this);
-                    }
+        // --- INITIALIZATION ---
+        function initializeProductCard(productCard) {
+            productCard.querySelectorAll('.size-option').forEach(sizeOption => {
+                sizeOption.addEventListener('click', function () {
+                    productCard.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const addToCartBtn = productCard.querySelector('.add-to-cart');
+                    addToCartBtn.disabled = false;
+                    addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
                 });
             });
 
-            // Show new section by default
-            showSection('new');
+            const customInput = productCard.querySelector('.custom-input');
+            if (customInput) customInput.addEventListener('input', () => updatePrice(productCard));
 
-            console.log('Barcelona page initialized');
+            productCard.querySelectorAll('.patch-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', () => updatePrice(productCard));
+            });
+
+            productCard.querySelector('.add-to-cart').addEventListener('click', function () {
+                addToCart(this);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCartCount();
+            document.querySelectorAll('.product-card').forEach(card => initializeProductCard(card));
+
+            const images = document.querySelectorAll('.product-card img');
+            images.forEach(img => {
+                img.addEventListener('load', function () {
+                    this.style.opacity = '1';
+                });
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s ease';
+            });
         });
-
-        // Utility functions for debugging
-        function checkCart() {
-            console.log('=== CART DEBUG ===');
-            console.log('Cart contents:', cart);
-            console.log('Total items:', cart.reduce((sum, item) => sum + item.quantity, 0));
-            console.log('LocalStorage:', localStorage.getItem('cart'));
-            console.log('==================');
-            return cart;
-        }
-
-        function clearCart() {
-            cart = [];
-            localStorage.removeItem('cart');
-            updateCartDisplay();
-            console.log('Cart cleared');
-            alert('Cart cleared successfully!');
-        }
-
-        function fixCartData() {
-            // Clean up any corrupted cart data
-            cart = cart.filter(item => {
-                return item &&
-                    typeof item.name === 'string' &&
-                    typeof item.price === 'number' &&
-                    typeof item.quantity === 'number' &&
-                    item.quantity > 0;
-            });
-
-            // Ensure all items have required properties
-            cart.forEach(item => {
-                if (!item.image) item.image = 'img/default.png';
-                if (!item.quantity || item.quantity < 1) item.quantity = 1;
-                if (!item.size) item.size = 'M'; // Default size if missing
-                if (!item.price || item.price <= 0) item.price = 75; // Ensure all Barcelona items are AED 75
-            });
-
-            saveCart();
-            updateCartDisplay();
-            console.log('Cart data fixed:', cart);
-            return cart;
-        }
     </script>
 
 </body>

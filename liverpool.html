@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liverpool Jerseys | GOKIT × CourtDripDxb</title>
+    <title>Liverpool Jerseys | GOKIT</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap"
         rel="stylesheet">
@@ -348,6 +348,73 @@
             font-weight: 600;
         }
 
+        /* Customization Section */
+        .customization-section {
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+        }
+
+        .custom-option {
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .custom-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: #c8102e;
+            background: rgba(200, 16, 46, 0.1);
+        }
+
+        .patch-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .patch-option label {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .patch-checkbox {
+            display: none;
+            /* Hide the default checkbox */
+        }
+
+        .patch-checkbox:checked+label {
+            background: linear-gradient(135deg, #c8102e, #1a1a2e);
+            border-color: #c8102e;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
         .add-to-cart {
             width: 100%;
             background: linear-gradient(135deg, #c8102e, #1a1a2e);
@@ -431,7 +498,7 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">GOKIT × CourtDripDxb</a>
+            <a href="index.html" class="logo">GOKIT</a>
             <div class="nav-links">
                 <a href="premier-league.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to Premier
                     League</a>
@@ -453,7 +520,7 @@
 
     <div class="choice-buttons">
         <button class="choice-btn active" onclick="showSection('new')">
-            <i class="fas fa-sparkles"></i> New Season (2019–2025)
+            <i class="fas fa-sparkles"></i> New Season (2019-Present)
         </button>
         <button class="choice-btn" onclick="showSection('retro')">
             <i class="fas fa-history"></i> Retro (2018 & older)
@@ -473,12 +540,8 @@
                 <div class="product-content">
                     <h3 class="product-name">2024/25 Home Jersey</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> Nike Design</li>
-                        <li><i class="fas fa-check"></i> Klopp's Legacy</li>
-                        <li><i class="fas fa-check"></i> Salah #11</li>
-                        <li><i class="fas fa-check"></i> Van Dijk & Alisson</li>
-                    </ul>
+                    <p class="product-features">The latest iconic red home kit from Nike, continuing the legacy of
+                        Klopp and ready for a new era at Anfield.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -487,6 +550,31 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., SALAH 11">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="pl-patch-1" class="patch-checkbox" data-patch-name="PL">
+                                    <label for="pl-patch-1">Premier League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-patch-1" class="patch-checkbox"
+                                        data-patch-name="UCL">
+                                    <label for="ucl-patch-1">Champions League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-1" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-1">Respect</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -504,12 +592,8 @@
                 <div class="product-content">
                     <h3 class="product-name">2023/24 Away Jersey</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-star"></i> Europa League</li>
-                        <li><i class="fas fa-star"></i> Carabao Cup Final</li>
-                        <li><i class="fas fa-star"></i> Anfield Magic</li>
-                        <li><i class="fas fa-star"></i> Klopp's Warriors</li>
-                    </ul>
+                    <p class="product-features">A modern classic away kit worn during a successful Europa League
+                        campaign and a Carabao Cup final run.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -518,6 +602,36 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., NUNEZ 9">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="pl-patch-2" class="patch-checkbox" data-patch-name="PL">
+                                    <label for="pl-patch-2">Premier League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="uel-patch-2" class="patch-checkbox"
+                                        data-patch-name="UEL">
+                                    <label for="uel-patch-2">Europa League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="facup-patch-2" class="patch-checkbox"
+                                        data-patch-name="FA Cup">
+                                    <label for="facup-patch-2">FA Cup</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-2" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-2">Respect</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -535,12 +649,8 @@
                 <div class="product-content">
                     <h3 class="product-name">2022/23 Third Jersey</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> Champions League</li>
-                        <li><i class="fas fa-check"></i> Premium Fabric</li>
-                        <li><i class="fas fa-check"></i> The Kop Pride</li>
-                        <li><i class="fas fa-check"></i> Nunez Arrival</li>
-                    </ul>
+                    <p class="product-features">A vibrant third kit that stood out in Champions League nights and
+                        domestic cup runs.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -549,6 +659,36 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., VAN DIJK 4">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="pl-patch-3" class="patch-checkbox" data-patch-name="PL">
+                                    <label for="pl-patch-3">Premier League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-patch-3" class="patch-checkbox"
+                                        data-patch-name="UCL">
+                                    <label for="ucl-patch-3">Champions League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="facup-patch-3" class="patch-checkbox"
+                                        data-patch-name="FA Cup">
+                                    <label for="facup-patch-3">FA Cup</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-3" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-3">Respect</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -565,12 +705,8 @@
                 <div class="product-content">
                     <h3 class="product-name">2021/22 Home Jersey</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-trophy"></i> FA Cup Winners</li>
-                        <li><i class="fas fa-trophy"></i> Carabao Cup</li>
-                        <li><i class="fas fa-trophy"></i> CL Final</li>
-                        <li><i class="fas fa-trophy"></i> Quadruple Hunt</li>
-                    </ul>
+                    <p class="product-features">The jersey from the thrilling 'Quadruple Hunt' season, securing two
+                        domestic cups and reaching the CL final.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -579,6 +715,36 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., ALISSON 1">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="pl-patch-4" class="patch-checkbox" data-patch-name="PL">
+                                    <label for="pl-patch-4">Premier League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-patch-4" class="patch-checkbox"
+                                        data-patch-name="UCL">
+                                    <label for="ucl-patch-4">Champions League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="facup-patch-4" class="patch-checkbox"
+                                        data-patch-name="FA Cup">
+                                    <label for="facup-patch-4">FA Cup</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-4" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-4">Respect</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -602,12 +768,8 @@
                 <div class="product-content">
                     <h3 class="product-name">2019/20 Premier League Champions</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-crown"></i> 30-Year Wait Over</li>
-                        <li><i class="fas fa-crown"></i> 99 Points Season</li>
-                        <li><i class="fas fa-crown"></i> Klopp's Masterpiece</li>
-                        <li><i class="fas fa-crown"></i> Anfield Fortress</li>
-                    </ul>
+                    <p class="product-features">The historic kit that ended the 30-year wait, worn by the champions who
+                        dominated the Premier League.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -616,6 +778,37 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., HENDERSON 14">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="pl-gold-patch-5" class="patch-checkbox"
+                                        data-patch-name="PL Gold">
+                                    <label for="pl-gold-patch-5">PL Champions</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-patch-5" class="patch-checkbox"
+                                        data-patch-name="UCL">
+                                    <label for="ucl-patch-5">Champions League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="cwc-patch-5" class="patch-checkbox"
+                                        data-patch-name="CWC">
+                                    <label for="cwc-patch-5">Club World Cup</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-5" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-5">Respect</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -633,12 +826,8 @@
                 <div class="product-content">
                     <h3 class="product-name">2018/19 Champions League Winners</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-trophy"></i> Madrid Final</li>
-                        <li><i class="fas fa-trophy"></i> Barcelona Comeback</li>
-                        <li><i class="fas fa-trophy"></i> Corner Taken Quickly</li>
-                        <li><i class="fas fa-trophy"></i> 6th European Cup</li>
-                    </ul>
+                    <p class="product-features">Immortalized by the 'corner taken quickly' and the 6th European Cup win
+                        in Madrid. A legendary jersey.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -647,6 +836,31 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., ORIGI 27">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="pl-patch-6" class="patch-checkbox" data-patch-name="PL">
+                                    <label for="pl-patch-6">Premier League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-winner-patch-6" class="patch-checkbox"
+                                        data-patch-name="UCL Winners">
+                                    <label for="ucl-winner-patch-6">UCL Winners</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-6" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-6">Respect</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -664,12 +878,8 @@
                 <div class="product-content">
                     <h3 class="product-name">2004/05 Istanbul Miracle</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-magic"></i> Greatest Comeback</li>
-                        <li><i class="fas fa-magic"></i> 3-0 to 3-3</li>
-                        <li><i class="fas fa-magic"></i> Gerrard's Final</li>
-                        <li><i class="fas fa-magic"></i> 5th European Cup</li>
-                    </ul>
+                    <p class="product-features">The kit of the greatest comeback. Worn by Gerrard and co. during the
+                        miraculous Champions League final in Istanbul.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -678,6 +888,27 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., GERRARD 8">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-patch-7" class="patch-checkbox"
+                                        data-patch-name="UCL">
+                                    <label for="ucl-patch-7">Champions League</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="respect-patch-7" class="patch-checkbox"
+                                        data-patch-name="Respect">
+                                    <label for="respect-patch-7">Respect</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -695,12 +926,8 @@
                 <div class="product-content">
                     <h3 class="product-name">1983/84 Treble Winners</h3>
                     <p class="product-price">AED 75</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-star"></i> League Champions</li>
-                        <li><i class="fas fa-star"></i> European Cup</li>
-                        <li><i class="fas fa-star"></i> League Cup</li>
-                        <li><i class="fas fa-star"></i> Dalglish Era</li>
-                    </ul>
+                    <p class="product-features">A classic from the era of Dalglish and Rush, this kit represents a
+                        season of domestic and European dominance.</p>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
                         <div class="size-options">
@@ -709,6 +936,12 @@
                             <div class="size-option" data-size="L">L</div>
                             <div class="size-option" data-size="XL">XL</div>
                             <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., DALGLISH 7">
                         </div>
                     </div>
                     <button class="add-to-cart" disabled>
@@ -721,131 +954,118 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2025 GOKIT × CourtDripDxb — Liverpool Jerseys</p>
+        <p>© 2025 GOKIT — Liverpool Jerseys</p>
     </footer>
 
     <script>
-        // Cart functionality - fully compatible with cart.html
+        // --- CART STATE ---
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // Show/hide sections function
+        // --- UI FUNCTIONS ---
         function showSection(type) {
-            // Hide all sections
             document.querySelectorAll('.product-section').forEach(section => {
                 section.style.display = 'none';
                 section.classList.remove('active');
             });
-
-            // Show selected section
             const targetSection = document.getElementById(type);
             if (targetSection) {
                 targetSection.style.display = 'block';
                 targetSection.classList.add('active');
             }
-
-            // Update button states
             document.querySelectorAll('.choice-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-
-            // Add active class to clicked button
             if (event && event.target) {
                 event.target.classList.add('active');
             }
         }
 
-        // Size selection functionality
-        document.addEventListener('DOMContentLoaded', function () {
-            // Handle size selection for all product cards
-            document.querySelectorAll('.size-option').forEach(option => {
-                option.addEventListener('click', function () {
-                    const card = this.closest('.product-card');
-                    const sizeOptions = card.querySelectorAll('.size-option');
-                    const addToCartBtn = card.querySelector('.add-to-cart');
+        function updatePrice(productCard) {
+            const basePrice = 75;
+            let finalPrice = basePrice;
+            const customNameInput = productCard.querySelector('.custom-input');
+            if (customNameInput && customNameInput.value.trim() !== '') {
+                finalPrice += 15;
+            }
+            const checkedPatches = productCard.querySelectorAll('.patch-checkbox:checked');
+            finalPrice += (checkedPatches.length * 5);
+            productCard.querySelector('.product-price').textContent = `AED ${finalPrice}`;
+        }
 
-                    // Remove selected class from all size options in this card
-                    sizeOptions.forEach(opt => opt.classList.remove('selected'));
+        function resetProductCard(productCard) {
+            productCard.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+            const addToCartBtn = productCard.querySelector('.add-to-cart');
+            addToCartBtn.disabled = true;
+            addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
+            const customInput = productCard.querySelector('.custom-input');
+            if (customInput) customInput.value = '';
+            productCard.querySelectorAll('.patch-checkbox').forEach(cb => cb.checked = false);
+            productCard.querySelector('.product-price').textContent = 'AED 75';
+        }
 
-                    // Add selected class to clicked option
-                    this.classList.add('selected');
+        // --- CART LOGIC ---
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
 
-                    // Enable add to cart button and update text
-                    addToCartBtn.disabled = false;
-                    addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
-                });
-            });
+        function addToCart(button) {
+            const productCard = button.closest('.product-card');
+            const productName = productCard.querySelector('.product-name').textContent.trim();
+            const productPriceText = productCard.querySelector('.product-price').textContent.trim();
+            const productImage = productCard.querySelector('img').src;
+            const selectedSize = productCard.querySelector('.size-option.selected')?.getAttribute('data-size');
 
-            // Handle add to cart functionality
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', function () {
-                    if (this.disabled) return;
-
-                    const card = this.closest('.product-card');
-                    const productName = card.querySelector('.product-name').textContent;
-                    const productPrice = card.querySelector('.product-price').textContent;
-                    const selectedSize = card.querySelector('.size-option.selected');
-                    const productImage = card.querySelector('img').src;
-
-                    if (!selectedSize) {
-                        alert('Please select a size first!');
-                        return;
-                    }
-
-                    const cartItem = {
-                        id: Date.now() + Math.random(), // Unique ID
-                        name: productName,
-                        price: productPrice,
-                        size: selectedSize.textContent,
-                        image: productImage,
-                        team: 'Liverpool',
-                        quantity: 1
-                    };
-
-                    // Add to cart array
-                    cart.push(cartItem);
-
-                    // Save to localStorage
-                    localStorage.setItem('cart', JSON.stringify(cart));
-
-                    // Visual feedback
-                    this.innerHTML = '<i class="fas fa-check"></i> Added to Cart!';
-                    this.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
-
-                    // Reset button after 2 seconds
-                    setTimeout(() => {
-                        this.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
-                        this.style.background = 'linear-gradient(135deg, #c8102e, #1a1a2e)';
-
-                        // Reset size selection
-                        const sizeOptions = card.querySelectorAll('.size-option');
-                        sizeOptions.forEach(opt => opt.classList.remove('selected'));
-                        this.disabled = true;
-                        this.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
-                    }, 2000);
-
-                    // Show success message
-                    showNotification('Liverpool jersey added to cart successfully!', 'success');
-                });
-            });
-        });
-
-        // Notification function
-        function showNotification(message, type = 'success') {
-            // Remove existing notifications
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) {
-                existingNotification.remove();
+            if (!selectedSize) {
+                alert('Please select a size first!');
+                return;
             }
 
-            // Create notification element
+            const customNameInput = productCard.querySelector('.custom-input');
+            const customName = customNameInput ? customNameInput.value.trim() : '';
+            const selectedPatches = Array.from(productCard.querySelectorAll('.patch-checkbox:checked'))
+                .map(cb => cb.getAttribute('data-patch-name'));
+
+            let nameInCart = `${productName} (Size: ${selectedSize}`;
+            if (customName) nameInCart += `, Name: ${customName.toUpperCase()}`;
+            if (selectedPatches.length > 0) nameInCart += `, Patches: ${selectedPatches.join(', ')}`;
+            nameInCart += ')';
+
+            const priceMatch = productPriceText.match(/\d+/);
+            const finalPrice = priceMatch ? parseFloat(priceMatch[0]) : 75;
+
+            const existingItemIndex = cart.findIndex(item => item.name === nameInCart);
+
+            if (existingItemIndex !== -1) {
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                cart.push({
+                    name: nameInCart,
+                    price: finalPrice,
+                    image: productImage,
+                    size: selectedSize,
+                    customName: customName,
+                    patches: selectedPatches,
+                    quantity: 1
+                });
+            }
+
+            saveCart();
+            updateCartCount();
+            showNotification(`${productName} added to cart!`);
+            resetProductCard(productCard);
+        }
+
+        // --- NOTIFICATIONS & UI UPDATES ---
+        function showNotification(message, type = 'success') {
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) existingNotification.remove();
+
             const notification = document.createElement('div');
             notification.className = `notification ${type}`;
             notification.innerHTML = `
                 <i class="fas fa-check-circle"></i>
                 <span>${message}</span>
             `;
-
-            // Add notification styles
             notification.style.cssText = `
                 position: fixed;
                 top: 100px;
@@ -863,21 +1083,13 @@
                 transform: translateX(400px);
                 transition: transform 0.3s ease;
             `;
-
             document.body.appendChild(notification);
 
-            // Animate in
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-
-            // Remove after 3 seconds
+            setTimeout(() => { notification.style.transform = 'translateX(0)'; }, 100);
             setTimeout(() => {
                 notification.style.transform = 'translateX(400px)';
                 setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.remove();
-                    }
+                    if (notification.parentNode) notification.remove();
                 }, 300);
             }, 3000);
         }
@@ -891,97 +1103,34 @@
             }
         }
 
-        // Initialize cart count on page load
+        // --- INITIALIZATION ---
+        function initializeProductCard(productCard) {
+            productCard.querySelectorAll('.size-option').forEach(sizeOption => {
+                sizeOption.addEventListener('click', function () {
+                    productCard.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const addToCartBtn = productCard.querySelector('.add-to-cart');
+                    addToCartBtn.disabled = false;
+                    addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+                });
+            });
+
+            const customInput = productCard.querySelector('.custom-input');
+            if (customInput) customInput.addEventListener('input', () => updatePrice(productCard));
+
+            productCard.querySelectorAll('.patch-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', () => updatePrice(productCard));
+            });
+
+            productCard.querySelector('.add-to-cart').addEventListener('click', function () {
+                addToCart(this);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
             updateCartCount();
+            document.querySelectorAll('.product-card').forEach(card => initializeProductCard(card));
         });
-
-        // Smooth scrolling for better UX
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add loading animation for images
-        document.addEventListener('DOMContentLoaded', function () {
-            const images = document.querySelectorAll('.product-card img');
-            images.forEach(img => {
-                img.addEventListener('load', function () {
-                    this.style.opacity = '1';
-                });
-
-                // Set initial opacity
-                img.style.opacity = '0';
-                img.style.transition = 'opacity 0.3s ease';
-            });
-        });
-
-        // Keyboard navigation support
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                // Clear all size selections
-                document.querySelectorAll('.size-option.selected').forEach(option => {
-                    option.classList.remove('selected');
-                });
-
-                // Disable all add to cart buttons
-                document.querySelectorAll('.add-to-cart').forEach(btn => {
-                    btn.disabled = true;
-                    btn.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
-                });
-            }
-        });
-
-        // Liverpool-specific animations and effects
-        document.addEventListener('DOMContentLoaded', function () {
-            // Add Liverpool anthem effect on page load
-            setTimeout(() => {
-                const heroTitle = document.querySelector('.hero h1');
-                if (heroTitle) {
-                    heroTitle.style.animation = 'pulse 2s ease-in-out';
-                }
-            }, 1000);
-
-            // Add special hover effects for Liverpool cards
-            document.querySelectorAll('.product-card').forEach(card => {
-                card.addEventListener('mouseenter', function () {
-                    const badge = this.querySelector('.product-badge');
-                    if (badge && (badge.textContent === 'Historic' || badge.textContent === 'Legendary' || badge.textContent === 'Miracle')) {
-                        badge.style.animation = 'glow 1s ease-in-out infinite alternate';
-                    }
-                });
-
-                card.addEventListener('mouseleave', function () {
-                    const badge = this.querySelector('.product-badge');
-                    if (badge) {
-                        badge.style.animation = 'none';
-                    }
-                });
-            });
-        });
-
-        // Add CSS animations dynamically
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0%, 100% { transform: scale(1); }
-                50% { transform: scale(1.05); }
-            }
-            
-            @keyframes glow {
-                0% { box-shadow: 0 0 5px rgba(200, 16, 46, 0.5); }
-                100% { box-shadow: 0 0 20px rgba(200, 16, 46, 0.8), 0 0 30px rgba(255, 215, 0, 0.5); }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 
