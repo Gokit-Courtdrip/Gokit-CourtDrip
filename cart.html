@@ -39,15 +39,24 @@
         }
 
         .navbar {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 1rem 0;
+            background: transparent;
+            padding: 0.75rem 0;
+            /* Make navbar smaller */
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid transparent;
+            /* Transparent border by default */
+            transition: background-color 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+        }
+
+        .navbar.navbar-scrolled {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
@@ -2008,6 +2017,17 @@
             const navLinks = document.querySelector('.nav-links');
             navbarToggler.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
+            });
+        </script>
+        <script>
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) { // Add scrolled class after 50px of scrolling
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
             });
         </script>
 </body>
