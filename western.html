@@ -14,26 +14,30 @@
         }
 
         /* Enhanced Navbar */
-        .lakers-header {
+        .western-header {
             background: rgba(0, 0, 0, 0.95) !important;
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid #FFC627;
+            backdrop-filter: blur(15px);
+            border-bottom: 3px solid #FFC627;
+            box-shadow: 0 4px 20px rgba(255, 198, 39, 0.2);
         }
 
         .navbar-brand {
-            font-size: 1.5rem;
-            background: linear-gradient(45deg, #FFC627, #ff8800);
+            font-size: 1.6rem;
+            background: linear-gradient(45deg, #FFC627, #ff8800, #FFC627);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-weight: 700;
+            text-shadow: 0 0 30px rgba(255, 198, 39, 0.3);
         }
 
         /* Enhanced Hero Section */
         .hero-section {
-            background: linear-gradient(135deg, rgba(255, 198, 39, 0.1), rgba(255, 136, 0, 0.1));
-            border-bottom: 3px solid #FFC627;
+            background: linear-gradient(135deg, rgba(255, 198, 39, 0.15), rgba(255, 136, 0, 0.1));
+            border-bottom: 4px solid #FFC627;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 8px 32px rgba(255, 198, 39, 0.2);
         }
 
         .hero-section::before {
@@ -45,10 +49,10 @@
             height: 200%;
             background: repeating-linear-gradient(45deg,
                     transparent,
-                    transparent 10px,
-                    rgba(255, 198, 39, 0.03) 10px,
-                    rgba(255, 198, 39, 0.03) 20px);
-            animation: slide 20s linear infinite;
+                    transparent 15px,
+                    rgba(255, 198, 39, 0.05) 15px,
+                    rgba(255, 198, 39, 0.05) 30px);
+            animation: slide 25s linear infinite;
         }
 
         @keyframes slide {
@@ -66,12 +70,23 @@
             z-index: 2;
         }
 
+        .hero-content h1 {
+            text-shadow: 0 0 40px rgba(255, 198, 39, 0.4);
+            font-weight: 800;
+        }
+
+        .hero-content .lead {
+            font-size: 1.3rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
         /* Enhanced Cards */
         .section-card {
-            border-radius: 15px !important;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px !important;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            border: 2px solid transparent;
         }
 
         .section-card::before {
@@ -81,8 +96,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.6s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.8s;
             z-index: 3;
         }
 
@@ -91,68 +106,187 @@
         }
 
         .section-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            filter: brightness(1.1);
+            transform: translateY(-15px) scale(1.03);
+            filter: brightness(1.2);
+            border-color: rgba(255, 198, 39, 0.3);
         }
 
         .card {
             border: none !important;
-            border-radius: 15px !important;
+            border-radius: 20px !important;
         }
 
         .card img {
-            transition: all 0.4s ease;
-            border-radius: 15px 15px 0 0 !important;
+            transition: all 0.5s ease;
+            border-radius: 20px 20px 0 0 !important;
         }
 
         .section-card:hover img {
-            transform: scale(1.1);
-            opacity: 0.7 !important;
+            transform: scale(1.08);
+            filter: brightness(1.1);
         }
 
         .section-card:hover .position-absolute h5 {
-            transform: scale(1.05);
-            text-shadow: 0 0 20px currentColor;
+            transform: scale(1.08);
+            text-shadow: 0 0 25px currentColor;
         }
 
         .section-card:hover .btn {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(255, 198, 39, 0.5);
+            transform: scale(1.15);
+            box-shadow: 0 0 25px rgba(255, 198, 39, 0.6);
+            background: rgba(255, 198, 39, 0.1);
         }
 
-        /* Back button enhancement */
+        /* Enhanced Back button */
         .btn-outline-warning {
-            border-width: 2px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            border-width: 3px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 12px 24px;
+            transition: all 0.4s ease;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(255, 198, 39, 0.2);
         }
 
         .btn-outline-warning:hover {
-            transform: translateX(-5px);
-            box-shadow: 5px 5px 15px rgba(255, 198, 39, 0.3);
+            transform: translateX(-8px) scale(1.05);
+            box-shadow: 8px 8px 25px rgba(255, 198, 39, 0.4);
+            background: rgba(255, 198, 39, 0.1);
+        }
+
+        /* Enhanced badges */
+        .badge {
+            font-size: 0.9rem !important;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .bg-warning {
+            box-shadow: 0 4px 15px rgba(255, 198, 39, 0.3);
+        }
+
+        .bg-outline-warning {
+            border: 2px solid #FFC627;
+            color: #FFC627;
+            background: rgba(255, 198, 39, 0.1);
         }
 
         /* Enhanced footer */
         footer {
             background: rgba(0, 0, 0, 0.95) !important;
-            border-top: 2px solid #FFC627;
+            border-top: 3px solid #FFC627;
+            box-shadow: 0 -4px 20px rgba(255, 198, 39, 0.2);
+        }
+
+        /* Enhanced dropdown */
+        .dropdown-menu {
+            background: rgba(0, 0, 0, 0.95) !important;
+            border: 2px solid #FFC627;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(255, 198, 39, 0.3);
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255, 198, 39, 0.15) !important;
+            border-radius: 10px;
+            margin: 2px 8px;
+        }
+
+        /* Enhanced nav links */
+        .nav-link {
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #FFC627 !important;
+            text-shadow: 0 0 15px rgba(255, 198, 39, 0.5);
         }
 
         /* Responsive improvements */
         @media (max-width: 768px) {
             .section-card:hover {
-                transform: translateY(-5px) scale(1.01);
+                transform: translateY(-8px) scale(1.02);
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .btn-outline-warning:hover {
+                transform: translateX(-5px) scale(1.02);
             }
         }
 
-        /* Dropdown enhancement */
-        .dropdown-menu {
-            background: rgba(0, 0, 0, 0.95) !important;
-            border: 1px solid #FFC627;
+        /* Enhanced Text Visibility - No Background */
+        .section-card h5 {
+            font-size: 1.3rem !important;
+            font-weight: 800 !important;
+            text-shadow:
+                2px 2px 4px rgba(0, 0, 0, 0.9),
+                0 0 10px rgba(0, 0, 0, 0.7),
+                0 0 20px rgba(255, 198, 39, 0.3) !important;
+            letter-spacing: 1px;
+            margin-bottom: 15px !important;
         }
 
-        .dropdown-item:hover {
-            background: rgba(255, 198, 39, 0.1) !important;
+        .section-card .btn {
+            font-size: 1rem !important;
+            font-weight: 700 !important;
+            padding: 10px 20px !important;
+            border-width: 3px !important;
+            border-radius: 25px !important;
+            text-shadow:
+                1px 1px 2px rgba(0, 0, 0, 0.9),
+                0 0 8px rgba(0, 0, 0, 0.6) !important;
+            background: rgba(0, 0, 0, 0.4) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .section-card:hover h5 {
+            text-shadow:
+                3px 3px 6px rgba(0, 0, 0, 0.95),
+                0 0 15px rgba(0, 0, 0, 0.8),
+                0 0 30px rgba(255, 198, 39, 0.5) !important;
+            transform: scale(1.05);
+        }
+
+        .section-card:hover .btn {
+            background: rgba(255, 198, 39, 0.2) !important;
+            text-shadow:
+                2px 2px 4px rgba(0, 0, 0, 0.95),
+                0 0 12px rgba(0, 0, 0, 0.7) !important;
+            transform: scale(1.1);
+        }
+
+        /* Mobile text improvements */
+        @media (max-width: 768px) {
+            .section-card h5 {
+                font-size: 1.1rem !important;
+            }
+
+            .section-card .btn {
+                font-size: 0.9rem !important;
+                padding: 8px 16px !important;
+            }
+        }
+
+
+        /* Enhanced loading animation */
+        .section-card {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .section-card.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Subtle glow effects for team colors */
+        .section-card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -160,7 +294,7 @@
 <body class="bg-dark text-white">
 
     <!-- Enhanced Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark lakers-header sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark western-header sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">🏀 CourtDripDxb</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -189,10 +323,10 @@
     <!-- Enhanced Hero -->
     <section class="py-5 text-center bg-black border-bottom border-warning hero-section">
         <div class="container hero-content">
-            <h1 class="display-4 fw-bold text-warning">Western Conference</h1>
-            <p class="lead text-light">Browse jerseys from all 15 Western NBA teams</p>
+            <h1 class="display-4 fw-bold text-warning mb-3">Western Conference</h1>
+            <p class="lead text-light mb-4">Browse jerseys from all 15 Western NBA teams</p>
             <div class="mt-3">
-                <span class="badge bg-warning text-dark fs-6 me-2">15 Teams</span>
+                <span class="badge bg-warning text-dark fs-6 me-3">15 Teams</span>
                 <span class="badge bg-outline-warning fs-6">Premium Jerseys</span>
             </div>
         </div>
@@ -201,11 +335,11 @@
     <!-- Enhanced Back Button -->
     <div class="container my-4 text-start">
         <a href="nba.html" class="btn btn-outline-warning">
-            ← Back to NBA Teams
+            <i class="fas fa-arrow-left me-2"></i>Back to NBA Teams
         </a>
     </div>
 
-    <!-- Team Grid -->
+    <!-- All Western Conference Teams -->
     <section class="py-5">
         <div class="container">
             <div class="row g-4">
@@ -214,19 +348,18 @@
                 <div class="col-md-4">
                     <a href="lakers.html" class="text-decoration-none">
                         <div class="section-card" style="background-color: #552583;
-                            box-shadow: 0 0 15px 5px rgba(255, 184, 28, 0.5);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 20px 8px rgba(255, 184, 28, 0.6);
+                            border-radius: 20px;">
                             <div
                                 class="card bg-dark text-white h-100 overflow-hidden conf-card west d-flex flex-column justify-content-between">
                                 <div class="position-relative" style="height: 250px;">
                                     <img src="img/lakers.jpg" alt="Lakers" class="w-100 h-100"
-                                        style="object-fit: cover; opacity: 0.5;">
+                                        style="object-fit: cover; opacity: 0.8;">
                                     <div
                                         class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                         <h5 class="fw-bold" style="color: #FFC627;">LOS ANGELES LAKERS</h5>
-                                        <span class="btn mt-2"
-                                            style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                        <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                            Jerseys</span>
                                     </div>
                                 </div>
                             </div>
@@ -238,17 +371,16 @@
                 <div class="col-md-4">
                     <a href="clippers.html" class="text-decoration-none text-white">
                         <div class="section-card" style="background-color: #1D428A;
-                            box-shadow: 0 0 15px rgba(236, 50, 36, 0.6), 0 0 15px rgba(236, 50, 36, 0.4);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 20px rgba(236, 50, 36, 0.7), 0 0 20px rgba(236, 50, 36, 0.5);
+                            border-radius: 20px;">
                             <div class="card bg-dark h-100 overflow-hidden position-relative">
                                 <img src="img/clippers.jpg" class="card-img-top" alt="LA Clippers"
-                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.8;">
                                 <div
                                     class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                     <h5 class="fw-bold" style="color: #FFC627;">LA CLIPPERS</h5>
-                                    <span class="btn mt-2"
-                                        style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                    <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                        Jerseys</span>
                                 </div>
                             </div>
                         </div>
@@ -259,18 +391,17 @@
                 <div class="col-md-4">
                     <a href="warriors.html" class="text-decoration-none text-white">
                         <div class="section-card" style="background-color: #0D1B2A;
-                            box-shadow: 0 0 15px rgba(255, 199, 44, 0.6), 0 0 15px rgba(255, 199, 44, 0.4);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 20px rgba(255, 199, 44, 0.7), 0 0 20px rgba(255, 199, 44, 0.5);
+                            border-radius: 20px;">
                             <div class="card bg-dark h-100 overflow-hidden position-relative">
                                 <img src="img/Golden State Warriors.jpg" class="card-img-top"
                                     alt="Golden State Warriors"
-                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.8;">
                                 <div
                                     class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                     <h5 class="fw-bold text-warning mb-1">GOLDEN STATE WARRIORS</h5>
-                                    <span class="btn mt-2"
-                                        style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                    <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                        Jerseys</span>
                                 </div>
                             </div>
                         </div>
@@ -281,17 +412,16 @@
                 <div class="col-md-4">
                     <a href="suns.html" class="text-decoration-none text-white">
                         <div class="section-card" style="background-color: #1D1160; 
-                            box-shadow: 0 0 15px rgba(255, 127, 39, 0.5);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 20px rgba(255, 127, 39, 0.6);
+                            border-radius: 20px;">
                             <div class="card bg-dark h-100 overflow-hidden position-relative">
                                 <img src="img/suns.jpg" class="card-img-top" alt="Phoenix Suns"
-                                    style="height: 250px; object-fit: cover; object-position: top 20%; opacity: 0.5;">
+                                    style="height: 250px; object-fit: cover; object-position: top 20%; opacity: 0.8;">
                                 <div
                                     class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                     <h5 class="fw-bold" style="color: #FFC627;">PHOENIX SUNS</h5>
-                                    <span class="btn mt-2"
-                                        style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                    <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                        Jerseys</span>
                                 </div>
                             </div>
                         </div>
@@ -302,17 +432,16 @@
                 <div class="col-md-4">
                     <a href="kings.html" class="text-decoration-none text-white">
                         <div class="section-card" style="background-color: #1a1a1a; 
-                            box-shadow: 0 0 15px rgba(90, 45, 129, 0.4), 0 0 15px rgba(90, 45, 129, 0.3);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 20px rgba(90, 45, 129, 0.5), 0 0 20px rgba(90, 45, 129, 0.4);
+                            border-radius: 20px;">
                             <div class="card bg-dark h-100 overflow-hidden position-relative">
                                 <img src="img/kings .jpg" class="card-img-top" alt="Sacramento Kings"
-                                    style="height: 250px; object-fit: cover; object-position: top 20%; opacity: 0.5;">
+                                    style="height: 250px; object-fit: cover; object-position: top 20%; opacity: 0.8;">
                                 <div
                                     class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                     <h5 class="fw-bold" style="color: #FFC627;">SACRAMENTO KINGS</h5>
-                                    <span class="btn mt-2"
-                                        style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                    <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                        Jerseys</span>
                                 </div>
                             </div>
                         </div>
@@ -323,17 +452,16 @@
                 <div class="col-md-4">
                     <a href="nuggets.html" class="text-decoration-none text-white">
                         <div class="section-card nuggets-card" style="background-color: #1a1a1a; 
-                            box-shadow: 0 0 15px rgba(255, 198, 39, 0.4), 0 0 15px rgba(255, 198, 39, 0.3), 0 0 15px rgba(255, 198, 39, 0.2);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 20px rgba(255, 198, 39, 0.5), 0 0 20px rgba(255, 198, 39, 0.4), 0 0 20px rgba(255, 198, 39, 0.3);
+                            border-radius: 20px;">
                             <div class="card bg-dark h-100 overflow-hidden position-relative">
                                 <img src="img/nuggets.jpg" class="card-img-top" alt="Denver Nuggets"
-                                    style="height: 250px; object-fit: cover; object-position: top 20%; opacity: 0.5;">
+                                    style="height: 250px; object-fit: cover; object-position: top 20%; opacity: 0.8;">
                                 <div
                                     class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                     <h5 class="fw-bold" style="color: #FFC627;">DENVER NUGGETS</h5>
-                                    <span class="btn mt-2"
-                                        style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                    <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                        Jerseys</span>
                                 </div>
                             </div>
                         </div>
@@ -344,18 +472,17 @@
                 <div class="col-md-4">
                     <a href="timberwolves.html" class="text-decoration-none text-white">
                         <div class="section-card timberwolves-card" style="background-color: #1a1a1a; 
-                            box-shadow: 0 0 15px rgba(0, 180, 216, 0.4), 0 0 15px rgba(0, 180, 216, 0.3), 0 0 15px rgba(0, 180, 216, 0.2);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 20px rgba(0, 180, 216, 0.5), 0 0 20px rgba(0, 180, 216, 0.4), 0 0 20px rgba(0, 180, 216, 0.3);
+                            border-radius: 20px;">
                             <div class="card bg-dark h-100 overflow-hidden position-relative">
                                 <img src="img/Minnesota Timberwolves.jpg" class="card-img-top"
                                     alt="Minnesota Timberwolves"
-                                    style="height: 250px; object-fit: cover; object-position: top 20%; opacity: 0.5;">
+                                    style="height: 250px; object-fit: cover; object-position: top 20%; opacity: 0.8;">
                                 <div
                                     class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                     <h5 class="fw-bold" style="color: #FFC627;">MINNESOTA TIMBERWOLVES</h5>
-                                    <span class="btn mt-2"
-                                        style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                    <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                        Jerseys</span>
                                 </div>
                             </div>
                         </div>
@@ -366,17 +493,16 @@
                 <div class="col-md-4">
                     <a href="blazers.html" class="text-decoration-none text-white">
                         <div class="section-card blazers-card" style="background-color: #1a1a1a; 
-                            box-shadow: 0 0 15px rgba(200, 16, 46, 0.4), 0 0 15px rgba(200, 16, 46, 0.3), 0 0 15px rgba(200, 16, 46, 0.2);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 20px rgba(200, 16, 46, 0.5), 0 0 20px rgba(200, 16, 46, 0.4), 0 0 20px rgba(200, 16, 46, 0.3);
+                            border-radius: 20px;">
                             <div class="card bg-dark h-100 overflow-hidden position-relative">
                                 <img src="img/portland2.jpg" class="card-img-top" alt="Portland Trail Blazers"
-                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.8;">
                                 <div
                                     class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                     <h5 class="fw-bold" style="color: #FFC627;">PORTLAND TRAIL BLAZERS</h5>
-                                    <span class="btn mt-2"
-                                        style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                    <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                        Jerseys</span>
                                 </div>
                             </div>
                         </div>
@@ -387,17 +513,16 @@
                 <div class="col-md-4">
                     <a href="jazz.html" class="text-decoration-none text-white">
                         <div class="section-card jazz-card" style="background-color: #18222b;
-                            box-shadow: 0 0 10px 2px rgba(0, 255, 191, 0.5);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 15px 3px rgba(0, 255, 191, 0.6);
+                            border-radius: 20px;">
                             <div class="card bg-dark h-100 overflow-hidden position-relative">
                                 <img src="img/jazz.jpg" class="card-img-top" alt="Utah Jazz"
-                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.8;">
                                 <div
                                     class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                     <h5 class="fw-bold mb-1" style="color: #FFC627;">UTAH JAZZ</h5>
-                                    <span class="btn mt-2"
-                                        style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                    <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                        Jerseys</span>
                                 </div>
                             </div>
                         </div>
@@ -408,17 +533,16 @@
                 <div class="col-md-4">
                     <a href="thunder.html" class="text-decoration-none text-white">
                         <div class="section-card thunder-card" style="background-color: #1a1a1a;
-                            box-shadow: 0 0 15px rgba(0, 174, 239, 0.6), 0 0 15px rgba(255, 125, 0, 0.4);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 20px rgba(0, 174, 239, 0.7), 0 0 20px rgba(255, 125, 0, 0.5);
+                            border-radius: 20px;">
                             <div class="card bg-dark h-100 overflow-hidden position-relative">
                                 <img src="img/thunder.jpg" class="card-img-top" alt="Oklahoma City Thunder"
-                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.8;">
                                 <div
                                     class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                     <h5 class="fw-bold" style="color: #FFC627;">OKLAHOMA CITY THUNDER</h5>
-                                    <span class="btn mt-2"
-                                        style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                    <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                        Jerseys</span>
                                 </div>
                             </div>
                         </div>
@@ -429,17 +553,16 @@
                 <div class="col-md-4">
                     <a href="mavericks.html" class="text-decoration-none text-white">
                         <div class="section-card mavericks-card" style="background-color: #0d1117;
-                            box-shadow: 0 0 15px 5px rgba(0, 132, 255, 0.6);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 20px 8px rgba(0, 132, 255, 0.7);
+                            border-radius: 20px;">
                             <div class="card bg-dark h-100 overflow-hidden position-relative">
                                 <img src="img/mavericks.jpg" class="card-img-top" alt="Dallas Mavericks"
-                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.8;">
                                 <div
                                     class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                     <h5 class="fw-bold mb-1" style="color: #FFC627;">DALLAS MAVERICKS</h5>
-                                    <span class="btn mt-2"
-                                        style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                    <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                        Jerseys</span>
                                 </div>
                             </div>
                         </div>
@@ -450,17 +573,16 @@
                 <div class="col-md-4">
                     <a href="grizzlies.html" class="text-decoration-none text-white">
                         <div class="section-card grizzlies-card" style="background-color: #1a1a1a;
-                            box-shadow: 0 0 15px rgba(93, 118, 169, 0.6), 0 0 15px rgba(15, 40, 81, 0.4);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 20px rgba(93, 118, 169, 0.7), 0 0 20px rgba(15, 40, 81, 0.5);
+                            border-radius: 20px;">
                             <div class="card bg-dark h-100 overflow-hidden position-relative">
                                 <img src="img/grizzlies.jpg" class="card-img-top" alt="Memphis Grizzlies"
-                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.8;">
                                 <div
                                     class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                     <h5 class="fw-bold" style="color: #FFC627;">MEMPHIS GRIZZLIES</h5>
-                                    <span class="btn mt-2"
-                                        style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                    <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                        Jerseys</span>
                                 </div>
                             </div>
                         </div>
@@ -471,17 +593,16 @@
                 <div class="col-md-4">
                     <a href="pelicans.html" class="text-decoration-none text-white">
                         <div class="section-card pelicans-card" style="background-color: #1a1a1a;
-                            box-shadow: 0 0 15px rgba(0, 43, 92, 0.6), 0 0 15px rgba(227, 24, 55, 0.3);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 20px rgba(0, 43, 92, 0.7), 0 0 20px rgba(227, 24, 55, 0.4);
+                            border-radius: 20px;">
                             <div class="card bg-dark h-100 overflow-hidden position-relative">
                                 <img src="img/pelicans.jpg" class="card-img-top" alt="New Orleans Pelicans"
-                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.8;">
                                 <div
                                     class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                     <h5 class="fw-bold" style="color: #FFC627;">NEW ORLEANS PELICANS</h5>
-                                    <span class="btn mt-2"
-                                        style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                    <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                        Jerseys</span>
                                 </div>
                             </div>
                         </div>
@@ -492,17 +613,16 @@
                 <div class="col-md-4">
                     <a href="rockets.html" class="text-decoration-none text-white">
                         <div class="section-card rockets-card" style="background-color: #1a1a1a;
-                            box-shadow: 0 0 15px rgba(200, 16, 46, 0.6), 0 0 15px rgba(160, 160, 160, 0.3);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 20px rgba(200, 16, 46, 0.7), 0 0 20px rgba(160, 160, 160, 0.4);
+                            border-radius: 20px;">
                             <div class="card bg-dark h-100 overflow-hidden position-relative">
                                 <img src="img/Rockets.jpg" class="card-img-top" alt="Houston Rockets"
-                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.8;">
                                 <div
                                     class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                     <h5 class="fw-bold" style="color: #FFC627;">HOUSTON ROCKETS</h5>
-                                    <span class="btn mt-2"
-                                        style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                    <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                        Jerseys</span>
                                 </div>
                             </div>
                         </div>
@@ -513,17 +633,16 @@
                 <div class="col-md-4">
                     <a href="spurs.html" class="text-decoration-none text-white">
                         <div class="section-card spurs-card" style="background-color: #1a1a1a;
-                            box-shadow: 0 0 15px rgba(192, 192, 192, 0.4), 0 0 15px rgba(255, 255, 255, 0.2);
-                            border-radius: 15px;
-                            transition: transform 0.3s ease;">
+                            box-shadow: 0 0 20px rgba(192, 192, 192, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+                            border-radius: 20px;">
                             <div class="card bg-dark h-100 overflow-hidden position-relative">
                                 <img src="img/spurs.jpg" class="card-img-top" alt="San Antonio Spurs"
-                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.5;">
+                                    style="height: 250px; object-fit: cover; object-position: top; opacity: 0.8;">
                                 <div
                                     class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                                     <h5 class="fw-bold" style="color: #FFC627;">SAN ANTONIO SPURS</h5>
-                                    <span class="btn mt-2"
-                                        style="color: #FFC627; border: 2px solid #FFC627;">View</span>
+                                    <span class="btn mt-2" style="color: #FFC627; border: 2px solid #FFC627;">View
+                                        Jerseys</span>
                                 </div>
                             </div>
                         </div>
@@ -536,26 +655,64 @@
 
     <!-- Enhanced Footer -->
     <footer class="bg-black text-white text-center py-4 mt-5">
-        <p class="mb-1">© 2025 CourtDripDxb — Western Conference Showcase</p>
-        <p class="mb-0">Not affiliated with the NBA or any official team or league.</p>
+        <div class="container">
+            <p class="mb-2 fs-5">© 2025 CourtDripDxb — Western Conference Showcase</p>
+            <p class="mb-0 text-bold">Not affiliated with the NBA or any official team or league.</p>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Add staggered animation to cards on load
+        // Enhanced staggered animation on load
         document.addEventListener('DOMContentLoaded', function () {
             const cards = document.querySelectorAll('.section-card');
+
+            // Add loading class initially
             cards.forEach((card, index) => {
-                card.style.transform = 'translateY(30px)';
+                card.style.transform = 'translateY(60px)';
                 card.style.opacity = '0';
+                card.style.filter = 'blur(5px)';
 
                 setTimeout(() => {
-                    card.style.transition = 'all 0.6s ease';
+                    card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
                     card.style.transform = 'translateY(0)';
                     card.style.opacity = '1';
-                }, index * 80);
+                    card.style.filter = 'blur(0px)';
+                    card.classList.add('loaded');
+                }, index * 100);
             });
+
+            // Enhanced hover sound effect (optional)
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    this.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    this.style.transition = 'all 0.3s ease-out';
+                });
+            });
+        });
+
+        // Enhanced scroll reveal effect
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for scroll animation
+        document.querySelectorAll('.section-card').forEach(card => {
+            observer.observe(card);
         });
     </script>
 </body>

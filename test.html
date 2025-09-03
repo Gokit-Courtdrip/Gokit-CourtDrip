@@ -1249,74 +1249,6 @@
             /* Fixed width for horizontal scroll */
         }
 
-        /* Add to Cart Animation */
-        .fly-to-cart {
-            position: fixed;
-            background: var(--bg-secondary);
-            border-radius: 50%;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            transition: all 0.8s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-        }
-
-        /* Track Order Modal */
-        #trackingResults {
-            margin-top: var(--space-6);
-        }
-
-        .tracking-timeline {
-            position: relative;
-            padding-left: var(--space-6);
-            border-left: 2px solid var(--border-color);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: var(--space-6);
-        }
-
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -20px;
-            top: 5px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--bg-tertiary);
-            border: 3px solid var(--bg-primary);
-        }
-
-        .timeline-item.complete .timeline-dot {
-            background: var(--accent-blue);
-        }
-
-        .timeline-item.active .timeline-dot {
-            background: var(--accent-neon);
-            animation: pulse 1.5s infinite;
-        }
-
-        .timeline-content strong {
-            display: block;
-            font-weight: 600;
-        }
-
-        .timeline-content p {
-            font-size: var(--text-sm);
-            color: var(--text-muted);
-        }
-
-
-        .footer-section p {
-            margin-bottom: var(--space-3);
-        }
-
         /* Footer */
         .footer {
             background: var(--bg-secondary);
@@ -1583,13 +1515,13 @@
 
                 <div class="cart-icon-container">
 
-                    <a href="cart.html" class="btn btn-ghost" aria-label="View shopping cart">
+                    <button class="btn btn-ghost" id="cartBtn" aria-label="View shopping cart">
                         <i class="fas fa-shopping-cart"></i>
-                    </a>
+                    </button>
                     <span class="cart-badge" id="cartBadge">0</span>
                 </div>
 
-                <a href="league.html" class="btn btn-primary" id="goToLeagues">
+                <a href="football.html" class="btn btn-primary" id="goToLeagues">
                     <i class="fas fa-tshirt"></i>
                     <span>Browse</span>
                 </a>
@@ -1599,7 +1531,7 @@
 
     <!-- Page Actions: Go to Leagues / Back to Home -->
     <div class="page-actions-container">
-        <a href="league.html" class="page-action-btn" id="scrollToLeaguesBtn">
+        <a href="#leagues" class="page-action-btn" id="scrollToLeaguesBtn">
             <i class="fas fa-arrow-left"></i>
             <span>Go to Leagues</span>
         </a>
@@ -1880,11 +1812,76 @@
     </div>
 
     <!-- Size Guide Modal -->
-    <div class="modal" id="sizeGuideModal">
+    <div class="modal size-guide-modal" id="sizeGuideModal">
         <div class="modal-content">
-            <button class="modal-close" id="sizeGuideClose"><i class="fas fa-times"></i></button>
-            <div class="size-guide-content">
-                <img src="img/GokitSize.jpg" alt="GoKit Sizing Guide">
+            <div class="modal-header">
+                <h2 class="modal-title">GoKit.ME Player Version Size Chart</h2>
+                <button class="modal-close" id="sizeGuideClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="jersey-icon">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+
+                <table class="size-guide-table">
+                    <thead>
+                        <tr>
+                            <th>Size (cm)</th>
+                            <th>Length (cm)</th>
+                            <th>Shoulder Width (cm)</th>
+                            <th>Sleeve Length (cm)</th>
+                            <th>Cuff Width (cm)</th>
+                            <th>Height Range (cm)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>S</td>
+                            <td>71</td>
+                            <td>46</td>
+                            <td>41.5</td>
+                            <td>16.5</td>
+                            <td>160-165</td>
+                        </tr>
+                        <tr>
+                            <td>M</td>
+                            <td>73</td>
+                            <td>48</td>
+                            <td>43</td>
+                            <td>17</td>
+                            <td>165-170</td>
+                        </tr>
+                        <tr>
+                            <td>L</td>
+                            <td>75</td>
+                            <td>50</td>
+                            <td>44.5</td>
+                            <td>17.5</td>
+                            <td>170-175</td>
+                        </tr>
+                        <tr>
+                            <td>XL</td>
+                            <td>77</td>
+                            <td>52</td>
+                            <td>46</td>
+                            <td>18</td>
+                            <td>175-180</td>
+                        </tr>
+                        <tr>
+                            <td>2XL</td>
+                            <td>79</td>
+                            <td>54</td>
+                            <td>47.5</td>
+                            <td>18.5</td>
+                            <td>180-185</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="size-guide-note">This is the official GoKit ME player version sizing guide.</p>
             </div>
         </div>
     </div>
@@ -1907,75 +1904,59 @@
         </div>
     </div>
 
-    <!-- Shipping Info Modal -->
-    <div class="modal" id="shippingModal">
-        <div class="modal-content" style="max-width: 600px;">
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">Shipping Information</h2>
-                <button class="modal-close" id="shippingClose" aria-label="Close dialog">
+                <h2 class="modal-title">Your Shopping Cart</h2>
+                <button class="modal-close" id="cartClose" aria-label="Close dialog">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <div class="modal-body">
-                <h4>Delivery Times</h4>
-                <p style="color: var(--text-muted); margin-bottom: var(--space-4);">For items in stock, delivery within
-                    the UAE is typically 2-4 business days. For items that are not in stock, please allow up to 3-4
-                    weeks for delivery.</p>
-
-                <h4>Delivery Fees (UAE)</h4>
-                <p style="color: var(--text-muted); margin-bottom: var(--space-4);">A flat rate of <strong>25
-                        AED</strong> applies to all orders within the UAE. Enjoy <strong>free delivery</strong> on all
-                    orders above <strong>250 AED</strong>!</p>
-
-                <h4>International Shipping</h4>
-                <p style="color: var(--text-muted);">For shipping outside of the UAE, the customer is responsible for
-                    all shipping charges. Please contact us for a quote before placing your order.</p>
+            <div class="modal-body" id="cartItemsContainer">
+                <!-- Cart items will be loaded here -->
             </div>
-        </div>
-    </div>
-
-    <!-- Contact Us Modal -->
-    <div class="modal" id="contactModal">
-        <div class="modal-content" style="max-width: 500px;">
-            <div class="modal-header">
-                <h2 class="modal-title">Contact Us</h2>
-                <button class="modal-close" id="contactClose" aria-label="Close dialog"><i
-                        class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body footer-contact" style="padding-top: 0;">
-                <p><i class="fas fa-phone"></i> +971 50 123 4567</p>
-                <p><i class="fas fa-envelope"></i> support@gokit.me</p>
-                <p><i class="fas fa-map-marker-alt"></i> Dubai, United Arab Emirates</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Track Order Modal -->
-    <div class="modal" id="trackOrderModal">
-        <div class="modal-content" style="max-width: 500px;">
-            <div class="modal-header">
-                <h2 class="modal-title">Track Your Order</h2>
-                <button class="modal-close" id="trackOrderClose" aria-label="Close dialog">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p style="color: var(--text-muted); margin-bottom: var(--space-4);">Enter your order ID to see its
-                    status.</p>
-                <form id="trackOrderForm">
-                    <div class="form-group" style="display: flex; gap: var(--space-3);">
-                        <input type="text" id="trackOrderIdInput" class="form-input" placeholder="Enter Order ID"
-                            required style="flex: 1;">
-                        <button type="submit" class="btn btn-primary">Track</button>
-                    </div>
-                </form>
-                <div id="trackingResults">
-                    <!-- Tracking results will be displayed here -->
+            <div class="modal-footer"
+                style="padding: var(--space-6); border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="font-weight: 700; font-size: var(--text-lg);">Total:</span>
+                    <span id="cartTotal"
+                        style="font-weight: 700; font-size: var(--text-lg); color: var(--accent-neon);">0 AED</span>
                 </div>
+                <button class="btn btn-primary">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Proceed to Checkout</span>
+                </button>
             </div>
         </div>
     </div>
 
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Your Shopping Cart</h2>
+                <button class="modal-close" id="cartClose" aria-label="Close dialog">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="cartItemsContainer">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <div class="modal-footer"
+                style="padding: var(--space-6); border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="font-weight: 700; font-size: var(--text-lg);">Total:</span>
+                    <span id="cartTotal"
+                        style="font-weight: 700; font-size: var(--text-lg); color: var(--accent-neon);">0 AED</span>
+                </div>
+                <a href="cart.html" class="btn btn-primary">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Proceed to Checkout</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Orders Modal -->
     <div class="modal" id="ordersModal">
@@ -2044,45 +2025,60 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-grid">
-                <div class="footer-section" style="grid-column: span 2;">
-                    <h3>About Us</h3>
+                <div class="footer-section">
+                    <h3>GoKit.ME</h3>
                     <p style="color: var(--text-secondary); margin-bottom: var(--space-4);">
                         Premium football jerseys with professional customization. We deliver quality products with
                         exceptional service.
                     </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="football.html">Football</a></li>
-                        <li><a href="basketball.html">Basketball</a></li>
-                        <li><a href="#" id="footerTrackOrderLink">Track Your Order</a></li>
+                        <li><a href="jerseys.html">All Jerseys</a></li>
+                        <li><a href="premier-league.html">Premier League</a></li>
+                        <li><a href="la-liga.html">La Liga</a></li>
+                        <li><a href="serie-a.html">Serie A</a></li>
+                        <li><a href="bundesliga.html">Bundesliga</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section">
                     <h3>Customer Service</h3>
                     <ul class="footer-links">
-                        <li><a href="#" id="footerSizeGuideLink">Size Guide</a></li>
-                        <li><a href="#" id="footerShippingLink">Shipping Information</a></li>
+                        <li><a href="size-guide.html">Size Guide</a></li>
+                        <li><a href="shipping.html">Shipping Information</a></li>
                         <li><a href="returns.html">Returns & Exchanges</a></li>
                         <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="#" id="footerContactLink">Contact Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-section">
-                    <h3>Follow Us</h3>
-                    <p style="color: var(--text-secondary);">Stay up to date with our latest drops and offers.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                        <a href="#" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    </div>
+                <div class="footer-section footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> +971 50 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> support@gokit.me</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Dubai, United Arab Emirates</p>
+                    <p><i class="fas fa-clock"></i> Open 7 days a week, 10am - 10pm</p>
                 </div>
             </div>
 
@@ -2098,37 +2094,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
     <script>
-        // Define Football products directly in the page since products.js does not exist
-        const products = [
-            { id: 1, name: "Real Madrid Home 23/24", team: "Real Madrid", league: "La Liga", price: 75, originalPrice: 90, discount: 17, badge: "Best Seller", image: "⚽", hasUcl: true, uclStars: 14 },
-            { id: 2, name: "Barcelona Away 23/24", team: "Barcelona", league: "La Liga", price: 75, originalPrice: 90, discount: 17, badge: "New", image: "👕", hasUcl: true, uclStars: 5 },
-            { id: 3, name: "Man United Home 23/24", team: "Manchester United", league: "Premier League", price: 80, originalPrice: 95, discount: 16, badge: "Popular", image: "⚽", hasUcl: true, uclStars: 3 },
-            { id: 4, name: "Liverpool Home 23/24", team: "Liverpool", league: "Premier League", price: 80, originalPrice: 95, discount: 16, badge: "Hot", image: "👕", hasUcl: true, uclStars: 6 },
-            { id: 5, name: "AC Milan Home 23/24", team: "AC Milan", league: "Serie A", price: 75, originalPrice: 90, discount: 17, badge: "Classic", image: "⚽", hasUcl: true, uclStars: 7 },
-            { id: 6, name: "Inter Milan Away 23/24", team: "Inter Milan", league: "Serie A", price: 75, originalPrice: 90, discount: 17, badge: "New", image: "👕", hasUcl: true, uclStars: 3 },
-            { id: 7, name: "Bayern Munich Home 23/24", team: "Bayern Munich", league: "Bundesliga", price: 85, originalPrice: 100, discount: 15, badge: "Popular", image: "⚽", hasUcl: true, uclStars: 6 },
-            { id: 8, name: "Dortmund Home 23/24", team: "Borussia Dortmund", league: "Bundesliga", price: 80, originalPrice: 95, discount: 16, badge: "Fan Favorite", image: "👕", hasUcl: true, uclStars: 1 },
-            { id: 9, name: "PSG Home 23/24", team: "Paris Saint-Germain", league: "Ligue 1", price: 85, originalPrice: 100, discount: 15, badge: "Hot", image: "⚽", hasUcl: false, uclStars: 0 },
-            { id: 10, name: "Man City Home 23/24", team: "Manchester City", league: "Premier League", price: 85, originalPrice: 100, discount: 15, badge: "Best Seller", image: "👕", hasUcl: true, uclStars: 1 },
-            { id: 11, name: "Arsenal Home 23/24", team: "Arsenal", league: "Premier League", price: 80, originalPrice: 95, discount: 16, badge: "Popular", image: "⚽", hasUcl: false, uclStars: 0 },
-            { id: 12, name: "Chelsea Home 23/24", team: "Chelsea", league: "Premier League", price: 80, originalPrice: 95, discount: 16, badge: "New", image: "👕", hasUcl: true, uclStars: 2 }
-        ];
-        window.products = products; // Make it available globally for other functions on the page
-
-        // Define NBA products inline so this page can find them
-        const nba_products = [
-            { id: 101, name: "Celtics Icon Edition 23/24", team: "Boston Celtics", conference: "Eastern", price: 85, image: 'img/products/celtics-24.png', tags: ['nba', 'celtics'] },
-            { id: 102, name: "Nets Statement Edition 23/24", team: "Brooklyn Nets", conference: "Eastern", price: 85, image: 'img/products/nets-24.png', tags: ['nba', 'nets'] },
-            { id: 106, name: "Bulls Icon Edition 23/24", team: "Chicago Bulls", conference: "Eastern", price: 85, image: 'img/products/bulls-24.png', tags: ['nba', 'bulls', 'classic'] },
-            { id: 117, name: "Nuggets Icon Edition 23/24", team: "Denver Nuggets", conference: "Western", price: 85, image: 'img/products/nuggets-24.png', tags: ['nba', 'nuggets'] },
-            { id: 118, name: "Warriors City Edition 23/24", team: "Golden State Warriors", conference: "Western", price: 85, image: 'img/products/warriors-24.png', tags: ['nba', 'warriors'] },
-            { id: 121, name: "Lakers Statement Edition 23/24", team: "Los Angeles Lakers", conference: "Western", price: 85, image: 'img/products/lakers-24.png', tags: ['nba', 'lakers', 'classic'] },
-            // Add other key NBA products here as needed for cross-page functionality
-        ];
-
-        // Combine all product data into one master list
-        const allProducts = products.concat(nba_products);
-
         // Firebase Configuration
         try {
             const firebaseConfig = {
@@ -2156,11 +2121,6 @@
             window.auth = null;
         }
 
-        // Ensure products are loaded from the central file
-        if (typeof allProducts === 'undefined' || allProducts.length === 0) {
-            console.error("CRITICAL: Product data not loaded. Make sure 'products.js' is included and nba_products are defined.");
-        }
-
         // Global Variables
         let currentUser = null;
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
@@ -2181,27 +2141,336 @@
             // In a full refactor, products, wishlist, etc. would also be here
         };
 
-        // This code should be placed inside the main <script> tag of football-jerseys.html
-
-        document.addEventListener('DOMContentLoaded', function () {
-            // ... all your existing initialization code like initializeState() and syncUserSession() ...
-
-            // Check for URL parameters to open modals
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('action') === 'view_orders') {
-                // A small delay ensures the page is fully ready before showing the modal
-                setTimeout(() => {
-                    const userData = JSON.parse(localStorage.getItem('userData'));
-                    if (userData && userData.name) {
-                        showOrdersModal();
-                    } else {
-                        // Optional: prompt to log in or show a message
-                        showToast('Please sign up or log in to view your orders.', 'fas fa-user-plus');
-                    }
-                }, 300);
+        // Sample Products Data
+        const products = [
+            {
+                id: 1,
+                name: "Real Madrid Home Jersey 2024",
+                team: "Real Madrid",
+                league: "La Liga",
+                price: 75,
+                originalPrice: 95,
+                discount: 21,
+                image: "👑",
+                badge: "Popular",
+                colors: ["white", "gold"],
+                hasUcl: true,
+                uclStars: 14
+            },
+            {
+                id: 2,
+                name: "Barcelona Home Jersey 2024",
+                team: "FC Barcelona",
+                league: "La Liga",
+                price: 75,
+                originalPrice: 95,
+                discount: 21,
+                image: "🔵",
+                badge: "New",
+                colors: ["blue", "red"],
+                hasUcl: true,
+                uclStars: 5
+            },
+            {
+                id: 3,
+                name: "Manchester United Home Jersey",
+                team: "Manchester United",
+                league: "Premier League",
+                price: 80,
+                originalPrice: 100,
+                discount: 20,
+                image: "👹",
+                badge: "Hot",
+                colors: ["red", "black"],
+                hasUcl: true,
+                uclStars: 3
+            },
+            {
+                id: 4,
+                name: "Liverpool Home Jersey 2024",
+                team: "Liverpool FC",
+                league: "Premier League",
+                price: 80,
+                originalPrice: 100,
+                discount: 20,
+                image: "🔴",
+                badge: "Popular",
+                colors: ["red", "white"],
+                hasUcl: true,
+                uclStars: 6
+            },
+            {
+                id: 5,
+                name: "Manchester City Home Jersey",
+                team: "Manchester City",
+                league: "Premier League",
+                price: 80,
+                originalPrice: 100,
+                discount: 20,
+                image: "💙",
+                badge: "New",
+                colors: ["sky blue", "white"],
+                hasUcl: true,
+                uclStars: 1
+            },
+            {
+                id: 6,
+                name: "Chelsea Home Jersey 2024",
+                team: "Chelsea FC",
+                league: "Premier League",
+                price: 80,
+                originalPrice: 100,
+                discount: 20,
+                image: "🦁",
+                badge: "Hot",
+                colors: ["blue", "white"],
+                hasUcl: true,
+                uclStars: 2
+            },
+            {
+                id: 7,
+                name: "Arsenal Home Jersey 2024",
+                team: "Arsenal FC",
+                league: "Premier League",
+                price: 80,
+                originalPrice: 100,
+                discount: 20,
+                image: "🔫",
+                badge: "Popular",
+                colors: ["red", "white"],
+                hasUcl: false
+            },
+            {
+                id: 8,
+                name: "Tottenham Home Jersey 2024",
+                team: "Tottenham",
+                league: "Premier League",
+                price: 80,
+                originalPrice: 100,
+                discount: 20,
+                image: "⚪",
+                badge: "New",
+                colors: ["white", "navy"],
+                hasUcl: false
+            },
+            {
+                id: 9,
+                name: "PSG Home Jersey 2024",
+                team: "Paris Saint-Germain",
+                league: "Ligue 1",
+                price: 85,
+                originalPrice: 105,
+                discount: 19,
+                image: "🗼",
+                badge: "Premium",
+                colors: ["navy", "red"],
+                hasUcl: true,
+                uclStars: 0
+            },
+            {
+                id: 10,
+                name: "Bayern Munich Home Jersey",
+                team: "Bayern Munich",
+                league: "Bundesliga",
+                price: 85,
+                originalPrice: 105,
+                discount: 19,
+                image: "🏔️",
+                badge: "Popular",
+                colors: ["red", "white"],
+                hasUcl: true,
+                uclStars: 6
+            },
+            {
+                id: 11,
+                name: "Juventus Home Jersey 2024",
+                team: "Juventus",
+                league: "Serie A",
+                price: 75,
+                originalPrice: 95,
+                discount: 21,
+                image: "⚫",
+                badge: "Classic",
+                colors: ["black", "white"],
+                hasUcl: true,
+                uclStars: 2
+            },
+            {
+                id: 12,
+                name: "AC Milan Home Jersey 2024",
+                team: "AC Milan",
+                league: "Serie A", price: 75,
+                originalPrice: 95,
+                discount: 21,
+                image: "🔴",
+                badge: "Hot",
+                colors: ["red", "black"],
+                hasUcl: true,
+                uclStars: 7
+            },
+            {
+                id: 13,
+                name: "Inter Milan Home Jersey 2024",
+                team: "Inter Milan",
+                league: "Serie A",
+                price: 75,
+                originalPrice: 95,
+                discount: 21,
+                image: "🔵",
+                badge: "New",
+                colors: ["blue", "black"],
+                hasUcl: true,
+                uclStars: 3
+            },
+            {
+                id: 14,
+                name: "Napoli Home Jersey 2024",
+                team: "Napoli",
+                league: "Serie A",
+                price: 75,
+                originalPrice: 95,
+                discount: 21,
+                image: "🔵",
+                badge: "Hot",
+                colors: ["light blue", "white"],
+                hasUcl: false
+            },
+            {
+                id: 15,
+                name: "Borussia Dortmund Home Jersey",
+                team: "Borussia Dortmund",
+                league: "Bundesliga",
+                price: 80,
+                originalPrice: 100,
+                discount: 20,
+                image: "🟡",
+                badge: "Popular",
+                colors: ["yellow", "black"],
+                hasUcl: true,
+                uclStars: 1
+            },
+            {
+                id: 16,
+                name: "Atletico Madrid Home Jersey",
+                team: "Atletico Madrid",
+                league: "La Liga",
+                price: 75,
+                originalPrice: 95,
+                discount: 21,
+                image: "🔴",
+                badge: "Classic",
+                colors: ["red", "white"],
+                hasUcl: false
+            },
+            {
+                id: 17,
+                name: "Ajax Home Jersey 2024",
+                team: "Ajax",
+                league: "Eredivisie",
+                price: 70,
+                originalPrice: 90,
+                discount: 22,
+                image: "⚪",
+                badge: "Classic",
+                colors: ["white", "red"],
+                hasUcl: true,
+                uclStars: 4
+            },
+            {
+                id: 18,
+                name: "Benfica Home Jersey 2024",
+                team: "Benfica",
+                league: "Primeira Liga",
+                price: 70,
+                originalPrice: 90,
+                discount: 22,
+                image: "🦅",
+                badge: "New",
+                colors: ["red", "white"],
+                hasUcl: true,
+                uclStars: 2
+            },
+            {
+                id: 19,
+                name: "Porto Home Jersey 2024",
+                team: "FC Porto",
+                league: "Primeira Liga",
+                price: 70,
+                originalPrice: 90,
+                discount: 22,
+                image: "🔵",
+                badge: "Classic",
+                colors: ["blue", "white"],
+                hasUcl: true,
+                uclStars: 2
+            },
+            {
+                id: 20,
+                name: "Celtic Home Jersey 2024",
+                team: "Celtic",
+                league: "Scottish Premiership",
+                price: 70,
+                originalPrice: 90,
+                discount: 22,
+                image: "🍀",
+                badge: "Classic",
+                colors: ["green", "white"],
+                hasUcl: true,
+                uclStars: 1
+            },
+            {
+                id: 21,
+                name: "Rangers Home Jersey 2024",
+                team: "Rangers",
+                league: "Scottish Premiership",
+                price: 70,
+                originalPrice: 90,
+                discount: 22,
+                image: "🔵",
+                badge: "New",
+                colors: ["blue", "white"],
+                hasUcl: false
+            },
+            {
+                id: 22,
+                name: "Galatasaray Home Jersey 2024",
+                team: "Galatasaray",
+                league: "Süper Lig",
+                price: 70,
+                originalPrice: 90,
+                discount: 22,
+                image: "🦁",
+                badge: "Hot",
+                colors: ["yellow", "red"],
+                hasUcl: false
+            },
+            {
+                id: 23,
+                name: "Fenerbahçe Home Jersey 2024",
+                team: "Fenerbahçe",
+                league: "Süper Lig",
+                price: 70,
+                originalPrice: 90,
+                discount: 22,
+                image: "🟡",
+                badge: "New",
+                colors: ["yellow", "blue"],
+                hasUcl: false
+            },
+            {
+                id: 24,
+                name: "Boca Juniors Home Jersey 2024",
+                team: "Boca Juniors",
+                league: "Primera División",
+                price: 75,
+                originalPrice: 95,
+                discount: 21,
+                image: "🔵",
+                badge: "Classic",
+                colors: ["blue", "yellow"],
+                hasUcl: false
             }
-        });
-
+        ];
 
         // Size Chart Data
         const sizeChart = {
@@ -2261,6 +2530,8 @@
         const viewWishlistBtn = document.getElementById('viewWishlistBtn');
         const wishlistModal = document.getElementById('wishlistModal');
         const prevPageBtn = document.getElementById('prevPage');
+        const cartBtn = document.getElementById('cartBtn');
+        const cartModal = document.getElementById('cartModal');
         const nextPageBtn = document.getElementById('nextPage');
         const paginationNumbers = document.getElementById('paginationNumbers');
         const sortSelect = document.getElementById('sortSelect');
@@ -2277,7 +2548,11 @@
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize state first
             initializeState();
-            syncUserSession(); // Handles user state, cart loading, and initial render
+            setupPagination();
+            setupEventListeners();
+            populateLeagueFilters();
+            render(); // Initial render based on state
+            renderRecentlyViewed();
 
             // Show welcome modal for new users
             if (!localStorage.getItem('hasVisited')) {
@@ -2288,38 +2563,6 @@
                 }, 1000);
             }
         });
-
-        async function syncUserSession() {
-            const userData = JSON.parse(localStorage.getItem('userData'));
-            if (userData && userData.id) {
-                // A user is "logged in", load their data from Firebase
-                await loadCartFromFirebase(userData.id);
-            }
-
-            // Now that user state and cart are synced, set up the rest of the app
-            setupPagination();
-            setupEventListeners();
-            populateLeagueFilters();
-            render(); // Initial render
-            renderRecentlyViewed();
-            updateAccountDropdown();
-            updateCartIcon();
-        }
-
-        async function loadCartFromFirebase(userId) {
-            if (!window.db) return;
-            try {
-                const cartSnapshot = await db.collection('users').doc(userId).collection('cart').get();
-                if (!cartSnapshot.empty) {
-                    const firebaseCart = cartSnapshot.docs.map(doc => doc.data());
-                    cart = firebaseCart; // Overwrite local cart with Firebase data
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    console.log('Cart loaded and synchronized from Firebase.');
-                }
-            } catch (error) {
-                console.error("Error loading cart from Firebase: ", error);
-            }
-        }
 
         function initializeState() {
             // Set initial theme
@@ -2457,12 +2700,29 @@
                 });
             }
 
+            // Page Action: Scroll to Leagues
+            const scrollToLeaguesBtn = document.getElementById('scrollToLeaguesBtn');
+            if (scrollToLeaguesBtn) {
+                scrollToLeaguesBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById('leagues').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            }
             // Patch selection
             document.querySelectorAll('.patch-option').forEach(patch => {
                 patch.addEventListener('click', () => {
                     togglePatch(patch);
                 });
             });
+
+            // Cart Modal
+            cartBtn.addEventListener('click', showCartModal);
+            const cartModal = document.getElementById('cartModal');
+            if (cartModal) {
+                cartModal.addEventListener('click', handleCartActions);
+            }
 
             // Pagination
             prevPageBtn.addEventListener('click', () => {
@@ -2529,21 +2789,6 @@
             clearFiltersBtn.addEventListener('click', () => {
                 resetFilters();
             });
-
-            // Footer links
-            const footerSizeGuideLink = document.getElementById('footerSizeGuideLink');
-            const footerShippingLink = document.getElementById('footerShippingLink');
-            const footerContactLink = document.getElementById('footerContactLink');
-
-            if (footerSizeGuideLink) footerSizeGuideLink.addEventListener('click', (e) => { e.preventDefault(); showModal('sizeGuideModal'); });
-            if (footerShippingLink) footerShippingLink.addEventListener('click', (e) => { e.preventDefault(); showModal('shippingModal'); });
-            if (footerContactLink) footerContactLink.addEventListener('click', (e) => { e.preventDefault(); showModal('contactModal'); });
-
-            const footerTrackOrderLink = document.getElementById('footerTrackOrderLink');
-            if (footerTrackOrderLink) footerTrackOrderLink.addEventListener('click', (e) => { e.preventDefault(); showModal('trackOrderModal'); });
-
-            const trackOrderForm = document.getElementById('trackOrderForm');
-            if (trackOrderForm) trackOrderForm.addEventListener('submit', handleTrackOrder);
         }
 
         // Theme Functions
@@ -2792,7 +3037,7 @@
                 return;
             }
 
-            const results = allProducts.filter(p =>
+            const results = products.filter(p =>
                 p.name.toLowerCase().includes(query) ||
                 p.team.toLowerCase().includes(query)
             ).slice(0, 5); // Limit to 5 results
@@ -2863,7 +3108,7 @@
                 `;
             } else {
                 wishlist.forEach(productId => {
-                    const product = allProducts.find(p => p.id === productId);
+                    const product = products.find(p => p.id === productId);
                     if (!product) return;
 
                     const addedDate = localStorage.getItem(`wishlist_time_${productId}`);
@@ -2925,9 +3170,6 @@
                 `;
             } else {
                 orders.forEach(item => {
-                    const product = allProducts.find(p => p.id === item.productId);
-                    if (!product) return;
-
                     const itemEl = document.createElement('div');
                     itemEl.className = 'cart-item'; // Re-use cart item styles
                     itemEl.dataset.orderId = item.id;
@@ -2942,9 +3184,9 @@
                     const orderDate = new Date(item.timestamp).toLocaleString();
 
                     itemEl.innerHTML = `
-                        <div class="cart-item-image">${product.image}</div>
+                        <div class="cart-item-image">${item.product.image}</div>
                         <div class="cart-item-details">
-                            <h4 class="product-name">${product.name}</h4>
+                            <h4 class="product-name">${item.product.name}</h4>
                             <div class="cart-item-customization">
                                 <ul>${customizationDetails || '<li>Standard Jersey</li>'}</ul>
                                 <div style="font-size: var(--text-xs); color: var(--text-muted); margin-top: var(--space-2);">Ordered on: ${orderDate}</div>
@@ -2960,6 +3202,82 @@
             }
             closeAccountDropdown();
             showModal('ordersModal');
+        }
+
+        function showCartModal() {
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            const cartTotalEl = document.getElementById('cartTotal');
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-wishlist">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Your cart is empty</h3>
+                        <p>Add some jerseys to get started!</p>
+                    </div>
+                `;
+            } else {
+                cart.forEach(item => {
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'cart-item';
+                    itemEl.dataset.cartItemId = item.id;
+
+                    let customizationDetails = '';
+                    if (item.playerName || item.playerNumber) {
+                        customizationDetails += `<li>Name/Number: ${item.playerName || ''} #${item.playerNumber || ''}</li>`;
+                    }
+                    if (item.patches.length > 0) {
+                        customizationDetails += `<li>Patches: ${item.patches.join(', ')}</li>`;
+                    }
+
+                    itemEl.innerHTML = `
+                        <div class="cart-item-image">${item.product.image}</div>
+                        <div class="cart-item-details">
+                            <h4 class="product-name">${item.product.name}</h4>
+                            <div class="cart-item-customization">
+                                <ul>${customizationDetails || '<li>Standard Jersey</li>'}</ul>
+                            </div>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" data-action="decrease-qty">-</button>
+                                <span class="quantity-value">${item.quantity}</span>
+                                <button class="quantity-btn" data-action="increase-qty">+</button>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div class="product-price">${item.price * item.quantity} AED</div>
+                            <button class="btn btn-ghost" data-action="remove-item" style="margin-top: var(--space-2); padding: var(--space-1) var(--space-2);">
+                                <i class="fas fa-trash"></i> Remove
+                            </button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemEl);
+                    total += item.price * item.quantity;
+                });
+            }
+
+            cartTotalEl.textContent = `${total} AED`;
+            showModal('cartModal');
+        }
+
+        function handleCartActions(event) {
+            const target = event.target.closest('[data-action]');
+            if (!target) return;
+
+            const cartItemEl = target.closest('.cart-item');
+            if (!cartItemEl) return;
+
+            const cartItemId = parseInt(cartItemEl.dataset.cartItemId);
+            const action = target.dataset.action;
+
+            if (action === 'increase-qty') {
+                updateCartQuantity(cartItemId, 1);
+            } else if (action === 'decrease-qty') {
+                updateCartQuantity(cartItemId, -1);
+            } else if (action === 'remove-item') {
+                removeFromCart(cartItemId);
+            }
         }
 
         // Account Functions
@@ -3005,7 +3323,7 @@
                 event.stopPropagation();
             }
 
-            const product = allProducts.find(p => p.id === productId);
+            const product = products.find(p => p.id === productId);
             if (!product) return;
 
             document.getElementById('quickViewTitle').textContent = product.name;
@@ -3197,7 +3515,7 @@
             for (const keyword of keywords) {
                 query = query.replace(keyword, '').trim();
             }
-            const foundProducts = allProducts.filter(p => p.name.toLowerCase().includes(query) || p.team.toLowerCase().includes(query));
+            const foundProducts = products.filter(p => p.name.toLowerCase().includes(query) || p.team.toLowerCase().includes(query));
             if (foundProducts.length > 0) {
                 return `Yes, we have kits for ${query}! You can use the main search bar at the top of the page to see all available options.`;
             }
@@ -3234,74 +3552,10 @@
             return `I'm not sure I understand that. I can help with questions about sizing, shipping, prices, and products. Could you try rephrasing? ${botDisclaimer}`;
         }
 
-        async function handleTrackOrder(e) {
-            e.preventDefault();
-            const orderId = document.getElementById('trackOrderIdInput').value.trim();
-            const resultsContainer = document.getElementById('trackingResults');
-            resultsContainer.innerHTML = '<p>Searching for your order...</p>';
-
-            if (!orderId) {
-                resultsContainer.innerHTML = `<p style="color: var(--accent-neon);">Please enter an Order ID.</p>`;
-                return;
-            }
-
-            if (!window.db) {
-                resultsContainer.innerHTML = `<p style="color: var(--accent-neon);">Could not connect to the database.</p>`;
-                return;
-            }
-
-            try {
-                const orderDoc = await db.collection('orders').doc(orderId).get();
-
-                if (!orderDoc.exists) {
-                    resultsContainer.innerHTML = `<p style="color: var(--accent-neon);">Order not found. Please check the ID and try again.</p>`;
-                    return;
-                }
-
-                const orderData = orderDoc.data();
-                resultsContainer.innerHTML = generateTrackingTimelineHTML(orderId, orderData.status);
-
-            } catch (error) {
-                console.error("Error tracking order: ", error);
-                resultsContainer.innerHTML = `<p style="color: var(--accent-neon);">An error occurred while tracking your order.</p>`;
-            }
-        }
-
-        function generateTrackingTimelineHTML(orderId, status) {
-            const statuses = ['Processing', 'Shipped', 'Out for Delivery', 'Delivered'];
-            const currentStatusIndex = statuses.indexOf(status);
-
-            const timelineItemsHTML = statuses.map((s, index) => {
-                let itemClass = '';
-                if (index < currentStatusIndex) itemClass = 'complete';
-                else if (index === currentStatusIndex) itemClass = 'active';
-
-                let content = '';
-                if (s === 'Processing') content = 'Your order is being prepared for shipment.';
-                if (s === 'Shipped') content = `Your order has left our warehouse. Tracking: GOKIT${orderId}`;
-                if (s === 'Out for Delivery') content = 'The courier is on their way to your address.';
-                if (s === 'Delivered') content = 'Your order has been delivered. Thank you for shopping with us!';
-
-                return `
-                    <div class="timeline-item ${itemClass}">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <strong>${s}</strong>
-                            ${index <= currentStatusIndex ? `<p>${content}</p>` : ''}
-                        </div>
-                    </div>`;
-            }).join('');
-
-            return `<div class="tracking-status">
-                        <h4 style="margin-bottom: var(--space-4);">Status for Order #${orderId}</h4>
-                        <div class="tracking-timeline">${timelineItemsHTML}</div>
-                    </div>`;
-        }
-
         // --- END: Revamped Chatbot Intelligence ---
 
         // Form Functions
-        async function handleWelcomeForm(e) {
+        function handleWelcomeForm(e) {
             e.preventDefault();
 
             const formData = {
@@ -3311,26 +3565,26 @@
                 jerseyRequest: document.getElementById('jerseyRequest').value
             };
 
+            // Save user data
+            localStorage.setItem('userData', JSON.stringify(formData));
             localStorage.setItem('hasVisited', 'true');
 
             // Generate discount code
             const discountCode = generateDiscountCode();
             localStorage.setItem('discountCodes', JSON.stringify([discountCode]));
 
-            // Save to Firebase and get the user ID
+            // Save to Firebase if available
             if (window.db) {
                 try {
-                    const docRef = await db.collection('users').add({
+                    window.db.collection('users').add({
                         ...formData,
                         discountCode: discountCode,
                         timestamp: firebase.firestore.FieldValue.serverTimestamp()
                     });
-                    formData.id = docRef.id; // This is the crucial Firebase user ID
                 } catch (error) {
                     console.log('Firebase save error:', error);
                 }
             }
-            localStorage.setItem('userData', JSON.stringify(formData));
 
             closeModal('welcomeModal');
             showToast(`Welcome ${formData.name}! Your discount code: ${discountCode}`, 'fas fa-gift');
@@ -3386,113 +3640,89 @@
             document.getElementById('totalPrice').textContent = `${totalPrice} AED`;
         }
 
-        async function addToCart() {
-            const addToCartBtn = document.getElementById('addToCartBtn');
-            const originalBtnHTML = addToCartBtn.innerHTML;
+        function addToCart() {
+            const productId = parseInt(quickViewModal.dataset.productId);
+            const product = products.find(p => p.id === productId);
 
-            // Disable button to prevent multiple clicks
-            addToCartBtn.disabled = true;
-            addToCartBtn.innerHTML = `
-                <i class="fas fa-spinner fa-spin"></i>
-                <span>Adding...</span>
-            `;
+            const cartItem = {
+                id: Date.now(),
+                productId: productId,
+                product: product,
+                playerName: document.getElementById('playerName').value,
+                playerNumber: document.getElementById('playerNumber').value,
+                patches: Array.from(selectedPatches),
+                customerNote: document.getElementById('customerNote').value,
+                price: parseInt(document.getElementById('totalPrice').textContent),
+                quantity: 1,
+                timestamp: new Date().toISOString()
+            };
 
-            try {
-                const productId = parseInt(quickViewModal.dataset.productId);
+            cart.push(cartItem);
+            localStorage.setItem('cart', JSON.stringify(cart));
 
-                const cartItem = {
-                    id: Date.now(),
-                    productId: productId,
-                    playerName: document.getElementById('playerName').value,
-                    playerNumber: document.getElementById('playerNumber').value,
-                    patches: Array.from(selectedPatches),
-                    customerNote: document.getElementById('customerNote').value,
-                    price: parseInt(document.getElementById('totalPrice').textContent),
-                    quantity: 1,
-                    timestamp: new Date().toISOString()
-                };
-
-                // Save to local storage first for a fast, responsive UI
-                cart.push(cartItem);
-                localStorage.setItem('cart', JSON.stringify(cart));
-                updateCartIcon(); // Update the cart badge immediately
-
-                const orderId = cartItem.id.toString(); // Use the unique cart item ID as the Order ID
-                const userData = JSON.parse(localStorage.getItem('userData'));
-
-                // Save to Firebase cart if a user is logged in
-                if (window.db && userData && userData.id) {
-                    const userId = userData.id;
-                    try {
-                        // Create promises for both Firebase operations
-                        const userCartPromise = db.collection('users').doc(userId).collection('cart').doc(orderId).set({
-                            ...cartItem,
-                            timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                        });
-
-                        const orderPromise = db.collection('orders').doc(orderId).set({
-                            userId: userId,
-                            items: [cartItem], // In a real app, this would be the whole cart
-                            totalPrice: cartItem.price,
-                            status: 'Processing', // Initial status
-                            timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                        });
-
-                        // Wait for both operations to complete
-                        await Promise.all([userCartPromise, orderPromise]);
-                        console.log("Successfully saved cart and order to Firebase.");
-
-                    } catch (error) {
-                        console.error('Firebase write error:', error);
-                        showToast('Could not save cart to your account.', 'fas fa-exclamation-circle');
-                    }
+            // Save to Firebase cart if a user is logged in
+            if (window.db && window.auth.currentUser) {
+                const userId = window.auth.currentUser.uid;
+                try {
+                    // This saves the item to a 'cart' subcollection for the logged-in user.
+                    // This is much better than creating a premature 'order'.
+                    // We use the cartItem.id as the document ID to make it easy to find/update.
+                    window.db.collection('users').doc(userId).collection('cart').doc(cartItem.id.toString()).set({
+                        ...cartItem,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                } catch (error) {
+                    console.log('Firebase cart save error:', error);
                 }
-            } catch (error) {
-                console.error("Error adding to cart:", error);
-                showToast('Failed to add item to cart.', 'fas fa-exclamation-circle');
-            } finally {
-                // Re-enable button after operation is complete
-                addToCartBtn.disabled = false;
-                addToCartBtn.innerHTML = originalBtnHTML;
             }
 
             closeModal('quickViewModal');
             animateAddToCart();
-            showToast(`Added to cart! Order ID: ${orderId}`, 'fas fa-shopping-cart');
         }
 
-        function animateAddToCart() {
-            const quickViewImage = document.getElementById('quickViewImage').querySelector('div');
-            const cartIcon = document.getElementById('cartBtn');
+        function updateCartQuantity(cartItemId, change) {
+            const itemIndex = cart.findIndex(item => item.id === cartItemId);
+            if (itemIndex > -1) {
+                const item = cart[itemIndex];
+                item.quantity += change;
+                const shouldRemove = item.quantity <= 0;
 
-            if (!quickViewImage || !cartIcon) return;
+                if (shouldRemove) {
+                    cart.splice(itemIndex, 1); // Remove from local cart array
+                }
 
-            const startRect = quickViewImage.getBoundingClientRect();
-            const endRect = cartIcon.getBoundingClientRect();
+                // Always update local storage first for a responsive UI
+                localStorage.setItem('cart', JSON.stringify(cart));
+                showCartModal(); // Re-render the modal with new quantities
+                updateCartIcon();
 
-            const flyer = document.createElement('div');
-            flyer.className = 'fly-to-cart';
-            flyer.innerHTML = quickViewImage.innerHTML;
+                // Sync changes with Firebase if user is logged in
+                if (window.db && window.auth.currentUser) {
+                    const userId = window.auth.currentUser.uid;
+                    const cartDocRef = window.db.collection('users').doc(userId).collection('cart').doc(cartItemId.toString());
 
-            flyer.style.width = `${startRect.width}px`;
-            flyer.style.height = `${startRect.height}px`;
-            flyer.style.top = `${startRect.top}px`;
-            flyer.style.left = `${startRect.left}px`;
-            flyer.style.opacity = '1';
-            flyer.style.transform = 'scale(1)';
+                    if (shouldRemove) {
+                        cartDocRef.delete().catch(error => console.error("Error removing item from Firebase cart: ", error));
+                    } else {
+                        cartDocRef.update({ quantity: item.quantity }).catch(error => console.error("Error updating item in Firebase cart: ", error));
+                    }
+                }
+            }
+        }
 
-            document.body.appendChild(flyer);
+        function removeFromCart(cartItemId) {
+            cart = cart.filter(item => item.id !== cartItemId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            showCartModal(); // Re-render the modal
+            updateCartIcon();
+            showToast('Item removed from cart', 'fas fa-trash');
 
-            requestAnimationFrame(() => {
-                flyer.style.top = `${endRect.top + endRect.height / 2}px`;
-                flyer.style.left = `${endRect.left + endRect.width / 2}px`;
-                flyer.style.transform = 'scale(0.1)';
-                flyer.style.opacity = '0';
-            });
-
-            flyer.addEventListener('transitionend', () => {
-                flyer.remove();
-            });
+            // Sync deletion with Firebase if user is logged in
+            if (window.db && window.auth.currentUser) {
+                const userId = window.auth.currentUser.uid;
+                window.db.collection('users').doc(userId).collection('cart').doc(cartItemId.toString()).delete()
+                    .catch(error => console.error("Error removing item from Firebase cart: ", error));
+            }
         }
 
         // Utility Functions
@@ -3563,7 +3793,7 @@
 
             if (viewedIds.length > 0) {
                 viewedIds.forEach(id => {
-                    const product = allProducts.find(p => p.id === id);
+                    const product = products.find(p => p.id === id);
                     if (product) {
                         const card = createProductCard(product);
                         recentlyViewedGrid.appendChild(card);

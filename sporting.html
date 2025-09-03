@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sporting CP Jerseys | GOKIT</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #1a1a2e;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #00B04F;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00B04F;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: #00B04F;
+        }
+
+        /* Hero Section - Improved visibility */
+        .hero {
+            padding: 140px 2rem 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #00B04F 50%, #FFD700 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.7), rgba(0, 176, 79, 0.2));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-shadow:
+                0 0 10px rgba(0, 176, 79, 0.8),
+                0 0 20px rgba(0, 176, 79, 0.6),
+                0 0 30px rgba(0, 176, 79, 0.4),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            text-shadow:
+                0 0 10px rgba(0, 176, 79, 0.6),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .team-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00B04F, #FFD700);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            box-shadow:
+                0 0 20px rgba(0, 176, 79, 0.6),
+                0 8px 32px rgba(0, 176, 79, 0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Choice Buttons */
+        .choice-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .choice-btn {
+            background: linear-gradient(135deg, #00B04F, #FFD700);
+            color: #ffffff;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 8px 32px rgba(0, 176, 79, 0.3);
+        }
+
+        .choice-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 48px rgba(0, 176, 79, 0.4);
+        }
+
+        .choice-btn.active {
+            background: linear-gradient(135deg, #FFD700, #00B04F);
+            color: #ffffff;
+        }
+
+        /* Product Section */
+        .product-section {
+            display: none;
+            padding: 60px 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 176, 79, 0.2), rgba(255, 215, 0, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 176, 79, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 176, 79, 0.2);
+        }
+
+        .product-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 176, 79, 0.9);
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #00B04F;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features {
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Customization Section */
+        .customization-section {
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+        }
+
+        .custom-option {
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .custom-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: #00B04F;
+            background: rgba(0, 176, 79, 0.1);
+        }
+
+        .patch-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .patch-option label {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .patch-checkbox {
+            display: none;
+        }
+
+        .patch-checkbox:checked+label {
+            background: linear-gradient(135deg, #00B04F, #000000);
+            border-color: #00B04F;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Size Selection */
+        .size-selection {
+            margin-bottom: 1.5rem;
+        }
+
+        .size-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .size-option {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .size-option:hover {
+            background: rgba(0, 176, 79, 0.3);
+            border-color: rgba(0, 176, 79, 0.5);
+            color: #ffffff;
+        }
+
+        .size-option.selected {
+            background: linear-gradient(135deg, #00B04F, #FFD700);
+            border-color: #00B04F;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(135deg, #00B04F, #FFD700);
+            color: #ffffff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 176, 79, 0.4);
+            background: linear-gradient(135deg, #FFD700, #00B04F);
+            color: #ffffff;
+        }
+
+        .add-to-cart:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 100px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .choice-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .choice-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .size-options {
+                justify-content: center;
+            }
+        }
+
+        /* CSS Animations */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px rgba(0, 176, 79, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 0 20px rgba(0, 176, 79, 0.8), 0 0 30px rgba(255, 215, 0, 0.5);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">GOKIT</a>
+            <div class="nav-links">
+                <a href="primeira-liga.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to Primeira
+                    Liga</a>
+                <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1><i class="fas fa-crown"></i> Sporting CP Jerseys</h1>
+            <p>Os Leões - The Lions of Lisbon</p>
+            <div class="team-badge">
+                <i class="fas fa-trophy"></i> Estádio José Alvalade Forever
+            </div>
+        </div>
+    </section>
+
+    <div class="choice-buttons">
+        <button class="choice-btn active" onclick="showSection('new')">
+            <i class="fas fa-sparkles"></i> New Season (2019–2025)
+        </button>
+        <button class="choice-btn" onclick="showSection('retro')">
+            <i class="fas fa-history"></i> Retro (2018 & older)
+        </button>
+    </div>
+
+    <!-- New Season Jerseys -->
+    <section class="product-section active" id="new">
+        <h2 class="section-title">New Season Collection</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/sporting/2024-home.png" alt="2024/25 Home Jersey">
+                    <div class="product-badge">New</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2024/25 Home Jersey</h3>
+                    <p class="product-price">AED 75</p>
+                    <p class="product-features">The latest home kit, featuring the iconic green and white hoops, ready
+                        for a new season of defending the title.</p>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., GYÖKERES 9">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="liga-patch-1" class="patch-checkbox"
+                                        data-patch-name="Liga Portugal">
+                                    <label for="liga-patch-1">Liga Portugal</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-patch-1" class="patch-checkbox"
+                                        data-patch-name="UCL">
+                                    <label for="ucl-patch-1">Champions League</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/sporting/2023-home.png" alt="2023/24 Home Jersey">
+                    <div class="product-badge">Popular</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2023/24 Home Jersey</h3>
+                    <p class="product-price">AED 75</p>
+                    <p class="product-features">The home kit from the incredible 2023/24 title-winning season,
+                        celebrating 20 years of the Estádio José Alvalade.</p>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., POTE 17">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="liga-patch-2" class="patch-checkbox"
+                                        data-patch-name="Liga Portugal">
+                                    <label for="liga-patch-2">Liga Portugal</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="uel-patch-2" class="patch-checkbox"
+                                        data-patch-name="Europa League">
+                                    <label for="uel-patch-2">Europa League</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/sporting/2023-third.png" alt="2023/24 Third Jersey">
+                    <div class="product-badge">Limited</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2023/24 "CR7" Third Jersey</h3>
+                    <p class="product-price">AED 75</p>
+                    <p class="product-features">A tribute to Cristiano Ronaldo's debut 20 years prior. A modern classic
+                        celebrating the club's greatest academy product.</p>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., RONALDO 28">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="liga-patch-3" class="patch-checkbox"
+                                        data-patch-name="Liga Portugal">
+                                    <label for="liga-patch-3">Liga Portugal</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="uel-patch-3" class="patch-checkbox"
+                                        data-patch-name="Europa League">
+                                    <label for="uel-patch-3">Europa League</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/sporting/2021-home.png" alt="2021/22 Home Jersey">
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2021/22 Home Jersey</h3>
+                    <p class="product-price">AED 75</p>
+                    <p class="product-features">The kit worn as defending champions, featuring a classic design with a
+                        subtle tonal hoop pattern.</p>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., PALHINHA 6">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="liga-patch-4" class="patch-checkbox"
+                                        data-patch-name="Liga Portugal">
+                                    <label for="liga-patch-4">Liga Portugal</label>
+                                </div>
+                                <div class="patch-option">
+                                    <input type="checkbox" id="ucl-patch-4" class="patch-checkbox"
+                                        data-patch-name="UCL">
+                                    <label for="ucl-patch-4">Champions League</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retro Jerseys -->
+    <section class="product-section" id="retro">
+        <h2 class="section-title">Retro Collection</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/sporting/2020-home.png" alt="2020/21 Home Jersey">
+                    <div class="product-badge">Historic</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2020/21 Liga Champions</h3>
+                    <p class="product-price">AED 75</p>
+                    <p class="product-features">The jersey that ended a 19-year wait for the league title, marking a new
+                        golden era for the Lions.</p>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., PORRO 24">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="liga-patch-5" class="patch-checkbox"
+                                        data-patch-name="Liga Portugal">
+                                    <label for="liga-patch-5">Liga Portugal</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/sporting/2002-home.png" alt="2002/03 Home Jersey">
+                    <div class="product-badge">Legendary</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2002/03 "Ronaldo Debut" Jersey</h3>
+                    <p class="product-price">AED 75</p>
+                    <p class="product-features">The iconic Reebok kit worn by a teenage Cristiano Ronaldo during his
+                        debut season before his move to Manchester United.</p>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., QUARESMA 20">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="liga-patch-6" class="patch-checkbox"
+                                        data-patch-name="Primeira Liga">
+                                    <label for="liga-patch-6">Primeira Liga</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="img/sporting/2000-away.png" alt="2000 Stromp Jersey">
+                    <div class="product-badge">Classic</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2000 "Stromp" Jersey</h3>
+                    <p class="product-price">AED 75</p>
+                    <p class="product-features">The classic half-and-half "Stromp" kit, a tribute to one of the club's
+                        founders, Francisco Stromp. A fan favorite.</p>
+                    <div class="customization-section">
+                        <div class="custom-option">
+                            <label class="custom-label">Add Name & Number (+AED 15)</label>
+                            <input type="text" class="custom-input" placeholder="e.g., JARDEL 16">
+                        </div>
+                        <div class="custom-option">
+                            <label class="custom-label">Add Patches (+AED 5 each)</label>
+                            <div class="patch-options">
+                                <div class="patch-option">
+                                    <input type="checkbox" id="liga-patch-7" class="patch-checkbox"
+                                        data-patch-name="Primeira Liga">
+                                    <label for="liga-patch-7">Primeira Liga</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 GOKIT. All rights reserved. | Sporting CP - Os Leões</p>
+    </footer>
+
+    <script>
+        // --- CART STATE ---
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // --- UI FUNCTIONS ---
+        function showSection(type) {
+            document.querySelectorAll('.product-section').forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('active');
+            });
+            const targetSection = document.getElementById(type);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+                targetSection.classList.add('active');
+            }
+            document.querySelectorAll('.choice-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            if (event && event.target) {
+                event.target.closest('.choice-btn').classList.add('active');
+            }
+        }
+
+        function updatePrice(productCard) {
+            const basePrice = 75;
+            let finalPrice = basePrice;
+            const customNameInput = productCard.querySelector('.custom-input');
+            if (customNameInput && customNameInput.value.trim() !== '') {
+                finalPrice += 15;
+            }
+            const checkedPatches = productCard.querySelectorAll('.patch-checkbox:checked');
+            finalPrice += (checkedPatches.length * 5);
+            productCard.querySelector('.product-price').textContent = `AED ${finalPrice}`;
+        }
+
+        function resetProductCard(productCard) {
+            productCard.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+            const addToCartBtn = productCard.querySelector('.add-to-cart');
+            addToCartBtn.disabled = true;
+            addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
+            addToCartBtn.removeAttribute('data-selected-size');
+            const customInput = productCard.querySelector('.custom-input');
+            if (customInput) customInput.value = '';
+            productCard.querySelectorAll('.patch-checkbox').forEach(cb => cb.checked = false);
+            updatePrice(productCard);
+        }
+
+        // --- CART LOGIC ---
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function addToCart(button) {
+            const productCard = button.closest('.product-card');
+            const productName = productCard.querySelector('.product-name').textContent.trim();
+            const productPriceText = productCard.querySelector('.product-price').textContent.trim();
+            const productImage = productCard.querySelector('img').src;
+            const selectedSize = button.getAttribute('data-selected-size');
+
+            if (!selectedSize) {
+                alert('Please select a size first!');
+                return;
+            }
+
+            const customNameInput = productCard.querySelector('.custom-input');
+            const customName = customNameInput ? customNameInput.value.trim() : '';
+            const selectedPatches = Array.from(productCard.querySelectorAll('.patch-checkbox:checked'))
+                .map(cb => cb.getAttribute('data-patch-name'));
+
+            let nameInCart = `${productName} (Size: ${selectedSize}`;
+            if (customName) nameInCart += `, Name: ${customName.toUpperCase()}`;
+            if (selectedPatches.length > 0) nameInCart += `, Patches: ${selectedPatches.join(', ')}`;
+            nameInCart += ')';
+
+            const priceMatch = productPriceText.match(/\d+/);
+            const finalPrice = priceMatch ? parseFloat(priceMatch[0]) : 75;
+
+            const existingItemIndex = cart.findIndex(item => item.name === nameInCart);
+
+            if (existingItemIndex !== -1) {
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                cart.push({
+                    name: nameInCart,
+                    price: finalPrice,
+                    image: productImage,
+                    size: selectedSize,
+                    quantity: 1
+                });
+            }
+
+            saveCart();
+            updateCartCount();
+            showNotification(`${productName} added to cart!`);
+            resetProductCard(productCard);
+        }
+
+        // --- NOTIFICATIONS & UI UPDATES ---
+        function showNotification(message, type = 'success') {
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) existingNotification.remove();
+
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                <span>${message}</span>
+            `;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: linear-gradient(135deg, #28a745, #20c997);
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: 600;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+            `;
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => { notification.style.transform = 'translateX(0)'; }, 100);
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    if (notification.parentNode) notification.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const cartLink = document.querySelector('a[href="cart.html"]');
+            if (cartLink) {
+                cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart ${totalItems > 0 ? `(${totalItems})` : ''}`;
+            } else {
+                cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart`;
+            }
+        }
+
+        // --- INITIALIZATION ---
+        function initializeProductCard(productCard) {
+            productCard.querySelectorAll('.size-option').forEach(sizeOption => {
+                sizeOption.addEventListener('click', function () {
+                    productCard.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const addToCartBtn = productCard.querySelector('.add-to-cart');
+                    addToCartBtn.disabled = false;
+                    addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+                    addToCartBtn.setAttribute('data-selected-size', this.getAttribute('data-size'));
+                });
+            });
+
+            const customInput = productCard.querySelector('.custom-input');
+            if (customInput) customInput.addEventListener('input', () => updatePrice(productCard));
+
+            productCard.querySelectorAll('.patch-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', () => updatePrice(productCard));
+            });
+
+            productCard.querySelector('.add-to-cart').addEventListener('click', function () {
+                addToCart(this);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCartCount();
+            document.querySelectorAll('.product-card').forEach(card => initializeProductCard(card));
+        });
+    </script>
+
+</body>
+
+</html>
