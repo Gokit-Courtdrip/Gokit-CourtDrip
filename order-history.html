@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Order History | GOKIT × CourtDripDxb</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --football-color: #00c851;
+            --basketball-color: #ff8800;
+            --dark-bg: #0a0a14;
+            --text-light: #fff;
+            --text-muted: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+        }
+
+        /* Navbar Styles (Copied from index.html for consistency) */
+        .navbar {
+            background: rgba(0, 0, 0, 0.9) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 900 !important;
+            font-size: clamp(1.1rem, 4vw, 1.5rem) !important;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-football {
+            color: var(--football-color);
+        }
+
+        .brand-basketball {
+            color: var(--basketball-color);
+        }
+
+        .nav-link {
+            font-weight: 600 !important;
+            transition: all 0.3s ease;
+            margin: 0 0.25rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .nav-link:hover {
+            color: var(--basketball-color) !important;
+        }
+
+        .cart-icon-container {
+            position: relative;
+            display: inline-block;
+            line-height: 1;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background-color: var(--basketball-color);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: none;
+            border: 2px solid var(--dark-bg);
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .cart-badge.show {
+            display: block;
+        }
+
+        /* Main Content */
+        .page-header {
+            padding: 5rem 1rem 3rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .page-title {
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--football-color), var(--basketball-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .order-history-container {
+            padding: 3rem 1rem;
+        }
+
+        .order-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .order-header {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .order-header-item {
+            font-size: 0.9rem;
+        }
+
+        .order-header-item strong {
+            font-weight: 700;
+            color: var(--basketball-color);
+        }
+
+        .order-body {
+            padding: 1.5rem;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-item-image {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .order-item-details {
+            flex-grow: 1;
+        }
+
+        .order-item-name {
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .order-item-price {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .order-status {
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .status-processing {
+            background-color: var(--basketball-color);
+            color: white;
+        }
+
+        .status-shipped {
+            background-color: var(--football-color);
+            color: white;
+        }
+
+        .status-delivered {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .message-box {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+
+        .message-box i {
+            font-size: 3rem;
+            color: var(--basketball-color);
+            margin-bottom: 1rem;
+        }
+
+        .message-box h3 {
+            font-weight: 700;
+        }
+
+        .message-box a {
+            color: var(--basketball-color);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .message-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-bolt"></i> <span class="brand-football">GOKIT</span> × <span
+                    class="brand-basketball">CourtDripDxb</span>
+            </a>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.html">
+                        <span class="cart-icon-container">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-badge" id="cartBadge"></span>
+                        </span>
+                        <span>Cart</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <header class="page-header">
+            <h1 class="page-title"><i class="fas fa-shopping-bag"></i> My Orders</h1>
+        </header>
+
+        <div class="container order-history-container" id="orderHistoryContainer">
+            <!-- Orders will be loaded here by JavaScript -->
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border" style="width: 3rem; height: 3rem; color: var(--basketball-color);"
+                    role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 GOKIT × CourtDripDxb. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script>
+        // Firebase Configuration
+        let db;
+        try {
+            const firebaseConfig = {
+                apiKey: "AIzaSyAbMf3bPs97pkfXUKB_44rKoRWmvt9b0yM",
+                authDomain: "gokit-x-courtdripdxb.firebaseapp.com",
+                projectId: "gokit-x-courtdripdxb",
+                storageBucket: "gokit-x-courtdripdxb.firebasestorage.app",
+                messagingSenderId: "384570406205",
+                appId: "1:384570406205:web:966041b461575405b74154"
+            };
+
+            firebase.initializeApp(firebaseConfig);
+            db = firebase.firestore();
+            console.log('Firebase initialized successfully on order history page.');
+        } catch (error) {
+            console.log('Firebase initialization error:', error);
+            db = null;
+        }
+
+        function updateCartDisplay() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((sum, item) => sum + (parseInt(item.quantity) || 1), 0);
+            const cartBadge = document.getElementById('cartBadge');
+
+            if (cartBadge) {
+                if (totalItems > 0) {
+                    cartBadge.textContent = totalItems;
+                    cartBadge.classList.add('show');
+                } else {
+                    cartBadge.classList.remove('show');
+                }
+            }
+        }
+
+        async function fetchAndDisplayOrders(userEmail) {
+            const container = document.getElementById('orderHistoryContainer');
+            if (!db) {
+                container.innerHTML = `<div class="message-box"><h3><i class="fas fa-exclamation-triangle"></i> Error</h3><p>Could not connect to the database.</p></div>`;
+                return;
+            }
+
+            try {
+                const ordersSnapshot = await db.collection('orders').where('customer.email', '==', userEmail).orderBy('timestamp', 'desc').get();
+
+                if (ordersSnapshot.empty) {
+                    container.innerHTML = `
+                        <div class="message-box">
+                            <i class="fas fa-box-open"></i>
+                            <h3>No Orders Found</h3>
+                            <p>You haven't placed any orders yet. <a href="index.html">Start shopping!</a></p>
+                        </div>`;
+                    return;
+                }
+
+                let ordersHTML = '';
+                ordersSnapshot.forEach(doc => {
+                    const order = doc.data();
+                    const orderDate = order.timestamp.toDate().toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+
+                    const itemsHTML = order.items.map(item => `
+                        <div class="order-item">
+                            <img src="${item.image}" alt="${item.name}" class="order-item-image">
+                            <div class="order-item-details">
+                                <p class="order-item-name">${item.name}</p>
+                                <p class="order-item-price">${item.quantity} x ${item.price.toFixed(2)} AED</p>
+                            </div>
+                        </div>
+                    `).join('');
+
+                    ordersHTML += `
+                        <div class="order-card">
+                            <div class="order-header">
+                                <div class="order-header-item"><strong>Order Placed:</strong> ${orderDate}</div>
+                                <div class="order-header-item"><strong>Total:</strong> ${order.total.toFixed(2)} AED</div>
+                                <div class="order-header-item"><strong>Order ID:</strong> #${doc.id.substring(0, 8)}</div>
+                            </div>
+                            <div class="order-body">
+                                ${itemsHTML}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                container.innerHTML = ordersHTML;
+
+            } catch (error) {
+                console.error("Error fetching orders: ", error);
+                container.innerHTML = `<div class="message-box"><h3><i class="fas fa-exclamation-triangle"></i> Error</h3><p>Could not fetch your order history. Please try again later.</p></div>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartDisplay();
+
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            const container = document.getElementById('orderHistoryContainer');
+
+            if (userData && userData.email) {
+                fetchAndDisplayOrders(userData.email);
+            } else {
+                container.innerHTML = `
+                    <div class="message-box">
+                        <i class="fas fa-user-lock"></i>
+                        <h3>Please Log In</h3>
+                        <p>You need to be logged in to view your order history.</p>
+                        <p><a href="index.html?showForm=true">Click here to sign up or log in.</a></p>
+                    </div>
+                `;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

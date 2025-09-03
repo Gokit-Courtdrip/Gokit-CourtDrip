@@ -1068,7 +1068,7 @@
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="league.html" class="nav-link">Leagues</a>
-                <a href="basketball.html" class="nav-link">Basketball</a>
+                <a href="nba.html" class="nav-link">Basketball</a>
                 <a href="cart.html" class="nav-link nav-link-cart" aria-current="page">
                     <span class="cart-icon-container">
                         <i class="fas fa-shopping-cart"></i>
@@ -1835,7 +1835,7 @@
                 submitBtn.innerHTML = '<span class="loading"></span> Placing Order...';
                 submitBtn.disabled = true;
 
-                setTimeout(() => {
+                setTimeout(async () => {
                     const appliedDiscount = JSON.parse(localStorage.getItem('appliedDiscount'));
                     if (appliedDiscount) {
                         const usedCodes = JSON.parse(localStorage.getItem('usedCodes')) || {};
@@ -1843,6 +1843,48 @@
                         usedCodes[code] = (usedCodes[code] || 0) + 1;
                         localStorage.setItem('usedCodes', JSON.stringify(usedCodes));
                     }
+
+                    // --- Prepare and Save Order Data ---
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    let discountAmount = 0;
+                    if (appliedDiscount) {
+                        discountAmount = (appliedDiscount.type === 'percent') ? (subtotal * appliedDiscount.value) / 100 : appliedDiscount.value;
+                        discountAmount = Math.min(discountAmount, subtotal);
+                    }
+                    const isEligibleForFreeStandardShipping = subtotal >= 250;
+                    let finalShippingCost = selectedShipping.price;
+                    if (isEligibleForFreeStandardShipping && selectedShipping.id === 'standard') {
+                        finalShippingCost = 0;
+                    }
+                    const total = subtotal - discountAmount + finalShippingCost;
+
+                    const orderData = {
+                        customer: {
+                            name: document.getElementById('fullName').value,
+                            email: document.getElementById('email').value,
+                            phone: document.getElementById('phone').value,
+                            address: document.getElementById('address').value,
+                            city: document.getElementById('city').value,
+                            postalCode: document.getElementById('postalCode').value,
+                        },
+                        items: cart,
+                        subtotal: subtotal,
+                        discount: {
+                            code: appliedDiscount ? appliedDiscount.code : 'None',
+                            amount: discountAmount
+                        },
+                        shipping: {
+                            method: selectedShipping.name,
+                            cost: finalShippingCost
+                        },
+                        total: total,
+                        timestamp: new Date() // Using client-side time for simplicity
+                    };
+
+                    console.log("Placing order with data:", orderData);
+                    // Here you would typically send this data to your backend or a service like Firebase
+
 
                     localStorage.setItem('cart', '[]');
                     localStorage.removeItem('appliedDiscount');

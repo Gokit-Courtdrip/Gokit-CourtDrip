@@ -1219,7 +1219,8 @@
                             <i class="fas fa-store"></i> Shop
                         </a>
                         <ul class="dropdown-menu shop-dropdown-menu">
-                            <li><a class="dropdown-item dropdown-football shop-dropdown-item" href="league.html">
+                            <li><a class="dropdown-item dropdown-football shop-dropdown-item"
+                                    href="football-jerseys.html">
                                     <div class="icon-container"><i class="fas fa-futbol"></i></div>
                                     <div class="text-container">
                                         <div class="shop-item-title">GOKIT</div>
@@ -1231,7 +1232,7 @@
                                     <div class="icon-container"><i class="fas fa-basketball-ball"></i></div>
                                     <div class="text-container">
                                         <div class="shop-item-title">CourtDripDxb</div>
-                                        <div class="shop-item-desc">Elite Basketball Gear</div>
+                                        <div class="shop-item-desc">Elite Basketball Jerseys</div>
                                     </div>
                                 </a>
                             </li>
@@ -1317,7 +1318,7 @@
         <div class="container">
             <div class="section-title">
                 <h2><i class="fas fa-fire"></i> Choose Your Sport</h2>
-                <p>Discover premium gear for football and basketball enthusiasts</p>
+                <p>Discover Jerseys for football and basketball made for enthusiasts</p>
             </div>
             <div class="row">
                 <div class="col-lg-6 mb-4">
@@ -1914,8 +1915,16 @@
         }
 
         function generateDiscountCode() {
-            const codes = ['WELCOME10', 'FIRST10', 'GOKIT10', 'NEWBIE10', 'START10'];
-            return codes[Math.floor(Math.random() * codes.length)];
+            // Generates a unique 7-character alphanumeric code.
+            return 'GOKIT-' + Math.random().toString(36).substring(2, 9).toUpperCase();
+        }
+
+        function generateMultipleDiscountCodes(count) {
+            const codes = new Set(); // Use a Set to ensure codes are unique
+            while (codes.size < count) {
+                codes.add(generateDiscountCode());
+            }
+            return Array.from(codes);
         }
 
         async function handleWelcomeForm(e) {
@@ -1934,14 +1943,14 @@
             // We also clear the session 'dismissed' flag in case they log out later in the same session.
             sessionStorage.removeItem('welcomeModalDismissed');
 
-            const discountCode = generateDiscountCode();
-            localStorage.setItem('discountCodes', JSON.stringify([discountCode]));
+            const discountCodes = generateMultipleDiscountCodes(3); // Generate 3 unique codes
+            localStorage.setItem('discountCodes', JSON.stringify(discountCodes));
 
             if (db) {
                 try {
                     const docRef = await db.collection('users').add({
                         ...formData,
-                        discountCode: discountCode,
+                        discountCodes: discountCodes, // Save all 3 codes to Firebase
                         timestamp: firebase.firestore.FieldValue.serverTimestamp()
                     });
                     formData.id = docRef.id;
@@ -1956,7 +1965,8 @@
             }
 
             closeModal('welcomeModal');
-            showToast(`Welcome, ${formData.name.split(' ')[0]}! Your code: ${discountCode}`, 'fas fa-gift');
+            // Notify the user about their first code
+            showToast(`Welcome, ${formData.name.split(' ')[0]}! Your first code: ${discountCodes[0]}`, 'fas fa-gift');
             updateAccountNav();
         }
 
@@ -1979,7 +1989,7 @@
                     discountHTML = discountCodes.map(code => `
                         <li>
                             <div class="dropdown-item discount-item">
-                                <span><i class="fas fa-tag"></i> ${code} - 10% OFF</span>
+                                <span><i class="fas fa-tag"></i> ${code}</span>
                                 <button class="copy-code-btn" data-code="${code}" title="Copy code">Copy</button>
                             </div>
                         </li>
@@ -1993,7 +2003,7 @@
                     ${discountHTML}
                     <li><hr class="dropdown-divider" style="border-color: rgba(255,255,255,0.2);"></li>
                     <li><a class="dropdown-item" href="wishlist.html"><i class="fas fa-heart"></i> Wishlist</a></li>
-                    <li><a class="dropdown-item" href="football-jerseys.html?action=view_orders"><i class="fas fa-shopping-bag"></i> My Orders</a></li>
+                    <li><a class="dropdown-item" href="order-history.html"><i class="fas fa-shopping-bag"></i> My Orders</a></li>
                     <li><hr class="dropdown-divider" style="border-color: rgba(255,255,255,0.2);"></li>
                     <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Log
                             Out</a></li>

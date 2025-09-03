@@ -863,6 +863,18 @@
         .filter-sidebar {
             width: 280px;
             flex-shrink: 0;
+            position: sticky;
+            /* Make the sidebar sticky */
+            top: 20px;
+            /* Stick 20px from the top of the viewport */
+            align-self: flex-start;
+            /* Align to the start of the flex container */
+            z-index: 100;
+            /* Ensure it stays above other content */
+            max-height: calc(100vh - 40px);
+            /* Prevent it from overflowing the viewport */
+            overflow-y: auto;
+            /* Allow scrolling within the sidebar if content is long */
         }
 
         .filter-group {
@@ -902,7 +914,8 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            /* Adjust minmax to encourage 2 columns on larger screens */
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: var(--space-5);
         }
 
@@ -985,9 +998,34 @@
             }
         }
 
+        /* Adjustments for smaller mobile screens */
         @media (max-width: 576px) {
             .hero-title {
                 font-size: 2rem;
+            }
+
+            .conf-card-content {
+                padding: 1.5rem;
+                /* Reduce padding */
+            }
+
+            .conf-logo {
+                width: 60px;
+                /* Smaller logo container */
+                height: 60px;
+                margin-bottom: 1rem;
+                /* Adjust margin */
+            }
+
+            .conf-logo i {
+                font-size: 1.5rem;
+                /* Smaller icon */
+            }
+
+            .conf-title {
+                font-size: 1.4rem;
+                /* Adjust title size */
+                margin-bottom: 1rem;
             }
 
             .conf-card {
@@ -999,12 +1037,15 @@
             }
 
             .conf-description {
-                font-size: 1rem;
+                font-size: 0.9rem;
+                /* Adjust description size */
+                margin-bottom: 1.5rem;
             }
 
             .conf-btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+                /* Smaller button */
+                font-size: 0.8rem;
                 white-space: nowrap;
             }
 
@@ -1627,10 +1668,10 @@
                         <button class="icon-btn" id="wishlistBtn">
                             <i class="fas fa-heart"></i>
                         </button>
-                        <button class="icon-btn" id="cartBtn">
+                        <a href="cart.html" class="icon-btn" id="cartBtn">
                             <i class="fas fa-shopping-cart"></i>
                             <span class="badge" id="cartBadge">0</span>
-                        </button>
+                        </a>
                         <div class="dropdown account-dropdown">
                             <button class="btn btn-primary" id="accountBtn" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user"></i>
@@ -1687,7 +1728,7 @@
 
             <div class="row g-4 justify-content-center">
                 <!-- Western Conference -->
-                <div class="col-lg-5 col-md-6" data-conference="Western" style="cursor: pointer;">
+                <div class="col-md-6" data-conference="Western" style="cursor: pointer;">
                     <div class="conf-card west">
                         <img src="img/western.jpg" alt="Western Conference" loading="lazy" />
                         <div class="conf-card-content">
@@ -1702,7 +1743,7 @@
                 </div>
 
                 <!-- Eastern Conference -->
-                <div class="col-lg-5 col-md-6" data-conference="Eastern" style="cursor: pointer;">
+                <div class="col-md-6" data-conference="Eastern" style="cursor: pointer;">
                     <div class="conf-card east">
                         <img src="img/western.jpg" alt="Eastern Conference" loading="lazy" />
                         <div class="conf-card-content">
@@ -1913,29 +1954,6 @@
         </div>
     </div>
 
-    <!-- Cart Modal -->
-    <div class="modal" id="cartModal">
-        <div class="modal-content" style="max-width: 700px;">
-            <button class="modal-close" onclick="closeModal('cartModal')"><i class="fas fa-times"></i></button>
-            <h2 style="margin-bottom: var(--space-5);">Your Cart</h2>
-            <div id="cartItemsContainer">
-                <!-- Cart items will be loaded here -->
-            </div>
-            <div id="cartFooter"
-                style="margin-top: var(--space-5); border-top: 1px solid var(--border-color); padding-top: var(--space-5);">
-                <div
-                    style="display: flex; justify-content: space-between; font-size: var(--text-xl); font-weight: bold;">
-                    <span>Subtotal</span>
-                    <span id="cartSubtotal">0 AED</span>
-                </div>
-                <a href="cart.html" class="btn btn-primary"
-                    style="width: 100%; justify-content: center; margin-top: var(--space-4);">
-                    Proceed to Checkout
-                </a>
-            </div>
-        </div>
-    </div>
-
     <!-- Filter Modal (for Mobile) -->
     <div class="modal" id="filterModal">
         <div class="modal-content" style="max-width: 400px; height: 80%; display: flex; flex-direction: column;">
@@ -2134,12 +2152,6 @@
                 // Size Guide Button
                 document.getElementById('sizeGuideBtn').addEventListener('click', () => {
                     showModal('sizeGuideModal');
-                });
-
-                // Cart Button
-                document.getElementById('cartBtn').addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showCartModal();
                 });
 
                 // Cart Item Removal
@@ -2449,40 +2461,6 @@
                 localStorage.setItem('wishlist', JSON.stringify(wishlist));
             }
 
-            function showCartModal() {
-                const container = document.getElementById('cartItemsContainer');
-                const subtotalEl = document.getElementById('cartSubtotal');
-                const cartFooter = document.getElementById('cartFooter');
-                container.innerHTML = '';
-
-                if (cart.length === 0) {
-                    container.innerHTML = `<div class="empty-cart-message"><p>Your cart is empty.</p></div>`;
-                    cartFooter.style.display = 'none';
-                } else {
-                    cartFooter.style.display = 'block';
-                    let subtotal = 0;
-                    cart.forEach(item => {
-                        subtotal += item.price * (item.quantity || 1);
-                        const itemEl = document.createElement('div');
-                        itemEl.className = 'cart-item';
-                        itemEl.dataset.itemName = item.name;
-                        itemEl.innerHTML = `
-                            <div class="cart-item-image"><img src="${item.image}" alt="${item.name}"></div>
-                            <div class="cart-item-details">
-                                <h4>${item.name}</h4>
-                            </div> 
-                            <div class="cart-item-actions">
-                                <div class="cart-item-price">${item.price} AED x ${item.quantity || 1}</div>
-                                <button class="cart-item-remove-btn" data-action="remove-from-cart">Remove</button>
-                            </div>
-                        `;
-                        container.appendChild(itemEl);
-                    });
-                    subtotalEl.textContent = `${subtotal.toFixed(2)} AED`;
-                }
-                showModal('cartModal');
-            }
-
             function updateCardPrice(card) {
                 if (!card) return;
                 const priceEl = card.querySelector('.product-price');
@@ -2522,7 +2500,7 @@
                 cart = cart.filter(item => item.name !== itemName);
                 localStorage.setItem('cart', JSON.stringify(cart));
                 updateCartIcon();
-                showCartModal(); // Re-render the cart modal
+                // Since the modal is removed, this function call is no longer needed here.
             }
 
             // --- CHATBOT FUNCTIONS ---
