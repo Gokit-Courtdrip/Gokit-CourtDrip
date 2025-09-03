@@ -5,74 +5,231 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CourtDripDxb — Basketball Zone</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
-            color: #fff;
-            min-height: 100vh;
+        :root {
+            --primary-orange: #ff8800;
+            --secondary-orange: #ff6600;
+            --dark-bg: #0f0f23;
+            --darker-bg: #1a1a2e;
+            --accent-blue: #16213e;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 50%, var(--accent-blue) 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Enhanced Navbar */
         .navbar {
-            background: rgba(0, 0, 0, 0.9) !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.95) !important;
+            backdrop-filter: blur(15px);
+            border-bottom: 3px solid var(--primary-orange);
+            box-shadow: 0 4px 20px rgba(255, 136, 0, 0.2);
+            transition: all 0.3s ease;
         }
 
         .navbar-brand {
-            font-weight: 700 !important;
-            background: linear-gradient(135deg, #ff8800, #ff6600);
+            font-weight: 800 !important;
+            font-size: 1.6rem;
+            background: linear-gradient(45deg, var(--primary-orange), var(--secondary-orange), var(--primary-orange));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 136, 0, 0.3);
+            transition: all 0.3s ease;
         }
 
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            margin: 0 5px;
+            padding: 8px 16px !important;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-orange) !important;
+            background: rgba(255, 136, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced Back Button */
         .back-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 136, 0, 0.1);
+            border: 2px solid var(--primary-orange);
             color: #fff;
-            padding: 0.75rem 1.5rem;
+            padding: 12px 24px;
             border-radius: 25px;
             text-decoration: none;
-            transition: transform 0.2s ease;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(255, 136, 0, 0.2);
         }
 
         .back-btn:hover {
-            transform: translateY(-2px);
+            transform: translateX(-8px) scale(1.05);
+            background: rgba(255, 136, 0, 0.2);
+            box-shadow: 8px 8px 25px rgba(255, 136, 0, 0.4);
             color: #fff;
         }
 
+        /* Enhanced Hero Section */
         .hero-section {
-            background: linear-gradient(135deg, rgba(255, 136, 0, 0.8), rgba(255, 102, 0, 0.8)), url('img/basketball.jpg') center/cover;
-            padding: 4rem 0;
+            background:
+                linear-gradient(135deg, rgba(255, 136, 0, 0.9), rgba(255, 102, 0, 0.8)),
+                url('img/basketball.jpg') center/cover;
+            padding: 6rem 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(255, 136, 0, 0.3);
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 15px,
+                    rgba(255, 255, 255, 0.03) 15px,
+                    rgba(255, 255, 255, 0.03) 30px);
+            animation: slide 25s linear infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-50px) translateY(-50px);
+            }
+
+            100% {
+                transform: translateX(0px) translateY(0px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .hero-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out;
         }
 
+        .hero-subtitle {
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced Section Title */
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-orange), var(--secondary-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 136, 0, 0.3);
+            margin-bottom: 3rem;
+        }
+
+        /* Enhanced League Card with Better Colors */
         .league-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            background: rgba(15, 15, 35, 0.8);
+            border-radius: 25px;
             overflow: hidden;
-            transition: transform 0.3s ease;
-            height: 350px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 450px;
             position: relative;
+            border: 2px solid rgba(255, 136, 0, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .league-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom,
+                    rgba(15, 15, 35, 0.2),
+                    rgba(15, 15, 35, 0.6),
+                    rgba(15, 15, 35, 0.8));
+            z-index: 2;
+        }
+
+        .league-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 136, 0, 0.2), transparent);
+            transition: left 0.8s;
+            z-index: 3;
+        }
+
+        .league-card:hover::before {
+            left: 100%;
         }
 
         .league-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-20px) scale(1.03);
+            border-color: rgba(255, 136, 0, 0.7);
+            box-shadow: 0 20px 60px rgba(255, 136, 0, 0.4);
         }
 
         .league-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.4);
+            filter: brightness(0.7);
+            transition: all 0.5s ease;
+        }
+
+        .league-card:hover img {
+            filter: brightness(0.9);
+            transform: scale(1.05);
         }
 
         .league-card-content {
@@ -81,55 +238,257 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            z-index: 2;
+            z-index: 4;
+            width: 90%;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 136, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .league-title {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 1rem;
+            color: #ffffff;
+            text-shadow:
+                0 0 10px rgba(255, 136, 0, 0.7),
+                0 0 20px rgba(255, 136, 0, 0.5),
+                0 0 30px rgba(255, 136, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .league-card:hover .league-title {
+            transform: scale(1.1);
+            color: #ffffff;
+            text-shadow:
+                0 0 15px rgba(255, 136, 0, 0.8),
+                0 0 30px rgba(255, 136, 0, 0.6),
+                0 0 45px rgba(255, 136, 0, 0.4);
+        }
+
+        .league-description {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
         }
 
         .league-btn {
             background: linear-gradient(135deg, #ff8800, #ff6600);
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 25px;
+            padding: 1.2rem 2.5rem;
+            border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.2s ease;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .league-btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-5px) scale(1.05);
             color: white;
+            background: linear-gradient(135deg, #ff9922, #ff7722);
+            box-shadow: 0 15px 40px rgba(255, 136, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
+        /* Enhanced Footer */
         footer {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 2rem 0;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 3rem 0;
             text-align: center;
             margin-top: 4rem;
+            border-top: 3px solid var(--primary-orange);
+            box-shadow: 0 -4px 20px rgba(255, 136, 0, 0.2);
+        }
+
+        .footer-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-orange);
+        }
+
+        .footer-text {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Basketball Animation */
+        .basketball-icon {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.8rem;
+            }
+
+            .league-title {
+                font-size: 2.8rem;
+            }
+
+            .league-card {
+                height: 400px;
+            }
         }
 
         @media (max-width: 768px) {
             .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .league-card {
+                height: 350px;
+                margin-bottom: 2rem;
+            }
+
+            .league-title {
+                font-size: 2.2rem;
+            }
+
+            .league-description {
+                font-size: 1rem;
+            }
+
+            .league-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .back-btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.3rem;
+            }
+
+            .league-card-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 4rem 0;
+            }
+
+            .hero-title {
                 font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
             }
 
             .league-card {
                 height: 300px;
+            }
+
+            .league-title {
+                font-size: 1.8rem;
+            }
+
+            .league-card:hover {
+                transform: translateY(-10px) scale(1.02);
+            }
+
+            .back-btn:hover {
+                transform: translateX(-5px) scale(1.02);
+            }
+
+            .league-card-content {
+                padding: 1rem;
+                width: 95%;
+            }
+        }
+
+        /* Loading Animation */
+        .league-card {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideInUp 0.8s ease-out 0.5s forwards;
+        }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Performance Optimizations */
+        .league-card img {
+            will-change: transform, filter;
+        }
+
+        .league-btn {
+            will-change: transform;
+        }
+
+        /* Disable hover effects on touch devices */
+        @media (hover: none) {
+            .league-card:hover {
+                transform: none;
+            }
+
+            .league-card:active {
+                transform: scale(0.98);
+                transition: transform 0.1s ease;
             }
         }
     </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <!-- Navbar -->
+    <!-- Enhanced Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <i class="fas fa-basketball-ball"></i> CourtDripDxb
+                <i class="fas fa-basketball-ball basketball-icon"></i> CourtDripDxb
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -151,40 +510,43 @@
         </div>
     </nav>
 
-    <!-- Back Button -->
-    <div class="container my-3">
+    <!-- Enhanced Back Button -->
+    <div class="container my-4">
         <a href="index.html" class="back-btn">
             <i class="fas fa-arrow-left"></i> Back to Home
         </a>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Enhanced Hero Section -->
     <section class="hero-section">
-        <div class="container">
+        <div class="container hero-content">
             <h1 class="hero-title">
-                <i class="fas fa-basketball-ball"></i> Basketball Zone
+                <i class="fas fa-basketball-ball basketball-icon"></i> Basketball Zone
             </h1>
-            <p class="lead">Premium basketball gear from elite leagues</p>
+            <p class="hero-subtitle">Wear The Game. Own The Court.</p>
         </div>
     </section>
 
-    <!-- League Section -->
+    <!-- Enhanced League Section with Improved Colors -->
     <section class="py-5">
         <div class="container">
-            <h2 class="text-center mb-5 display-4 fw-bold">
+            <h2 class="text-center section-title">
                 <i class="fas fa-fire"></i> Choose Your League
             </h2>
 
             <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-8">
+                <div class="col-lg-8 col-md-10">
                     <a href="nba.html" class="text-decoration-none">
                         <div class="league-card">
-                            <img src="img/nba.jpg" alt="NBA">
+                            <img src="img/nba.jpg" alt="NBA Basketball League" loading="lazy">
+                            <div class="league-overlay"></div>
                             <div class="league-card-content">
                                 <h3 class="league-title">NBA</h3>
-                                <p class="mb-3">National Basketball Association</p>
+                                <p class="league-description">National Basketball Association</p>
                                 <div class="league-btn">
-                                    <i class="fas fa-arrow-right"></i> Explore NBA
+                                    <i class="fas fa-basketball-ball"></i>
+                                    Explore NBA Jerseys
+                                    <i class="fas fa-arrow-right"></i>
                                 </div>
                             </div>
                         </div>
@@ -194,15 +556,112 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Enhanced Footer -->
     <footer class="mt-auto">
         <div class="container">
-            <p>© 2025 CourtDripDxb — Basketball Zone</p>
-            <p><small>Not affiliated with the NBA or any official team or league.</small></p>
+            <div class="footer-title">
+                <i class="fas fa-basketball-ball basketball-icon"></i>
+                © 2025 CourtDripDxb — Basketball Zone
+            </div>
+            <p class="footer-text">
+                <small>Not affiliated with the NBA or any official team or league.</small>
+            </p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Performance optimized animations
+        document.addEventListener('DOMContentLoaded', function () {
+            // Smooth scroll behavior
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Enhanced navbar scroll effect
+            let lastScrollTop = 0;
+            const navbar = document.querySelector('.navbar');
+
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    navbar.style.transform = 'translateY(0)';
+                }
+
+                lastScrollTop = scrollTop;
+            }, { passive: true });
+
+            // Add click ripple effect
+            const leagueCard = document.querySelector('.league-card');
+            if (leagueCard) {
+                leagueCard.addEventListener('click', function (e) {
+                    const ripple = document.createElement('div');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(255, 136, 0, 0.3);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: ripple 0.6s ease-out;
+                        pointer-events: none;
+                        z-index: 1000;
+                    `;
+
+                    this.appendChild(ripple);
+
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            }
+
+            // Add CSS for ripple animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(2);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Image loading optimization
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('load', function () {
+                    this.style.opacity = '1';
+                });
+
+                img.addEventListener('error', function () {
+                    this.style.background = 'linear-gradient(45deg, #333, #555)';
+                    this.innerHTML = '<i class="fas fa-image text-muted" style="font-size: 3rem; display: flex; align-items: center; justify-content: center; height: 100%;"></i>';
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

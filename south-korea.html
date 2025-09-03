@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atalanta Jerseys | GOKIT</title>
+    <title>South Korea National Team Jerseys | GOKIT</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap"
         rel="stylesheet">
@@ -48,7 +48,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             font-weight: 900;
-            color: #0066cc;
+            color: #ff6b35;
             text-decoration: none;
             letter-spacing: -1px;
         }
@@ -74,7 +74,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #0066cc;
+            background: #ff6b35;
             transition: width 0.3s ease;
         }
 
@@ -83,14 +83,14 @@
         }
 
         .nav-link:hover {
-            color: #0066cc;
+            color: #ff6b35;
         }
 
         /* Hero Section */
         .hero {
             padding: 140px 2rem 80px;
             text-align: center;
-            background: linear-gradient(135deg, #1a1a2e 0%, #0066cc 50%, #000000 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #dc143c 25%, #003478 50%, #dc143c 75%, #1a1a2e 100%);
             position: relative;
         }
 
@@ -101,7 +101,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 102, 204, 0.4), rgba(0, 0, 0, 0.3));
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.3), rgba(0, 52, 120, 0.3), rgba(220, 20, 60, 0.3));
             z-index: 1;
         }
 
@@ -115,23 +115,26 @@
             font-size: 4rem;
             font-weight: 900;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #0066cc, #ffffff, #4d94ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #ffffff;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8),
+                -1px -1px 2px rgba(0, 0, 0, 0.5),
+                2px 2px 4px rgba(220, 20, 60, 0.3);
             line-height: 1.1;
+            letter-spacing: -1px;
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: #ffffff;
             margin-bottom: 2rem;
-            font-weight: 400;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7),
+                1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .team-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #0066cc, #4d94ff);
+            background: linear-gradient(135deg, #dc143c, #003478);
             color: #ffffff;
             padding: 12px 24px;
             border-radius: 30px;
@@ -139,6 +142,9 @@
             font-weight: 600;
             letter-spacing: 1px;
             margin-bottom: 2rem;
+            border: 2px solid #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         /* Choice Buttons */
@@ -147,12 +153,13 @@
             justify-content: center;
             gap: 2rem;
             margin: 4rem 0;
+            padding: 0 2rem;
         }
 
         .choice-btn {
-            background: linear-gradient(135deg, #0066cc, #4d94ff);
+            background: linear-gradient(135deg, #dc143c, #003478);
             color: #ffffff;
-            border: none;
+            border: 2px solid #ffffff;
             padding: 1.2rem 2.5rem;
             border-radius: 50px;
             font-size: 1.1rem;
@@ -164,17 +171,18 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            box-shadow: 0 8px 32px rgba(0, 102, 204, 0.3);
+            box-shadow: 0 8px 32px rgba(220, 20, 60, 0.3);
         }
 
         .choice-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 16px 48px rgba(0, 102, 204, 0.4);
+            box-shadow: 0 16px 48px rgba(220, 20, 60, 0.4);
         }
 
         .choice-btn.active {
-            background: linear-gradient(135deg, #4d94ff, #0066cc);
+            background: linear-gradient(135deg, #003478, #dc143c);
             color: #ffffff;
+            border-color: #ffffff;
         }
 
         /* Product Section */
@@ -221,7 +229,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 102, 204, 0.2), rgba(77, 148, 255, 0.05));
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.2), rgba(0, 52, 120, 0.2));
             opacity: 0;
             transition: opacity 0.4s ease;
             z-index: 1;
@@ -233,8 +241,8 @@
 
         .product-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(0, 102, 204, 0.3);
-            box-shadow: 0 25px 50px rgba(0, 102, 204, 0.2);
+            border-color: rgba(220, 20, 60, 0.3);
+            box-shadow: 0 25px 50px rgba(220, 20, 60, 0.2);
         }
 
         .product-image {
@@ -258,7 +266,7 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(0, 102, 204, 0.9);
+            background: rgba(220, 20, 60, 0.9);
             color: #ffffff;
             padding: 6px 12px;
             border-radius: 20px;
@@ -284,7 +292,7 @@
         .product-price {
             font-size: 1.3rem;
             font-weight: 700;
-            color: #0066cc;
+            color: #ff6b35;
             margin-bottom: 1.5rem;
         }
 
@@ -336,21 +344,21 @@
         }
 
         .size-option:hover {
-            background: rgba(0, 102, 204, 0.3);
-            border-color: rgba(0, 102, 204, 0.5);
+            background: rgba(220, 20, 60, 0.3);
+            border-color: rgba(220, 20, 60, 0.5);
             color: #ffffff;
         }
 
         .size-option.selected {
-            background: linear-gradient(135deg, #0066cc, #4d94ff);
-            border-color: #0066cc;
+            background: linear-gradient(135deg, #dc143c, #003478);
+            border-color: #dc143c;
             color: #ffffff;
             font-weight: 600;
         }
 
         .add-to-cart {
             width: 100%;
-            background: linear-gradient(135deg, #0066cc, #4d94ff);
+            background: linear-gradient(135deg, #dc143c, #003478);
             color: #ffffff;
             border: none;
             padding: 1rem 2rem;
@@ -369,8 +377,9 @@
 
         .add-to-cart:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.4);
-            background: linear-gradient(135deg, #4d94ff, #0066cc);
+            box-shadow: 0 10px 30px rgba(220, 20, 60, 0.4);
+            background: linear-gradient(135deg, #ff6b35, #dc143c);
+            color: #ffffff;
         }
 
         .add-to-cart:disabled {
@@ -395,19 +404,76 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+
+            /* Navbar Mobile */
+            .nav-container {
+                padding: 0 1rem;
+                flex-wrap: wrap;
+                gap: 1rem;
             }
 
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+
+            .nav-link {
+                font-size: 0.9rem;
+            }
+
+            /* Hero Mobile */
+            .hero {
+                padding: 120px 1rem 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8),
+                    -1px -1px 2px rgba(0, 0, 0, 0.6),
+                    1px 1px 3px rgba(220, 20, 60, 0.4);
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            }
+
+            .team-badge {
+                font-size: 0.8rem;
+                padding: 10px 20px;
+            }
+
+            /* Choice Buttons Mobile */
             .choice-buttons {
                 flex-direction: column;
                 align-items: center;
                 gap: 1rem;
+                margin: 2rem 0;
+                padding: 0 1rem;
             }
 
             .choice-btn {
                 width: 100%;
                 max-width: 300px;
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                justify-content: center;
+            }
+
+            /* Product Section Mobile */
+            .product-section {
+                padding: 40px 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
             }
 
             .product-grid {
@@ -415,12 +481,201 @@
                 gap: 2rem;
             }
 
-            .nav-container {
-                padding: 0 1rem;
+            /* Product Card Mobile */
+            .product-card {
+                border-radius: 20px;
             }
 
+            .product-image {
+                height: 250px;
+            }
+
+            .product-content {
+                padding: 1.5rem;
+            }
+
+            .product-name {
+                font-size: 1.2rem;
+            }
+
+            .product-price {
+                font-size: 1.2rem;
+            }
+
+            .product-features li {
+                font-size: 0.85rem;
+            }
+
+            /* Size Options Mobile */
             .size-options {
                 justify-content: center;
+                gap: 0.4rem;
+            }
+
+            .size-option {
+                min-width: 35px;
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+
+            /* Add to Cart Mobile */
+            .add-to-cart {
+                padding: 0.9rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            /* Footer Mobile */
+            .footer {
+                padding: 2rem 1rem;
+                margin-top: 60px;
+            }
+
+            .footer p {
+                font-size: 0.9rem;
+            }
+
+            /* Hover effects disabled on mobile */
+            .product-card:hover {
+                transform: none;
+            }
+
+            .choice-btn:hover {
+                transform: none;
+            }
+
+            .add-to-cart:hover {
+                transform: none;
+            }
+        }
+
+        /* Extra Small Mobile (320px and below) */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9),
+                    -1px -1px 2px rgba(0, 0, 0, 0.7),
+                    1px 1px 3px rgba(220, 20, 60, 0.5);
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .product-content {
+                padding: 1.2rem;
+            }
+
+            .product-name {
+                font-size: 1.1rem;
+            }
+
+            .product-price {
+                font-size: 1.1rem;
+            }
+
+            .choice-btn {
+                padding: 0.9rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
+
+        /* Large Mobile/Small Tablet (481px - 768px) */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8),
+                    -1px -1px 2px rgba(0, 0, 0, 0.5),
+                    2px 2px 4px rgba(220, 20, 60, 0.3);
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Tablet (769px - 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .choice-buttons {
+                gap: 1.5rem;
+            }
+
+            .choice-btn {
+                padding: 1.1rem 2rem;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .product-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .product-card:hover::before {
+                opacity: 0;
+            }
+
+            .product-card:hover img {
+                transform: none;
+            }
+
+            .choice-btn:hover,
+            .add-to-cart:hover,
+            .nav-link:hover {
+                transform: none;
+            }
+
+            .size-option:hover {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.2);
+                color: rgba(255, 255, 255, 0.8);
+            }
+
+            /* Make touch targets larger */
+            .size-option {
+                min-width: 44px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .choice-btn {
+                min-height: 48px;
+            }
+
+            .add-to-cart {
+                min-height: 48px;
             }
         }
     </style>
@@ -432,7 +687,8 @@
         <div class="nav-container">
             <a href="index.html" class="logo">GOKIT</a>
             <div class="nav-links">
-                <a href="serie-a.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to Serie A</a>
+                <a href="national-teams.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to National
+                    Teams</a>
                 <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
             </div>
         </div>
@@ -441,10 +697,10 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1><i class="fas fa-bolt"></i> Atalanta Jerseys</h1>
-            <p>La Dea - The Goddess of Bergamo</p>
+            <h1><i class="fas fa-star"></i> South Korea National Team</h1>
+            <p>Taegeuk Warriors - The Tiger Spirit Collection</p>
             <div class="team-badge">
-                <i class="fas fa-mountain"></i> Gewiss Stadium Warriors
+                <i class="fas fa-trophy"></i> Taegeuk Warriors Collection
             </div>
         </div>
     </section>
@@ -454,7 +710,7 @@
             <i class="fas fa-sparkles"></i> New Season (2019–2025)
         </button>
         <button class="choice-btn" onclick="showSection('retro')">
-            <i class="fas fa-history"></i> Retro (2018 & older)
+            <i class="fas fa-trophy"></i> Retro (2018 & older)
         </button>
     </div>
 
@@ -472,10 +728,10 @@
                     <h3 class="product-name">2024/25 Home Jersey</h3>
                     <p class="product-price">AED 75</p>
                     <ul class="product-features">
-                        <li><i class="fas fa-check"></i> Joma Design</li>
-                        <li><i class="fas fa-check"></i> Gasperini's Magic</li>
-                        <li><i class="fas fa-check"></i> Lookman & Scamacca</li>
-                        <li><i class="fas fa-check"></i> Europa League</li>
+                        <li><i class="fas fa-check"></i> Nike Design</li>
+                        <li><i class="fas fa-check"></i> World Cup Qualifiers</li>
+                        <li><i class="fas fa-check"></i> Son Heung-min #7 Available</li>
+                        <li><i class="fas fa-check"></i> Taegeuk Spirit</li>
                     </ul>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
@@ -496,17 +752,17 @@
             <div class="product-card">
                 <div class="product-image">
                     <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="2021/22 Europa League">
-                    <div class="product-badge">European</div>
+                        alt="2023/24 Away Jersey">
+                    <div class="product-badge">Popular</div>
                 </div>
                 <div class="product-content">
-                    <h3 class="product-name">2021/22 Europa League</h3>
+                    <h3 class="product-name">2023/24 Away Jersey</h3>
                     <p class="product-price">AED 75</p>
                     <ul class="product-features">
-                        <li><i class="fas fa-star"></i> Europa League Glory</li>
-                        <li><i class="fas fa-star"></i> Bayer Leverkusen Final</li>
-                        <li><i class="fas fa-star"></i> First European Trophy</li>
-                        <li><i class="fas fa-star"></i> Historic Achievement</li>
+                        <li><i class="fas fa-check"></i> Asian Cup 2023</li>
+                        <li><i class="fas fa-check"></i> Premium Fabric</li>
+                        <li><i class="fas fa-check"></i> Lee Kang-in #18 Available</li>
+                        <li><i class="fas fa-check"></i> Tiger Spirit Design</li>
                     </ul>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
@@ -527,17 +783,17 @@
             <div class="product-card">
                 <div class="product-image">
                     <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="2019/20 Champions League">
-                    <div class="product-badge">Historic</div>
+                        alt="2022/23 World Cup Jersey">
+                    <div class="product-badge">Limited</div>
                 </div>
                 <div class="product-content">
-                    <h3 class="product-name">2019/20 Champions League</h3>
+                    <h3 class="product-name">2022/23 World Cup Qatar</h3>
                     <p class="product-price">AED 75</p>
                     <ul class="product-features">
-                        <li><i class="fas fa-trophy"></i> Quarter-Finals</li>
-                        <li><i class="fas fa-trophy"></i> PSG Thriller</li>
-                        <li><i class="fas fa-trophy"></i> Fairytale Run</li>
-                        <li><i class="fas fa-trophy"></i> Bergamo Dreams</li>
+                        <li><i class="fas fa-star"></i> World Cup Qatar</li>
+                        <li><i class="fas fa-star"></i> Round of 16</li>
+                        <li><i class="fas fa-star"></i> Beat Portugal</li>
+                        <li><i class="fas fa-star"></i> Taegeuk Warriors</li>
                     </ul>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
@@ -558,16 +814,16 @@
             <div class="product-card">
                 <div class="product-image">
                     <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="2019/20 Serie A 3rd Place">
+                        alt="2021/22 Olympic Jersey">
                 </div>
                 <div class="product-content">
-                    <h3 class="product-name">2019/20 Serie A 3rd Place</h3>
+                    <h3 class="product-name">2021/22 Olympic Tokyo</h3>
                     <p class="product-price">AED 75</p>
                     <ul class="product-features">
-                        <li><i class="fas fa-fire"></i> Champions League Spot</li>
-                        <li><i class="fas fa-fire"></i> 98 Goals Scored</li>
-                        <li><i class="fas fa-fire"></i> Gasperini Revolution</li>
-                        <li><i class="fas fa-fire"></i> La Dea Rising</li>
+                        <li><i class="fas fa-medal"></i> Tokyo Olympics</li>
+                        <li><i class="fas fa-medal"></i> Bronze Medal</li>
+                        <li><i class="fas fa-medal"></i> Historic Achievement</li>
+                        <li><i class="fas fa-medal"></i> Tiger Pride</li>
                     </ul>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
@@ -594,17 +850,17 @@
             <div class="product-card">
                 <div class="product-image">
                     <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="1962/63 Coppa Italia Winners">
-                    <div class="product-badge">Historic</div>
+                        alt="2018 World Cup Jersey">
+                    <div class="product-badge">Legendary</div>
                 </div>
                 <div class="product-content">
-                    <h3 class="product-name">1962/63 Coppa Italia Winners</h3>
+                    <h3 class="product-name">2018 World Cup Russia</h3>
                     <p class="product-price">AED 75</p>
                     <ul class="product-features">
-                        <li><i class="fas fa-crown"></i> First Major Trophy</li>
-                        <li><i class="fas fa-crown"></i> Torino Final</li>
-                        <li><i class="fas fa-crown"></i> Historic Victory</li>
-                        <li><i class="fas fa-crown"></i> Bergamo Glory</li>
+                        <li <li><i class="fas fa-crown"></i> World Cup Russia</li>
+                        <li><i class="fas fa-crown"></i> Group Stage Heroes</li>
+                        <li><i class="fas fa-crown"></i> Beat Germany 2-0</li>
+                        <li><i class="fas fa-crown"></i> Taegeuk Fighting Spirit</li>
                     </ul>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
@@ -625,17 +881,17 @@
             <div class="product-card">
                 <div class="product-image">
                     <img src="https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="1987/88 Serie A 2nd Place">
-                    <div class="product-badge">Legendary</div>
+                        alt="2014 World Cup Jersey">
+                    <div class="product-badge">Historic</div>
                 </div>
                 <div class="product-content">
-                    <h3 class="product-name">1987/88 Serie A 2nd Place</h3>
+                    <h3 class="product-name">2014 World Cup Brazil</h3>
                     <p class="product-price">AED 75</p>
                     <ul class="product-features">
-                        <li><i class="fas fa-trophy"></i> Best Serie A Finish</li>
-                        <li><i class="fas fa-trophy"></i> Behind AC Milan</li>
-                        <li><i class="fas fa-trophy"></i> Golden Era</li>
-                        <li><i class="fas fa-trophy"></i> Bergamo Dreams</li>
+                        <li><i class="fas fa-trophy"></i> World Cup Brazil</li>
+                        <li><i class="fas fa-trophy"></i> Group Stage Warriors</li>
+                        <li><i class="fas fa-trophy"></i> Son Heung-min Debut</li>
+                        <li><i class="fas fa-trophy"></i> Tiger Spirit Pride</li>
                     </ul>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
@@ -655,18 +911,80 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="1990/91 Serie A 5th Place">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2010 World Cup Jersey">
+                    <div class="product-badge">Iconic</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2010 World Cup South Africa</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-medal"></i> World Cup South Africa</li>
+                        <li><i class="fas fa-medal"></i> Round of 16</li>
+                        <li><i class="fas fa-medal"></i> Beat Greece</li>
+                        <li><i class="fas fa-medal"></i> Park Ji-sung Era</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2002 World Cup Jersey">
+                    <div class="product-badge">Champions</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-name">2002 World Cup Korea/Japan</h3>
+                    <p class="product-price">AED 75</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-trophy"></i> Home World Cup</li>
+                        <li><i class="fas fa-trophy"></i> Semi-Finals</li>
+                        <li><i class="fas fa-trophy"></i> Beat Italy & Spain</li>
+                        <li><i class="fas fa-trophy"></i> Historic Achievement</li>
+                    </ul>
+                    <div class="size-selection">
+                        <label class="size-label">Select Size:</label>
+                        <div class="size-options">
+                            <div class="size-option" data-size="S">S</div>
+                            <div class="size-option" data-size="M">M</div>
+                            <div class="size-option" data-size="L">L</div>
+                            <div class="size-option" data-size="XL">XL</div>
+                            <div class="size-option" data-size="XXL">XXL</div>
+                        </div>
+                    </div>
+                    <button class="add-to-cart" disabled>
+                        <i class="fas fa-cart-plus"></i> Select Size First
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="1998 World Cup Jersey">
                     <div class="product-badge">Classic</div>
                 </div>
                 <div class="product-content">
-                    <h3 class="product-name">1990/91 Serie A 5th Place</h3>
+                    <h3 class="product-name">1998 World Cup France</h3>
                     <p class="product-price">AED 75</p>
                     <ul class="product-features">
-                        <li><i class="fas fa-magic"></i> UEFA Cup Qualification</li>
-                        <li><i class="fas fa-magic"></i> European Adventure</li>
-                        <li><i class="fas fa-magic"></i> Provincial Pride</li>
-                        <li><i class="fas fa-magic"></i> La Dea Spirit</li>
+                        <li><i class="fas fa-star"></i> First World Cup</li>
+                        <li><i class="fas fa-star"></i> Historic Debut</li>
+                        <li><i class="fas fa-star"></i> Cha Bum-kun Legacy</li>
+                        <li><i class="fas fa-star"></i> Taegeuk Debut</li>
                     </ul>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
@@ -686,18 +1004,18 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="2001 Intertoto Cup Winners">
-                    <div class="product-badge">European</div>
+                    <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="2015 Asian Cup Jersey">
+                    <div class="product-badge">Vintage</div>
                 </div>
                 <div class="product-content">
-                    <h3 class="product-name">2001 Intertoto Cup Winners</h3>
+                    <h3 class="product-name">2015 Asian Cup Australia</h3>
                     <p class="product-price">AED 75</p>
                     <ul class="product-features">
-                        <li><i class="fas fa-star"></i> European Trophy</li>
-                        <li><i class="fas fa-star"></i> UEFA Cup Entry</li>
-                        <li><i class="fas fa-star"></i> Continental Success</li>
-                        <li><i class="fas fa-star"></i> Bergamo Pride</li>
+                        <li><i class="fas fa-crown"></i> Asian Cup Runners-up</li>
+                        <li><i class="fas fa-crown"></i> Lost to Australia</li>
+                        <li><i class="fas fa-crown"></i> Son Heung-min Rising</li>
+                        <li><i class="fas fa-crown"></i> Asian Pride</li>
                     </ul>
                     <div class="size-selection">
                         <label class="size-label">Select Size:</label>
@@ -719,41 +1037,32 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2025 GOKIT — Atalanta Jerseys</p>
+        <p>© 2024 GOKIT. All rights reserved. | Bringing you the finest football jerseys in Dubai</p>
     </footer>
 
     <script>
-        // Cart functionality - fully compatible with cart.html
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        // Show/hide sections function
-        function showSection(type) {
+        // Section switching functionality
+        function showSection(sectionType) {
             // Hide all sections
             document.querySelectorAll('.product-section').forEach(section => {
-                section.style.display = 'none';
                 section.classList.remove('active');
             });
 
-            // Show selected section
-            const targetSection = document.getElementById(type);
-            if (targetSection) {
-                targetSection.style.display = 'block';
-                targetSection.classList.add('active');
-            }
-
-            // Update button states
+            // Remove active class from all buttons
             document.querySelectorAll('.choice-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
+
+            // Show selected section
+            document.getElementById(sectionType).classList.add('active');
+
             // Add active class to clicked button
-            if (event && event.target) {
-                event.target.classList.add('active');
-            }
+            event.target.classList.add('active');
         }
 
         // Size selection functionality
         document.addEventListener('DOMContentLoaded', function () {
-            // Handle size selection for all product cards
+            // Handle size selection
             document.querySelectorAll('.size-option').forEach(option => {
                 option.addEventListener('click', function () {
                     const card = this.closest('.product-card');
@@ -769,97 +1078,78 @@
                     // Enable add to cart button and update text
                     addToCartBtn.disabled = false;
                     addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+
+                    // Store selected size
+                    addToCartBtn.dataset.selectedSize = this.dataset.size;
                 });
             });
 
-            // Handle add to cart functionality
+            // Handle add to cart
             document.querySelectorAll('.add-to-cart').forEach(button => {
                 button.addEventListener('click', function () {
-                    if (this.disabled) return;
+                    if (!this.disabled) {
+                        const card = this.closest('.product-card');
+                        const productName = card.querySelector('.product-name').textContent;
+                        const productPrice = card.querySelector('.product-price').textContent;
+                        const selectedSize = this.dataset.selectedSize;
+                        const productImage = card.querySelector('img').src;
 
-                    const card = this.closest('.product-card');
-                    const productName = card.querySelector('.product-name').textContent;
-                    const productPrice = card.querySelector('.product-price').textContent;
-                    const selectedSize = card.querySelector('.size-option.selected');
-                    const productImage = card.querySelector('img').src;
+                        // Create product object
+                        const product = {
+                            id: Date.now(), // Simple ID generation
+                            name: productName,
+                            price: productPrice,
+                            size: selectedSize,
+                            image: productImage,
+                            team: 'South Korea',
+                            quantity: 1
+                        };
 
-                    if (!selectedSize) {
-                        alert('Please select a size first!');
-                        return;
+                        // Get existing cart or create new one
+                        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                        // Add product to cart
+                        cart.push(product);
+
+                        // Save to localStorage
+                        localStorage.setItem('cart', JSON.stringify(cart));
+
+                        // Visual feedback
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check"></i> Added to Cart!';
+                        this.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                            this.style.background = 'linear-gradient(135deg, #dc143c, #003478)';
+                        }, 2000);
+
+                        // Optional: Show notification
+                        showNotification(`${productName} (Size ${selectedSize}) added to cart!`);
                     }
-
-                    const cartItem = {
-                        id: Date.now() + Math.random(), // Unique ID
-                        name: productName,
-                        price: productPrice,
-                        size: selectedSize.textContent,
-                        image: productImage,
-                        team: 'Atalanta',
-                        quantity: 1
-                    };
-
-                    // Add to cart array
-                    cart.push(cartItem);
-
-                    // Save to localStorage
-                    localStorage.setItem('cart', JSON.stringify(cart));
-
-                    // Visual feedback
-                    this.innerHTML = '<i class="fas fa-check"></i> Added to Cart!';
-                    this.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
-
-                    // Reset button after 2 seconds
-                    setTimeout(() => {
-                        this.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
-                        this.style.background = 'linear-gradient(135deg, #0066cc, #4d94ff)';
-
-                        // Reset size selection
-                        const sizeOptions = card.querySelectorAll('.size-option');
-                        sizeOptions.forEach(opt => opt.classList.remove('selected'));
-                        this.disabled = true;
-                        this.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
-                    }, 2000);
-
-                    // Show success message
-                    showNotification('Atalanta jersey added to cart successfully!', 'success');
                 });
             });
         });
 
         // Notification function
-        function showNotification(message, type = 'success') {
-            // Remove existing notifications
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-
+        function showNotification(message) {
             // Create notification element
             const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <i class="fas fa-check-circle"></i>
-                <span>${message}</span>
-            `;
-
-            // Add notification styles
             notification.style.cssText = `
                 position: fixed;
                 top: 100px;
                 right: 20px;
-                background: linear-gradient(135deg, #28a745, #20c997);
+                background: linear-gradient(135deg, #dc143c, #003478);
                 color: white;
                 padding: 1rem 1.5rem;
                 border-radius: 10px;
-                box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
-                z-index: 10000;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
                 font-weight: 600;
+                z-index: 10000;
+                box-shadow: 0 10px 30px rgba(220, 20, 60, 0.3);
                 transform: translateX(400px);
                 transition: transform 0.3s ease;
             `;
+            notification.textContent = message;
 
             document.body.appendChild(notification);
 
@@ -872,28 +1162,12 @@
             setTimeout(() => {
                 notification.style.transform = 'translateX(400px)';
                 setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.remove();
-                    }
+                    document.body.removeChild(notification);
                 }, 300);
             }, 3000);
         }
 
-        // Update cart count in navbar
-        function updateCartCount() {
-            const cartCount = cart.length;
-            const cartLink = document.querySelector('.nav-link[href="cart.html"]');
-            if (cartLink && cartCount > 0) {
-                cartLink.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart (${cartCount})`;
-            }
-        }
-
-        // Initialize cart count on page load
-        document.addEventListener('DOMContentLoaded', function () {
-            updateCartCount();
-        });
-
-        // Smooth scrolling for better UX
+        // Smooth scrolling for better mobile experience
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -907,78 +1181,27 @@
             });
         });
 
-        // Add loading animation for images
-        document.addEventListener('DOMContentLoaded', function () {
-            const images = document.querySelectorAll('.product-card img');
-            images.forEach(img => {
-                img.addEventListener('load', function () {
-                    this.style.opacity = '1';
-                });
+        // Optimize touch interactions for mobile
+        if ('ontouchstart' in window) {
+            document.body.classList.add('touch-device');
+        }
 
-                // Set initial opacity
-                img.style.opacity = '0';
-                img.style.transition = 'opacity 0.3s ease';
-            });
-        });
-
-        // Keyboard navigation support
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                // Clear all size selections
-                document.querySelectorAll('.size-option.selected').forEach(option => {
-                    option.classList.remove('selected');
-                });
-
-                // Disable all add to cart buttons
-                document.querySelectorAll('.add-to-cart').forEach(btn => {
-                    btn.disabled = true;
-                    btn.innerHTML = '<i class="fas fa-cart-plus"></i> Select Size First';
-                });
-            }
-        });
-
-        // Atalanta-specific animations and effects
-        document.addEventListener('DOMContentLoaded', function () {
-            // Add La Dea effect on page load
+        // Handle orientation change
+        window.addEventListener('orientationchange', function () {
             setTimeout(() => {
-                const heroTitle = document.querySelector('.hero h1');
-                if (heroTitle) {
-                    heroTitle.style.animation = 'pulse 2s ease-in-out';
-                }
-            }, 1000);
-
-            // Add special hover effects for Atalanta cards
-            document.querySelectorAll('.product-card').forEach(card => {
-                card.addEventListener('mouseenter', function () {
-                    const badge = this.querySelector('.product-badge');
-                    if (badge && (badge.textContent === 'Historic' || badge.textContent === 'Legendary' || badge.textContent === 'European')) {
-                        badge.style.animation = 'glow 1s ease-in-out infinite alternate';
-                    }
-                });
-
-                card.addEventListener('mouseleave', function () {
-                    const badge = this.querySelector('.product-badge');
-                    if (badge) {
-                        badge.style.animation = 'none';
-                    }
-                });
-            });
+                window.scrollTo(0, window.scrollY);
+            }, 500);
         });
 
-        // Add CSS animations dynamically
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0%, 100% { transform: scale(1); }
-                50% { transform: scale(1.05); }
+        // Prevent zoom on double tap for better mobile experience
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
             }
-            
-            @keyframes glow {
-                0% { box-shadow: 0 0 5px rgba(0, 102, 204, 0.5); }
-                100% { box-shadow: 0 0 20px rgba(0, 102, 204, 0.8), 0 0 30px rgba(77, 148, 255, 0.5); }
-            }
-        `;
-        document.head.appendChild(style);
+            lastTouchEnd = now;
+        }, false);
     </script>
 </body>
 
