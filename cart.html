@@ -712,10 +712,9 @@
         }
 
         .modal.show {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
             opacity: 1;
+            /* Removed flex properties for more robust centering */
         }
 
         .modal-content {
@@ -728,11 +727,16 @@
             position: relative;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
             transform: scale(0.95);
+            /* Added new centering styles */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.95);
             transition: transform 0.3s ease;
         }
 
         .modal.show .modal-content {
-            transform: scale(1);
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .modal-close-btn {
@@ -900,6 +904,12 @@
             100% {
                 transform: scale(1);
             }
+        }
+
+        body.modal-open .main-content,
+        body.modal-open .footer {
+            visibility: hidden;
+            /* Hide the main content and footer when modal is open */
         }
 
         body.modal-open {
