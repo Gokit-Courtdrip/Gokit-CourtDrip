@@ -1,0 +1,13 @@
+{
+    "name": "gokti-me-cart",
+    "version": "1.0.0",
+    "description": "Tests for the GOKTI.ME shopping cart",
+    "main": "cart.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "devDependencies": {
+        "jest": "^29.7.0",
+        "jest-environment-jsdom": "^29.7.0"
+    }
+}
